@@ -13,32 +13,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppTweetExporterByUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppTweetExporterByUser.java">
+      <file leaf-file-name="NTripleIndexer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkerTweetExportByUserType.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/export/WorkerTweetExportByUserType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppTweetExporterByDays.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppTweetExporterByDays.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="23" column="27" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="158">
+              <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,13 +73,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/IndexAnalyserMaster.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/indexing/PostProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/IndexAnalyserWorker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/interaction/InteractionStatsExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/indexing/IndexPopulatorUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserStatsExtractor.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/cluster/UserFeatureGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserCommunityPresence.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/content/HashtagCommunityPresence.java" />
@@ -142,14 +118,20 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserIndexGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppTweetExporterByUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/export/WorkerTweetExportByUserType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/export/WorkerTweetExportByUserType.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/QuadsReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="227" />
-    <option name="y" value="128" />
-    <option name="width" value="965" />
-    <option name="height" value="557" />
+    <option name="x" value="1366" />
+    <option name="y" value="-2" />
+    <option name="width" value="1680" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -166,7 +148,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,7 +181,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
+              <item name="wop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
@@ -206,82 +189,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="export" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
+              <item name="wop" type="462c0819:PsiDirectoryNode" />
               <item name="indexing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="stats" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="stats" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="stats" type="462c0819:PsiDirectoryNode" />
-              <item name="interaction" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
-              <item name="stats" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,15 +205,15 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="uk.ac.shef.inf.wop.deprecated" />
       <recent name="uk.ac.shef.inf.msm4phi.analysis" />
       <recent name="uk.ac.shef.inf.msm4phi.stats.analysis" />
       <recent name="uk.ac.shef.inf.msm4phi" />
       <recent name="uk.ac.shef.inf.msm4phi.indexing" />
-      <recent name="uk.ac.shef.inf.msm4phi.export" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -312,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AppTweetExporterByUser">
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -320,280 +236,16 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
     </configuration>
-    <configuration name="AnalysisMain" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="NTripleIndexer" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.analysis.*" />
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.indexing.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.analysis.AnalysisMain" />
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.NTripleIndexer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/solr $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/data/2_PART2_processed_hashtags.tsv $PROJECT_DIR$/../../output" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppAnnotationAppender" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppAnnotationAppender" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../msm4phi_data/solr $PROJECT_DIR$/../../../msm4phi_data/paper2/output 14 17" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppMergeStatsFiles" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppMergeStatsFiles" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../output $PROJECT_DIR$/../../output/merge.csv" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppNodeXLExporter" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppNodeXLExporter" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppPostProcess" type="Application" factoryName="Application" singleton="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppPostProcess" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/solr rTWO9Tft6yeqwNqCewdSKxD1d LQJ46UlkXsDg39ki2zxvNpurrDzrjjDo0gBox6ggDCOzJg3Dj9 2708281809-ixgqmMjmPrmUMnXu8SfeBkksglU11ZS93CQLAOm nErFJxuz6EQunLOHmbRHJrhUU3RvsQgIICD4weeKB7IqG" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppStatsExtractor" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppStatsExtractor" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="ul $PROJECT_DIR$/../../../msm4phi_data/solr $PROJECT_DIR$/../../data/symplur_hashtags/2_processed_hashtags.tsv $PROJECT_DIR$/../../output" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppTweetExporterByDays" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppTweetExporterByDays" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppTweetExporterByUser" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppTweetExporterByUser" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../msm4phi_data/solr Patient" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppUserFeatureExport" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppUserFeatureExport" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../msm4phi_data/solr $PROJECT_DIR$/../../../msm4phi_data/paper2/all_user_features" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="AppUserIndexGenerator" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppUserIndexGenerator" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/solr aZXkudxJZvWkWZWVanNr7qNx1 r2hNOrpno0L6u1g0L64YTRU4V4qHchzqdjCVd3jpCcr7Kd3Yjf 1428046225-BjBqyO4hlI285Kg2QVpfsw04yvKq9TCrO86pcLb MFed5qOjROa7sxoLm4pBo4WneZLXl1nagYwcLosPHGtHo" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="ClusterHashtagFeatureGenerator" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.analysis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.analysis.ClusterHashtagFeatureGenerator" />
-      <option name="VM_PARAMETERS" value="-Xmx8192m" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/solr $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/data/2_PART2_processed_hashtags.tsv $PROJECT_DIR$/../../output/cf_tags.csv" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="ClusterUserFeatureGenerator" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.analysis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.analysis.ClusterUserFeatureGenerator" />
-      <option name="VM_PARAMETERS" value="-Xmx8192m" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/solr $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/data/2_PART2_processed_hashtags.tsv $PROJECT_DIR$/../../output/cf_users.csv" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="StatsCleaner" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.stats.StatsCleaner" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../output $PROJECT_DIR$/../../output" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="UserDiseaseMentionCounter" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.stats.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.stats.user.UserDiseaseMentionCounter" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../msm4phi_data/solr $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/data/stakeholder_classification/annotation/merged_training_data/user_features_and_labels_2.csv $PROJECT_DIR$/../../resources/dictionary/hashtag_dict/dictionary_hashtag_disease.csv $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/data/stakeholder_classification/tweet_feature/diseases_in_tweets.csv" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="UserProfileFiller" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.stats.user.UserProfileFiller" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="20 aZXkudxJZvWkWZWVanNr7qNx1 r2hNOrpno0L6u1g0L64YTRU4V4qHchzqdjCVd3jpCcr7Kd3Yjf 1428046225-BjBqyO4hlI285Kg2QVpfsw04yvKq9TCrO86pcLb MFed5qOjROa7sxoLm4pBo4WneZLXl1nagYwcLosPHGtHo $PROJECT_DIR$/../../../msm4phi_data/paper2/all_user_features/batch $PROJECT_DIR$/../../../msm4phi_data/paper2/all_user_features_empty_profile_filled" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="UserRecentTweetCollector" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.stats.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.stats.user.UserRecentTweetCollector" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="50 aZXkudxJZvWkWZWVanNr7qNx1 r2hNOrpno0L6u1g0L64YTRU4V4qHchzqdjCVd3jpCcr7Kd3Yjf 1428046225-BjBqyO4hlI285Kg2QVpfsw04yvKq9TCrO86pcLb MFed5qOjROa7sxoLm4pBo4WneZLXl1nagYwcLosPHGtHo &quot;$USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data/basic_features.csv&quot; $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features/tweet_feature/collected_tweets.csv" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="java" />
-      <envs />
-    </configuration>
-    <configuration name="UserTotalTweetsCounter" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="uk.ac.shef.inf.msm4phi.stats.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.stats.user.UserTotalTweetsCounter" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="aZXkudxJZvWkWZWVanNr7qNx1 r2hNOrpno0L6u1g0L64YTRU4V4qHchzqdjCVd3jpCcr7Kd3Yjf 1428046225-BjBqyO4hlI285Kg2QVpfsw04yvKq9TCrO86pcLb MFed5qOjROa7sxoLm4pBo4WneZLXl1nagYwcLosPHGtHo &quot;$USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data/basic_features.csv&quot; $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features/tweet_feature/topical_tweets.csv" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../data/schema_Product.txt.gz $PROJECT_DIR$/../../resources/solr" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -677,25 +329,6 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="17">
-      <item index="0" class="java.lang.String" itemvalue="Application.AppNodeXLExporter" />
-      <item index="1" class="java.lang.String" itemvalue="Application.AppPostProcess" />
-      <item index="2" class="java.lang.String" itemvalue="Application.AppUserIndexGenerator" />
-      <item index="3" class="java.lang.String" itemvalue="Application.AppStatsExtractor" />
-      <item index="4" class="java.lang.String" itemvalue="Application.StatsCleaner" />
-      <item index="5" class="java.lang.String" itemvalue="Application.AppMergeStatsFiles" />
-      <item index="6" class="java.lang.String" itemvalue="Application.ClusterUserFeatureGenerator" />
-      <item index="7" class="java.lang.String" itemvalue="Application.ClusterHashtagFeatureGenerator" />
-      <item index="8" class="java.lang.String" itemvalue="Application.AnalysisMain" />
-      <item index="9" class="java.lang.String" itemvalue="Application.UserTotalTweetsCounter" />
-      <item index="10" class="java.lang.String" itemvalue="Application.UserDiseaseMentionCounter" />
-      <item index="11" class="java.lang.String" itemvalue="Application.UserRecentTweetCollector" />
-      <item index="12" class="java.lang.String" itemvalue="Application.UserProfileFiller" />
-      <item index="13" class="java.lang.String" itemvalue="Application.AppUserFeatureExport" />
-      <item index="14" class="java.lang.String" itemvalue="Application.AppAnnotationAppender" />
-      <item index="15" class="java.lang.String" itemvalue="Application.AppTweetExporterByDays" />
-      <item index="16" class="java.lang.String" itemvalue="Application.AppTweetExporterByUser" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -714,8 +347,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
+    <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -725,19 +357,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35164836" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35164836" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32948422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24803768" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2547619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473573" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40816328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40803382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -776,97 +408,109 @@
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/IndexAnalyserWorker.java</url>
-          <line>63</line>
-          <properties />
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserStatsExtractor.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserStatsExtractor.java</url>
           <line>117</line>
           <properties />
           <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/StatsCleaner.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/StatsCleaner.java</url>
           <line>101</line>
           <properties />
           <option name="timeStamp" value="192" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/StatsCleaner.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/StatsCleaner.java</url>
           <line>89</line>
           <properties />
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterUserFeatureGenerator.java</url>
-          <line>59</line>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterUserFeatureGenerator.java</url>
+          <line>58</line>
           <properties />
           <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterHashtagFeatureGenerator.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterHashtagFeatureGenerator.java</url>
           <line>59</line>
           <properties />
           <option name="timeStamp" value="236" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterHashtagFeatureGenerator.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterHashtagFeatureGenerator.java</url>
           <line>54</line>
           <properties />
           <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterHashtagFeatureGenerator.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterHashtagFeatureGenerator.java</url>
           <line>146</line>
           <properties />
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserCommunityPresence.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/UserCommunityPresence.java</url>
           <line>71</line>
           <properties />
           <option name="timeStamp" value="288" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurByUser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurByUser.java</url>
           <line>124</line>
           <properties />
           <option name="timeStamp" value="291" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurByTag.java</url>
-          <line>69</line>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurByTag.java</url>
+          <line>67</line>
           <properties />
           <option name="timeStamp" value="293" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserTotalTweetsCounter.java</url>
-          <line>137</line>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserTotalTweetsCounter.java</url>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="322" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserTotalTweetsCounter.java</url>
-          <line>140</line>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserTotalTweetsCounter.java</url>
+          <line>139</line>
           <properties />
           <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserRecentTweetCollector.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserRecentTweetCollector.java</url>
           <line>96</line>
           <properties />
           <option name="timeStamp" value="401" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserFeatureExporter.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/UserFeatureExporter.java</url>
           <line>152</line>
           <properties />
           <option name="timeStamp" value="408" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="579" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="593" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java</url>
+          <line>246</line>
+          <properties />
+          <option name="timeStamp" value="594" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="561" />
+      <option name="time" value="595" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -876,6 +520,31 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>content.substring(lastQuote)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u.toASCIIString().replaceAll(&quot;[^a-zA-Z0-9]&quot;, &quot; &quot;).trim()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u.toASCIIString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u.getPath()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u.getHost()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>res.getResults().get(0).getFieldValue(&quot;created_at&quot;)</expression-string>
         <language-id>JAVA</language-id>
@@ -896,218 +565,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>d.getFieldValueMap()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>fieldValues</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>diff / (24 * 60 * 60 * 1000) + 1</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>diff</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>TimeUnit.DAYS.toDays(diff)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Integer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flanagan.jar!/flanagan/analysis/Outliers.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="1165" column="39" lean-forward="false" selection-start-line="1165" selection-start-column="39" selection-end-line="1165" selection-end-column="39" />
-          <folding>
-            <marker date="1525877254156" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1525877254156" expanded="false" signature="141:438" ph="..." />
-            <marker date="1525877254156" expanded="true" signature="1830:1890" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="1926:2052" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2087:2213" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2247:2373" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2414:2540" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2581:2707" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2731:2791" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="2823:3149" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="3190:4105" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="4151:4765" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="4818:4829" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="4854:4860" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="4902:4913" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="4938:4944" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="4983:4994" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5014:5020" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="5049:5060" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5080:5086" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="5119:5130" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5156:5162" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="5194:5205" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5232:5238" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="5287:5436" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="5471:5482" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5510:5516" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="5550:5561" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="5590:5596" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="5663:5989" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="6058:6623" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="6685:7238" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="7299:7576" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="7615:7626" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="7643:7649" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="7696:7806" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="7858:7869" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="7903:7909" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="7948:7959" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="7984:7990" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="8037:8155" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="8215:8226" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="8268:8274" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="8352:8409" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="8485:8496" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="8537:8543" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="8592:8603" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="8665:8671" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="8719:8730" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="8792:8798" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="8876:8933" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="9009:9020" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="9061:9067" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="9116:9127" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="9189:9195" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="9243:9254" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="9316:9322" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="9402:9625" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="9685:9773" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="9820:10438" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="10510:10603" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="10655:11148" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="11220:11313" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="11365:11843" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="11932:22028" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="22090:22101" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="22138:22144" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="22195:22206" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="22243:22249" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="22310:22321" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="22367:22373" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="22457:22556" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="22622:22633" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="22679:22685" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="22774:22878" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="22944:22955" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="23001:23007" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="23096:23200" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="23277:35297" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="35351:35362" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="35412:35418" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="35513:35741" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="35826:35999" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="36058:36069" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="36119:36125" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="36225:36458" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="36548:36726" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="36785:36796" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="36846:36852" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="36952:37185" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="37275:37453" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="37523:38329" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="38407:39067" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="39128:39139" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39178:39184" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39250:39261" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39305:39311" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39377:39388" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39432:39438" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39492:39503" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39546:39552" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39611:39622" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39670:39676" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39735:39746" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39794:39800" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39862:39873" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="39919:39925" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="39976:39987" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="40034:40040" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="40124:40180" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="40269:40330" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="40419:40480" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="40575:40647" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="40732:40798" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="40898:40975" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="41065:41136" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="41236:41313" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="41403:41474" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="41526:41537" ph=" { " />
-            <marker date="1525877254156" expanded="true" signature="41574:41580" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="41647:54164" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="54239:54329" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="54375:54585" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="54628:54639" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="54677:54683" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="54741:55091" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="55167:55329" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="55411:56487" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="56567:57088" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="57168:57693" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="57748:57759" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="57789:57795" ph=" }" />
-            <marker date="1525877254156" expanded="false" signature="57839:57850" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="57880:57886" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="57950:58344" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="58425:58787" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="58851:60941" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="61027:61124" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="61169:61180" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="61211:61217" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="61283:61374" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="61443:62780" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="62970:65253" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="65344:65446" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="65497:65508" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="65544:65550" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="65621:65717" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="65786:67138" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="67229:67331" ph="{...}" />
-            <marker date="1525877254156" expanded="false" signature="67381:67392" ph=" { " />
-            <marker date="1525877254156" expanded="false" signature="67428:67434" ph=" }" />
-            <marker date="1525877254156" expanded="true" signature="67505:67601" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="67708:67832" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="67929:68072" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="68159:68277" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="68354:68491" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="68598:68722" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="68819:68962" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="69049:69167" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="69244:69381" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="69489:69616" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="69734:69864" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="69964:70613" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="70804:78706" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="78765:78859" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="78930:79635" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="79727:81229" ph="{...}" />
-            <marker date="1525877254156" expanded="true" signature="81291:81757" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/flanagan.jar!/flanagan/analysis/Regression.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1904,14 +1364,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppPostProcess.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppPostProcess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/interaction/InteractionStatsExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/interaction/InteractionStatsExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="150" column="42" lean-forward="false" selection-start-line="150" selection-start-column="42" selection-end-line="150" selection-end-column="42" />
@@ -1932,7 +1392,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterUserFeatureGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterUserFeatureGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
@@ -1942,7 +1402,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterHashtagFeatureGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/ClusterHashtagFeatureGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
@@ -1950,14 +1410,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/HashtagUserAwareness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/HashtagUserAwareness.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="824">
           <caret line="61" column="95" lean-forward="false" selection-start-line="61" selection-start-column="95" selection-end-line="61" selection-end-column="95" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/StatsCleaner.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/StatsCleaner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="93" column="22" lean-forward="false" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
@@ -1965,14 +1425,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/HashtagCommunityPresence.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/HashtagCommunityPresence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserCommunityPresence.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/UserCommunityPresence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
@@ -1980,14 +1440,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurBySelectedTag.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurBySelectedTag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="75" column="91" lean-forward="false" selection-start-line="75" selection-start-column="91" selection-end-line="75" selection-end-column="91" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurByUser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurByUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="75" column="10" lean-forward="false" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
@@ -1995,7 +1455,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurByTag.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurByTag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1998">
           <caret line="128" column="5" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="128" selection-end-column="5" />
@@ -2003,31 +1463,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/Common.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/Common.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4140">
           <caret line="247" column="50" lean-forward="false" selection-start-line="245" selection-start-column="8" selection-end-line="247" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/AnalysisMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/AnalysisMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/FrequentCooccurTagFinder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/FrequentCooccurTagFinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/indexing/IndexPopulatorUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1429">
-          <caret line="198" column="9" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="198" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -2045,7 +1498,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserTotalTweetsCounter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserTotalTweetsCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="178" column="0" lean-forward="true" selection-start-line="154" selection-start-column="4" selection-end-line="178" selection-end-column="0" />
@@ -2054,7 +1507,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserProfileFiller.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserRecentTweetCollector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserRecentTweetCollector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="34" column="5" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
@@ -2064,7 +1517,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserFeatureExporter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/UserFeatureExporter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2700">
           <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
@@ -2072,58 +1525,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserProfileFiller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserProfileFiller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
           <caret line="91" column="54" lean-forward="false" selection-start-line="91" selection-start-column="54" selection-end-line="91" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/IndexAnalyserWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="70" lean-forward="false" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/content/ContentStatsExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/content/ContentStatsExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/indexing/PostProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/PostProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="144" column="0" lean-forward="true" selection-start-line="90" selection-start-column="4" selection-end-line="144" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/indexing/AnnotationAppender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="88" column="23" lean-forward="true" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppAnnotationAppender.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppAnnotationAppender.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserStatsExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserStatsExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
@@ -2134,19 +1564,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserTypeStatsExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserTypeStatsExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#819#820#0" expanded="false" />
-            <element signature="e#867#868#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/export/WorkerTweetExportNodeXL.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/export/WorkerTweetExportNodeXL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
@@ -2154,7 +1580,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserDiseaseMentionCounter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserDiseaseMentionCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
@@ -2162,25 +1588,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserTweetExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="235" column="35" lean-forward="false" selection-start-line="235" selection-start-column="35" selection-end-line="235" selection-end-column="35" />
-          <folding>
-            <marker date="1544818914233" expanded="true" signature="8140:8147" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/IndexAnalyserMaster.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserTweetExporter.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/IndexAnalyserMaster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
@@ -2188,17 +1597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/export/WorkerTweetExportByDays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppMainPipeline.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppMainPipeline.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
@@ -2206,7 +1605,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppMergeStatsFiles.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppMergeStatsFiles.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
@@ -2214,7 +1613,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppNodeXLExporter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppNodeXLExporter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="25" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
@@ -2222,15 +1621,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppTweetExporterByDays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="23" column="27" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppStatsExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppStatsExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
@@ -2238,7 +1629,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserFeatureExport.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppUserFeatureExport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
@@ -2246,7 +1637,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserIndexGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppUserIndexGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="21" column="0" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="21" selection-end-column="0" />
@@ -2254,19 +1645,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppTweetExporterByUser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppTweetExporterByUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/export/WorkerTweetExportByUserType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/export/WorkerTweetExportByUserType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+        <state relative-caret-position="18">
+          <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/AnnotationAppender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="88" column="23" lean-forward="false" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/IndexAnalyserWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5067">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppTweetExporterByDays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="23" column="27" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/export/WorkerTweetExportByDays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="96" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/IndexPopulatorUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="69" column="70" lean-forward="true" selection-start-line="68" selection-start-column="16" selection-end-line="69" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/AppNTripleIndexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1548340843087" expanded="true" signature="7470:7477" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
