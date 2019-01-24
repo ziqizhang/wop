@@ -80,6 +80,7 @@ public class NTripleIndexer {
 
         while ((content = inputScanner.nextLine()) != null) {
             lines++;
+            System.out.println(lines);
             if (lines < startLine)
                 continue;
 
@@ -223,30 +224,30 @@ public class NTripleIndexer {
         fieldModifier.put("set",object);
 
         if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
-            doc.addField("rdfs_type", fieldModifier);
+            addOrMergeField(doc,"rdfs_type", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/name"))
-            doc.addField("sg-product_name", fieldModifier);
+            addOrMergeField(doc,"sg-product_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/description"))
-            doc.addField("sg-product_description", fieldModifier);
+            addOrMergeField(doc,"sg-product_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/brand"))
-            doc.addField("sg-product_brand", fieldModifier);
+            addOrMergeField(doc,"sg-product_brand", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/category"))
-            doc.addField("sg-product_category", fieldModifier);
+            addOrMergeField(doc,"sg-product_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/name"))
-            doc.addField("sg-offer_name", fieldModifier);
+            addOrMergeField(doc,"sg-offer_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/description"))
-            doc.addField("sg-offer_description", fieldModifier);
+            addOrMergeField(doc,"sg-offer_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/category"))
-            doc.addField("sg-offer_category", fieldModifier);
+            addOrMergeField(doc,"sg-offer_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/name"))
-            doc.addField("sg-listitem_name", fieldModifier);
+            addOrMergeField(doc,"sg-listitem_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/description"))
-            doc.addField("sg-listitem_description", fieldModifier);
+            addOrMergeField(doc,"sg-listitem_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/title") ||
                 predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/name"))
-            doc.addField("sg-breadcrumb_title", fieldModifier);
+            addOrMergeField(doc,"sg-breadcrumb_title", fieldModifier);
         else {
-            doc.addField(predicate+"_t", fieldModifier);
+            addOrMergeField(doc,predicate+"_t", fieldModifier);
 
         /*if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
             doc.addField("rdfs_type", object);
@@ -274,6 +275,15 @@ public class NTripleIndexer {
         else {
             doc.addField(predicate+"_t", object);*/
         }
+    }
+
+    private void addOrMergeField(SolrInputDocument doc, String field, Map<String,Object> fieldModifier){
+        Object existingValue = doc.getFieldValue(field);
+        if (existingValue!=null){
+            fieldModifier.put("set", fieldModifier.get("set").toString()+" "+existingValue.toString());
+            doc.removeField(field);
+        }
+        doc.addField(field, fieldModifier);
     }
 
     /**
