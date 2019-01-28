@@ -16,8 +16,8 @@
       <file leaf-file-name="NTripleIndexer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+            <state relative-caret-position="592">
+              <caret line="192" column="78" lean-forward="false" selection-start-line="192" selection-start-column="78" selection-end-line="192" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -359,18 +359,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35164836" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35095137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2547619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473573" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29281184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40803382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37843552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -494,18 +494,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="579" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java</url>
-          <line>143</line>
+          <line>156</line>
           <properties />
           <option name="timeStamp" value="593" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="596" />
+      <option name="time" value="611" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -516,47 +510,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>content.substring(lastQuote)</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;\\\\u[0-9A-Fa-f]{4}&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>u.toASCIIString().replaceAll(&quot;[^a-zA-Z0-9]&quot;, &quot; &quot;).trim()</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;[^\\\\u0000-\\\\u007F]+&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>u.toASCIIString()</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;[^\\u0000-\\u007F]+&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>u.getPath()</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;([^\\\\x00-\\\\x7F])+&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>u.getHost()</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;[^\\x00-\\x7F]+&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>res.getResults().get(0).getFieldValue(&quot;created_at&quot;)</expression-string>
+        <expression-string>dataLiteral.replaceAll(&quot;[^\\\\x00-\\\\x7F]+&quot;,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>res.getResults().get(0)</expression-string>
+        <expression-string>dataLiteral.replaceAll(NON_ASCII_PATTERN,&quot;&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>fieldValues.get(&quot;label_s&quot;)</expression-string>
+        <expression-string>dataLiteral.length()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>d.getFieldValueMap().keySet()</expression-string>
+        <expression-string>NON_ASCII_PATTERN.matcher(dataLiteral).group()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1724,8 +1718,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        <state relative-caret-position="592">
+          <caret line="192" column="78" lean-forward="false" selection-start-line="192" selection-start-column="78" selection-end-line="192" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

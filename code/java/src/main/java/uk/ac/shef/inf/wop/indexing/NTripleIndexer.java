@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -31,17 +33,14 @@ public class NTripleIndexer {
 
     private long startLine;
     private long endLine = Long.MAX_VALUE;
+    private Pattern NON_ASCII_PATTERN = Pattern.compile("[^\\\\x00-\\\\x7F]+");
+    private String UNICODE_PATTERN="\\\\u[0-9A-Fa-f]{4}";
 
-    private Scanner inputScanner;
+    private String inputGZFile;
     private static final Logger LOG = Logger.getLogger(NTripleIndexer.class.getName());
 
 
     public static void main(String[] args) throws IOException {
-        InputStream fileStream = new FileInputStream(args[0]);
-        InputStream gzipStream = new GZIPInputStream(fileStream);
-        Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
-        Scanner scanner = new Scanner(decoder);
-        scanner.useDelimiter(" .");
 
         CoreContainer solrContainer = new CoreContainer(args[1]);
         solrContainer.load();
@@ -50,25 +49,38 @@ public class NTripleIndexer {
         SolrClient predicatesCoreClient= new EmbeddedSolrServer(solrContainer.getCore("predicates"));
 
         LOG.info("Initialisation completed.");
-        NTripleIndexer indexer = new NTripleIndexer(entitiesCoreClient, predicatesCoreClient,scanner,
+        NTripleIndexer indexer = new NTripleIndexer(entitiesCoreClient, predicatesCoreClient,args[0],
                 0, Long.MAX_VALUE);
-        indexer.startIndexing(false);
+        indexer.startIndexing(true);
+        entitiesCoreClient.close();
+        predicatesCoreClient.close();
+        System.exit(0);
     }
 
 
 
-    public NTripleIndexer(SolrClient entitiesCoreClient, SolrClient predicatesCoreClient, Scanner inputScanner,
+    public NTripleIndexer(SolrClient entitiesCoreClient, SolrClient predicatesCoreClient, String inputGZFile,
                           long startLine, long endLine) {
         this.entitiesCoreClient = entitiesCoreClient;
         this.predicatesCoreClient = predicatesCoreClient;
         this.startLine = startLine;
         this.endLine = endLine;
-        this.inputScanner=inputScanner;
+        this.inputGZFile=inputGZFile;
+    }
+
+    private Scanner setScanner(String file) throws IOException {
+        InputStream fileStream = new FileInputStream(file);
+        InputStream gzipStream = new GZIPInputStream(fileStream);
+        Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
+        Scanner inputScanner = new Scanner(decoder);
+        inputScanner.useDelimiter(" .");
+        return inputScanner;
     }
 
     public void startIndexing(boolean countLines) throws IOException {
-        if (countLines)
+        if (countLines) {
             countTotalLines();
+        }
 
         long lines = 0;
         String content;
@@ -78,9 +90,10 @@ public class NTripleIndexer {
         SolrInputDocument predicateDoc = new SolrInputDocument();
         int entityDocCount = 0;
 
-        while ((content = inputScanner.nextLine()) != null) {
+        Scanner inputScanner = setScanner(inputGZFile);
+        while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
             lines++;
-            System.out.println(lines);
+            //System.out.println(lines);
             if (lines < startLine)
                 continue;
 
@@ -164,6 +177,7 @@ public class NTripleIndexer {
              */
             indexPredicate(predicateDoc,predicate, isEnglish);
             predicateDoc = new SolrInputDocument();
+
         }
 
 
@@ -176,6 +190,7 @@ public class NTripleIndexer {
             LOG.warn(String.format("\t\tfailed to make the final commit at completion",
                     lines, ExceptionUtils.getFullStackTrace(e)));
         }
+        LOG.info("indexing completed with filtered entities="+entityDocCount);
     }
 
     private void indexPredicate(SolrInputDocument doc, String predicate, boolean isEnglish) {
@@ -186,7 +201,8 @@ public class NTripleIndexer {
             doc.addField("host", u.getHost());
             doc.addField("paths", u.getPath());
             doc.addField("as_text", u.toASCIIString().replaceAll("[^a-zA-Z0-9]", " ").trim());
-        } catch (URISyntaxException e) {
+            predicatesCoreClient.add(doc);
+        } catch (Exception e) {
             LOG.warn(String.format("\t\tencountered illegal URI when trying to parse (during predicate indexing): %s",
                     predicate, ExceptionUtils.getFullStackTrace(e)));
         }
@@ -308,12 +324,13 @@ public class NTripleIndexer {
     private void countTotalLines() throws IOException {
         long lines = 0;
         String content;
-        while ((content = inputScanner.nextLine()) != null) {
+        Scanner inputScanner = setScanner(inputGZFile);
+        while (inputScanner.hasNextLine()&&(content = inputScanner.nextLine()) != null) {
             lines++;
             if (lines % 1000000 == 0)
                 System.out.println(new Date() + ": " + lines);
         }
-        System.out.println(new Date() + " completed: " + lines);
+        System.out.println(new Date() + " counting completed: " + lines);
     }
 
     private boolean isEnglish(String dataLiteral, String langSuffix) {
@@ -323,8 +340,17 @@ public class NTripleIndexer {
                 return true;
             else
                 return false;
-        } else {//todo: verify by content
-            return true;
+        } else {
+            if (dataLiteral.length()<10)
+                return true;
+            String clean = dataLiteral.replaceAll(UNICODE_PATTERN,"").trim();
+            boolean r = clean.length()>dataLiteral.length()/2;
+           /* Matcher matcher = NON_ASCII_PATTERN.matcher(dataLiteral);
+            int count = 0;
+            while (matcher.find())
+                count++;
+            boolean r= count > dataLiteral.length()/2;*/
+            return r;
         }
     }
 
