@@ -33,6 +33,7 @@ public class NTripleIndexer {
 
     private long startLine;
     private long endLine = Long.MAX_VALUE;
+    private boolean countLines;
     private Pattern NON_ASCII_PATTERN = Pattern.compile("[^\\\\x00-\\\\x7F]+");
     private String UNICODE_PATTERN="\\\\u[0-9A-Fa-f]{4}";
 
@@ -50,8 +51,8 @@ public class NTripleIndexer {
 
         LOG.info("Initialisation completed.");
         NTripleIndexer indexer = new NTripleIndexer(entitiesCoreClient, predicatesCoreClient,args[0],
-                0, Long.MAX_VALUE);
-        indexer.startIndexing(true);
+                Long.valueOf(args[2]), Long.MAX_VALUE, Boolean.valueOf(args[3]));
+        indexer.startIndexing();
         entitiesCoreClient.close();
         predicatesCoreClient.close();
         System.exit(0);
@@ -60,12 +61,13 @@ public class NTripleIndexer {
 
 
     public NTripleIndexer(SolrClient entitiesCoreClient, SolrClient predicatesCoreClient, String inputGZFile,
-                          long startLine, long endLine) {
+                          long startLine, long endLine, boolean countLines) {
         this.entitiesCoreClient = entitiesCoreClient;
         this.predicatesCoreClient = predicatesCoreClient;
         this.startLine = startLine;
         this.endLine = endLine;
         this.inputGZFile=inputGZFile;
+        this.countLines=countLines;
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -77,8 +79,8 @@ public class NTripleIndexer {
         return inputScanner;
     }
 
-    public void startIndexing(boolean countLines) throws IOException {
-        if (countLines) {
+    public void startIndexing() throws IOException {
+        if (this.countLines) {
             countTotalLines();
             //System.exit(0);
         }
