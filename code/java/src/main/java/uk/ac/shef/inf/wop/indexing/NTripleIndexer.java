@@ -80,6 +80,7 @@ public class NTripleIndexer {
     public void startIndexing(boolean countLines) throws IOException {
         if (countLines) {
             countTotalLines();
+            //System.exit(0);
         }
 
         long lines = 0;
