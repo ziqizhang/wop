@@ -1,5 +1,6 @@
 import pandas as pd
-from feature import dictionary_feature_extractor_auto as dfe
+from deprecated import dictionary_feature_extractor_auto as dfe
+import csv
 
 def match_extracted_healthconditions(dictionary: dict, csv_input_tweets_file, col_id, outfile,
                                      *col_target_texts):

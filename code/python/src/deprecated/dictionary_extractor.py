@@ -3,7 +3,7 @@ import csv
 
 import os
 import pandas as pd
-from feature import nlp
+from util import nlp
 
 text_normalization_option = 1  # 0=stemming, 1=lemma, 2=nothing
 
@@ -37,7 +37,7 @@ def load_user_profile_text(user_features_csv, *col_text):
                 if type(row[c])==str:
                     tweet_text += row[c] + " "
 
-            tweet_text=nlp.normalize_tweet(tweet_text)
+            tweet_text= nlp.normalize_tweet(tweet_text)
             if len(tweet_text) > 1:
                 proftext.append(tweet_text)
         label_to_proftext[l]=proftext

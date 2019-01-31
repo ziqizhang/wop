@@ -1,5 +1,5 @@
 import sys
-from exp import annotator as ann
+from deprecated import annotator as ann
 
 import datetime
 from numpy.random import seed
@@ -8,15 +8,6 @@ seed(1)
 from exp import feature_creator as fc
 from classifier import classifier_main as cm
 import pandas as pd
-
-
-#DNN_MODEL_DESCRIPTOR= "cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="lstm=100-False|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="bilstm=100-False|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"
-
-
 
 
 if __name__ == "__main__":
@@ -86,7 +77,7 @@ if __name__ == "__main__":
             # cls.run()
             # #
             print(datetime.datetime.now())
-            X, y = fc.create_autocreated_dictext(csv_basic_feature, csv_other_feature)
+            X, y = fc.create_features_gazetteer(csv_basic_feature, csv_other_feature)
             df = pd.read_csv(csv_basic_feature, header=0, delimiter=",", quoting=0).as_matrix()
             df.astype(str)
             profiles = df[:, 22]
@@ -99,7 +90,7 @@ if __name__ == "__main__":
             cls.run()
             # #
             # print(datetime.datetime.now())
-            X, y = fc.create_text_and_numeric_and_autodictext(csv_basic_feature, csv_other_feature)
+            #X, y = fc.create_text_and_numeric_and_autodictext(csv_basic_feature, csv_other_feature)
             # df = pd.read_csv(csv_basic_feature, header=0, delimiter=",", quoting=0).as_matrix()
             # df.astype(str)
             # profiles = df[:, 22]

@@ -76,11 +76,13 @@ public class NTripleIndexer {
         Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
         Scanner inputScanner = new Scanner(decoder);
         inputScanner.useDelimiter(" .");
+        LOG.info("Obtained scanner object in put file");
         return inputScanner;
     }
 
     public void startIndexing() throws IOException {
         if (this.countLines) {
+            LOG.info("Counting lines begins...");
             countTotalLines();
             //System.exit(0);
         }
@@ -328,9 +330,10 @@ public class NTripleIndexer {
         long lines = 0;
         String content;
         Scanner inputScanner = setScanner(inputGZFile);
+
         while (inputScanner.hasNextLine()&&(content = inputScanner.nextLine()) != null) {
             lines++;
-            if (lines % 1000000 == 0)
+            if (lines % 100000 == 0)
                 System.out.println(new Date() + ": " + lines);
         }
         System.out.println(new Date() + " counting completed: " + lines);

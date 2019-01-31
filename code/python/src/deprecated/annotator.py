@@ -39,7 +39,7 @@ def train_with_extended_embeddingvocab(csv_basic_feature, csv_other_feature,dnn_
         tweets_exta = generate_extra_data_for_embeddingvocab(extra_data_for_embeddingvocab,
                                                              extra_data_for_embeddingvocab_text_col)
 
-    X, y = fc.create_autocreated_dictext(csv_basic_feature, csv_other_feature)
+    X, y = fc.create_features_gazetteer(csv_basic_feature, csv_other_feature)
     df = pd.read_csv(csv_basic_feature, header=0, delimiter=",", quoting=0).as_matrix()
     df.astype(str)
     profiles = df[:, 22]

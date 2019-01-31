@@ -1,5 +1,4 @@
-from feature import dictionary_feature_extractor_auto as dfea
-from feature import dictionary_extractor as de
+from deprecated import dictionary_extractor as de, dictionary_feature_extractor_auto as dfea
 
 if __name__=="__main__":
     #folder containing the dictionaries

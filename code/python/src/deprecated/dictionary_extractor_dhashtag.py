@@ -1,5 +1,5 @@
 import csv
-from feature import nlp
+from util import nlp
 
 
 def create_disease_dictionary(csv_hashtag_file, outfolder):

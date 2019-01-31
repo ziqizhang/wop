@@ -10,8 +10,7 @@ from keras.regularizers import L1L2
 
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle
-from feature import nlp
-from data import data_util as du
+from util import nlp, dataclean as du
 
 '''
 model_descriptor is parsed by 'parse_model_descriptor' method to create a Keras model object. some examples of the descriptors below

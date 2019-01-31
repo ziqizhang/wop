@@ -1,12 +1,11 @@
 import datetime
 import functools
-import pickle
 
 import logging
 from nltk.util import skipgrams
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from feature import nlp
+from util import nlp
 
 logger = logging.getLogger(__name__)
 NGRAM_FEATURES_VOCAB="feature_vocab_ngram"

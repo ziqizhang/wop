@@ -6,9 +6,9 @@ import os
 
 import datetime
 import pandas as pd
-from feature import dictionary_extractor as de
-from feature import nlp
-from feature import dictionary_extractor_dhashtag as dedh
+from util import nlp
+from deprecated import dictionary_extractor_dhashtag as dedh, dictionary_extractor as de
+
 
 # input: a dictionary containing different dictionaries to be used
 def match_extracted_dictionary(dictionaries: dict, csv_input_feature_file, col_id, outfile,
