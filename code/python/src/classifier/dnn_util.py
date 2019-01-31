@@ -36,15 +36,13 @@ lstm examples:
 
 '''
 
+#the expected dimension in the pre-trained embedding model
 DNN_EMBEDDING_DIM=300
+#the max sequence length of a text
 DNN_MAX_SEQUENCE_LENGTH=100
 DNN_EPOCHES=40
 DNN_BATCH_SIZE=50
-#DNN_MODEL_DESCRIPTOR= "cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="lstm=100-False|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="bilstm=100-False|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten|dense=6-softmax|glv"
-#DNN_MODEL_DESCRIPTOR="scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"
+
 
 def create_model(model_descriptor: str, max_index, word_embedding_dim=DNN_EMBEDDING_DIM,
                  max_sequence_length=DNN_MAX_SEQUENCE_LENGTH, wemb_matrix=None, append_feature_matrix=None):

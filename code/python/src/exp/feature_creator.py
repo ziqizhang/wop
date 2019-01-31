@@ -14,7 +14,7 @@ def create_features_text(training_text_features):
 
     texts = df[:, text_col]
     texts = ["" if type(x) is float else x for x in texts]
-    # Convert feature vectors to float64 type
+    # this extracts ngram features from the profiles of the twitter user
     X_ngram, vocab = tfe.get_ngram_tfidf(texts)
 
     return X_ngram, y

@@ -148,70 +148,16 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
         util.save_classifier_model(classifier, model_file)
 
 
-'''WARNING: 
-1) the fit and model saving function of this method is untested
-2) this method uses the sequential model. Although it builds parallel CNNs, it seems
-that the model performance is inferior to a same model built using the functional API
-(see the method 'learn_dnn' below). So it is recommended that the 'learn_dnn' method
-is used instead of this one.
-'''
-def learn_dnn_textonly(nfold, task,
-                       embedding_model_file,
-                       text_data, y_train,
-                       model_descriptor, outfolder):
-    print("== Perform ANN ...")  # create model
-
-    M = dmc.get_word_vocab(text_data, 1)
-    text_based_features = M[0]
-    text_based_features = sequence.pad_sequences(text_based_features,
-                                                 dmc.DNN_MAX_SEQUENCE_LENGTH)
-
-    gensimFormat = ".gensim" in embedding_model_file
-    if gensimFormat:
-        pretrained_embedding_models = gensim.models.KeyedVectors.load(embedding_model_file, mmap='r')
-    else:
-        pretrained_embedding_models = gensim.models.KeyedVectors. \
-            load_word2vec_format(embedding_model_file, binary=True)
-
-    pretrained_word_matrix = dmc.build_pretrained_embedding_matrix(M[1],
-                                                                   pretrained_embedding_models,
-                                                                   dmc.DNN_EMBEDDING_DIM,
-                                                                   0)
-    create_model_with_args = \
-        functools.partial(dmc.create_model, max_index=len(M[1]),
-                          wemb_matrix=pretrained_word_matrix, word_embedding_dim=dmc.DNN_EMBEDDING_DIM,
-                          max_sequence_length=dmc.DNN_MAX_SEQUENCE_LENGTH,
-                          append_feature_matrix=None,
-                          model_descriptor=model_descriptor)
-
-    model = KerasClassifier(build_fn=create_model_with_args, verbose=0, batch_size=dmc.DNN_BATCH_SIZE,
-                            epochs=dmc.DNN_EPOCHES)
-    model_file = os.path.join(outfolder, "ann-%s.m" % task)
-    if nfold is not None:
-        skf = StratifiedKFold(nfold, random_state=RANDOM_STATE)
-        nfold_predictions = cross_val_predict(model,
-                                              text_based_features,
-                                              y_train,
-                                              cv=skf)
-
-        print(datetime.datetime.now())
-        util.save_scores(nfold_predictions, y_train, "dnn", task, model_descriptor, 2, outfolder)
-    else:
-        chk = ModelCheckpoint(model_file + ".h5", monitor='val_loss', save_best_only=False)
-        model.fit(text_based_features, y_train, callbacks=[chk])
-
-    util.save_classifier_model(model, model_file)
-
 
 '''
-when X_train_metafeature is None, only text data are processed to extract features
+X_train_metafeature: these are features that the model should take as-is, without passing through any hidden layers.
+This can be None, in which case, only text data are processed to extract features
 
 text_data_extra_for_embedding_vocab: (usually you do not need to provide this; also
-this workds only with pre-trained embeddings) 
-when we train a model to be later loaded to predict new data, the new data can have unseen
-words. When an embedding layer is used in the model, it takes a parameter of 'vocab'
+this workds only with pre-trained embeddings) when we train a model to be later loaded to predict new data, the new data 
+can have unseen words. When an embedding layer is used in the model, it takes a parameter of 'vocab'
 and 'weights' of these vocab. Typically these are based on the training data. But we can
-force this layer to 'remember' more words and their weightsTo improve the model performance, 
+force this layer to 'remember' more words and their weights. To improve the model performance, 
 by injecting additional text data that are not labeled. This 'text_data_extra' and 'text_data'
 will both be processed to extract words, which are indexed and stored in the embedding layer.
 But only 'text_data' that has labels are in fact used for training a model. 
@@ -223,11 +169,12 @@ def learn_dnn(nfold, task,
               text_data_extra_for_embedding_vocab=None):
     print("== Perform ANN ...")  # create model
 
+    #process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
     M = dmc.get_word_vocab(text_data, 1, tweets_extra=text_data_extra_for_embedding_vocab)
     X_train_textfeature = M[0]
     X_train_textfeature = sequence.pad_sequences(X_train_textfeature,
                                                  dmc.DNN_MAX_SEQUENCE_LENGTH)
-
+    #load pre-trained word embedding model
     gensimFormat = ".gensim" in embedding_model_file
     if gensimFormat:
         pretrained_embedding_models = gensim.models.KeyedVectors.load(embedding_model_file, mmap='r')
@@ -235,6 +182,8 @@ def learn_dnn(nfold, task,
         pretrained_embedding_models = gensim.models.KeyedVectors. \
             load_word2vec_format(embedding_model_file, binary=True)
 
+    #create the embedding layer by mapping each input sentence sequence to embedding representations by
+    #looking up its containing words in the pre-trained embedding model
     pretrained_word_matrix = dmc.build_pretrained_embedding_matrix(M[1],
                                                                    pretrained_embedding_models,
                                                                    dmc.DNN_EMBEDDING_DIM,
@@ -243,15 +192,16 @@ def learn_dnn(nfold, task,
     encoder = LabelBinarizer()
     y_train_int = encoder.fit_transform(y_train)
 
-    model_text_inputs = Input(shape=(dmc.DNN_MAX_SEQUENCE_LENGTH,))
-    model_text = dmc.create_submodel_textfeature(
-        model_text_inputs,
+    #now let's assemble the model based ont he descriptor
+    model_text_inputs = Input(shape=(dmc.DNN_MAX_SEQUENCE_LENGTH,)) #model input
+    model_text = dmc.create_submodel_textfeature( #this parses 'model_descriptor' and takes the text-based features as input to the model
+        model_text_inputs,              #it is useful to see the details of this method and try a few different options to see difference
         len(M[1]),
         dmc.DNN_EMBEDDING_DIM, dmc.DNN_MAX_SEQUENCE_LENGTH,
         pretrained_word_matrix,
         model_descriptor)
 
-    if X_train_metafeature is not None:
+    if X_train_metafeature is not None: #if we also want to use other features together with text-based, concatenate them as-is
         model_metafeature_inputs = Input(shape=(len(X_train_metafeature[0]),))
         model_metafeature = \
             dmc.create_submodel_metafeature(model_metafeature_inputs, 20)
@@ -265,11 +215,13 @@ def learn_dnn(nfold, task,
         model = Model(inputs=model_text_inputs, outputs=final)
         X_merge = X_train_textfeature
 
+    #this prints the model architecture diagram to a file, so you can check that it looks right
     plot_model(model, to_file="model.png")
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     model_file = os.path.join(outfolder, "ann-%s.m" % task)
 
+    #perform n-fold validation (we cant use scikit-learn's wrapper as we used Keras functional api above
     if nfold is not None:
         kfold = StratifiedKFold(n_splits=nfold, shuffle=True, random_state=RANDOM_STATE)
         splits = list(enumerate(kfold.split(X_merge, y_train_int.argmax(1))))
