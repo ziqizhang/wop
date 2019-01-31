@@ -34,9 +34,9 @@ if __name__ == "__main__":
         cls = cm.Classifer(k+"stakeholdercls", "_profiletext_", X, y, outfolder,
                             categorical_targets=6,nfold=n_fold,algorithms=["svm_l"])
         cls.run()
-
-
-        #setting 2: use profile text and other features
+        #
+        #
+        # #setting 2: use profile text and other features
         print(datetime.datetime.now())
         X, y = fc.create_features_text_and_other(csv_basic_feature, csv_other_feature)
         cls = cm.Classifer(k+"stakeholdercls", "_profiletext+other_", X, y, outfolder,

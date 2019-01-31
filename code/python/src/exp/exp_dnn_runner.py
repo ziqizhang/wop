@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
     training_text_features = sys.argv[1]  # [your path]/wop/data/ml/training_text_features.csv
     # this is the folder containing other gazetteer based features that are already pre-extracted
-    training_other_features = sys.argv[2]  # [your path]/wop/data/ml/training_other_features
+    training_other_features = sys.argv[2]  # [your path]/wop/data/ml/training_other_features/gazetteer/dict1_match_to_profile.csv
 
     # this is the folder to save output to
     outfolder = sys.argv[3]
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
             #SETTING0 dnn applied to profile only
             X, y = fc.create_features_text(csv_training_text_data)
-            df = pd.read_csv(csv_training_other_feaures, header=0, delimiter=",", quoting=0).as_matrix()
+            df = pd.read_csv(csv_training_text_data, header=0, delimiter=",", quoting=0).as_matrix()
             df.astype(str)
             profiles = df[:, 22]
             profiles = ["" if type(x) is float else x for x in profiles]
