@@ -29,19 +29,19 @@ if __name__ == "__main__":
         csv_basic_feature=v[0]
         csv_other_feature=v[1]
         #setting 1: use profile text feature only
-        X, y = fc.create_features_text(csv_basic_feature)
-        # the Classifier object creates different algorithms depending on the params passed. See comments inside for details
-        cls = cm.Classifer(k+"stakeholdercls", "_profiletext_", X, y, outfolder,
-                            categorical_targets=6,nfold=n_fold,algorithms=["svm_l"])
-        cls.run()
+        # X, y = fc.create_features_text(csv_basic_feature)
+        # # the Classifier object creates different algorithms depending on the params passed. See comments inside for details
+        # cls = cm.Classifer(k+"stakeholdercls", "_profiletext_", X, y, outfolder,
+        #                     categorical_targets=6,nfold=n_fold,algorithms=["svm_l"])
+        # cls.run()
         #
         #
         # #setting 2: use profile text and other features
-        print(datetime.datetime.now())
-        X, y = fc.create_features_text_and_other(csv_basic_feature, csv_other_feature)
-        cls = cm.Classifer(k+"stakeholdercls", "_profiletext+other_", X, y, outfolder,
-                           categorical_targets=6,nfold=n_fold,algorithms=["svm_l"])
-        cls.run()
+        # print(datetime.datetime.now())
+        # X, y = fc.create_features_text_and_other(csv_basic_feature, csv_other_feature)
+        # cls = cm.Classifer(k+"stakeholdercls", "_profiletext+other_", X, y, outfolder,
+        #                    categorical_targets=6,nfold=n_fold,algorithms=["svm_l"])
+        # cls.run()
 
 
         ####### svm, pca #######
