@@ -210,7 +210,7 @@ def learn_dnn(nfold, task,
         model = Model(inputs=[model_text_inputs, model_metafeature_inputs], outputs=final)
         X_merge = numpy.concatenate([X_train_textfeature, X_train_metafeature], axis=1)
     else:
-        print("--- using text features only ---")
+        print("--- using text features ---")
         final = Dense(prediction_targets, activation="softmax")(model_text)
         model = Model(inputs=model_text_inputs, outputs=final)
         X_merge = X_train_textfeature
