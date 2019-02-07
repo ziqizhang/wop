@@ -166,14 +166,20 @@ def learn_dnn(nfold, task,
               embedding_model_file,
               text_data, X_train_metafeature, y_train,
               model_descriptor, outfolder, prediction_targets,
-              text_data_extra_for_embedding_vocab=None):
+              text_data_extra_for_embedding_vocab=None, input_as_2D=True):
     print("== Perform ANN ...")  # create model
 
-    #process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
-    M = dmc.get_word_vocab(text_data, 1, tweets_extra=text_data_extra_for_embedding_vocab)
-    X_train_textfeature = M[0]
-    X_train_textfeature = sequence.pad_sequences(X_train_textfeature,
-                                                 dmc.DNN_MAX_SEQUENCE_LENGTH)
+    if input_as_2D:
+        #process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
+        M = dmc.extract_vocab_and_2D_input(text_data, 1, sentence_length=dmc.DNN_MAX_SENTENCE_LENGTH,
+                                           tweets_extra=text_data_extra_for_embedding_vocab)
+        X_train_textfeature = M[0]
+    else: #input as 3D
+        M = dmc.extract_vocab_and_3D_input(text_data, 1, sentence_length=dmc.DNN_MAX_SENTENCE_LENGTH,
+                                           doc_length=dmc.DNN_MAX_DOC_LENGTH,
+                                           docs_extra=text_data_extra_for_embedding_vocab)
+        X_train_textfeature = M[0]
+
     #load pre-trained word embedding model
     gensimFormat = ".gensim" in embedding_model_file
     if gensimFormat:
@@ -192,27 +198,43 @@ def learn_dnn(nfold, task,
     encoder = LabelBinarizer()
     y_train_int = encoder.fit_transform(y_train)
 
-    #now let's assemble the model based ont he descriptor
-    model_text_inputs = Input(shape=(dmc.DNN_MAX_SEQUENCE_LENGTH,)) #model input
-    model_text = dmc.create_submodel_textfeature( #this parses 'model_descriptor' and takes the text-based features as input to the model
-        model_text_inputs,              #it is useful to see the details of this method and try a few different options to see difference
-        len(M[1]),
-        dmc.DNN_EMBEDDING_DIM, dmc.DNN_MAX_SEQUENCE_LENGTH,
-        pretrained_word_matrix,
-        model_descriptor)
+    #now let's assemble the model based ont the descriptor
+    if input_as_2D:
+        model_first_input = Input(shape=(dmc.DNN_MAX_SENTENCE_LENGTH,)) #model input
 
-    if X_train_metafeature is not None: #if we also want to use other features together with text-based, concatenate them as-is
+        model_text = dmc.create_submodel_textfeature( #this parses 'model_descriptor' and takes the text-based features as input to the model
+            sentence_inputs_2D=model_first_input,              #it is useful to see the details of this method and try a few different options to see difference
+            max_sentence_length=dmc.DNN_MAX_SENTENCE_LENGTH,
+            word_vocab_size=len(M[1]),
+            word_embedding_dim=dmc.DNN_EMBEDDING_DIM,
+            word_embedding_weights=pretrained_word_matrix,
+            model_option=model_descriptor)
+    else:
+        model_sent_input_2D = Input(shape=(dmc.DNN_MAX_SENTENCE_LENGTH,))  # model input
+        model_first_input = Input(shape=(dmc.DNN_MAX_DOC_LENGTH, dmc.DNN_MAX_SENTENCE_LENGTH), dtype='int32')
+        model_text = dmc.create_submodel_textfeature(
+            # this parses 'model_descriptor' and takes the text-based features as input to the model
+            sentence_inputs_2D=model_sent_input_2D,
+            # it is useful to see the details of this method and try a few different options to see difference
+            max_sentence_length=dmc.DNN_MAX_SENTENCE_LENGTH,
+            word_vocab_size=len(M[1]),
+            word_embedding_dim=dmc.DNN_EMBEDDING_DIM,
+            word_embedding_weights=pretrained_word_matrix,
+            model_option=model_descriptor,
+            doc_inputs_3D=model_first_input)
+
+    if X_train_metafeature is not None and input_as_2D: #if we also want to use other features together with text-based, concatenate them as-is
         model_metafeature_inputs = Input(shape=(len(X_train_metafeature[0]),))
         model_metafeature = \
             dmc.create_submodel_metafeature(model_metafeature_inputs, 20)
         merge = concatenate([model_text, model_metafeature])
         final = Dense(prediction_targets, activation="softmax")(merge)
-        model = Model(inputs=[model_text_inputs, model_metafeature_inputs], outputs=final)
+        model = Model(inputs=[model_first_input, model_metafeature_inputs], outputs=final)
         X_merge = numpy.concatenate([X_train_textfeature, X_train_metafeature], axis=1)
     else:
         print("--- using text features ---")
         final = Dense(prediction_targets, activation="softmax")(model_text)
-        model = Model(inputs=model_text_inputs, outputs=final)
+        model = Model(inputs=model_first_input, outputs=final)
         X_merge = X_train_textfeature
 
     #this prints the model architecture diagram to a file, so you can check that it looks right
@@ -243,7 +265,7 @@ def learn_dnn(nfold, task,
             X_test_text_feature = X_test_merge_[:, 0:len(X_train_textfeature[0])]
             X_test_meta_feature = X_test_merge_[:, len(X_train_textfeature[0]):]
 
-            if X_train_metafeature is not None:
+            if X_train_metafeature is not None and input_as_2D:
                 model.fit([X_train_text_feature, X_train_meta_feature],
                           y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE, verbose=2)
                 prediction_prob = model.predict([X_test_text_feature, X_test_meta_feature])

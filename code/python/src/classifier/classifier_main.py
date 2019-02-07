@@ -59,7 +59,7 @@ class Classifer(object):
                  nfold=None, text_data=None,
                  dnn_embedding_file=None,
                  dnn_text_data_extra_for_embedding_vcab=None,
-                 dnn_descriptor=None):
+                 dnn_descriptor=None, dnn_input_as_2D=True):
         self.dataX = data_X
         self.dataY = data_y
         self.nfold = nfold
@@ -72,6 +72,7 @@ class Classifer(object):
         self.dnn_descriptor = dnn_descriptor
         self.algorithms = algorithms
         self.dnn_text_data_extra=dnn_text_data_extra_for_embedding_vcab
+        self.dnn_input_as_2D=dnn_input_as_2D
 
     def train(self):
         # X_resampled, y_resampled = self.under_sampling(self.training_data, self.training_label)
@@ -138,7 +139,8 @@ class Classifer(object):
                          X_train,
                          y_train, self.dnn_descriptor, self.outfolder,
                          prediction_targets=self.categorical_targets,
-                         text_data_extra_for_embedding_vocab=self.dnn_text_data_extra)
+                         text_data_extra_for_embedding_vocab=self.dnn_text_data_extra,
+                         input_as_2D=self.dnn_input_as_2D)
 
         print("complete!")
 

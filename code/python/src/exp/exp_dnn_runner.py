@@ -44,7 +44,10 @@ if __name__ == "__main__":
     #
     #the descriptor is passed as a param to 'Classifer', which parses the string to create a model
     #see 'classifier_learn.py - learn_dnn method for details
-    model_descriptors=["cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"]#,
+    #todo: when cnn is used,dnn_input_as_2D=True must be set; if HAN, dnn_input_as_2D=false must be set
+    #todo: when HAN used, metafeature must NOT be set
+    model_descriptors=["cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"]
+    # ["han_full"]
                        # "scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten|dense=6-softmax|glv",
                        # "scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"]
 
@@ -65,10 +68,10 @@ if __name__ == "__main__":
             df.astype(str)
             profiles = df[:, 22]
             profiles = ["" if type(x) is float else x for x in profiles]
-            cls = cm.Classifer("stakeholdercls", "_dnn_text_", X, y, outfolder,
+            cls = cm.Classifer("stakeholdercls", "_dnn_text_", None, y, outfolder,
                                categorical_targets=6, algorithms=["dnn"], nfold=n_fold,
                                text_data=profiles, dnn_embedding_file=dnn_embedding_file,
-                               dnn_descriptor=model_descriptor)
+                               dnn_descriptor=model_descriptor, dnn_input_as_2D=True)
             cls.run()
 
             print(datetime.datetime.now())

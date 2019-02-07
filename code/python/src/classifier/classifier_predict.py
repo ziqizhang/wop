@@ -23,10 +23,10 @@ def predict(model_flag, task, model_file,test_features, text_data,outfolder):
     label_lookup[5] = "Research"
 
     if model_flag.startswith("dnn"):
-        M = dmc.get_word_vocab(text_data, 1, use_saved_vocab=True)
+        M = dmc.extract_vocab_and_2D_input(text_data, 1, use_saved_vocab=True)
         text_based_features = M[0]
         text_based_features = sequence.pad_sequences(text_based_features,
-                                                     dmc.DNN_MAX_SEQUENCE_LENGTH)
+                                                     dmc.DNN_MAX_SENTENCE_LENGTH)
 
         if model_flag=="dnn":
             yaml_file = open(model_file+'.yaml', 'r')
