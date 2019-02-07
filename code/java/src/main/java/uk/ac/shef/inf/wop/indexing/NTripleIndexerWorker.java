@@ -91,7 +91,8 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
                 //System.out.println(lines);
                 if (lines < startLine)
                     continue;
-
+                if (lines>=endLine)
+                    break;
             /*
             Parsing the s, p, o, and source
              */
@@ -141,7 +142,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
                     try {
                         res = indexEntity(entityDoc, isEnglish, source);
                     } catch (SolrServerException e) {
-                        LOG.warn(String.format("\t\tThread "+id+" failed to add doc to index at line: %d",
+                        LOG.warn(String.format("\t\tThread "+id+" failed to add doc to index at quad: %d",
                                 lines, ExceptionUtils.getFullStackTrace(e)));
                     }
 
@@ -150,10 +151,10 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
                         if (entityDocCount % commitBatch == 0) {
                             try {
                                 entitiesCoreClient.commit();
-                                LOG.info(String.format("\t\tThread "+id+" completed indexing up to line: %d",
-                                        lines));
+                                LOG.info(String.format("\t\tThread "+id+" completed indexing up to quad: %d and entity: %d",
+                                        lines, entityDocCount));
                             } catch (SolrServerException e) {
-                                LOG.warn(String.format("\t\tThread "+id+" failed to commit to server at line: %d",
+                                LOG.warn(String.format("\t\tThread "+id+" failed to commit to server at quad: %d",
                                         lines, ExceptionUtils.getFullStackTrace(e)));
                             }
                         }
@@ -372,7 +373,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
             try {
                 return computeSingleWorker(this.gzFiles);
             } catch (IOException e) {
-                LOG.warn(String.format("\t\tunable to read input gz file: %s",
+                LOG.warn(String.format("\t\tunable to read input gz file: %s, \n %s",
                         this.gzFiles.toString(), ExceptionUtils.getFullStackTrace(e)));
                 return 0;
             }

@@ -29,7 +29,7 @@ public class NTripleIndexerApp{
             gzFiles.add(f.toString());
         LOG.info("Initialisation completed.");
         NTripleIndexerWorker worker = new NTripleIndexerWorker(0,entitiesCoreClient, null,gzFiles,
-                Long.valueOf(args[2]), Long.MAX_VALUE, Boolean.valueOf(args[3]));
+                Long.valueOf(args[2]), Long.valueOf(args[3]), Boolean.valueOf(args[4]));
 
         try {
 
