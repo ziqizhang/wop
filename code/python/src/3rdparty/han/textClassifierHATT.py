@@ -43,7 +43,8 @@ def clean_str(string):
     return string.strip().lower()
 
 
-data_train = pd.read_csv('/home/zz/Work/wop/data/sentiment/labeledTrainData.tsv', sep='\t')
+#data_train = pd.read_csv('/home/zz/Work/wop/data/sentiment/labeledTrainData.tsv', sep='\t')
+data_train = pd.read_csv('/home/zz/Work/wop/data/sentiment/labeledTrainData_small.tsv', sep='\t')
 print(data_train.shape)
 
 from nltk import tokenize
@@ -144,7 +145,7 @@ embedding_layer = Embedding(len(word_index) + 1,
                             EMBEDDING_DIM,
                             weights=[embedding_matrix],
                             input_length=MAX_SENT_LENGTH,
-                            trainable=True,
+                            trainable=False,
                             mask_zero=True)
 
 class AttLayer(Layer):
@@ -204,8 +205,8 @@ model = Model(review_input, preds)
 
 plot_model(model, to_file="model.png")
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
-              metrics=['acc'])
+              optimizer='adam',
+              metrics=['accuracy'])
 
 print("model fitting - Hierachical attention network")
 model.fit(x_train, y_train, validation_data=(x_val, y_val),

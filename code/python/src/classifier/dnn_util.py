@@ -7,6 +7,7 @@ from keras import Model, Sequential
 from keras.layers import Concatenate, Dropout, LSTM, GRU, Bidirectional, Conv1D, MaxPooling1D, GlobalMaxPooling1D, \
     Dense, Flatten, K
 from keras.preprocessing import sequence
+from keras.preprocessing.text import Tokenizer, text_to_word_sequence
 from keras.regularizers import L1L2
 from nltk import tokenize
 
@@ -44,98 +45,11 @@ lstm examples:
 DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 100
-DNN_MAX_DOC_LENGTH = 5
-DNN_EPOCHES = 40
+DNN_MAX_DOC_LENGTH = 5 #
+DNN_EPOCHES = 40 #
 DNN_BATCH_SIZE = 50
+MAX_VOCAB=500000 #
 
-
-def create_model(model_descriptor: str, max_index, word_embedding_dim=DNN_EMBEDDING_DIM,
-                 max_sequence_length=DNN_MAX_SENTENCE_LENGTH, wemb_matrix=None, append_feature_matrix=None):
-    '''no pre-trained embedding is provided'''
-    if wemb_matrix is None:
-        if append_feature_matrix is not None:  # if we want to concat word embedding with any other features
-            embedding_layers = [Embedding(input_dim=max_index, output_dim=word_embedding_dim,
-                                          input_length=max_sequence_length),
-                                Embedding(input_dim=max_index, output_dim=len(append_feature_matrix[0]),
-                                          weights=[append_feature_matrix],
-                                          input_length=max_sequence_length,
-                                          trainable=False)]
-        else:
-            embedding_layers = [Embedding(input_dim=max_index, output_dim=word_embedding_dim,
-                                          input_length=max_sequence_length)]
-
-    else:
-        if append_feature_matrix is not None:  # using pre-trained word embeddings
-            concat_matrices = concatenate_matrices(wemb_matrix, append_feature_matrix)
-            # load pre-trained word embeddings into an Embedding layer
-            # note that we set trainable = False so as to keep the embeddings fixed
-            embedding_layers = [Embedding(input_dim=max_index, output_dim=len(concat_matrices[0]),
-                                          weights=[concat_matrices],
-                                          input_length=max_sequence_length,
-                                          trainable=False)]
-        else:
-            embedding_layers = [Embedding(input_dim=max_index, output_dim=len(wemb_matrix[0]),
-                                          weights=[wemb_matrix],
-                                          input_length=max_sequence_length,
-                                          trainable=False)]
-
-    model = parse_model_descriptor(embedding_layers, model_descriptor)
-
-    return model
-
-
-def parse_model_descriptor(embedding_layers, model_descriptor: str):
-    "sub_conv[2,3,4](dropout=0.2,conv1d=100-v,)"
-    layer_descriptors = model_descriptor.split("|")
-
-    first_layer = layer_descriptors[0]
-
-    '''example: cnn[2,3,4](conv1d=100,dropout=0.2)'''
-    if first_layer.startswith("cnn") or first_layer.startswith("scnn"):
-        window_size_str = first_layer[first_layer.index("[") + 1: first_layer.index("]")]
-        cnn_layer_desc = first_layer[first_layer.index("(") + 1:len(first_layer) - 1]
-        cnns = []
-        for w in window_size_str.split(","):
-            cnn_components = cnn_layer_desc.split(",")
-            if not cnn_components[0].startswith("conv1d"):
-                raise ValueError(
-                    'Error in the model descriptor for cnn layers. It must follow the pattern `conv1d=[filter]`: %s' %
-                    cnn_components[0])
-            cnn_components[0] = cnn_components[0] + "-" + w
-
-            if first_layer.startswith("cnn"):
-                cnns.append(create_sequential_model(cnn_components,
-                                                    embedding_layers=embedding_layers))
-            else:
-                for mod in create_skipped_cnn_submodels(cnn_components, embedding_layers, int(w)):
-                    cnns.append(mod)
-
-    else:  # assuming a sequential model
-        model = create_sequential_model(layer_descriptors, embedding_layers=embedding_layers)
-        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-        model.summary()
-        return model
-
-    cnns_outputs = [model.output for model in cnns]
-    if len(cnns_outputs) > 1:
-        x = Concatenate(axis=1)(cnns_outputs)
-    else:
-        x = cnns_outputs[0]
-
-    parallel_layers = Model(inputs=embedding_layers[0].input, outputs=x)
-    # print("submodel:")
-    # parallel_layers.summary()
-    # print("\n")
-
-    layer_descriptors.pop(0)
-    big_model = Sequential()
-    big_model.add(parallel_layers)
-    create_sequential_model(layer_descriptors, big_model)
-
-    big_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    big_model.summary()
-
-    return big_model
 
 
 def create_sequential_model(layer_descriptors: list(), model: Sequential = None, embedding_layers=None,
@@ -495,15 +409,13 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
         ngram_range=(1, 1),
         stop_words=nlp.stopwords,  # We do better when we keep stopwords
         decode_error='replace',
-        max_features=500000,
+        max_features=MAX_VOCAB,
         min_df=1,
         max_df=0.99
     )
 
     if docs_extra is not None:
         docs.extend(docs_extra)
-
-    docs = du.replace_nan_in_list(docs)
 
     # logger.info("\tgenerating word vectors, {}".format(datetime.datetime.now()))
     counts = word_vectorizer.fit_transform(sentences).toarray()
@@ -516,32 +428,44 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
         with open('vocab.pickle', 'wb') as handle:
             pickle.dump(vocab, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        for i, sentences in enumerate(docs_with_sentences):
-            for j, sent in enumerate(sentences):
+        for i, sent_ids in enumerate(docs_with_sentences):
+            for j, sent in enumerate(sent_ids):
                 if j < doc_length:
                     # find the processed sentence
-                    sent = counts[j]
+                    sent = counts[sent_ids[j]]
                     sent_vocab = numpy.nonzero(sent)[0]
                     for k in range(0, len(sent_vocab)):
-                        if k < sentence_length and sent_vocab[k] != 0:
-                            data[i, j, k] = sent_vocab[k]
+                        nonzero_index=sent_vocab[k] #index position in the sentence vector where the word is present.
+                        #this index is also the word vocab index
+                        if nonzero_index<10:
+                            print("hi")
+                        if k < sentence_length:
+                            data[i, j, k] = nonzero_index
 
-                    # wordTokens = text_to_word_sequence(sent)
-                    # k = 0
-                    # for _, word in enumerate(wordTokens):
-                    #     if k < sentence_length and tokenizer.word_index[word] < MAX_NB_WORDS:
-                    #         data[i, j, k] = tokenizer.word_index[word]
-                    #         k = k + 1
-
-        # for x in range(0, training_data_instances):
-        #     tweet = counts[x]
-        #     tweet_vocab = []
-        #     for i in range(0, len(tweet)):
-        #         if tweet[i] != 0:
-        #             tweet_vocab.append(i)
-        #     word_embedding_input.append(tweet_vocab)
     else:
         raise Exception("NOT SUPPORTED")
+
+    # ORIGINAL FROM HAN code, not in use
+    # tokenizer = Tokenizer(nb_words=MAX_VOCAB)
+    # texts=docs
+    # tokenizer.fit_on_texts(texts)
+    # reviews = []
+    #
+    # for d in docs:
+    #     sents = tokenize.sent_tokenize(d)
+    #     reviews.append(sents)
+    #
+    # _data_ = numpy.zeros((len(texts), doc_length, sentence_length), dtype='int32')
+    #
+    # for i, sentences in enumerate(reviews):
+    #     for j, sent in enumerate(sentences):
+    #         if j < doc_length:
+    #             wordTokens = text_to_word_sequence(sent)
+    #             k = 0
+    #             for _, word in enumerate(wordTokens):
+    #                 if k < sentence_length and tokenizer.word_index[word] < MAX_VOCAB:
+    #                     _data_[i, j, k] = tokenizer.word_index[word]
+    #                     k = k + 1
 
     return data, vocab
 
@@ -569,9 +493,16 @@ doc_inputs_3D: this must be doc level inputs (if this is required) as a 3D matri
 
 def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
                                 word_vocab_size, word_embedding_dim, word_embedding_weights,
-                                model_option, doc_inputs_3D=None):
+                                model_option, doc_inputs_3D=None,
+                                word_embedding_trainable=False,
+                                word_embedding_mask_zero=False):
+    print("\t(embedding layer mask_zero=True. If your model uses RNN, usually this should be True.")
     embedding = Embedding(word_vocab_size, word_embedding_dim, input_length=max_sentence_length,
-                          weights=[word_embedding_weights], trainable=False)(sentence_inputs_2D)
+                          weights=[word_embedding_weights],
+                          trainable=word_embedding_trainable,
+                          mask_zero=word_embedding_mask_zero)(sentence_inputs_2D)
+
+
     if model_option.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
         # conv1d_1 = Conv1D(filters=100,
         #                  kernel_size=1, padding='same', activation='relu')(embedding)
@@ -648,6 +579,7 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
         l_lstm_sent = Bidirectional(GRU(100, return_sequences=True))(review_encoder)
         l_att_sent = AttLayer(100)(l_lstm_sent)
         return l_att_sent
+
     else:
         raise ValueError("model option not supported: %s" % model_option)
 

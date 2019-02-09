@@ -3,11 +3,9 @@ import pandas as pd
 from feature import text_feature_extractor as tfe
 
 # this is a text based feature loader
-def create_features_text(training_text_features):
-    text_col = 22  # 16-names; 22-profiles
-    label_col = 40
+def create_features_text(training_text_features, text_col=22, label_col=40, data_delimiter=","):
 
-    df = pd.read_csv(training_text_features, header=0, delimiter=",", quoting=0).as_matrix()
+    df = pd.read_csv(training_text_features, header=0, delimiter=data_delimiter, quoting=0).as_matrix()
     y = df[:, label_col]
 
     df.astype(str)

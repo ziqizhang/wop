@@ -6,9 +6,9 @@ import gensim
 import numpy
 from keras import Input, Model
 from keras.callbacks import ModelCheckpoint
-from keras.layers import concatenate, Dense
+from keras.layers import concatenate, Dense, Embedding
 from keras.preprocessing import sequence
-from keras.utils import plot_model
+from keras.utils import plot_model, to_categorical
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn import svm
 from sklearn.decomposition import PCA
@@ -161,12 +161,17 @@ force this layer to 'remember' more words and their weights. To improve the mode
 by injecting additional text data that are not labeled. This 'text_data_extra' and 'text_data'
 will both be processed to extract words, which are indexed and stored in the embedding layer.
 But only 'text_data' that has labels are in fact used for training a model. 
+
+embedding_trainable= if using pre-trained word embeddings and their weights should be fixed, set to false
+embedding_mask_zero=if your dnn model uses RNN, usually this should be true
 '''
 def learn_dnn(nfold, task,
               embedding_model_file,
               text_data, X_train_metafeature, y_train,
               model_descriptor, outfolder, prediction_targets,
-              text_data_extra_for_embedding_vocab=None, input_as_2D=True):
+              text_data_extra_for_embedding_vocab=None, input_as_2D=True,
+              embedding_trainable=False,
+              embedding_mask_zero=False):
     print("== Perform ANN ...")  # create model
 
     if input_as_2D:
@@ -195,8 +200,10 @@ def learn_dnn(nfold, task,
                                                                    dmc.DNN_EMBEDDING_DIM,
                                                                    2)
 
+
     encoder = LabelBinarizer()
     y_train_int = encoder.fit_transform(y_train)
+    #y_train_int = to_categorical(numpy.asarray(y_train))
 
     #now let's assemble the model based ont the descriptor
     if input_as_2D:
@@ -208,7 +215,9 @@ def learn_dnn(nfold, task,
             word_vocab_size=len(M[1]),
             word_embedding_dim=dmc.DNN_EMBEDDING_DIM,
             word_embedding_weights=pretrained_word_matrix,
-            model_option=model_descriptor)
+            model_option=model_descriptor,
+        word_embedding_trainable=embedding_trainable,
+        word_embedding_mask_zero=embedding_mask_zero)
     else:
         model_sent_input_2D = Input(shape=(dmc.DNN_MAX_SENTENCE_LENGTH,))  # model input
         model_first_input = Input(shape=(dmc.DNN_MAX_DOC_LENGTH, dmc.DNN_MAX_SENTENCE_LENGTH), dtype='int32')
@@ -221,7 +230,10 @@ def learn_dnn(nfold, task,
             word_embedding_dim=dmc.DNN_EMBEDDING_DIM,
             word_embedding_weights=pretrained_word_matrix,
             model_option=model_descriptor,
-            doc_inputs_3D=model_first_input)
+            doc_inputs_3D=model_first_input,
+            word_embedding_trainable=embedding_trainable,
+            word_embedding_mask_zero=embedding_mask_zero
+        )
 
     if X_train_metafeature is not None and input_as_2D: #if we also want to use other features together with text-based, concatenate them as-is
         model_metafeature_inputs = Input(shape=(len(X_train_metafeature[0]),))
@@ -240,6 +252,10 @@ def learn_dnn(nfold, task,
     #this prints the model architecture diagram to a file, so you can check that it looks right
     plot_model(model, to_file="model.png")
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+#model.compile(loss='categorical_crossentropy',
+#              optimizer='rmsprop',
+#              metrics=['acc'])
 
     model_file = os.path.join(outfolder, "ann-%s.m" % task)
 
@@ -267,12 +283,12 @@ def learn_dnn(nfold, task,
 
             if X_train_metafeature is not None and input_as_2D:
                 model.fit([X_train_text_feature, X_train_meta_feature],
-                          y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE, verbose=2)
+                          y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE)
                 prediction_prob = model.predict([X_test_text_feature, X_test_meta_feature])
 
             else:
                 model.fit(X_train_text_feature,
-                          y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE, verbose=2)
+                          y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE)
                 prediction_prob = model.predict(X_test_text_feature)
             # evaluate the model
             #
