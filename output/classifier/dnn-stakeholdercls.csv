@@ -1,12 +1,13 @@
+
 han_full|glvN-fold results:
 ,precision, recall, f1, support
-0,0.31,0.42,0.36,892
-1,0.00,0.00,0.00,365
-2,0.00,0.00,0.00,273
-3,0.35,0.68,0.46,963
-4,0.00,0.00,0.00,274
-5,0.00,0.00,0.00,333
-avg,0.11,0.18,0.14,3100
+0,0.86,0.87,0.87,892
+1,0.80,0.76,0.78,365
+2,0.90,0.89,0.90,273
+3,0.95,0.96,0.95,963
+4,0.64,0.65,0.65,274
+5,0.79,0.79,0.79,333
+avg,0.82,0.82,0.82,3100
 
 cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glvN-fold results:
 ,precision, recall, f1, support
@@ -17,16 +18,3 @@ cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glvN-fold results:
 4,0.66,0.65,0.66,274
 5,0.80,0.79,0.80,333
 avg,0.84,0.84,0.84,3100
-
-han_full|glvN-fold results:
-,precision, recall, f1, support
-0,0.50,0.65,0.57,1002
-1,0.50,0.36,0.42,997
-avg,0.50,0.50,0.49,1999
-
-cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glvN-fold results:
-,precision, recall, f1, support
-0,0.99,0.99,0.99,1002
-1,0.99,0.99,0.99,997
-avg,0.99,0.99,0.99,1999
-
