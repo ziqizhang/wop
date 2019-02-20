@@ -19,42 +19,42 @@ import java.util.zip.GZIPInputStream;
 
 /**
  * this file reads lines of n-quads and index them accordingly to 'entities' and 'predicates' indexes
- *
+ * <p>
  * WARNING: this assumes that same entities do not appear twice in the source data! If that's not the case, data indexed
  * may not be complete
- *
+ * <p>
  * WARNING: you need to ensure your data are thread-safe, that is, when different parts of data are processed concurrently
  * by different threads, there will not be identical data instances written by different threads
  */
 
-public class NTripleIndexerWorker extends RecursiveTask<Integer>{
+public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private SolrClient entitiesCoreClient;
     //private SolrClient predicatesCoreClient;
-    private int commitBatch=5000;
+    private int commitBatch = 5000;
     private int id;
 
     private long startLine;
     private long endLine;
     private boolean countLines;
     private Pattern NON_ASCII_PATTERN = Pattern.compile("[^\\\\x00-\\\\x7F]+");
-    private String UNICODE_PATTERN="\\\\u[0-9A-Fa-f]{4}";
+    private String UNICODE_PATTERN = "\\\\u[0-9A-Fa-f]{4}";
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
-    private int maxTasksPerThread=1;
+    private int maxTasksPerThread = 1;
     private List<String> gzFiles;
 
 
     public NTripleIndexerWorker(int id,
                                 SolrClient entitiesCoreClient, SolrClient predicatesCoreClient, List<String> inputGZFiles,
                                 long startLine, long endLine, boolean countLines) {
-        this.id=id;
+        this.id = id;
         this.entitiesCoreClient = entitiesCoreClient;
         //this.predicatesCoreClient = predicatesCoreClient;
         this.startLine = startLine;
         this.endLine = endLine;
-        this.gzFiles=inputGZFiles;
-        this.countLines=countLines;
+        this.gzFiles = inputGZFiles;
+        this.countLines = countLines;
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -63,16 +63,16 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
         Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
         Scanner inputScanner = new Scanner(decoder);
         inputScanner.useDelimiter(" .");
-        LOG.info("Thread "+id+" Obtained scanner object in put file");
+        LOG.info("Thread " + id + " Obtained scanner object in put file");
         return inputScanner;
     }
 
     protected int computeSingleWorker(List<String> gzFiles) throws IOException {
         int entityDocCount = 0;
 
-        for(String inputGZFile: gzFiles) {
+        for (String inputGZFile : gzFiles) {
             if (this.countLines) {
-                LOG.info("Thread "+id+" Counting lines begins...");
+                LOG.info("Thread " + id + " Counting lines begins...");
                 countTotalLines(inputGZFile);
                 //System.exit(0);
             }
@@ -91,81 +91,86 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
                 //System.out.println(lines);
                 if (lines < startLine)
                     continue;
-                if (lines>=endLine)
+                if (lines >= endLine)
                     break;
             /*
             Parsing the s, p, o, and source
              */
-                String subject = null, predicate = null, object = null, source = null;
+                try {
+                    String subject = null, predicate = null, object = null, source = null;
 
-                //do we have data literal?
-                int firstQuote = content.indexOf("\"");
-                int lastQuote = content.lastIndexOf("\"");
-                //if yes...
-                if (firstQuote != -1 && lastQuote != -1 && lastQuote > firstQuote) {
-                    object = content.substring(firstQuote + 1, lastQuote).trim();
-                    isEnglish = isEnglish(object, content.substring(lastQuote + 1));
+                    //do we have data literal?
+                    int firstQuote = content.indexOf("\"");
+                    int lastQuote = content.lastIndexOf("\"");
+                    //if yes...
+                    if (firstQuote != -1 && lastQuote != -1 && lastQuote > firstQuote) {
+                        object = content.substring(firstQuote + 1, lastQuote).trim();
+                        isEnglish = isEnglish(object, content.substring(lastQuote + 1));
 
-                    String[] s_and_p = content.substring(0, firstQuote).trim().split("\\s+");
-                    if (s_and_p.length < 2)
-                        continue;
-                    subject = trimBrackets(s_and_p[0]);
-                    predicate = trimBrackets(s_and_p[1]);
+                        String[] s_and_p = content.substring(0, firstQuote).trim().split("\\s+");
+                        if (s_and_p.length < 2)
+                            continue;
+                        subject = trimBrackets(s_and_p[0]);
+                        predicate = trimBrackets(s_and_p[1]);
 
-                    source = content.substring(lastQuote + 1);
-                    int trim = source.indexOf(" ");
-                    source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
-                } else { //if no, all four parts of the quad are URIs
-                    String[] parts = content.split("\\s+");
-                    if (parts.length < 4)
-                        continue;
-                    subject = trimBrackets(parts[0]);
-                    predicate = trimBrackets(parts[1]);
-                    object = trimBrackets(parts[2]);
-                    source = trimBrackets(parts[3]);
-                }
+                        source = content.substring(lastQuote + 1);
+                        int trim = source.indexOf(" ");
+                        source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
+                    } else { //if no, all four parts of the quad are URIs
+                        String[] parts = content.split("\\s+");
+                        if (parts.length < 4)
+                            continue;
+                        subject = trimBrackets(parts[0]);
+                        predicate = trimBrackets(parts[1]);
+                        object = trimBrackets(parts[2]);
+                        source = trimBrackets(parts[3]);
+                    }
 
-                subject = subject + "|" + source;
+                    subject = subject + "|" + source;
 
             /*
             prepare data to be written to the entity index
              */
-                if (entityID == null) { //initiate a new solr doc
-                    entityID = subject;
-                    entityDoc.addField("id", entityID);
-                    addPredicateObject(predicate, object, entityDoc);
-                    addSource(source, entityDoc);
-                } else if (entityID.equalsIgnoreCase(subject)) {//continue to update the solr doc
-                    addPredicateObject(predicate, object, entityDoc);
-                } else {//we have encountered a different entity, index the prev solr doc, and start a new solr doc
-                    boolean res = false;
-                    try {
-                        res = indexEntity(entityDoc, isEnglish, source);
-                    } catch (SolrServerException e) {
-                        LOG.warn(String.format("\t\tThread "+id+" failed to add doc to index at quad: %d",
-                                lines, ExceptionUtils.getFullStackTrace(e)));
-                    }
+                    if (entityID == null) { //initiate a new solr doc
+                        entityID = subject;
+                        entityDoc.addField("id", entityID);
+                        addPredicateObject(predicate, object, entityDoc);
+                        addSource(source, entityDoc);
+                    } else if (entityID.equalsIgnoreCase(subject)) {//continue to update the solr doc
+                        addPredicateObject(predicate, object, entityDoc);
+                    } else {//we have encountered a different entity, index the prev solr doc, and start a new solr doc
+                        boolean res = false;
+                        try {
+                            res = indexEntity(entityDoc, isEnglish, source);
+                        } catch (SolrServerException e) {
+                            LOG.warn(String.format("\t\tThread " + id + " failed to add doc to index at quad: %d",
+                                    lines, ExceptionUtils.getFullStackTrace(e)));
+                        }
 
-                    if (res) {
-                        entityDocCount++;
-                        if (entityDocCount % commitBatch == 0) {
-                            try {
-                                entitiesCoreClient.commit();
-                                LOG.info(String.format("\t\tThread "+id+" completed indexing up to quad: %d and entity: %d",
-                                        lines, entityDocCount));
-                            } catch (SolrServerException e) {
-                                LOG.warn(String.format("\t\tThread "+id+" failed to commit to server at quad: %d",
-                                        lines, ExceptionUtils.getFullStackTrace(e)));
+                        if (res) {
+                            entityDocCount++;
+                            if (entityDocCount % commitBatch == 0) {
+                                try {
+                                    entitiesCoreClient.commit();
+                                    LOG.info(String.format("\t\tThread " + id + " completed indexing up to quad: %d and entity: %d",
+                                            lines, entityDocCount));
+                                } catch (SolrServerException e) {
+                                    LOG.warn(String.format("\t\tThread " + id + " failed to commit to server at quad: %d",
+                                            lines, ExceptionUtils.getFullStackTrace(e)));
+                                }
                             }
                         }
+
+                        entityDoc = new SolrInputDocument();
+                        entityID = subject;
+                        entityDoc.addField("id", entityID);
+
+                        addPredicateObject(predicate, object, entityDoc);
+                        addSource(source, entityDoc);
                     }
-
-                    entityDoc = new SolrInputDocument();
-                    entityID = subject;
-                    entityDoc.addField("id", entityID);
-
-                    addPredicateObject(predicate, object, entityDoc);
-                    addSource(source, entityDoc);
+                } catch (Exception e) {
+                    LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
+                            content, ExceptionUtils.getFullStackTrace(e)));
                 }
 
             /*
@@ -183,11 +188,11 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
                 entitiesCoreClient.commit();
                 //predicatesCoreClient.commit();
             } catch (Exception e) {
-                LOG.warn(String.format("\t\tThread "+id+" failed to make the final commit at completion",
+                LOG.warn(String.format("\t\tThread " + id + " failed to make the final commit at completion",
                         lines, ExceptionUtils.getFullStackTrace(e)));
             }
         }
-        LOG.info("Thread "+id+" indexing completed with filtered entities="+entityDocCount);
+        LOG.info("Thread " + id + " indexing completed with filtered entities=" + entityDocCount);
         return entityDocCount;
     }
 
@@ -208,7 +213,8 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
 
     /**
      * write the prepared solr document to the index only if the language is English. if already exists
-     *  and language is not english, delete it
+     * and language is not english, delete it
+     *
      * @param doc
      * @param isEnglish
      * @param source
@@ -217,11 +223,10 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
      * @throws SolrServerException
      */
     private boolean indexEntity(SolrInputDocument doc, boolean isEnglish, String source) throws IOException, SolrServerException {
-        if (isEnglish){
+        if (isEnglish) {
             entitiesCoreClient.add(doc);
             return true;
-        }
-        else{ //try delete if already added to index
+        } else { //try delete if already added to index
             entitiesCoreClient.deleteById(doc.getFieldValue("id").toString());
         }
         return false;
@@ -229,39 +234,40 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
 
     /**
      * process the triple's predicate and object values, and write data to corresponding fields
+     *
      * @param predicate
      * @param object
      * @param doc
      */
     private void addPredicateObject(String predicate, String object, SolrInputDocument doc) {
-        Map<String,Object> fieldModifier = new HashMap<>(1);
-        fieldModifier.put("set",object);
+        Map<String, Object> fieldModifier = new HashMap<>(1);
+        fieldModifier.put("set", object);
 
         if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
-            addOrMergeField(doc,"rdfs_type", fieldModifier);
+            addOrMergeField(doc, "rdfs_type", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/name"))
-            addOrMergeField(doc,"sg-product_name", fieldModifier);
+            addOrMergeField(doc, "sg-product_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/description"))
-            addOrMergeField(doc,"sg-product_description", fieldModifier);
+            addOrMergeField(doc, "sg-product_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/brand"))
-            addOrMergeField(doc,"sg-product_brand", fieldModifier);
+            addOrMergeField(doc, "sg-product_brand", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/category"))
-            addOrMergeField(doc,"sg-product_category", fieldModifier);
+            addOrMergeField(doc, "sg-product_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/name"))
-            addOrMergeField(doc,"sg-offer_name", fieldModifier);
+            addOrMergeField(doc, "sg-offer_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/description"))
-            addOrMergeField(doc,"sg-offer_description", fieldModifier);
+            addOrMergeField(doc, "sg-offer_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/category"))
-            addOrMergeField(doc,"sg-offer_category", fieldModifier);
+            addOrMergeField(doc, "sg-offer_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/name"))
-            addOrMergeField(doc,"sg-listitem_name", fieldModifier);
+            addOrMergeField(doc, "sg-listitem_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/description"))
-            addOrMergeField(doc,"sg-listitem_description", fieldModifier);
+            addOrMergeField(doc, "sg-listitem_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/title") ||
                 predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/name"))
-            addOrMergeField(doc,"sg-breadcrumb_title", fieldModifier);
+            addOrMergeField(doc, "sg-breadcrumb_title", fieldModifier);
         else {
-            addOrMergeField(doc,predicate+"_t", fieldModifier);
+            addOrMergeField(doc, predicate + "_t", fieldModifier);
 
         /*if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
             doc.addField("rdfs_type", object);
@@ -291,10 +297,10 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
         }
     }
 
-    private void addOrMergeField(SolrInputDocument doc, String field, Map<String,Object> fieldModifier){
+    private void addOrMergeField(SolrInputDocument doc, String field, Map<String, Object> fieldModifier) {
         Object existingValue = doc.getFieldValue(field);
-        if (existingValue!=null){
-            fieldModifier.put("set", fieldModifier.get("set").toString()+" "+existingValue.toString());
+        if (existingValue != null) {
+            fieldModifier.put("set", fieldModifier.get("set").toString() + " " + existingValue.toString());
             doc.removeField(field);
         }
         doc.addField(field, fieldModifier);
@@ -303,15 +309,15 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
     /**
      * process the triple'ssource, and write data to corresponding fields
      */
-    private void addSource(String sourceURI, SolrInputDocument doc){
-        Map<String,Object> fieldModifier = new HashMap<>(1);
-        fieldModifier.put("set",sourceURI);
+    private void addSource(String sourceURI, SolrInputDocument doc) {
+        Map<String, Object> fieldModifier = new HashMap<>(1);
+        fieldModifier.put("set", sourceURI);
         doc.addField("source_page", fieldModifier);
         URI u = null;
         try {
             u = new URI(sourceURI);
             fieldModifier = new HashMap<>(1);
-            fieldModifier.put("set",u.getHost());
+            fieldModifier.put("set", u.getHost());
             doc.addField("source_host", fieldModifier);
         } catch (URISyntaxException e) {
             LOG.warn(String.format("\t\tencountered illegal URI when trying to parse: %s",
@@ -324,7 +330,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
         String content;
         Scanner inputScanner = setScanner(inputGZFile);
 
-        while (inputScanner.hasNextLine()&&(content = inputScanner.nextLine()) != null) {
+        while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
             lines++;
             if (lines % 100000 == 0)
                 System.out.println(new Date() + ": " + lines);
@@ -340,10 +346,10 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
             else
                 return false;
         } else {
-            if (dataLiteral.length()<10)
+            if (dataLiteral.length() < 10)
                 return true;
-            String clean = dataLiteral.replaceAll(UNICODE_PATTERN,"").trim();
-            boolean r = clean.length()>dataLiteral.length()/2;
+            String clean = dataLiteral.replaceAll(UNICODE_PATTERN, "").trim();
+            boolean r = clean.length() > dataLiteral.length() / 2;
            /* Matcher matcher = NON_ASCII_PATTERN.matcher(dataLiteral);
             int count = 0;
             while (matcher.find())
@@ -388,7 +394,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
         boolean b = false;
         List<String> splitTask1 = new ArrayList<>();
         List<String> splitTask2 = new ArrayList<>();
-        for (String s: gzFiles) {
+        for (String s : gzFiles) {
             if (b)
                 splitTask1.add(s);
             else
@@ -396,8 +402,8 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
             b = !b;
         }
 
-        NTripleIndexerWorker subWorker1 = createInstance(splitTask1, this.id+1);
-        NTripleIndexerWorker subWorker2 = createInstance(splitTask2, this.id+2);
+        NTripleIndexerWorker subWorker1 = createInstance(splitTask1, this.id + 1);
+        NTripleIndexerWorker subWorker2 = createInstance(splitTask2, this.id + 2);
 
         subWorkers.add(subWorker1);
         subWorkers.add(subWorker2);
@@ -407,13 +413,14 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer>{
 
     /**
      * NOTE: classes implementing this method must call setHashtagMap and setMaxPerThread after creating your object!!
+     *
      * @param splitTasks
      * @param id
      * @return
      */
-    protected NTripleIndexerWorker createInstance(List<String> splitTasks, int id){
+    protected NTripleIndexerWorker createInstance(List<String> splitTasks, int id) {
         NTripleIndexerWorker indexer = new NTripleIndexerWorker(id,
-                entitiesCoreClient, null,splitTasks,
+                entitiesCoreClient, null, splitTasks,
                 startLine, endLine, countLines);
         return indexer;
     }
