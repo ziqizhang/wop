@@ -28,16 +28,20 @@ def clean_str(string):
 
 if __name__ == "__main__":
     # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
-    training_text_features = sys.argv[1]  # [your path]/wop/data/ml/training_text_features.csv
+    training_text_features = sys.argv[1]
+    # ProductCategorisation: [GoogleDrive]/wop/datasets/ProductCategorisation/goldstandard_eng_v1.csv
+    # Twitter: [your path]/wop/data/ml/training_text_features.csv
+
     # this is the folder containing other gazetteer based features that are already pre-extracted
-    training_other_features = sys.argv[
-        2]  # [your path]/wop/data/ml/training_other_features/gazetteer/dict1_match_to_profile.csv
+    training_other_features = sys.argv[2]
+    # ProductCategorisation: N/A
+    # Twitter: [your path]/wop/data/ml/training_other_features/gazetteer/dict1_match_to_profile.csv
 
     # this is the folder to save output to
     outfolder = sys.argv[3]
 
     # this the Gensim compatible embedding file
-    dnn_embedding_file = "/home/zz/Work/data/glove.840B.300d.bin.gensim"
+    dnn_embedding_file = "H:/Python/glove.6B/glove.840B.300d.bin.gensim" #"/home/zz/Work/data/glove.840B.300d.bin.gensim"
 
     tweets_exta = None
     # this line is used if we have 'pre-trained' dnn model and want to load it to use. i.e., we are not doing n-fold validation
@@ -92,15 +96,44 @@ if __name__ == "__main__":
             else:
                 dnn_embedding_mask_zero=False
 
-            # SETTING0 dnn applied to profile only
-            X, y = fc.create_features_text(csv_training_text_data)
-            df = pd.read_csv(csv_training_text_data, header=0, delimiter=",", quoting=0).as_matrix()
+            # For Twitter data: SETTING0 dnn applied to profile only
+            # X, y = fc.create_features_text(csv_training_text_data)
+            # df = pd.read_csv(csv_training_text_data, header=0, delimiter=",", quoting=0).as_matrix()
+            # df.astype(str)
+            # profiles = df[:, 22]
+            # profiles = ["" if type(x) is float else x for x in profiles]
+            # cls = cm.Classifer("stakeholdercls", "_dnn_text_", None, y, outfolder,
+            #                    categorical_targets=6, algorithms=["dnn"], nfold=n_fold,
+            #                    text_data=profiles, dnn_embedding_file=dnn_embedding_file,
+            #                    dnn_descriptor=model_descriptor, dnn_input_as_2D=input_as_2D,
+            #                    dnn_embedding_trainable=False,
+            #                    dnn_embedding_mask_zero=dnn_embedding_mask_zero)
+            # cls.run()
+
+            # For ProductCategorisation dataset
+            # In this experiment, I used both the title (index 4) and the description (index 5) of each item,
+            # because title is generally very short and the description is not available for all items.
+            input_columns = [4, 5]
+            X, y = fc.create_features_text_multiple_fields(csv_training_text_data, text_cols=input_columns, label_col=10,
+                                                           data_delimiter=";", text_encoding="ANSI", text_header=0)
+            # If one field needs to be used instead, please replace the above line with the following:
+            # X, y = fc.create_features_text(csv_training_text_data, text_col=4, label_col=10, data_delimiter=";",
+            #                                text_encoding="ANSI", text_header=0)
+            df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="ANSI",
+                             ).as_matrix()
             df.astype(str)
-            profiles = df[:, 22]
-            profiles = ["" if type(x) is float else x for x in profiles]
+
+            # Both the title and the description are used as the text data.
+            titles = df[:, 4]
+            desc = df[:, 5]
+            titles = ["" if type(x) is float else x for x in titles]
+            desc = ["" if type(x) is float else x for x in desc]
+            texts = list(map('. '.join, zip(titles, desc)))
+            texts = ["" if type(x) is float else x for x in texts]
+
             cls = cm.Classifer("stakeholdercls", "_dnn_text_", None, y, outfolder,
-                               categorical_targets=6, algorithms=["dnn"], nfold=n_fold,
-                               text_data=profiles, dnn_embedding_file=dnn_embedding_file,
+                               categorical_targets=37, algorithms=["dnn"], nfold=n_fold,
+                               text_data=texts, dnn_embedding_file=dnn_embedding_file,
                                dnn_descriptor=model_descriptor, dnn_input_as_2D=input_as_2D,
                                dnn_embedding_trainable=False,
                                dnn_embedding_mask_zero=dnn_embedding_mask_zero)
