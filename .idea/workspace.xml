@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e9739d7-1300-43ff-80e4-1f88a8e82454" name="Default Changelist" comment="" />
+    <list default="true" id="a4d3568a-7a78-44f7-b26a-9d4ec8f017fb" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/code/python/src/analysis/IAA_kappa.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/code/python/src/analysis/__init__.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py" />
+      <change beforePath="$PROJECT_DIR$/code/java/.idea/workspace.xml" afterPath="$PROJECT_DIR$/code/java/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/code/java/msm4phi.log" afterPath="$PROJECT_DIR$/code/java/msm4phi.log" />
+      <change beforePath="$PROJECT_DIR$/code/java/src/main/java/uk/ac/shef/inf/msm4phi/app/AppStatsExtractor.java" afterPath="$PROJECT_DIR$/code/java/src/main/java/uk/ac/shef/inf/msm4phi/app/AppStatsExtractor.java" />
+      <change beforePath="$PROJECT_DIR$/code/python/src/classifier/dnn_util.py" afterPath="$PROJECT_DIR$/code/python/src/classifier/dnn_util.py" />
+      <change beforePath="$PROJECT_DIR$/code/python/src/exp/exp_runner.py" afterPath="$PROJECT_DIR$/code/python/src/exp/exp_runner.py" />
+      <change beforePath="$PROJECT_DIR$/code/python/src/exp/exp_runner_dnn.py" afterPath="$PROJECT_DIR$/code/python/src/exp/exp_runner_dnn.py" />
+      <change beforePath="$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py" afterPath="$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py" />
+      <change beforePath="$PROJECT_DIR$/logs/twitter_stream.log" afterPath="$PROJECT_DIR$/logs/twitter_stream.log" />
+      <change beforePath="$PROJECT_DIR$/model.png" afterPath="$PROJECT_DIR$/model.png" />
+      <change beforePath="$PROJECT_DIR$/output/classifier/ann-stakeholdercls.m.yaml" afterPath="$PROJECT_DIR$/output/classifier/ann-stakeholdercls.m.yaml" />
+      <change beforePath="$PROJECT_DIR$/output/classifier/dnn-top100dict-text+metafeatures.xlsx" afterPath="$PROJECT_DIR$/output/classifier/dnn-top100dict-text+metafeatures.xlsx" />
+      <change beforePath="$PROJECT_DIR$/output/classifier/svm-top100dict.xls" afterPath="$PROJECT_DIR$/output/classifier/svm-top100dict.xls" />
+      <change beforePath="$PROJECT_DIR$/run_dc.sh" afterPath="$PROJECT_DIR$/run_dc.sh" />
+      <change beforePath="$PROJECT_DIR$/vocab.pickle" afterPath="$PROJECT_DIR$/vocab.pickle" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,25 +29,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py">
+      <file leaf-file-name="twitter_collector.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-167">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1062">
+              <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py">
+      <file leaf-file-name="classifier_predict.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="306">
+              <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,10 +53,49 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_word_</find>
+      <find>cross_</find>
+      <find>embedding</find>
+      <find>conv1d</find>
+      <find>maxpoo</find>
+      <find>lstm</find>
+      <find>bilstm</find>
+      <find>create</find>
+      <find>random</find>
+      <find>X_test</find>
+      <find>max</find>
+      <find>pca</find>
+      <find>verbo</find>
+      <find>epoch</find>
+      <find>42</find>
+      <find>training_data</find>
+      <find>removed</find>
+      <find>csv_feature_input</find>
+      <find>dnn_te</find>
+      <find>n_fold</find>
+      <find>encode</find>
+      <find>pretrained_model_file</find>
+      <find>learn</find>
+      <find>load_</find>
+      <find>load</find>
+      <find>weights</find>
+      <find>shuffl</find>
+      <find>basic_features_12</find>
+      <find>csv</find>
+      <find>svm</find>
+      <find>/tweets</find>
     </findStrings>
+    <replaceStrings>
+      <replace>outfolder</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,98 +103,152 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py" />
+        <option value="$PROJECT_DIR$/code/python/src/data/twitter_collector.py" />
+        <option value="$PROJECT_DIR$/code/python/src/data/util.py" />
+        <option value="$PROJECT_DIR$/code/python/src/analysis.py" />
+        <option value="$PROJECT_DIR$/code/python/src/util/hashtag_processor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/util.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/dataset_loader.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_disease_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/feature_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_extractor_dhashtag.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/tweet_feature_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/feature_vectorizer.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/feature_text_skipgram.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/feature_text_ngram.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/feature_text_based.py" />
+        <option value="$PROJECT_DIR$/code/python/src/util/open_url_script.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/classifier_tag.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/test.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_manual.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/dnn_model_creator.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/classifier_util.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/classifier_main.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/annotator.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/nlp.py" />
+        <option value="$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/sklearn/feature_extraction/text.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/feature_creator.py" />
+        <option value="$PROJECT_DIR$/code/python/src/data/data_util.py" />
+        <option value="$PROJECT_DIR$/code/python/src/analysis/IAA_kappa.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/exp_runner_dnn.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/dictionary_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/exp_runner.py" />
+        <option value="$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py" />
+        <option value="$PROJECT_DIR$/code/python/src/classifier/dnn_util.py" />
+        <option value="$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="1934" />
-    <option name="height" value="1031" />
+    <option name="x" value="1366" />
+    <option name="y" value="-2" />
+    <option name="width" value="1680" />
+    <option name="height" value="1052" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
-              <item name="charmodel" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="classifier" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="exp" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="feature" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="msm4phi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msm4phi" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -147,8 +257,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wop_copy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/code/python/src/util" />
+      <recent name="$PROJECT_DIR$/code/python/src/classifier/" />
+      <recent name="$PROJECT_DIR$/code/python/src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,9 +279,152 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_svm_runner">
-    <configuration name="exp_dnn_runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="wop" />
+  <component name="RunManager" selected="Python.twitter_collector">
+    <configuration name="IAA_kappa" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/analysis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/analysis/IAA_kappa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="annotator" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/annotator.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../msm4phi_data/paper2/all_user_empty_filled_features $PROJECT_DIR$/../msm4phi_data/paper2/all_user_empty_filled_autodictext_features $PROJECT_DIR$/output/classifier/ann-stakeholdercls.m $PROJECT_DIR$/../msm4phi_data/paper2/output $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data/basic_features_empty_profile_filled.csv $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features/empty_profile_filled $PROJECT_DIR$/output/classifier $PROJECT_DIR$/../data/glove.840B.300d.bin.gensim" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="data_util" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/data/data_util.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="dictionary_disease_extractor" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/feature" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/feature/dictionary_extractor_dhashtag.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="dictionary_extractor" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/feature" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/feature/dictionary_extractor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="dictionary_feature_extractor_auto" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/feature" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="dictionary_feature_extractor_manual" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/feature" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_manual.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="exp_runner" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -175,17 +435,68 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py" />
-      <option name="PARAMETERS" value="H:\GitHub\wop\data\ml\training_text_features.csv H:\GitHub\wop\data\ml\training_other_features\gazetteer\dict1_match_to_profile.csv H:\Python\output\classifier\" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_runner.py" />
+      <option name="PARAMETERS" value="$USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features $PROJECT_DIR$/output/classifier" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
-    <configuration name="exp_svm_runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="wop" />
+    <configuration name="exp_runner_dnn" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_runner_dnn.py" />
+      <option name="PARAMETERS" value="$USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data/ $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features/ $PROJECT_DIR$/output/classifier" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="hashtag_processor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/util" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/util/hashtag_processor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="interaction_stats_extractor" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/python/src/analysis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -196,36 +507,68 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py" />
-      <option name="PARAMETERS" value="H:\GitHub\wop\data\ml\training_text_features.csv H:\GitHub\wop\data\ml\training_other_features H:\Python\output\classifier" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/test.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.exp_dnn_runner" />
-      <item itemvalue="Python.exp_svm_runner" />
+    <configuration name="twitter_collector" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="msm4phi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/data/twitter_collector.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/resources/config/twitter_oauth_zqzuk.txt $PROJECT_DIR$/resources/config/tag_list_mu http://localhost:8983/solr" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list size="14">
+      <item index="0" class="java.lang.String" itemvalue="Python.twitter_collector" />
+      <item index="1" class="java.lang.String" itemvalue="Python.data_util" />
+      <item index="2" class="java.lang.String" itemvalue="Python.dictionary_extractor" />
+      <item index="3" class="java.lang.String" itemvalue="Python.dictionary_disease_extractor" />
+      <item index="4" class="java.lang.String" itemvalue="Python.dictionary_feature_extractor_auto" />
+      <item index="5" class="java.lang.String" itemvalue="Python.exp_runner" />
+      <item index="6" class="java.lang.String" itemvalue="Python.dictionary_feature_extractor_manual" />
+      <item index="7" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
+      <item index="8" class="java.lang.String" itemvalue="Python.annotator" />
+      <item index="9" class="java.lang.String" itemvalue="Python.IAA_kappa" />
+      <item index="10" class="java.lang.String" itemvalue="Python.interaction_stats_extractor" />
+      <item index="11" class="java.lang.String" itemvalue="Python.analysis" />
+      <item index="12" class="java.lang.String" itemvalue="Python.hashtag_processor" />
+      <item index="13" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Python.exp_svm_runner" />
-        <item itemvalue="Python.exp_dnn_runner" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.hashtag_processor" />
+        <item index="2" class="java.lang.String" itemvalue="Python.analysis" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0e9739d7-1300-43ff-80e4-1f88a8e82454" name="Default Changelist" comment="" />
-      <created>1548943404029</created>
+      <changelist id="a4d3568a-7a78-44f7-b26a-9d4ec8f017fb" name="Default" comment="" />
+      <created>1524163836794</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1548943404029</updated>
+      <updated>1524163836794</updated>
     </task>
     <servers />
   </component>
@@ -239,81 +582,133 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="1366" y="-2" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28696343" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32719547" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49920508" weight="0.3179396" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32719547" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32719547" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32719547" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007949" side_tool="true" weight="0.5008881" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32719547" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28605017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48642778" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4737705" sideWeight="0.5031348" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40173724" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30944625" sideWeight="0.4968652" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2334419" sideWeight="0.4968652" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py</url>
-          <line>17</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/code/python/src/util/hashtag_processor.py</url>
+          <line>167</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py</url>
-          <line>104</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py</url>
+          <line>179</line>
+          <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/python/src/classifier/dnn_util.py</url>
-          <line>348</line>
-          <option name="timeStamp" value="40" />
+          <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_util.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="295" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_manual.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
-          <line>188</line>
-          <option name="timeStamp" value="43" />
+          <line>79</line>
+          <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
           <line>197</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="46" />
+          <option name="timeStamp" value="390" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="47" />
+          <line>68</line>
+          <option name="timeStamp" value="425" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="426" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_runner.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="525" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
+          <line>191</line>
+          <option name="timeStamp" value="526" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_util.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="546" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py</url>
+          <line>283</line>
+          <option name="timeStamp" value="576" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py</url>
+          <line>290</line>
+          <option name="timeStamp" value="577" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/annotator.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="658" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/annotator.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="677" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="722" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/data/data_util.py</url>
+          <line>206</line>
+          <option name="timeStamp" value="725" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/analysis/IAA_kappa.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="766" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="775" />
         </line-breakpoint>
       </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -321,148 +716,147 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
+      <option name="time" value="777" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}#/tweets/update?commit=true&quot;.format(solr_url)).read()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}#/tweets/update?commit=true&quot;.format(solr_url))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}#/tweets&quot;.format(solr_url))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}&quot;.format(solr_url))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}/&quot;.format(solr_url))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request.urlopen(&quot;{}/#/{}/update?commit=true&quot;.format(solr_url, core_name))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>urllib.request. \
+        urlopen(&quot;{}/#/{}/update?commit=true&quot;.
+                format(solr_url, core_name))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>SCALING</expression-string>
+        <expression-string>part</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df[:,22]</expression-string>
+        <expression-string>len(converted_labels)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>y</expression-string>
+        <expression-string>labels[0].strip()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>X</expression-string>
+        <expression-string>labels[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>n_fold</expression-string>
+        <expression-string>row[i][0:len(row[i])-1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>row[i][0:len(row)-1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>row[i]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[i]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[i][1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/python/src/util/nlp.py">
+    <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="1296">
+          <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Lib/site-packages/sklearn/svm/base.py">
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="916" selection-start-line="916" selection-end-line="916" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Lib/site-packages/pandas/io/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="597" selection-start-line="597" selection-end-line="597" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_main.py">
+    <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1062">
+          <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="e#44#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="188" selection-start-line="188" selection-end-line="188" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/3rdparty/charmodel/doc_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/3rdparty/charmodel/doc_rnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/dnn_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="381" column="5" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Lib/site-packages/sklearn/feature_extraction/text.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="827" selection-start-line="827" selection-end-line="827" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
