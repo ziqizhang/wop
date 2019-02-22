@@ -3,9 +3,12 @@ import pandas as pd
 from feature import text_feature_extractor as tfe
 
 # this is a text based feature loader
-def create_features_text(training_text_features, text_col=22, label_col=40, data_delimiter=","):
+# MLP: I added a few more variables to support the new dataset
+def create_features_text(training_text_features, text_col=22, label_col=40, data_delimiter=",", text_encoding="utf-8",
+                         text_header=0):
 
-    df = pd.read_csv(training_text_features, header=0, delimiter=data_delimiter, quoting=0).as_matrix()
+    df = pd.read_csv(training_text_features, header=text_header, delimiter=data_delimiter, quoting=0,
+                     encoding=text_encoding).as_matrix()
     y = df[:, label_col]
 
     df.astype(str)
@@ -17,6 +20,28 @@ def create_features_text(training_text_features, text_col=22, label_col=40, data
 
     return X_ngram, y
 
+# MLP: I added a new method to allow passing multiple column fields as the X data
+def create_features_text_multiple_fields(training_text_features, text_cols, label_col, data_delimiter, text_encoding="utf-8",
+                         text_header=0):
+
+    df = pd.read_csv(training_text_features, header=text_header, delimiter=data_delimiter, quoting=0,
+                     encoding=text_encoding).as_matrix()
+    y = df[:, label_col]
+    df.astype(str)
+
+    texts = []
+
+    # concatenate texts in the input fields (text_cols)
+    for index in text_cols:
+        if (len(texts) == 0):
+            texts = df[:, index]
+            texts = ["" if type(x) is float else x for x in texts]
+        else:
+            data = df[:, index]
+            data = ["" if type(x) is float else x for x in data]
+            texts = list(map('. '.join, zip(texts, data)))
+    X_ngram, vocab = tfe.get_ngram_tfidf(texts)
+    return X_ngram, y
 
 def create_features_text_and_other(training_text_features, training_other_features):
     X_autodictext, y = create_features_gazetteer(training_text_features, training_other_features)

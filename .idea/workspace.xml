@@ -29,24 +29,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="twitter_collector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1062">
               <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
               <folding />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="114" column="103" lean-forward="true" selection-start-line="114" selection-start-column="103" selection-end-line="114" selection-end-column="103" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="classifier_predict.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python/Lib/site-packages/gensim/models/keyedvectors.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="1474" selection-start-line="1474" selection-end-line="1474" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="197" selection-start-line="197" selection-end-line="197" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/python/src/classifier/dnn_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9197">
+              <caret line="579" selection-start-line="579" selection-end-line="579" />
             </state>
           </provider>
         </entry>
@@ -103,6 +146,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/code/python/src/data/twitter_collector.py" />
         <option value="$PROJECT_DIR$/code/python/src/data/util.py" />
         <option value="$PROJECT_DIR$/code/python/src/analysis.py" />
@@ -140,10 +184,16 @@
         <option value="$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py" />
         <option value="$PROJECT_DIR$/code/python/src/classifier/dnn_util.py" />
         <option value="$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py" />
+=======
+        <option value="$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py" />
+        <option value="$PROJECT_DIR$/code/python/src/exp/feature_creator.py" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="1366" />
     <option name="y" value="-2" />
     <option name="width" value="1680" />
@@ -167,6 +217,12 @@
         </selected-state>
       </profile-state>
     </entry>
+=======
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1943" />
+    <option name="height" value="1043" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -279,6 +335,7 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Python.twitter_collector">
     <configuration name="IAA_kappa" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -425,6 +482,11 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="exp_runner" type="PythonConfigurationType" factoryName="Python">
+=======
+  <component name="RunManager" selected="Python.exp_dnn_runner">
+    <configuration name="exp_dnn_runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="wop" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -435,9 +497,14 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
       <module name="msm4phi" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_runner.py" />
       <option name="PARAMETERS" value="$USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/training_data $USER_HOME$/Cloud/GDrive/ziqizhang/project/msm4phi/paper2/data/features $PROJECT_DIR$/output/classifier" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py" />
+      <option name="PARAMETERS" value="&quot;H:\Seed Project\Dataset\ProductCategorisation\goldstandard_eng_v1.csv&quot; &quot;NA&quot; &quot;H:\Python\output\classifier\&quot;" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -549,10 +616,16 @@
       <item index="13" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
+<<<<<<< HEAD
       <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Python.test" />
         <item index="1" class="java.lang.String" itemvalue="Python.hashtag_processor" />
         <item index="2" class="java.lang.String" itemvalue="Python.analysis" />
+=======
+      <list>
+        <item itemvalue="Python.exp_dnn_runner" />
+        <item itemvalue="Python.exp_svm_runner" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       </list>
     </recent_temporary>
   </component>
@@ -582,6 +655,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="1366" y="-2" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -602,6 +676,29 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2334419" sideWeight="0.4968652" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17564403" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32593855" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49920508" weight="0.31740615" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32719547" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32593855" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32719547" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007949" side_tool="true" weight="0.5008881" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32719547" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -616,6 +713,7 @@
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_auto.py</url>
           <line>179</line>
           <option name="timeStamp" value="268" />
@@ -629,6 +727,11 @@
           <url>file://$PROJECT_DIR$/code/python/src/feature/dictionary_feature_extractor_manual.py</url>
           <line>28</line>
           <option name="timeStamp" value="319" />
+=======
+          <url>file://$PROJECT_DIR$/code/python/src/classifier/dnn_util.py</url>
+          <line>348</line>
+          <option name="timeStamp" value="40" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
@@ -636,6 +739,7 @@
           <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
           <line>197</line>
           <option name="timeStamp" value="390" />
@@ -654,6 +758,11 @@
           <url>file://$PROJECT_DIR$/code/python/src/exp/exp_runner.py</url>
           <line>35</line>
           <option name="timeStamp" value="525" />
+=======
+          <url>file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="45" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py</url>
@@ -687,6 +796,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py</url>
+<<<<<<< HEAD
           <line>60</line>
           <option name="timeStamp" value="722" />
         </line-breakpoint>
@@ -704,6 +814,15 @@
           <url>file://$PROJECT_DIR$/code/python/src/analysis/interaction_stats_extractor.py</url>
           <line>39</line>
           <option name="timeStamp" value="775" />
+=======
+          <line>20</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="60" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -811,6 +930,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1296">
           <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
           <folding />
@@ -818,6 +938,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_predict.py">
+=======
+        <state relative-caret-position="124">
+          <caret line="597" selection-start-line="597" selection-end-line="597" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_main.py">
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -827,6 +955,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -836,6 +965,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
+=======
+    <entry file="file://$PROJECT_DIR$/code/python/src/3rdparty/charmodel/doc_cnn.py">
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -845,6 +977,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/python/src/data/twitter_collector.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1062">
           <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
           <folding />
@@ -857,6 +990,87 @@
           <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+=======
+        <state relative-caret-position="-1020">
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/feature/text_feature_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Lib/site-packages/sklearn/feature_extraction/text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="827" selection-start-line="827" selection-end-line="827" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_svm_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-167">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/dnn_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9197">
+          <caret line="579" selection-start-line="579" selection-end-line="579" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/classifier/classifier_learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Lib/site-packages/gensim/models/keyedvectors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="1474" selection-start-line="1474" selection-end-line="1474" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/exp/exp_dnn_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="114" column="103" lean-forward="true" selection-start-line="114" selection-start-column="103" selection-end-line="114" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/python/src/exp/feature_creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+>>>>>>> f6a50a1fe99836d88183a8a65ac54e0fd1bcd05c
           </folding>
         </state>
       </provider>
