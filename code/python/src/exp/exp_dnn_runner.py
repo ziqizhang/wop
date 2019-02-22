@@ -41,7 +41,7 @@ if __name__ == "__main__":
     outfolder = sys.argv[3]
 
     # this the Gensim compatible embedding file
-    dnn_embedding_file = "H:/Python/glove.6B/glove.840B.300d.bin.gensim" #"/home/zz/Work/data/glove.840B.300d.bin.gensim"
+    dnn_embedding_file = "/home/zz/Work/data/glove.840B.300d.bin.gensim" #"H:/Python/glove.6B/glove.840B.300d.bin.gensim"
 
     tweets_exta = None
     # this line is used if we have 'pre-trained' dnn model and want to load it to use. i.e., we are not doing n-fold validation
@@ -115,11 +115,11 @@ if __name__ == "__main__":
             # because title is generally very short and the description is not available for all items.
             input_columns = [4, 5]
             X, y = fc.create_features_text_multiple_fields(csv_training_text_data, text_cols=input_columns, label_col=10,
-                                                           data_delimiter=";", text_encoding="ANSI", text_header=0)
+                                                           data_delimiter=";", text_encoding="utf-8", text_header=0)
             # If one field needs to be used instead, please replace the above line with the following:
             # X, y = fc.create_features_text(csv_training_text_data, text_col=4, label_col=10, data_delimiter=";",
             #                                text_encoding="ANSI", text_header=0)
-            df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="ANSI",
+            df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
                              ).as_matrix()
             df.astype(str)
 
