@@ -114,8 +114,11 @@ if __name__ == "__main__":
             # In this experiment, I used both the title (index 4) and the description (index 5) of each item,
             # because title is generally very short and the description is not available for all items.
             input_columns = [4, 5]
-            X, y = fc.create_features_text_multiple_fields(csv_training_text_data, text_cols=input_columns, label_col=10,
-                                                           data_delimiter=";", text_encoding="utf-8", text_header=0)
+            label_column = 10 # modify this accordingly: 10 (GS_level1), 11 (GS_level2), and 12 (GS_level3)
+
+            X, y = fc.create_features_text_multiple_fields(csv_training_text_data, text_cols=input_columns,
+                                                           label_col=label_column, data_delimiter=";",
+                                                           text_encoding="utf-8", text_header=0)
             # If one field needs to be used instead, please replace the above line with the following:
             # X, y = fc.create_features_text(csv_training_text_data, text_col=4, label_col=10, data_delimiter=";",
             #                                text_encoding="ANSI", text_header=0)
