@@ -46,8 +46,8 @@ DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 100
 DNN_MAX_DOC_LENGTH = 5 #
-DNN_EPOCHES = 40 #
-DNN_BATCH_SIZE = 50
+DNN_EPOCHES = 20 #
+DNN_BATCH_SIZE = 200
 MAX_VOCAB=500000 #
 
 
@@ -437,8 +437,6 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
                     for k in range(0, len(sent_vocab)):
                         nonzero_index=sent_vocab[k] #index position in the sentence vector where the word is present.
                         #this index is also the word vocab index
-                        if nonzero_index<10:
-                            print("hi")
                         if k < sentence_length:
                             data[i, j, k] = nonzero_index
 

@@ -49,7 +49,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 4:
         tweets_exta = ann.generate_extra_data_for_embeddingvocab(sys.argv[4], sys.argv[5])
 
-    n_fold = 10
+    n_fold = 5
 
     # a dictionary holding different combinations of features to test
     datafeatures = {}
