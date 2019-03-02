@@ -26,10 +26,10 @@ def create_dnn_branch(
         text_data_extra_for_embedding_vocab=None,
         embedding_trainable=False,
         embedding_mask_zero=False):
-    print("== Perform ANN ...")  # create model
+    print("\t== Perform ANN ...")  # create model
 
     # process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
-    M = dmc.extract_vocab_and_2D_input(input_text_data, 1, sentence_length=dmc.DNN_MAX_SENTENCE_LENGTH,
+    M = dmc.extract_vocab_and_2D_input(input_text_data, 1, sentence_length=input_text_sentence_length,
                                        tweets_extra=text_data_extra_for_embedding_vocab)
     X_train_text_feature_input = M[0]
 
@@ -61,7 +61,10 @@ def create_dnn_branch(
 
 #branches is a dictionary where key is the input, value is the model branch for that input
 def merge_dnn_branch(branches:list, input_shapes:list, prediction_targets:int):
-    merge = concatenate(branches)
+    if len(branches)>1:
+        merge = concatenate(branches)
+    else:
+        merge=branches[0]
     final = Dense(prediction_targets, activation="softmax")(merge)
     model = Model(inputs=input_shapes, outputs=final)
 
@@ -85,6 +88,7 @@ def fit_dnn(inputs:list, nfold:int, y_train, final_model:Model,outfolder:str, ta
 
         nfold_predictions = dict()
         for k in range(0, len(splits)):
+            print("\tnfold=" +str(k))
             # Fit the model
             X_train_index = splits[k][1][0]
             X_test_index = splits[k][1][1]
@@ -93,11 +97,11 @@ def fit_dnn(inputs:list, nfold:int, y_train, final_model:Model,outfolder:str, ta
             X_test_merge_ = X_merge[X_test_index]
             y_train_ = y_train_int[X_train_index]
 
-            separate_training_feature_inputs=[]
+            separate_training_feature_inputs=[] #to contain features for training set coming from different input branches
             separate_testing_feature_inputs=[]
             index_start=0
             for feature_input in inputs:
-                length = len(feature_input)
+                length = len(feature_input[0])
                 index_end=index_start+length
                 slice_train = X_train_merge_[:, index_start:index_end]
                 slice_test = X_test_merge_[:, index_start:index_end]

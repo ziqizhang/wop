@@ -172,7 +172,7 @@ def learn_dnn(nfold, task,
               text_data_extra_for_embedding_vocab=None, input_as_2D=True,
               embedding_trainable=False,
               embedding_mask_zero=False):
-    print("== Perform ANN ...")  # create model
+    print("\t== Perform ANN ...")  # create model
 
     if input_as_2D:
         #process text data, index vocabulary, pad each text sentence/paragraph to a fixed length

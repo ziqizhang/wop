@@ -566,17 +566,33 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
         flat = Flatten()(pool)
         return flat
     elif model_option.startswith(
-            "han_full"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
+            "han_3dinput"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
 
         l_lstm = Bidirectional(GRU(100, return_sequences=True))(embedding)
-        l_att = AttLayer(100)(l_lstm)
+        l_dense = TimeDistributed(Dense(200))(l_lstm)
+        l_att = AttLayer(100)(l_dense)
         sentEncoder = Model(sentence_inputs_2D, l_att)
 
         # review_input = Input(shape=(max_sentences, max_sentence_length), dtype='int32')
         review_encoder = TimeDistributed(sentEncoder)(doc_inputs_3D)
         l_lstm_sent = Bidirectional(GRU(100, return_sequences=True))(review_encoder)
-        l_att_sent = AttLayer(100)(l_lstm_sent)
+        l_dense_sent = TimeDistributed(Dense(200))(l_lstm_sent)
+        l_att_sent = AttLayer(100)(l_dense_sent)
         return l_att_sent
+    elif model_option.startswith(
+            "han_2dinput"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
+
+        l_lstm = Bidirectional(GRU(100, return_sequences=True))(embedding)
+        l_dense = TimeDistributed(Dense(200))(l_lstm)
+        l_att = AttLayer(100)(l_dense)
+        # sentEncoder = Model(sentence_inputs_2D, l_att)
+        #
+        # # review_input = Input(shape=(max_sentences, max_sentence_length), dtype='int32')
+        # review_encoder = TimeDistributed(sentEncoder)(doc_inputs_3D)
+        # l_lstm_sent = Bidirectional(GRU(100, return_sequences=True))(review_encoder)
+        # l_dense_sent = TimeDistributed(Dense(200))(l_lstm_sent)
+        # l_att_sent = AttLayer(100)(l_dense_sent)
+        return l_att
 
     else:
         raise ValueError("model option not supported: %s" % model_option)
