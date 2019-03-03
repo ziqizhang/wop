@@ -85,7 +85,7 @@ if __name__ == "__main__":
         # todo: when HAN used, metafeature must NOT be set
 
         model_descriptors = [
-            "input=2d han_2dinput",
+            #"input=2d han_2dinput",
             "input=2d bilstm=100-False|dense=?-softmax|glv",
             "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv"]
 

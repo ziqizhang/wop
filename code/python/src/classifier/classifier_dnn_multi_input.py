@@ -67,6 +67,7 @@ def merge_dnn_branch(branches:list, input_shapes:list, prediction_targets:int):
         merge=branches[0]
     final = Dense(prediction_targets, activation="softmax")(merge)
     model = Model(inputs=input_shapes, outputs=final)
+    model.summary()
 
     # this prints the model architecture diagram to a file, so you can check that it looks right
     plot_model(model, to_file="model.png")
