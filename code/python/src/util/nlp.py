@@ -42,7 +42,7 @@ text_processor = TextPreProcessor(
 
     # select a tokenizer. You can use SocialTokenizer, or pass your own
     # the tokenizer, should take as input a string and return a list of tokens
-    tokenizer=SocialTokenizer(lowercase=False).tokenize,
+    #tokenizer=SocialTokenizer(lowercase=False).tokenize,
 
     # list of dictionaries, for replacing tokens extracted from the text,
     # with other expressions. You can pass more than one dictionaries.
