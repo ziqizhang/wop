@@ -3,10 +3,6 @@ import re
 import nltk
 from nltk import PorterStemmer, WordNetLemmatizer
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer as VS
-from ekphrasis.classes.preprocessor import TextPreProcessor
-from ekphrasis.classes.tokenizer import SocialTokenizer
-from ekphrasis.dicts.emoticons import emoticons
-
 sentiment_analyzer = VS()
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
@@ -14,49 +10,6 @@ stopwords = nltk.corpus.stopwords.words("english")
 stopwords=stopwords+ ['http','tweet','retweet','rt','twitter','https','tweets']
 other_exclusions = ["#ff", "ff", "rt"]
 stopwords.extend(other_exclusions)
-text_processor = TextPreProcessor(
-    # terms that will be normalized
-    # normalize=['url', 'email', 'percent', 'money', 'phone', 'user',
-    #                'time', 'url', 'date', 'number'],
-    #     # terms that will be annotated
-    #     annotate={"hashtag", "allcaps", "elongated", "repeated",
-    #               'emphasis', 'censored'},
-
-    normalize=[],
-    # terms that will be annotated
-    annotate={'elongated',
-              'emphasis'},
-    fix_html=True,  # fix HTML tokens
-
-    # corpus from which the word statistics are going to be used
-    # for word segmentation
-    segmenter="twitter",
-
-    # corpus from which the word statistics are going to be used
-    # for spell correction
-    corrector="twitter",
-
-    unpack_hashtags=True,  # perform word segmentation on hashtags
-    unpack_contractions=True,  # Unpack contractions (can't -> can not)
-    spell_correct_elong=False,  # spell correction for elongated words
-
-    # select a tokenizer. You can use SocialTokenizer, or pass your own
-    # the tokenizer, should take as input a string and return a list of tokens
-    #tokenizer=SocialTokenizer(lowercase=False).tokenize,
-
-    # list of dictionaries, for replacing tokens extracted from the text,
-    # with other expressions. You can pass more than one dictionaries.
-    #dicts=[emoticons]
-)
-
-def normalize_tweet(tweet_text):
-    tweet_text = text_processor.pre_process_doc(tweet_text.strip())
-    tweet_text = list(filter(lambda a: a != '<elongated>', tweet_text))
-    tweet_text = list(filter(lambda a: a != '<emphasis>', tweet_text))
-    tweet_text = list(filter(lambda a: a != 'RT', tweet_text))
-    tweet_text = list(filter(lambda a: a != '"', tweet_text))
-    tweet_text = " ".join(tweet_text)
-    return tweet_text.strip()
 
 
 # stem_or_lemma: 0 - apply porter's stemming; 1: apply lemmatization; 2: neither

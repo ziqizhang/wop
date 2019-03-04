@@ -319,22 +319,8 @@ extract vocab from corpus, and prepare a 2d matrix of doc,word
 
 
 def extract_vocab_and_2D_input(tweets: list, normalize_option, sentence_length, use_saved_vocab=False,
-                               tweets_extra=None,
-                               normalize_tweets=False):
-    if normalize_tweets:
-        word_vectorizer = CountVectorizer(
-            # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
-            tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
-            preprocessor=nlp.normalize_tweet,
-            ngram_range=(1, 1),
-            stop_words=nlp.stopwords,  # We do better when we keep stopwords
-            decode_error='replace',
-            max_features=MAX_VOCAB,
-            min_df=1,
-            max_df=0.99
-        )
-    else:
-        word_vectorizer = CountVectorizer(
+                               tweets_extra=None):
+    word_vectorizer = CountVectorizer(
             # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
             tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
             ngram_range=(1, 1),
@@ -343,7 +329,8 @@ def extract_vocab_and_2D_input(tweets: list, normalize_option, sentence_length, 
             max_features=MAX_VOCAB,
             min_df=1,
             max_df=0.99
-        )
+    )
+
 
     training_data_instances = len(tweets)
     if tweets_extra is not None:
@@ -415,20 +402,7 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
             sentences.append(s)
         docs_with_sentences.append(d_with_sent_indexes)
 
-    if normalize_tweets:
-        word_vectorizer = CountVectorizer(
-            # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
-            tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
-            preprocessor=nlp.normalize_tweet,
-            ngram_range=(1, 1),
-            stop_words=nlp.stopwords,  # We do better when we keep stopwords
-            decode_error='replace',
-            max_features=MAX_VOCAB,
-            min_df=1,
-            max_df=0.99
-        )
-    else:
-        word_vectorizer = CountVectorizer(
+    word_vectorizer = CountVectorizer(
             # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
             tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
             ngram_range=(1, 1),
@@ -437,7 +411,7 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
             max_features=MAX_VOCAB,
             min_df=1,
             max_df=0.99
-        )
+    )
 
     if docs_extra is not None:
         docs.extend(docs_extra)
