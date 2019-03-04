@@ -5,6 +5,7 @@ import os
 import datetime
 
 import gensim
+import numpy
 from numpy.random import seed
 
 seed(1)
@@ -60,6 +61,9 @@ if __name__ == "__main__":
         # this is the folder to save output to
         outfolder = properties["output_folder"]
 
+        # if true, classes with instances less than n_fold will be removed
+        remove_rare_classes = bool(sys.argv[3])
+
         print("\n"+str(datetime.datetime.now()))
         print("loading embedding models...")
         # this the Gensim compatible embedding file
@@ -102,6 +106,25 @@ if __name__ == "__main__":
         df.astype(str)
         y = df[:, int(properties['class_column'])]
 
+        target_classes = int(properties["classes"])
+        remove_instance_indexes = []
+        if remove_rare_classes:
+            print("you have chosen to remove classes whose instances are less than n_fold")
+            instance_labels = list(y)
+            class_dist = {x: instance_labels.count(x) for x in instance_labels}
+            remove_labels = []
+            for k, v in class_dist.items():
+                if v < n_fold:
+                    remove_labels.append(k)
+            remove_instance_indexes = []
+            for i in range(len(y)):
+                label = y[i]
+                if label in remove_labels:
+                    remove_instance_indexes.append(i)
+            y = numpy.delete(y, remove_instance_indexes)
+            target_classes = int(properties["classes"]) - len(remove_labels)
+
+
         print('[STARTED] running settings with label='+properties['label'])
 
         for model_descriptor in model_descriptors:
@@ -133,6 +156,7 @@ if __name__ == "__main__":
                 col_name=config[1]
                 col_text_length=int(config[2])
                 text_data = df[:, col_index]
+                text_data = numpy.delete(text_data, remove_instance_indexes)
                 data = ["" if type(x) is float else x for x in text_data]
 
                 dnn_branch=dnn_classifier.create_dnn_branch(

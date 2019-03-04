@@ -37,6 +37,8 @@ if __name__ == "__main__":
         #- data/wop_data: containing gold standard datae
 
         home_dir = sys.argv[2]
+        #if true, classes with instances less than n_fold will be removed
+        remove_rare_classes=bool(sys.argv[3])
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
         csv_training_text_data = home_dir+properties['training_text_data']
 
@@ -55,6 +57,24 @@ if __name__ == "__main__":
         df.astype(str)
         y = df[:, int(properties['class_column'])]
 
+        target_classes = int(properties["classes"])
+        remove_instance_indexes=[]
+        if remove_rare_classes:
+            print("you have chosen to remove classes whose instances are less than n_fold")
+            instance_labels=list(y)
+            class_dist = {x: instance_labels.count(x) for x in instance_labels}
+            remove_labels=[]
+            for k, v in class_dist.items():
+                if v<n_fold:
+                    remove_labels.append(k)
+            remove_instance_indexes = []
+            for i in range(len(y)):
+                label=y[i]
+                if label in remove_labels:
+                    remove_instance_indexes.append(i)
+            y = numpy.delete(y, remove_instance_indexes)
+            target_classes=int(properties["classes"])-len(remove_labels)
+
         print('[STARTED] running settings with label='+properties['label'])
 
         input_column_sources = [x for x in properties['training_text_data_columns'].split("|")]
@@ -65,6 +85,7 @@ if __name__ == "__main__":
             col_index = int(config[0])
             col_name = config[1]
             text_data = df[:, col_index]
+            text_data = numpy.delete(text_data, remove_instance_indexes)
             data = ["" if type(x) is float else x for x in text_data]
             X_ngram, vocab = tfe.get_ngram_tfidf(data)
             features_from_separate_fields.append(X_ngram)
@@ -74,13 +95,13 @@ if __name__ == "__main__":
         # print(datetime.datetime.now())
         # print("\nRunning nb")
         # cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
-        #                    categorical_targets=int(properties["classes"]),
+        #                    categorical_targets=target_classes,
         #                    nfold=n_fold, algorithms=["nb"])
         # cls.run()
 
         print(datetime.datetime.now())
         print("\nRunning pca-svm_l")
-        cls = cm.Classifer(properties['label'], "pca-svm_l", X_all, y, outfolder,
+        cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
                            categorical_targets=int(properties["classes"]),
                            nfold=n_fold, algorithms=["pca-svm_l"])
         cls.run()
