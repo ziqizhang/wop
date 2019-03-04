@@ -34,7 +34,7 @@ if __name__ == "__main__":
         #to use this class, your home directory must containt he follows:
         #- wop: containing this project folder
         #- data: containing word embedding models
-        #- data/wop_data: containing gold standard data
+        #- data/wop_data: containing gold standard datae
 
         home_dir = sys.argv[2]
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features

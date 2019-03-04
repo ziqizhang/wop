@@ -46,7 +46,7 @@ text_processor = TextPreProcessor(
 
     # list of dictionaries, for replacing tokens extracted from the text,
     # with other expressions. You can pass more than one dictionaries.
-    dicts=[emoticons]
+    #dicts=[emoticons]
 )
 
 def normalize_tweet(tweet_text):
