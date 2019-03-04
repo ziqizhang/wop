@@ -38,6 +38,7 @@ if __name__ == "__main__":
 
         home_dir = sys.argv[2]
         #if true, classes with instances less than n_fold will be removed
+        print(sys.argv[3])
         remove_rare_classes=bool(sys.argv[3])
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
         csv_training_text_data = home_dir+properties['training_text_data']
