@@ -70,20 +70,20 @@ if __name__ == "__main__":
             features_from_separate_fields.append(X_ngram)
         X_all = numpy.concatenate(features_from_separate_fields, axis=1)
 
-        print("\tfeature extraction completed.")
-        print(datetime.datetime.now())
-        print("\nRunning nb")
-        cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
-                           categorical_targets=int(properties["classes"]),
-                           nfold=n_fold, algorithms=["nb"])
-        cls.run()
-
+        # print("\tfeature extraction completed.")
         # print(datetime.datetime.now())
-        # print("\nRunning pca-svm_l")
-        # cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
+        # print("\nRunning nb")
+        # cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
         #                    categorical_targets=int(properties["classes"]),
-        #                    nfold=n_fold, algorithms=["svm_l"])
+        #                    nfold=n_fold, algorithms=["nb"])
         # cls.run()
+
+        print(datetime.datetime.now())
+        print("\nRunning pca-svm_l")
+        cls = cm.Classifer(properties['label'], "pca-svm_l", X_all, y, outfolder,
+                           categorical_targets=int(properties["classes"]),
+                           nfold=n_fold, algorithms=["pca-svm_l"])
+        cls.run()
 
         # print(datetime.datetime.now())
         # print("\nRunning pca-knn")
