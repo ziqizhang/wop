@@ -76,7 +76,7 @@ if __name__ == "__main__":
             target_classes=int(properties["classes"])-len(remove_labels)
 
         print('[STARTED] running settings with label='+properties['label'])
-
+        print('(removing instances='+str(len(remove_instance_indexes))+')')
         input_column_sources = [x for x in properties['training_text_data_columns'].split("|")]
         features_from_separate_fields=[]
         for string in input_column_sources:
@@ -103,7 +103,7 @@ if __name__ == "__main__":
         print("\nRunning pca-svm_l")
         cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
                            categorical_targets=int(properties["classes"]),
-                           nfold=n_fold, algorithms=["pca-svm_l"])
+                           nfold=n_fold, algorithms=["svm_l"])
         cls.run()
 
         # print(datetime.datetime.now())
