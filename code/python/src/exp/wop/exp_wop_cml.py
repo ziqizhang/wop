@@ -31,16 +31,22 @@ def load_properties(filepath, sep='=', comment_char='#'):
 if __name__ == "__main__":
     for setting_file in os.listdir(sys.argv[1]):
         properties = load_properties(sys.argv[1]+'/'+setting_file)
+        #to use this class, your home directory must containt he follows:
+        #- wop: containing this project folder
+        #- data: containing word embedding models
+        #- data/wop_data: containing gold standard data
+
+        home_dir = sys.argv[2]
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
-        csv_training_text_data = properties['training_text_data']
+        csv_training_text_data = home_dir+properties['training_text_data']
 
         # this is the folder containing other gazetteer based features that are already pre-extracted
-        csv_training_other_feaures = properties['training_other_features']
+        csv_training_other_feaures = home_dir+properties['training_other_features']
         if len(csv_training_other_feaures)==0:
             csv_training_other_feaures=None
 
         # this is the folder to save output to
-        outfolder = properties["output_folder"]
+        outfolder = home_dir+properties["output_folder"]
         n_fold = int(properties["n_fold"])
 
         print("loading dataset...")
@@ -65,19 +71,19 @@ if __name__ == "__main__":
         X_all = numpy.concatenate(features_from_separate_fields, axis=1)
 
         print("\tfeature extraction completed.")
-        # print(datetime.datetime.now())
-        # print("\nRunning nb")
-        # cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
-        #                    categorical_targets=int(properties["classes"]),
-        #                    nfold=n_fold, algorithms=["nb"])
-        # cls.run()
-
         print(datetime.datetime.now())
-        print("\nRunning pca-svm_l")
-        cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
+        print("\nRunning nb")
+        cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
                            categorical_targets=int(properties["classes"]),
-                           nfold=n_fold, algorithms=["svm_l"])
+                           nfold=n_fold, algorithms=["nb"])
         cls.run()
+
+        # print(datetime.datetime.now())
+        # print("\nRunning pca-svm_l")
+        # cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
+        #                    categorical_targets=int(properties["classes"]),
+        #                    nfold=n_fold, algorithms=["svm_l"])
+        # cls.run()
 
         # print(datetime.datetime.now())
         # print("\nRunning pca-knn")

@@ -4,10 +4,10 @@
 label=gslvl1_name_
 
 #output folder where the results will be written to
-output_folder=/home/zz/Work/wop/output/classifier
+output_folder=/wop/output/classifier
 
 #CSV input text data. Texts data must be available in at least one column
-training_text_data=/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv
+training_text_data=/data/wop_data/goldstandard_eng_v1_utf8.csv
 
 #CSV input text data columns, seperated by ','. If multiple columns are specified, content will be merged
 training_text_data_columns=4,name
