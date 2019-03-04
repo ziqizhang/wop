@@ -50,16 +50,17 @@ if __name__ == "__main__":
 
     for setting_file in os.listdir(sys.argv[1]):
         properties = load_properties(sys.argv[1]+'/'+setting_file)
+        home_dir = sys.argv[2]
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
-        csv_training_text_data = properties['training_text_data']
+        csv_training_text_data = home_dir+properties['training_text_data']
 
         # this is the folder containing other gazetteer based features that are already pre-extracted
-        csv_training_other_feaures = properties['training_other_features']
+        csv_training_other_feaures = home_dir+properties['training_other_features']
         if len(csv_training_other_feaures)==0:
             csv_training_other_feaures=None
 
         # this is the folder to save output to
-        outfolder = properties["output_folder"]
+        outfolder = home_dir+properties["output_folder"]
 
         # if true, classes with instances less than n_fold will be removed
         remove_rare_classes = bool(sys.argv[3])
@@ -67,7 +68,7 @@ if __name__ == "__main__":
         print("\n"+str(datetime.datetime.now()))
         print("loading embedding models...")
         # this the Gensim compatible embedding file
-        dnn_embedding_file = properties["embedding_file"]  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+        dnn_embedding_file =home_dir+properties["embedding_file"]  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
         gensimFormat = ".gensim" in dnn_embedding_file
         if gensimFormat:
             pretrained_embedding_models = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
