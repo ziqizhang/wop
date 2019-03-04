@@ -131,6 +131,33 @@ class Classifer(object):
                                     X_train,
                                     y_train, self.identifier, self.outfolder, feature_reduction="pca",nfold=self.nfold)
 
+        ##################### KNN #####################
+        if "knn" in self.algorithms:
+            cl.learn_discriminative(-1, self.task_name, "knn",
+                                    X_train,
+                                    y_train, self.identifier, self.outfolder, nfold=self.nfold)
+        if "pca-knn" in self.algorithms:
+            cl.learn_discriminative(-1, self.task_name, "knn",
+                                    X_train,
+                                    y_train, self.identifier, self.outfolder, feature_reduction="pca",
+                                    nfold=self.nfold)
+
+        ##################### KNN #####################
+        if "nb" in self.algorithms:
+            if X_train.min()<0:
+                X_train=X_train-X_train.min()
+            cl.learn_generative(-1, self.task_name, "nb",
+                                    X_train,
+                                    y_train, self.identifier, self.outfolder, nfold=self.nfold)
+        if "pca-nb" in self.algorithms:
+            print("WARNING: generally you should not use feature reduction with Naive Bayes. This may not work")
+            if X_train.min()<0:
+                X_train=X_train-X_train.min()
+            cl.learn_generative(-1, self.task_name, "nb",
+                                    X_train,
+                                    y_train, self.identifier, self.outfolder, feature_reduction="pca",
+                                    nfold=self.nfold)
+
         ################# Artificial Neural Network #################
         # if "dnn_text" in self.algorithms:
         #     cl.learn_dnn_textonly(self.nfold, self.task_name,

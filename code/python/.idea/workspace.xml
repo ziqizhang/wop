@@ -11,37 +11,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="textClassfierHATT2D.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/3rdparty/han/textClassfierHATT2D.py">
+      <file leaf-file-name="classifier_learn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-61">
-              <caret line="174" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+            <state relative-caret-position="1638">
+              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#16#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classifier_dnn_multi_input.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
+      <file leaf-file-name="classifier_main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-              <folding>
-                <element signature="e#302#314#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2466">
+              <caret line="151" column="39" lean-forward="false" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="textClassifierHATT.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/3rdparty/han/textClassifierHATT.py">
+      <file leaf-file-name="exp_wop_cml.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="148" column="43" lean-forward="true" selection-start-line="135" selection-start-column="0" selection-end-line="148" selection-end-column="43" />
+            <state relative-caret-position="151">
+              <caret line="78" column="54" lean-forward="false" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
               <folding>
-                <element signature="e#392#405#0" expanded="true" />
+                <element signature="e#69#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,22 +48,10 @@
       <file leaf-file-name="exp_wop_dnn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="87" column="13" lean-forward="false" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+            <state relative-caret-position="2862">
+              <caret line="159" column="60" lean-forward="false" selection-start-line="159" selection-start-column="40" selection-end-line="159" selection-end-column="60" />
               <folding>
                 <element signature="e#16#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dnn_util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="586" column="38" lean-forward="true" selection-start-line="585" selection-start-column="8" selection-end-line="586" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,17 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>traina</find>
-      <find>trainable</find>
-      <find>epoc</find>
-      <find>tr</find>
-      <find>2000</find>
-      <find>lr</find>
-      <find>randomized</find>
-      <find>rate</find>
-      <find>randomiz</find>
-      <find>3d</find>
-      <find>random</find>
       <find>mas</find>
       <find>mask_z</find>
       <find>shape of</find>
@@ -112,6 +87,17 @@
       <find>bils</find>
       <find>verb</find>
       <find>50</find>
+      <find>learn_Dis</find>
+      <find>pca</find>
+      <find>pca-rf</find>
+      <find>scali</find>
+      <find>Input X must be non-negative</find>
+      <find>text</find>
+      <find>scaling</find>
+      <find>glslv2</find>
+      <find>gs</find>
+      <find>multi</find>
+      <find>gslv</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -129,22 +115,24 @@
         <option value="$PROJECT_DIR$/src/exp/exp_svm_runner.py" />
         <option value="$PROJECT_DIR$/src/3rdparty/han.py" />
         <option value="$PROJECT_DIR$/src/exp/feature_creator.py" />
-        <option value="$PROJECT_DIR$/src/classifier/classifier_main.py" />
         <option value="$PROJECT_DIR$/src/3rdparty/han/textClassifierHATT.py" />
         <option value="$PROJECT_DIR$/src/exp/exp_dnn_runner.py" />
-        <option value="$PROJECT_DIR$/src/classifier/classifier_learn.py" />
         <option value="$PROJECT_DIR$/src/classifier/dnn_util.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
         <option value="$PROJECT_DIR$/src/3rdparty/han/textClassfierHATT2D.py" />
+        <option value="$PROJECT_DIR$/src/feature/text_feature_extractor.py" />
+        <option value="$PROJECT_DIR$/src/classifier/classifier_learn.py" />
+        <option value="$PROJECT_DIR$/src/classifier/classifier_main.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="1299" />
-    <option name="height" value="743" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1441" />
+    <option name="y" value="236" />
+    <option name="width" value="1289" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -161,6 +149,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,8 +224,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.textClassfierHATT2D">
+  <component name="RunManager" selected="Python.exp_wop_cml">
     <configuration name="doc_cnn" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -311,6 +299,24 @@
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/exp_svm_runner.py" />
       <option name="PARAMETERS" value="$PROJECT_DIR$/../../data/ml/training_text_features.csv $PROJECT_DIR$/../../data/ml/training_other_features $PROJECT_DIR$/../../output/classifier" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="exp_wop_cml" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/exp/wop" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/cml_settings" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -387,14 +393,15 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="7">
+    <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
       <item index="1" class="java.lang.String" itemvalue="Python.doc_cnn" />
       <item index="2" class="java.lang.String" itemvalue="Python.textClassifierHATT" />
       <item index="3" class="java.lang.String" itemvalue="Python.exp_wop_dnn" />
       <item index="4" class="java.lang.String" itemvalue="Python.exp_wop_dnn (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.exp_svm_runner" />
-      <item index="6" class="java.lang.String" itemvalue="Python.textClassfierHATT2D" />
+      <item index="5" class="java.lang.String" itemvalue="Python.textClassfierHATT2D" />
+      <item index="6" class="java.lang.String" itemvalue="Python.exp_wop_cml" />
+      <item index="7" class="java.lang.String" itemvalue="Python.exp_svm_runner" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -428,24 +435,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="1441" y="236" width="1289" height="555" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2507837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2527646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23127036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37947884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31220657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5553746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4218241" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23127036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -487,12 +494,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/classifier/classifier_learn.py</url>
-          <line>178</line>
+          <line>209</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/classifier/classifier_learn.py</url>
-          <line>283</line>
+          <line>314</line>
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -502,7 +509,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/classifier/classifier_learn.py</url>
-          <line>169</line>
+          <line>200</line>
           <option name="timeStamp" value="281" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -515,6 +522,11 @@
           <line>161</line>
           <option name="timeStamp" value="314" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_learn.py</url>
+          <line>118</line>
+          <option name="timeStamp" value="367" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -526,7 +538,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="352" />
+      <option name="time" value="373" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -557,70 +569,53 @@ os.path.isfile(dnn_embedding_file)</expression-string>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>input_shapes[0]</expression-string>
+        <expression-string>y_train.min()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>separate_training_feature_inputs[0].shape</expression-string>
+        <expression-string>y_train.min</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>separate_training_feature_inputs[0]</expression-string>
+        <expression-string>y_train</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(separate_training_feature_inputs)</expression-string>
+        <expression-string>X_train.min()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dnn_branch_input_features</expression-string>
+        <expression-string>X_train</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dnn_branches[0].shape</expression-string>
+        <expression-string>(X_train+1).min()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dnn_branches[0]</expression-string>
+        <expression-string>X_train+1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dnn_branches</expression-string>
+        <expression-string>X_train.max()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>separate_training_feature_inputs[1].shape</expression-string>
+        <expression-string>X_train.min</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/exp/exp_dnn_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2178">
-          <caret line="135" column="22" lean-forward="false" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3078">
@@ -764,26 +759,10 @@ os.path.isfile(dnn_embedding_file)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/feature/text_feature_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="45" column="34" lean-forward="false" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/exp_svm_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="1071" column="0" lean-forward="false" selection-start-line="1071" selection-start-column="0" selection-end-line="1071" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -801,24 +780,10 @@ os.path.isfile(dnn_embedding_file)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="121" column="52" lean-forward="false" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/keras/layers/merge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="615" column="4" lean-forward="false" selection-start-line="615" selection-start-column="4" selection-end-line="615" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/feature_creator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -832,30 +797,10 @@ os.path.isfile(dnn_embedding_file)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="274" column="20" lean-forward="false" selection-start-line="274" selection-start-column="12" selection-end-line="274" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/tensorflow/contrib/boosted_trees/estimator_batch/dnn_tree_combined_estimator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="87" column="13" lean-forward="false" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-          <folding>
-            <element signature="e#16#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -873,9 +818,6 @@ os.path.isfile(dnn_embedding_file)</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -893,18 +835,79 @@ os.path.isfile(dnn_embedding_file)</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
           <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="e#302#314#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/3rdparty/han/textClassfierHATT2D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="174" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+        <state relative-caret-position="173">
+          <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/exp_svm_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/feature_creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="54" column="62" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/feature/text_feature_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2862">
+          <caret line="159" column="60" lean-forward="false" selection-start-line="159" selection-start-column="40" selection-end-line="159" selection-end-column="60" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#16#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1638">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2466">
+          <caret line="151" column="39" lean-forward="false" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/h5py/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="78" column="54" lean-forward="false" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
+          <folding>
+            <element signature="e#69#79#0" expanded="true" />
           </folding>
         </state>
       </provider>

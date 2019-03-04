@@ -18,6 +18,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_predict, StratifiedKFold
+from sklearn.naive_bayes import MultinomialNB, GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelBinarizer
 
@@ -52,6 +54,23 @@ def learn_discriminative(cpus, task, model,
     classifier = None
     model_file = None
 
+    if (model == "knn"):
+        print("== KNN ...")
+        cls = KNeighborsClassifier()
+        # rfc_tuning_params = {"max_depth": [3, 5, None],
+        #                      "max_features": [1, 3, 5, 7, 10],
+        #                      "min_samples_split": [2, 5, 10],
+        #                      "min_samples_leaf": [1, 3, 10],
+        #                      "bootstrap": [True, False],
+        #                      "criterion": ["gini", "entropy"]}
+        if feature_reduction is not None:
+            fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
+            print("\t using " + str(fr[1]))
+            pipe = Pipeline([(fr[0], fr[1]), ('knn', cls)])
+            classifier = pipe
+        else:
+            classifier = cls
+        model_file = os.path.join(outfolder, "knn_classifier-%s.m" % task)
     if (model == "rf"):
         print("== Random Forest ...")
         cls = RandomForestClassifier(n_estimators=20, n_jobs=cpus)
@@ -76,7 +95,7 @@ def learn_discriminative(cpus, task, model,
         if feature_reduction is not None:
             fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
             print("\t using " + str(fr[1]))
-            pipe = Pipeline([(fr[0], fr[1]), ('rf', cls)])
+            pipe = Pipeline([(fr[0], fr[1]), ('svm-l', cls)])
             classifier = pipe
         else:
             classifier = cls
@@ -89,7 +108,7 @@ def learn_discriminative(cpus, task, model,
         cls = svm.SVC()
         if feature_reduction is not None:
             fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
-            pipe = Pipeline([(fr[0], fr[1]), ('rf', cls)])
+            pipe = Pipeline([(fr[0], fr[1]), ('svm-rbf', cls)])
             print("\t using " + str(fr[1]))
             classifier = pipe
         else:
@@ -110,6 +129,18 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
                      identifier, outfolder, nfold=None, feature_reduction=None):
     classifier = None
     model_file = None
+    if (model_flag == "nb"):
+        print("== Naive Bayes ...")
+        cls = MultinomialNB()
+        if feature_reduction is not None:
+            fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
+            print("\t using " + str(fr[1]))
+            pipe = Pipeline([(fr[0], fr[1]), ('nb', cls)])
+            classifier = pipe
+        else:
+            classifier = cls
+        model_file = os.path.join(outfolder, "nb-classifier-%s.m" % task)
+
     if (model_flag == "sgd"):
         print("== SGD ...")
         # "loss": ["log", "modified_huber", "squared_hinge", 'squared_loss'],
@@ -121,7 +152,7 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
         if feature_reduction is not None:
             fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
             print("\t using " + str(fr[1]))
-            pipe = Pipeline([(fr[0], fr[1]), ('rf', cls)])
+            pipe = Pipeline([(fr[0], fr[1]), ('sgd', cls)])
             classifier = pipe
         else:
             classifier = cls
@@ -133,7 +164,7 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
         if feature_reduction is not None:
             fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
             print("\t using " + str(fr[1]))
-            pipe = Pipeline([(fr[0], fr[1]), ('rf', cls)])
+            pipe = Pipeline([(fr[0], fr[1]), ('lr', cls)])
             classifier = pipe
         else:
             classifier = cls
