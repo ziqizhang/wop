@@ -119,19 +119,20 @@ if __name__ == "__main__":
                            nfold=n_fold, algorithms=["nb"])
         cls.run()
 
-        # print(datetime.datetime.now())
-        # print("\nRunning pca-svm_l")
-        # cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
-        #                    categorical_targets=target_classes,
-        #                    nfold=n_fold, algorithms=["svm_l"])
-        # cls.run()
+        print(datetime.datetime.now())
+        print("\nRunning pca-knn")
+        cls = cm.Classifer(properties['label'], "knn", X_all, y, outfolder,
+                           categorical_targets=target_classes,
+                           nfold=n_fold, algorithms=["knn"])
+        cls.run()
 
-        # print(datetime.datetime.now())
-        # print("\nRunning pca-knn")
-        # cls = cm.Classifer(properties['label'], "knn", X_all, y, outfolder,
-        #                    categorical_targets=target_classes,
-        #                    nfold=n_fold, algorithms=["knn"])
-        # cls.run()
+        print(datetime.datetime.now())
+        print("\nRunning pca-svm_l")
+        cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
+                           categorical_targets=target_classes,
+                           nfold=n_fold, algorithms=["svm_l"])
+        cls.run()
+
 
         # print(datetime.datetime.now())
         # print("\nRunning pca-lr")
