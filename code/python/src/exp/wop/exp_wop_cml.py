@@ -5,6 +5,8 @@ experiment runner class for WOP using classic ML algorithms
 import sys
 import datetime
 import os
+from distutils.util import strtobool
+
 import pandas as pd
 import numpy
 
@@ -51,8 +53,8 @@ if __name__ == "__main__":
 
         home_dir = sys.argv[2]
         #if true, classes with instances less than n_fold will be removed
-        remove_rare_classes=bool(sys.argv[3])
-        remove_no_desc_instances=bool(sys.argv[4])
+        remove_rare_classes=strtobool(sys.argv[3])
+        remove_no_desc_instances=strtobool(sys.argv[4])
 
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
         csv_training_text_data = home_dir+properties['training_text_data']

@@ -14,9 +14,9 @@ han
 ORIGINAL DATA - desc empty
 
 		n	d	n+d	n+c	n+d+c
-nb		
-knn		
-svm
+nb		ib	ib	ib
+knn		ib	ib	ib
+svm		ib	ib	ib
 bilstm
 cnn
 han
@@ -24,4 +24,4 @@ base-nb
 base-knn
 base-svm
 
-(lvl1=, lvl2=, lvl3=)
+(lvl1=ib, lvl2=ib, lvl3=ib)

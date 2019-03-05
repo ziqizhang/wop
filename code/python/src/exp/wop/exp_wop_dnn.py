@@ -33,6 +33,10 @@ def merge(input_columns:list, df: pd.DataFrame):
     return texts
 
 
+def strtobool(param):
+    pass
+
+
 if __name__ == "__main__":
 
     for setting_file in os.listdir(sys.argv[1]):
@@ -50,8 +54,8 @@ if __name__ == "__main__":
         outfolder = home_dir+properties["output_folder"]
 
         # if true, classes with instances less than n_fold will be removed
-        remove_rare_classes = bool(sys.argv[3])
-        remove_no_desc_instances = bool(sys.argv[4])
+        remove_rare_classes = strtobool(sys.argv[3])
+        remove_no_desc_instances = strtobool(sys.argv[4])
 
         print("\n"+str(datetime.datetime.now()))
         print("loading embedding models...")
