@@ -18,11 +18,8 @@ training_other_features=
 #number of folds for cross-validation
 n_fold=5
 
-#number of expected classes in the data
-classes=37
-
 #column index of target classes
-class_column=10
+class_column=11
 
 #If pre-trained embeddings are used (for DNN only)
 embedding_file=/data/glove.840B.300d.bin.gensim"

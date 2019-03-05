@@ -18,9 +18,6 @@ training_other_features=
 #number of folds for cross-validation
 n_fold=5
 
-#number of expected classes in the data
-classes=37
-
 #column index of target classes
 class_column=10
 

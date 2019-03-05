@@ -1,0 +1,27 @@
+ORIGINAL DATA
+
+	n+d	n+d+c
+nb
+knn
+svm
+bilstm
+cnn
+han
+
+(lvl1=, lvl2=, lvl3=)
+
+
+ORIGINAL DATA - desc empty
+
+		n	d	n+d	n+c	n+d+c
+nb		
+knn		
+svm
+bilstm
+cnn
+han
+base-nb
+base-knn
+base-svm
+
+(lvl1=, lvl2=, lvl3=)
