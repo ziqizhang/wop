@@ -12,23 +12,10 @@ seed(1)
 
 from classifier import classifier_dnn_multi_input as dnn_classifier
 from classifier import dnn_util as util
+from exp.wop import exp_wop_cml as exp_util
 import pandas as pd
 
 
-def load_properties(filepath, sep='=', comment_char='#'):
-    """
-    Read the file passed as parameter as a properties file.
-    """
-    props = {}
-    with open(filepath, "rt") as f:
-        for line in f:
-            l = line.strip()
-            if l and not l.startswith(comment_char):
-                key_value = l.split(sep)
-                key = key_value[0].strip()
-                value = sep.join(key_value[1:]).strip().strip('"')
-                props[key] = value
-    return props
 
 def merge(input_columns:list, df: pd.DataFrame):
     to_merge = []
@@ -49,7 +36,7 @@ def merge(input_columns:list, df: pd.DataFrame):
 if __name__ == "__main__":
 
     for setting_file in os.listdir(sys.argv[1]):
-        properties = load_properties(sys.argv[1]+'/'+setting_file)
+        properties = exp_util.load_properties(sys.argv[1]+'/'+setting_file)
         home_dir = sys.argv[2]
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
         csv_training_text_data = home_dir+properties['training_text_data']
@@ -64,6 +51,7 @@ if __name__ == "__main__":
 
         # if true, classes with instances less than n_fold will be removed
         remove_rare_classes = bool(sys.argv[3])
+        remove_no_desc_instances = bool(sys.argv[4])
 
         print("\n"+str(datetime.datetime.now()))
         print("loading embedding models...")
@@ -105,9 +93,13 @@ if __name__ == "__main__":
         df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
                          ).as_matrix()
         df.astype(str)
+        if remove_no_desc_instances:
+            print("you have chosen to remove instances whose description are empty")
+            df=exp_util.remove_empty_desc_instances(df, 5)
+
         y = df[:, int(properties['class_column'])]
 
-        target_classes = int(properties["classes"])
+        target_classes = len(set(y))
         remove_instance_indexes = []
         if remove_rare_classes:
             print("you have chosen to remove classes whose instances are less than n_fold")
@@ -123,7 +115,7 @@ if __name__ == "__main__":
                 if label in remove_labels:
                     remove_instance_indexes.append(i)
             y = numpy.delete(y, remove_instance_indexes)
-            target_classes = int(properties["classes"]) - len(remove_labels)
+            target_classes = len(set(y))
 
 
         print('[STARTED] running settings with label='+properties['label'])
@@ -175,7 +167,7 @@ if __name__ == "__main__":
             print("creating merged model (if multiple input branches)")
             final_model=\
                 dnn_classifier.merge_dnn_branch(dnn_branches, dnn_branch_input_shapes,
-                                            int(properties["classes"]))
+                                                target_classes)
             print("fitting model...")
             dnn_classifier.fit_dnn(inputs=dnn_branch_input_features,
                                    nfold=n_fold,

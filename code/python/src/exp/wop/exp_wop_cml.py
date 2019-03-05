@@ -28,6 +28,19 @@ def load_properties(filepath, sep='=', comment_char='#'):
                 props[key] = value
     return props
 
+def remove_empty_desc_instances(df, col:int):
+    remove_indexes=[]
+    for i in range(len(df)):
+        r = df[i]
+        if type(r[col]) is float:
+            remove_indexes.append(i)
+            continue
+        text=r[col].strip()
+        if len(text)<3:
+            remove_indexes.append(i)
+    df=numpy.delete(df, remove_indexes, axis=0)
+    return df
+
 if __name__ == "__main__":
     for setting_file in os.listdir(sys.argv[1]):
         properties = load_properties(sys.argv[1]+'/'+setting_file)
@@ -38,8 +51,9 @@ if __name__ == "__main__":
 
         home_dir = sys.argv[2]
         #if true, classes with instances less than n_fold will be removed
-        print(sys.argv[3])
         remove_rare_classes=bool(sys.argv[3])
+        remove_no_desc_instances=bool(sys.argv[4])
+
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
         csv_training_text_data = home_dir+properties['training_text_data']
 
@@ -56,9 +70,14 @@ if __name__ == "__main__":
         df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
                          ).as_matrix()
         df.astype(str)
-        y = df[:, int(properties['class_column'])]
+        if remove_no_desc_instances:
+            print("you have chosen to remove instances whose description are empty")
+            df=remove_empty_desc_instances(df, 5)
 
-        target_classes = int(properties["classes"])
+
+        y = df[:, int(properties['class_column'])]
+        target_classes =len(set(y))
+
         remove_instance_indexes=[]
         if remove_rare_classes:
             print("you have chosen to remove classes whose instances are less than n_fold")
@@ -74,7 +93,7 @@ if __name__ == "__main__":
                 if label in remove_labels:
                     remove_instance_indexes.append(i)
             y = numpy.delete(y, remove_instance_indexes)
-            target_classes=int(properties["classes"])-len(remove_labels)
+            target_classes=len(set(y))
 
         print('[STARTED] running settings with label='+properties['label'])
         print('(removing instances='+str(len(remove_instance_indexes))+')')
@@ -92,25 +111,25 @@ if __name__ == "__main__":
             features_from_separate_fields.append(X_ngram)
         X_all = numpy.concatenate(features_from_separate_fields, axis=1)
 
-        # print("\tfeature extraction completed.")
-        # print(datetime.datetime.now())
-        # print("\nRunning nb")
-        # cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
-        #                    categorical_targets=target_classes,
-        #                    nfold=n_fold, algorithms=["nb"])
-        # cls.run()
-
+        print("\tfeature extraction completed.")
         print(datetime.datetime.now())
-        print("\nRunning pca-svm_l")
-        cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
-                           categorical_targets=int(properties["classes"]),
-                           nfold=n_fold, algorithms=["svm_l"])
+        print("\nRunning nb")
+        cls = cm.Classifer(properties['label'], "nb", X_all, y, outfolder,
+                           categorical_targets=target_classes,
+                           nfold=n_fold, algorithms=["nb"])
         cls.run()
+
+        # print(datetime.datetime.now())
+        # print("\nRunning pca-svm_l")
+        # cls = cm.Classifer(properties['label'], "svm_l", X_all, y, outfolder,
+        #                    categorical_targets=target_classes,
+        #                    nfold=n_fold, algorithms=["svm_l"])
+        # cls.run()
 
         # print(datetime.datetime.now())
         # print("\nRunning pca-knn")
         # cls = cm.Classifer(properties['label'], "knn", X_all, y, outfolder,
-        #                    categorical_targets=int(properties["classes"]),
+        #                    categorical_targets=target_classes,
         #                    nfold=n_fold, algorithms=["knn"])
         # cls.run()
 
