@@ -3,6 +3,7 @@
 import sys
 import os
 import datetime
+from distutils.util import strtobool
 
 import gensim
 import numpy
@@ -31,10 +32,6 @@ def merge(input_columns:list, df: pd.DataFrame):
             entry+=l[i]+". "
         texts.append(entry.strip())
     return texts
-
-
-def strtobool(param):
-    pass
 
 
 if __name__ == "__main__":

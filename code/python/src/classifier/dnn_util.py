@@ -44,11 +44,11 @@ lstm examples:
 # the expected dimension in the pre-trained embedding model
 DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
-DNN_MAX_SENTENCE_LENGTH = 100
+DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5 #
 DNN_EPOCHES = 20 #
-DNN_BATCH_SIZE = 200
-MAX_VOCAB=500000 #
+DNN_BATCH_SIZE = 100
+MAX_VOCAB=50000 #
 
 
 
@@ -327,7 +327,7 @@ def extract_vocab_and_2D_input(tweets: list, normalize_option, sentence_length, 
             stop_words=nlp.stopwords,  # We do better when we keep stopwords
             decode_error='replace',
             max_features=MAX_VOCAB,
-            min_df=1,
+            min_df=2,
             max_df=0.99
     )
 

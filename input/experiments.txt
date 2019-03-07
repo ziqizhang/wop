@@ -1,11 +1,14 @@
+dnn: try change vocab size, embedding sentence length
+
+
 ORIGINAL DATA
 
 	n+d	n+d+c
-nb
-knn
-svm
-bilstm
-cnn
+nb	ir	
+knn	ir	
+svm	ir	
+bilstm	
+cnn	
 han
 
 (lvl1=, lvl2=, lvl3=)
