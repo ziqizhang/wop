@@ -71,7 +71,7 @@ def save_scores(nfold_predictions, y_train, model_name, task_name,
     acc=accuracy_score(y_train, nfold_predictions)
     line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
     file.write(line)
-    file.write("accuracy on this run="+str(acc)+"\n\n")
+    file.write(", accuracy on this run="+str(acc)+"\n\n")
 
     file.close()
 
@@ -81,9 +81,12 @@ def index_max(values):
 
 
 def save_classifier_model(model, outfile):
-    if model:
-        with open(outfile, 'wb') as model_file:
-            pickle.dump(model, model_file)
+    try:
+        if model:
+            with open(outfile, 'wb') as model_file:
+                pickle.dump(model, model_file)
+    except AttributeError:
+        print("Saving model failed. Perhaps not supported.")
 
 
 def print_eval_report(best_params, cv_score, prediction_dev,
