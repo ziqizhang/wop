@@ -177,7 +177,7 @@ def fit_dnn(inputs:list, nfold:int, y_train, final_model:Model,outfolder:str, ta
         predicted_labels = []
         for i in indexes:
             predicted_labels.append(nfold_predictions[i])
-        util.save_scores(predicted_labels, y_train_int.argmax(1), "dnn", task, model_descriptor, 2,
+        util.save_scores(predicted_labels, y_train_int.argmax(1), "dnn", task, model_descriptor, 3,
                          outfolder)
     else:
         final_model.fit(inputs,
