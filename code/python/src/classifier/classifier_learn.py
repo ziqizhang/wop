@@ -56,7 +56,7 @@ def learn_discriminative(cpus, task, model,
 
     if (model == "knn"):
         print("== KNN ...")
-        cls = KNeighborsClassifier()
+        cls = KNeighborsClassifier(n_neighbors=1)
         # rfc_tuning_params = {"max_depth": [3, 5, None],
         #                      "max_features": [1, 3, 5, 7, 10],
         #                      "min_samples_split": [2, 5, 10],
