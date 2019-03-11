@@ -19,7 +19,7 @@ training_other_features=
 n_fold=5
 
 #column index of target classes
-class_column=11
+class_column=10
 
 #If pre-trained embeddings are used (for DNN only)
 embedding_file=/data/glove.840B.300d.bin.gensim"

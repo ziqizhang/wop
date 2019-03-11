@@ -27,16 +27,16 @@ skipgram_label={}
 
 ngram_vectorizer = TfidfVectorizer(
             # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
-            tokenizer=nlp.tokenize,
-            ngram_range=(1, 3),
+            tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=1),
+            ngram_range=(1, 1),
             stop_words=nlp.stopwords,  # We do better when we keep stopwords
             use_idf=True,
             smooth_idf=False,
             norm=None,  # Applies l2 norm smoothing
             decode_error='replace',
-            max_features=20000,
-            min_df=3,
-            max_df=0.501
+            max_features=50000,
+            min_df=2,
+            max_df=0.99
         )
 
 #generates tfidf weighted ngram feature as a matrix and the vocabulary

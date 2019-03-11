@@ -2,7 +2,7 @@ import pickle
 
 import datetime
 
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, accuracy_score
 import os
 import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
@@ -53,7 +53,7 @@ def prepare_score_string(p, r, f1, s, labels, target_names, digits):
               np.average(r),
               np.average(f1)):
         string += "{0:0.{1}f}".format(v, digits)+","
-    string += '{0}'.format(np.sum(s))+"\n\n"
+    string += '{0}'.format(np.sum(s))
     return string
 
 def save_scores(nfold_predictions, y_train, model_name, task_name,
@@ -68,8 +68,10 @@ def save_scores(nfold_predictions, y_train, model_name, task_name,
     target_names = ['%s' % l for l in labels]
     p, r, f1, s = precision_recall_fscore_support(y_train, nfold_predictions,
                                                       labels=labels)
+    acc=accuracy_score(y_train, nfold_predictions)
     line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
     file.write(line)
+    file.write(", accuracy on this run="+str(acc)+"\n\n")
 
     file.close()
 
@@ -79,9 +81,12 @@ def index_max(values):
 
 
 def save_classifier_model(model, outfile):
-    if model:
-        with open(outfile, 'wb') as model_file:
-            pickle.dump(model, model_file)
+    try:
+        if model:
+            with open(outfile, 'wb') as model_file:
+                pickle.dump(model, model_file)
+    except AttributeError:
+        print("Saving model failed. Perhaps not supported.")
 
 
 def print_eval_report(best_params, cv_score, prediction_dev,

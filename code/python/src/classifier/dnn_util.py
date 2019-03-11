@@ -16,6 +16,7 @@ import pickle
 from util import nlp, dataclean as du
 from keras.engine.topology import Layer, Input
 from keras import initializers
+import tensorflow as tf
 
 '''
 model_descriptor is parsed by 'parse_model_descriptor' method to create a Keras model object. some examples of the descriptors below
@@ -44,11 +45,11 @@ lstm examples:
 # the expected dimension in the pre-trained embedding model
 DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
-DNN_MAX_SENTENCE_LENGTH = 100
+DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5 #
 DNN_EPOCHES = 20 #
-DNN_BATCH_SIZE = 200
-MAX_VOCAB=500000 #
+DNN_BATCH_SIZE = 100
+MAX_VOCAB=50000 #
 
 
 
@@ -327,7 +328,7 @@ def extract_vocab_and_2D_input(tweets: list, normalize_option, sentence_length, 
             stop_words=nlp.stopwords,  # We do better when we keep stopwords
             decode_error='replace',
             max_features=MAX_VOCAB,
-            min_df=1,
+            min_df=2,
             max_df=0.99
     )
 
@@ -627,12 +628,53 @@ class SkipConv1D(Conv1D):
         self.kernel = self.validGrams * self.originalKernel
 
 
+# class AttLayer_3DInput(Layer):
+#     def __init__(self, attention_dim):
+#         self.init = initializers.get('normal')
+#         self.supports_masking = True
+#         self.attention_dim = attention_dim
+#         super(AttLayer, self).__init__()
+#
+#     def build(self, input_shape):
+#         assert len(input_shape) == 3
+#         self.W = K.variable(self.init((input_shape[-1], self.attention_dim)))
+#         self.b = K.variable(self.init((self.attention_dim,)))
+#         self.u = K.variable(self.init((self.attention_dim, 1)))
+#         self.trainable_weights = [self.W, self.b, self.u]
+#         super(AttLayer, self).build(input_shape)
+#
+#     def compute_mask(self, inputs, mask=None):
+#         return mask
+#
+#     def call(self, x, mask=None):
+#         # size of x :[batch_size, sel_len, attention_dim]
+#         # size of u :[batch_size, attention_dim]
+#         # uit = tanh(xW+b)
+#         uit = K.tanh(K.bias_add(K.dot(x, self.W), self.b))
+#         ait = K.dot(uit, self.u)
+#         ait = K.squeeze(ait, -1)
+#
+#         ait = K.exp(ait)
+#
+#         if mask is not None:
+#             # Cast the mask to floatX to avoid float64 upcasting in theano
+#             ait *= K.cast(mask, K.floatx())
+#         ait /= K.cast(K.sum(ait, axis=1, keepdims=True) + K.epsilon(), K.floatx())
+#         ait = K.expand_dims(ait)
+#         weighted_input = x * ait
+#         output = K.sum(weighted_input, axis=1)
+#
+#         return output
+#
+#     def compute_output_shape(self, input_shape):
+#         return (input_shape[0], input_shape[-1])
+
 class AttLayer(Layer):
-    def __init__(self, attention_dim):
+    def __init__(self, attention_dim, **kwargs):
         self.init = initializers.get('normal')
         self.supports_masking = True
         self.attention_dim = attention_dim
-        super(AttLayer, self).__init__()
+        super(AttLayer, self).__init__(**kwargs)
 
     def build(self, input_shape):
         assert len(input_shape) == 3
@@ -643,13 +685,15 @@ class AttLayer(Layer):
         super(AttLayer, self).build(input_shape)
 
     def compute_mask(self, inputs, mask=None):
-        return mask
+        return None
 
     def call(self, x, mask=None):
         # size of x :[batch_size, sel_len, attention_dim]
         # size of u :[batch_size, attention_dim]
         # uit = tanh(xW+b)
-        uit = K.tanh(K.bias_add(K.dot(x, self.W), self.b))
+        uit = K.tile(K.expand_dims(self.W, axis=0), (K.shape(x)[0], 1, 1))
+        uit = tf.matmul(x, uit)
+        uit = K.tanh(K.bias_add(uit, self.b))
         ait = K.dot(uit, self.u)
         ait = K.squeeze(ait, -1)
 
@@ -667,3 +711,10 @@ class AttLayer(Layer):
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0], input_shape[-1])
+
+    # https://github.com/keras-team/keras/issues/5401
+    # solve the problem of keras.models.clone_model
+    def get_config(self):
+        config = {'attention_dim': self.attention_dim}
+        base_config = super(AttLayer, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))

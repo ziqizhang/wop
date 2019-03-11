@@ -3,6 +3,7 @@
 import sys
 import os
 import datetime
+from distutils.util import strtobool
 
 import gensim
 import numpy
@@ -31,10 +32,6 @@ def merge(input_columns:list, df: pd.DataFrame):
             entry+=l[i]+". "
         texts.append(entry.strip())
     return texts
-
-
-def strtobool(param):
-    pass
 
 
 if __name__ == "__main__":
@@ -82,9 +79,9 @@ if __name__ == "__main__":
         # todo: when HAN used, metafeature must NOT be set
 
         model_descriptors = [
-            #"input=2d han_2dinput",
             "input=2d bilstm=100-False|dense=?-softmax|glv",
-            "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv"]
+            "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
+            "input=2d han_2dinput"]
 
         #input=3d han_full|glv,
         #input=2d lstm=100-False|dense=?-softmax|glv
@@ -104,6 +101,7 @@ if __name__ == "__main__":
         y = df[:, int(properties['class_column'])]
 
         target_classes = len(set(y))
+        print("\ttotal classes=" +str(target_classes))
         remove_instance_indexes = []
         if remove_rare_classes:
             print("you have chosen to remove classes whose instances are less than n_fold")

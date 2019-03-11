@@ -1,11 +1,15 @@
+dnn: try change vocab size, embedding sentence length
+
+
 ORIGINAL DATA
 
 	n+d	n+d+c
-nb
-knn
-svm
-bilstm
-cnn
+nb	ir	
+knn	ir	
+svm	ir	
+rf	ir
+bilstm	
+cnn	
 han
 
 (lvl1=, lvl2=, lvl3=)
@@ -17,6 +21,7 @@ ORIGINAL DATA - desc empty
 nb		ib	ib	ib
 knn		ib	ib	ib
 svm		ib	ib	ib
+rf		ib	ib	ib
 bilstm
 cnn
 han
@@ -25,3 +30,5 @@ base-knn
 base-svm
 
 (lvl1=ib, lvl2=ib, lvl3=ib)
+
+

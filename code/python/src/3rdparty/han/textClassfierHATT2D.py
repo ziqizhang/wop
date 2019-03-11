@@ -12,11 +12,12 @@ from keras.utils.np_utils import to_categorical
 
 from keras.layers import Dense, Input
 from keras.layers import Embedding, GRU, Bidirectional, TimeDistributed
-from keras.models import Model
+from keras.models import Model, clone_model
 
 from keras import backend as K
 from keras.engine.topology import Layer
 from keras import initializers
+import tensorflow as tf
 
 MAX_SENT_LENGTH = 100
 MAX_NB_WORDS = 20000
@@ -123,11 +124,11 @@ embedding_layer = Embedding(len(word_index) + 1,
 
 
 class AttLayer(Layer):
-    def __init__(self, attention_dim):
+    def __init__(self, attention_dim, **kwargs):
         self.init = initializers.get('normal')
         self.supports_masking = True
         self.attention_dim = attention_dim
-        super(AttLayer, self).__init__()
+        super(AttLayer, self).__init__(**kwargs)
 
     def build(self, input_shape):
         assert len(input_shape) == 3
@@ -138,13 +139,15 @@ class AttLayer(Layer):
         super(AttLayer, self).build(input_shape)
 
     def compute_mask(self, inputs, mask=None):
-        return mask
+        return None
 
     def call(self, x, mask=None):
         # size of x :[batch_size, sel_len, attention_dim]
         # size of u :[batch_size, attention_dim]
         # uit = tanh(xW+b)
-        uit = K.tanh(K.bias_add(K.dot(x, self.W), self.b))
+        uit = K.tile(K.expand_dims(self.W, axis=0), (K.shape(x)[0], 1, 1))
+        uit = tf.matmul(x, uit)
+        uit = K.tanh(K.bias_add(uit, self.b))
         ait = K.dot(uit, self.u)
         ait = K.squeeze(ait, -1)
 
@@ -163,6 +166,14 @@ class AttLayer(Layer):
     def compute_output_shape(self, input_shape):
         return (input_shape[0], input_shape[-1])
 
+    # https://github.com/keras-team/keras/issues/5401
+    # solve the problem of keras.models.clone_model
+    def get_config(self):
+        config = {'attention_dim': self.attention_dim}
+        base_config = super(AttLayer, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+
 #################################################
 # Change 2. The model contains only one attention block now
 #################################################
@@ -175,6 +186,8 @@ l_att = AttLayer(100)(l_dense)
 
 preds = Dense(2, activation='softmax')(l_att)
 model = Model(sentence_input, preds)
+
+model_copy = clone_model(model)
 
 plot_model(model, to_file="model.png")
 model.summary()
