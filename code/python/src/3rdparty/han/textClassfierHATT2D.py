@@ -12,7 +12,7 @@ from keras.utils.np_utils import to_categorical
 
 from keras.layers import Dense, Input
 from keras.layers import Embedding, GRU, Bidirectional, TimeDistributed
-from keras.models import Model
+from keras.models import Model, clone_model
 
 from keras import backend as K
 from keras.engine.topology import Layer
@@ -124,11 +124,11 @@ embedding_layer = Embedding(len(word_index) + 1,
 
 
 class AttLayer(Layer):
-    def __init__(self, attention_dim):
+    def __init__(self, attention_dim, **kwargs):
         self.init = initializers.get('normal')
         self.supports_masking = True
         self.attention_dim = attention_dim
-        super(AttLayer, self).__init__()
+        super(AttLayer, self).__init__(**kwargs)
 
     def build(self, input_shape):
         assert len(input_shape) == 3
@@ -166,6 +166,14 @@ class AttLayer(Layer):
     def compute_output_shape(self, input_shape):
         return (input_shape[0], input_shape[-1])
 
+    # https://github.com/keras-team/keras/issues/5401
+    # solve the problem of keras.models.clone_model
+    def get_config(self):
+        config = {'attention_dim': self.attention_dim}
+        base_config = super(AttLayer, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+
 #################################################
 # Change 2. The model contains only one attention block now
 #################################################
@@ -178,6 +186,8 @@ l_att = AttLayer(100)(l_dense)
 
 preds = Dense(2, activation='softmax')(l_att)
 model = Model(sentence_input, preds)
+
+model_copy = clone_model(model)
 
 plot_model(model, to_file="model.png")
 model.summary()

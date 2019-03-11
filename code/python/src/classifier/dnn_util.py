@@ -670,11 +670,11 @@ class SkipConv1D(Conv1D):
 #         return (input_shape[0], input_shape[-1])
 
 class AttLayer(Layer):
-    def __init__(self, attention_dim):
+    def __init__(self, attention_dim, **kwargs):
         self.init = initializers.get('normal')
         self.supports_masking = True
         self.attention_dim = attention_dim
-        super(AttLayer, self).__init__()
+        super(AttLayer, self).__init__(**kwargs)
 
     def build(self, input_shape):
         assert len(input_shape) == 3
@@ -711,3 +711,10 @@ class AttLayer(Layer):
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0], input_shape[-1])
+
+    # https://github.com/keras-team/keras/issues/5401
+    # solve the problem of keras.models.clone_model
+    def get_config(self):
+        config = {'attention_dim': self.attention_dim}
+        base_config = super(AttLayer, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
