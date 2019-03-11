@@ -17,6 +17,7 @@ from keras.models import Model
 from keras import backend as K
 from keras.engine.topology import Layer
 from keras import initializers
+import tensorflow as tf
 
 MAX_SENT_LENGTH = 100
 MAX_NB_WORDS = 20000
@@ -138,13 +139,15 @@ class AttLayer(Layer):
         super(AttLayer, self).build(input_shape)
 
     def compute_mask(self, inputs, mask=None):
-        return mask
+        return None
 
     def call(self, x, mask=None):
         # size of x :[batch_size, sel_len, attention_dim]
         # size of u :[batch_size, attention_dim]
         # uit = tanh(xW+b)
-        uit = K.tanh(K.bias_add(K.dot(x, self.W), self.b))
+        uit = K.tile(K.expand_dims(self.W, axis=0), (K.shape(x)[0], 1, 1))
+        uit = tf.matmul(x, uit)
+        uit = K.tanh(K.bias_add(uit, self.b))
         ait = K.dot(uit, self.u)
         ait = K.squeeze(ait, -1)
 
