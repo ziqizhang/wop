@@ -16,7 +16,7 @@ training_text_data_columns=4,name,20|5,desc,100
 training_other_features=
 
 #number of folds for cross-validation
-n_fold=5
+n_fold=10
 
 #column index of target classes
 class_column=10
