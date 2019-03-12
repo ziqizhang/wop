@@ -70,12 +70,19 @@ def save_scores(nfold_predictions, y_train, model_name, task_name,
                                                       labels=labels)
     acc=accuracy_score(y_train, nfold_predictions)
     mac_prf_line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
+
+    prf_mac_weighted=precision_recall_fscore_support(y_train, nfold_predictions,
+                                                      average='weighted')
+    line = mac_prf_line + "\nmacro avg weighted," + \
+           str(prf_mac_weighted[0]) + "," + str(prf_mac_weighted[1]) + "," + \
+           str(prf_mac_weighted[2]) + "," + str(prf_mac_weighted[3])
+
     prf = precision_recall_fscore_support(y_train, nfold_predictions,
-                                                      average='micro')
-    line=mac_prf_line+"\nmicro avg,"+str(prf[0])+","+str(prf[1])+","+\
+                                          average='micro')
+    line=line+"\nmicro avg,"+str(prf[0])+","+str(prf[1])+","+\
          str(prf[2])+","+str(prf[3])
     file.write(line)
-    file.write(", accuracy on this run="+str(acc)+"\n\n")
+    file.write("\naccuracy on this run="+str(acc)+"\n\n")
 
     file.close()
 
