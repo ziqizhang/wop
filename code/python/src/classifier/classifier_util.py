@@ -72,7 +72,8 @@ def save_scores(nfold_predictions, y_train, model_name, task_name,
     mac_prf_line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
     prf = precision_recall_fscore_support(y_train, nfold_predictions,
                                                       average='micro')
-    line=mac_prf_line+"\nmicro avg,"+prf[0]+","+prf[1]+","+prf[2]+","+prf[3]
+    line=mac_prf_line+"\nmicro avg,"+str(prf[0])+","+str(prf[1])+","+\
+         str(prf[2])+","+str(prf[3])
     file.write(line)
     file.write(", accuracy on this run="+str(acc)+"\n\n")
 
