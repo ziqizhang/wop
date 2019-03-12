@@ -27,7 +27,7 @@ def create_dnn_branch(
         text_data_extra_for_embedding_vocab=None,
         embedding_trainable=False,
         embedding_mask_zero=False):
-    print("\t== Perform ANN ...")  # create model
+    print("\t== Creating DNN branch ...")  # create model
 
     # process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
     M = dmc.extract_vocab_and_2D_input(input_text_data, 1, sentence_length=input_text_sentence_length,

@@ -48,7 +48,7 @@ def prepare_score_string(p, r, f1, s, labels, target_names, digits):
         #report += fmt % tuple(values)
 
     #average
-    string+="avg,"
+    string+="mac avg,"
     for v in (np.average(p),
               np.average(r),
               np.average(f1)):
@@ -69,7 +69,10 @@ def save_scores(nfold_predictions, y_train, model_name, task_name,
     p, r, f1, s = precision_recall_fscore_support(y_train, nfold_predictions,
                                                       labels=labels)
     acc=accuracy_score(y_train, nfold_predictions)
-    line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
+    mac_prf_line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
+    prf = precision_recall_fscore_support(y_train, nfold_predictions,
+                                                      average='micro')
+    line=mac_prf_line+"\nmicro avg,"+prf[0]+","+prf[1]+","+prf[2]+","+prf[3]
     file.write(line)
     file.write(", accuracy on this run="+str(acc)+"\n\n")
 

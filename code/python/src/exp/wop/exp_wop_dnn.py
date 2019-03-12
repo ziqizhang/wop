@@ -4,7 +4,7 @@ import sys
 import os
 import datetime
 from distutils.util import strtobool
-
+import gc
 import gensim
 import numpy
 from numpy.random import seed
@@ -34,9 +34,13 @@ def merge(input_columns:list, df: pd.DataFrame):
     return texts
 
 
+
 if __name__ == "__main__":
 
     for setting_file in os.listdir(sys.argv[1]):
+        gc.collect()
+
+        print("now processing config file="+setting_file)
         properties = exp_util.load_properties(sys.argv[1]+'/'+setting_file)
         home_dir = sys.argv[2]
         # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
@@ -147,10 +151,10 @@ if __name__ == "__main__":
             for string in input_column_sources:
                 print("\tcreating model branch="+string)
                 config = string.split(",")
-                col_index=int(config[0])
+                text_data = exp_util.create_text_input_data(config[0],df)
                 col_name=config[1]
                 col_text_length=int(config[2])
-                text_data = df[:, col_index]
+
                 text_data = numpy.delete(text_data, remove_instance_indexes)
                 data = ["" if type(x) is float else x for x in text_data]
 

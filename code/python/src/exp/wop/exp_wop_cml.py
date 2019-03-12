@@ -43,6 +43,30 @@ def remove_empty_desc_instances(df, col:int):
     df=numpy.delete(df, remove_indexes, axis=0)
     return df
 
+def create_text_input_data(col_str:str, df):
+    cols=col_str.split("-")
+    if (len(cols)==1):
+        return df[:, int(col_str)]
+    text_cols=[]
+    for c in cols:
+        text_data = df[:, int(c)]
+        text_data = ["" if (x is numpy.nan or x == 'nan') else x for x in text_data]
+        text_cols.append(list(text_data))
+        list_of_separators = [' ' for i in range(len(text_data))]
+        text_cols.append(list_of_separators)
+    texts= numpy.stack(text_cols, axis=-1)
+
+    df= pd.DataFrame(texts)
+    texts_final=None
+    for column in df:
+        if texts_final is None:
+            texts_final=df[column]
+        else:
+            texts_final=texts_final.astype(str)+df[column].astype(str)
+    return texts_final
+
+#ls = [x if (condition) else None for x in ls]
+
 if __name__ == "__main__":
     for setting_file in os.listdir(sys.argv[1]):
         properties = load_properties(sys.argv[1]+'/'+setting_file)
@@ -104,9 +128,8 @@ if __name__ == "__main__":
         for string in input_column_sources:
             print("\textracting features from: " + string)
             config = string.split(",")
-            col_index = int(config[0])
             col_name = config[1]
-            text_data = df[:, col_index]
+            text_data = create_text_input_data(config[0], df)
             text_data = numpy.delete(text_data, remove_instance_indexes)
             data = ["" if type(x) is float else x for x in text_data]
             X_ngram, vocab = tfe.get_ngram_tfidf(data)

@@ -1,0 +1,24 @@
+#Experiment setting files to be used by 'exp_wop_dnn.py' or 'exp_wop_non_dnn.py'. Each of this setting file should differentiate in terms of input text field to be used for feature extraction (e.g., name, desc, see property 'training_text_data' and 'training_text_data_columns'); and additional pre-processed features to be combined with text features, if any, see 'training_other_features'); and embedding model files if DNN is used (See property 'embedding_file')
+
+#give a label to this setting and it is used to append to every algorithm that is run in the target python file to identify the results in the output CSV file
+label=gslvl1_name+desc+c0_
+
+#output folder where the results will be written to
+output_folder=/wop/output/classifier
+
+#CSV input text data. Texts data must be available in at least one column
+training_text_data=/data/wop_data/goldstandard_eng_v1_utf8.csv
+
+#CSV input text data columns, seperated by ','. If multiple columns are specified, content will be merged
+training_text_data_columns=4,name|5,desc|8-9,cat,20
+
+#CSV file of preprocessed features (if any, so this can be left empty). Features pre-extracted for the same instances in the training_text_data. Rows must match the instances in training_text_data. 
+training_other_features=
+
+#number of folds for cross-validation
+n_fold=10
+
+#column index of target classes
+class_column=10
+
+

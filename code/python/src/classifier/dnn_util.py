@@ -46,11 +46,10 @@ lstm examples:
 DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 200
-DNN_MAX_DOC_LENGTH = 5 #
-DNN_EPOCHES = 20 #
+DNN_MAX_DOC_LENGTH = 5  #
+DNN_EPOCHES = 20  #
 DNN_BATCH_SIZE = 100
-MAX_VOCAB=50000 #
-
+MAX_VOCAB = 50000  #
 
 
 def create_sequential_model(layer_descriptors: list(), model: Sequential = None, embedding_layers=None,
@@ -322,16 +321,16 @@ extract vocab from corpus, and prepare a 2d matrix of doc,word
 def extract_vocab_and_2D_input(tweets: list, normalize_option, sentence_length, use_saved_vocab=False,
                                tweets_extra=None):
     word_vectorizer = CountVectorizer(
-            # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
-            tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
-            ngram_range=(1, 1),
-            stop_words=nlp.stopwords,  # We do better when we keep stopwords
-            decode_error='replace',
-            max_features=MAX_VOCAB,
-            min_df=2,
-            max_df=0.99
+        # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
+        preprocessor=nlp.normalize,
+        tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
+        ngram_range=(1, 1),
+        stop_words=nlp.stopwords,  # We do better when we keep stopwords
+        decode_error='replace',
+        max_features=MAX_VOCAB,
+        min_df=2,
+        max_df=0.99
     )
-
 
     training_data_instances = len(tweets)
     if tweets_extra is not None:
@@ -389,7 +388,7 @@ extract vocab from corpus, and prepare a 3d matrix of doc,sent,word
 
 
 def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, doc_length, use_saved_vocab=False,
-                               docs_extra=None,normalize_tweets=False):
+                               docs_extra=None, normalize_tweets=False):
     docs_with_sentences = []  # each entry a list of sentences, where each sentence is an index number
     sentences = []  # all sentences from the corpus
 
@@ -404,14 +403,15 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
         docs_with_sentences.append(d_with_sent_indexes)
 
     word_vectorizer = CountVectorizer(
-            # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
-            tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
-            ngram_range=(1, 1),
-            stop_words=nlp.stopwords,  # We do better when we keep stopwords
-            decode_error='replace',
-            max_features=MAX_VOCAB,
-            min_df=1,
-            max_df=0.99
+        # vectorizer = sklearn.feature_extraction.text.CountVectorizer(
+        preprocessor=nlp.normalize,
+        tokenizer=functools.partial(nlp.tokenize, stem_or_lemma=normalize_option),
+        ngram_range=(1, 1),
+        stop_words=nlp.stopwords,  # We do better when we keep stopwords
+        decode_error='replace',
+        max_features=MAX_VOCAB,
+        min_df=1,
+        max_df=0.99
     )
 
     if docs_extra is not None:
@@ -435,8 +435,9 @@ def extract_vocab_and_3D_input(docs: list, normalize_option, sentence_length, do
                     sent = counts[sent_ids[j]]
                     sent_vocab = numpy.nonzero(sent)[0]
                     for k in range(0, len(sent_vocab)):
-                        nonzero_index=sent_vocab[k] #index position in the sentence vector where the word is present.
-                        #this index is also the word vocab index
+                        nonzero_index = sent_vocab[
+                            k]  # index position in the sentence vector where the word is present.
+                        # this index is also the word vocab index
                         if k < sentence_length:
                             data[i, j, k] = nonzero_index
 
@@ -499,7 +500,6 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
                           weights=[word_embedding_weights],
                           trainable=word_embedding_trainable,
                           mask_zero=word_embedding_mask_zero)(sentence_inputs_2D)
-
 
     if model_option.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
         # conv1d_1 = Conv1D(filters=100,

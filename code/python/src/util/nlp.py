@@ -12,6 +12,13 @@ other_exclusions = ["#ff", "ff", "rt"]
 stopwords.extend(other_exclusions)
 
 
+#use regex to remove urls, and remove any non alphanumeric chars
+def normalize(text):
+    text = re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', '', text)
+    text=re.sub(r'\W+', ' ', text).strip()
+    return text
+
+
 # stem_or_lemma: 0 - apply porter's stemming; 1: apply lemmatization; 2: neither
 # -set to 0 to reproduce Davidson. However, note that because a different stemmer is used, results could be
 # sightly different
@@ -52,3 +59,7 @@ def get_pos_tags(tweets):
         tag_str = " ".join(tag_list)
         tweet_tags.append(tag_str)
     return tweet_tags
+
+
+# text="http://schema.org/Product/offers\|http://schema.org/Product/name\|http://schema.org/Product/description\|http://schema.org/Product/url\|http://schema.org/Product/image NFL > Seattle Seahawks > Seattle Seahawks Flags & Banners"
+# print(normalize(text))
