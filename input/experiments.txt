@@ -3,32 +3,19 @@ dnn: try change vocab size, embedding sentence length
 
 ORIGINAL DATA
 
-	n+d	n+d+c0
-nb	ir	
-knn	ir	
-svm	ir	
-rf	ir
-bilstm	lp	lp
-cnn	lp	lp
-han	lp	lp
+	n	n+d	n+d+c0
+nb		ir	ir
+knn		ir	ir
+svm		ir	ir
+rf		ir	ir
+bilstm	lp	x	x
+cnn	lp	x	x
+han	lp	x	x
 
 (lvl1=, lvl2=, lvl3=)
 
-
-ORIGINAL DATA - desc empty
-
-		n	d	n+d	n+c	n+d+c
-nb		ib	ib	ib
-knn		ib	ib	ib
-svm		ib	ib	ib
-rf		ib	ib	ib
-bilstm
-cnn
-han
-base-nb
-base-knn
-base-svm
-
-(lvl1=ib, lvl2=ib, lvl3=ib)
-
-
+	para2vec
+nb
+knn
+svm
+rf
