@@ -17,6 +17,7 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.core.CoreContainer;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
@@ -227,5 +228,23 @@ public class Util {
         query.setStart(0);
         query.setRows(resultBatchSize);
         return query;
+    }
+
+    public static void main(String[] args) throws IOException, SolrServerException {
+        CoreContainer solrContainer = new CoreContainer(args[1]);
+        solrContainer.load();
+
+        SolrClient solr = new EmbeddedSolrServer(solrContainer.getCore("entities"));
+        System.out.println("counting...");
+        SolrQuery query = new SolrQuery();
+        query.setQuery("*:*");
+        query.setStart(0);
+        QueryResponse qr = performQuery(query, solr);
+        System.out.println(qr.getResults().getNumFound());
+        System.out.println("optimizing...");
+        solr.optimize();
+        System.out.println(new Date());
+        solr.close();
+        System.exit(0);
     }
 }
