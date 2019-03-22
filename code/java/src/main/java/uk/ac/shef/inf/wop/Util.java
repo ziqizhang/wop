@@ -231,7 +231,7 @@ public class Util {
     }
 
     public static void main(String[] args) throws IOException, SolrServerException {
-        CoreContainer solrContainer = new CoreContainer(args[1]);
+        CoreContainer solrContainer = new CoreContainer(args[0]);
         solrContainer.load();
 
         SolrClient solr = new EmbeddedSolrServer(solrContainer.getCore("entities"));

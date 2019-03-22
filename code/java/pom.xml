@@ -186,7 +186,7 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
@@ -201,7 +201,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
             <!-- working with PGP Signatures: http://central.sonatype.org/pages/working-with-pgp-signatures.html -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

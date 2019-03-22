@@ -14,7 +14,7 @@
       <file leaf-file-name="exp_wop_dnn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1782">
+            <state relative-caret-position="509">
               <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="e#16#26#0" expanded="true" />
@@ -26,8 +26,18 @@
       <file leaf-file-name="exp_wop_cml.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+            <state relative-caret-position="288">
+              <caret line="134" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exp_wop_cml_doc2vec.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="73" column="65" lean-forward="false" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -36,18 +46,18 @@
       <file leaf-file-name="classifier_util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classifier/classifier_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="80" column="58" lean-forward="false" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+            <state relative-caret-position="239">
+              <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dnn_util.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
+      <file leaf-file-name="classifier_learn.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="709" column="21" lean-forward="true" selection-start-line="709" selection-start-column="21" selection-end-line="709" selection-end-column="21" />
+            <state relative-caret-position="139">
+              <caret line="120" column="13" lean-forward="false" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -55,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classifier_dnn_multi_input.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
+      <file leaf-file-name="product2vec_loader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/3rdparty/product2vec_loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2394">
-              <caret line="144" column="14" lean-forward="true" selection-start-line="144" selection-start-column="14" selection-end-line="144" selection-end-column="14" />
+            <state relative-caret-position="180">
+              <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -76,7 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>learn_Dis</find>
       <find>pca</find>
       <find>pca-rf</find>
       <find>scali</find>
@@ -106,6 +115,7 @@
       <find>Perform ANN</find>
       <find>attlay</find>
       <find>nfold</find>
+      <find>/</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -136,14 +146,16 @@
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_util.py" />
+        <option value="$PROJECT_DIR$/src/3rdparty/product2vec_loader.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="1289" />
-    <option name="height" value="555" />
+    <option name="width" value="1299" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -259,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_wop_dnn">
+  <component name="RunManager" selected="Python.exp_wop_cml_doc2vec">
     <configuration name="doc_cnn" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -332,6 +344,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="exp_wop_cml_doc2vec" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/exp/wop" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/cml_settings_n+d $PROJECT_DIR$/../../.. False False" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="exp_wop_dnn" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -386,6 +416,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="product2vec_loader" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/3rdparty" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/3rdparty/product2vec_loader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="textClassfierHATT2D" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -422,7 +470,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="9">
+    <list size="11">
       <item index="0" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
       <item index="1" class="java.lang.String" itemvalue="Python.doc_cnn" />
       <item index="2" class="java.lang.String" itemvalue="Python.textClassifierHATT" />
@@ -430,9 +478,16 @@
       <item index="4" class="java.lang.String" itemvalue="Python.exp_wop_dnn" />
       <item index="5" class="java.lang.String" itemvalue="Python.textClassfierHATT2D" />
       <item index="6" class="java.lang.String" itemvalue="Python.exp_wop_cml" />
-      <item index="7" class="java.lang.String" itemvalue="Python.exp_svm_runner" />
-      <item index="8" class="java.lang.String" itemvalue="Python.nlp" />
+      <item index="7" class="java.lang.String" itemvalue="Python.exp_wop_cml_doc2vec" />
+      <item index="8" class="java.lang.String" itemvalue="Python.exp_svm_runner" />
+      <item index="9" class="java.lang.String" itemvalue="Python.nlp" />
+      <item index="10" class="java.lang.String" itemvalue="Python.product2vec_loader" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.product2vec_loader" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -466,19 +521,19 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28605017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39087948" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2703583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34527686" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39739415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23618636" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27193934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -568,6 +623,11 @@
           <line>64</line>
           <option name="timeStamp" value="423" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/3rdparty/product2vec_loader.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="455" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -579,7 +639,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="455" />
+      <option name="time" value="466" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -610,55 +670,53 @@ os.path.isfile(dnn_embedding_file)</expression-string>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>list(texts_final.as_matrix())</expression-string>
+        <expression-string>feature_matrix[1111]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>texts_final.as_matrix()</expression-string>
+        <expression-string>feature_matrix.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>texts_final.as_list</expression-string>
+        <expression-string>feature_matrix</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>texts_final.as_matrix().shape</expression-string>
+        <expression-string>len(prodvecs[prod_id])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>texts_final[0]</expression-string>
+        <expression-string>prodvecs[prod_id]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>texts_final.astype(str)+df[column].astype(str)</expression-string>
+        <expression-string>prodvecs.doctags.keys()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>text_data = [&quot;&quot; if (x is numpy.nan or x == 'nan') else x for x in text_data]</expression-string>
+        <expression-string>prodvecs.doctags</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>text_data[0] is numpy.nan</expression-string>
+        <expression-string>prodvecs[&quot;a&quot;]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>text_data[0]</expression-string>
+        <expression-string>prodvecs</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/feature/feature_text_based.py" />
-    <entry file="file://$PROJECT_DIR$/src/util/duplicate_users.py" />
     <entry file="file://$PROJECT_DIR$/src/util/hashtag_processor.py" />
     <entry file="file://$PROJECT_DIR$/src/util/merge_column_labels.py" />
     <entry file="file://$PROJECT_DIR$/src/util/merge_csv_files.py" />
@@ -882,29 +940,11 @@ os.path.isfile(dnn_embedding_file)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/nlp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="175" column="22" lean-forward="false" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,17 +969,27 @@ os.path.isfile(dnn_embedding_file)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_util.py">
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="80" column="58" lean-forward="false" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+        <state relative-caret-position="288">
+          <caret line="134" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="709" column="21" lean-forward="false" selection-start-line="709" selection-start-column="21" selection-end-line="709" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
+        <state relative-caret-position="509">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="e#16#26#0" expanded="true" />
@@ -949,16 +999,40 @@ os.path.isfile(dnn_embedding_file)</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2394">
-          <caret line="144" column="14" lean-forward="true" selection-start-line="144" selection-start-column="14" selection-end-line="144" selection-end-column="14" />
+        <state relative-caret-position="581">
+          <caret line="144" column="14" lean-forward="false" selection-start-line="144" selection-start-column="14" selection-end-line="144" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
+    <entry file="file://$PROJECT_DIR$/src/3rdparty/product2vec_loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="709" column="21" lean-forward="true" selection-start-line="709" selection-start-column="21" selection-end-line="709" selection-end-column="21" />
+        <state relative-caret-position="180">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="73" column="65" lean-forward="false" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="120" column="13" lean-forward="false" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
