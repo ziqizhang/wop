@@ -83,15 +83,11 @@ if __name__ == "__main__":
         # see 'classifier_learn.py - learn_dnn method for details
         # todo: when HAN used, metafeature must NOT be set
 
-        # model_descriptors = [
-        #     "input=2d bilstm=100-False|dense=?-softmax|glv",
-        #     "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
-        #     "input=2d han_2dinput"]
         model_descriptors = [
-            "input=2d hybrid_cnn",
-            "input=2d hybrid_lstm",
-            "input=2d hybrid_cnn+lstm",
-            "input=2d hybrid_cnn+lstm+han"]
+            "input=2d bilstm=100-False|dense=?-softmax|glv",
+            "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
+            "input=2d han_2dinput"]
+
 
         #input=3d han_full|glv,
         #input=2d lstm=100-False|dense=?-softmax|glv
@@ -157,21 +153,30 @@ if __name__ == "__main__":
             for string in input_column_sources:
                 print("\tcreating model branch="+string)
                 config = string.split(",")
-                text_data = cc.create_text_input_data(config[0],df)
-                col_name=config[1]
-                col_text_length=int(config[2])
+                col_name = config[1]
 
-                text_data = numpy.delete(text_data, remove_instance_indexes)
-                data = ["" if type(x) is float else x for x in text_data]
+                if col_name=="cat_cluster": #input are numeric number not text so needs to be processed differently from text
+                    dnn_branch = dnn_classifier.create_dnn_branch_rawfeatures(
+                        input_data_cols=config[0].split("-"),
+                        dataframe_as_matrix=df
+                    )
+                else:
+                    text_data = cc.create_text_input_data(config[0],df)
 
-                dnn_branch=dnn_classifier.create_dnn_branch(
-                    pretrained_embedding_models,input_text_data=data,
-                    input_text_sentence_length=col_text_length,
-                    input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
-                    model_descriptor=model_descriptor,
-                    embedding_trainable=False,
-                    embedding_mask_zero=dnn_embedding_mask_zero
-                )
+                    col_text_length=int(config[2])
+
+                    text_data = numpy.delete(text_data, remove_instance_indexes)
+                    data = ["" if type(x) is float else x for x in text_data]
+
+                    dnn_branch=dnn_classifier.create_dnn_branch_textinput(
+                        pretrained_embedding_models,input_text_data=data,
+                        input_text_sentence_length=col_text_length,
+                        input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
+                        model_descriptor=model_descriptor,
+                        embedding_trainable=False,
+                        embedding_mask_zero=dnn_embedding_mask_zero
+                    )
+
                 dnn_branches.append(dnn_branch[0])
                 dnn_branch_input_shapes.append(dnn_branch[1])
                 dnn_branch_input_features.append(dnn_branch[2])

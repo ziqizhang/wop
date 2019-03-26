@@ -37,7 +37,7 @@ def merge(input_columns: list, df: pd.DataFrame):
 def create_dnn_branch(input_source: str, pretrained_embedding_models,
                       data, col_text_length):
     if input_source == 'name':
-        return dnn_classifier.create_dnn_branch(
+        return dnn_classifier.create_dnn_branch_textinput(
             pretrained_embedding_models, input_text_data=data,
             input_text_sentence_length=col_text_length,
             input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
@@ -46,7 +46,7 @@ def create_dnn_branch(input_source: str, pretrained_embedding_models,
             embedding_mask_zero=True
         )
     elif input_source == 'cat':
-        return dnn_classifier.create_dnn_branch(
+        return dnn_classifier.create_dnn_branch_textinput(
             pretrained_embedding_models, input_text_data=data,
             input_text_sentence_length=col_text_length,
             input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
@@ -55,7 +55,7 @@ def create_dnn_branch(input_source: str, pretrained_embedding_models,
             embedding_mask_zero=True
         )
     elif input_source == 'desc_cnn':
-        return dnn_classifier.create_dnn_branch(
+        return dnn_classifier.create_dnn_branch_textinput(
             pretrained_embedding_models, input_text_data=data,
             input_text_sentence_length=col_text_length,
             input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
@@ -64,7 +64,7 @@ def create_dnn_branch(input_source: str, pretrained_embedding_models,
             embedding_mask_zero=False
         )
     elif input_source == 'desc_lstm':
-        return dnn_classifier.create_dnn_branch(
+        return dnn_classifier.create_dnn_branch_textinput(
             pretrained_embedding_models, input_text_data=data,
             input_text_sentence_length=col_text_length,
             input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
@@ -74,7 +74,7 @@ def create_dnn_branch(input_source: str, pretrained_embedding_models,
         )
 
     elif input_source == 'desc_han':
-        return dnn_classifier.create_dnn_branch(
+        return dnn_classifier.create_dnn_branch_textinput(
             pretrained_embedding_models, input_text_data=data,
             input_text_sentence_length=col_text_length,
             input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,

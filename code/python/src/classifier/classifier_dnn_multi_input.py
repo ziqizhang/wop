@@ -17,8 +17,26 @@ from classifier import dnn_util as dmc
 from classifier import classifier_learn as cl
 from classifier import classifier_util as util
 
+def create_dnn_branch_rawfeatures(
+        input_data_cols:list,
+        dataframe_as_matrix:numpy.ndarray
+        ):
+    print("\t== Creating DNN branch (raw features) ...")  # create model
 
-def create_dnn_branch(
+    # now let's assemble the model based ont the descriptor
+    model_input_shape = Input(shape=(len(input_data_cols),))  # model input
+    model=model_input_shape
+    model_input_features=numpy.ndarray(shape=(len(dataframe_as_matrix), len(input_data_cols)), dtype=float)
+
+    col_idx=0
+    for col in input_data_cols:
+        model_input_features[:,col_idx]=dataframe_as_matrix[:,int(col)]
+        col_idx += 1
+
+    #returns the dnn model, the dnn input shape, and the actual input that should match the shape
+    return model, model_input_shape, model_input_features
+
+def create_dnn_branch_textinput(
         pretrained_embedding_models,
         input_text_data,
         input_text_sentence_length,
@@ -27,7 +45,7 @@ def create_dnn_branch(
         text_data_extra_for_embedding_vocab=None,
         embedding_trainable=False,
         embedding_mask_zero=False):
-    print("\t== Creating DNN branch ...")  # create model
+    print("\t== Creating DNN branch (text features)...")  # create model
 
     # process text data, index vocabulary, pad each text sentence/paragraph to a fixed length
     M = dmc.extract_vocab_and_2D_input(input_text_data, 1, sentence_length=input_text_sentence_length,
