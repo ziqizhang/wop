@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import sys
 import csv
 
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import silhouette_score, calinski_harabaz_score
 
 from util import nlp
 from sklearn import preprocessing
@@ -129,7 +129,7 @@ def cluster(X, n_clusters):
     if type(n_clusters) is list:
         print("optmising cluster size for "+str(len(n_clusters))+" values")
 
-        max_silhouette=0.0
+        max_opt_score=0.0
         best_n=0
         best_clustering=None
         for n in n_clusters:
@@ -137,12 +137,13 @@ def cluster(X, n_clusters):
             print("\tclustering with n="+str(n))
             clustering = AgglomerativeClustering(n_clusters=n).fit(X)
             cluster_labels=clustering.labels_
-            silhouette_avg = silhouette_score(X, cluster_labels)
-            if silhouette_avg>max_silhouette:
-                max_silhouette=silhouette_avg
+            #opt_score = silhouette_score(X, cluster_labels)
+            opt_score = calinski_harabaz_score(X, cluster_labels)
+            if opt_score>max_opt_score:
+                max_opt_score=opt_score
                 best_n=n
                 best_clustering=cluster_labels
-            print("\tsilhouette avg="+str(silhouette_avg))
+            print("\tsilhouette avg="+str(opt_score))
         print("best cluster size is "+str(best_n))
         return best_clustering
 
@@ -158,17 +159,16 @@ def cluster(X, n_clusters):
 #insert category cluster membership into original data file
 def write_category_membership(in_file:str, cat_cluster:list, out_file_name):
     df = pd.read_csv(in_file, header=0, delimiter=";", quoting=0, encoding="utf-8",
-                     ).as_matrix()
+                     )
     header=list(df.columns.values)
+    df=df.as_matrix()
 
-    for i in range(len(df)):
-        row=df[i]
-        numpy.append(row, cat_cluster[i])
-        df[i]=row
     with open(out_file_name, mode='w') as employee_file:
-        csv_writer = csv.writer(employee_file, delimiter=';', quotechar='"', quoting=0, encoding="utf-8")
+        csv_writer = csv.writer(employee_file, delimiter=';', quotechar='"', quoting=0)
         csv_writer.writerow(header)
-        for row in df:
+        for i in range(len(df)):
+            row=df[i]
+            row=numpy.append(row, cat_cluster[i])
             csv_writer.writerow(row)
 
 
@@ -183,7 +183,7 @@ if __name__ == "__main__":
         n_cluster=int(sys.argv[4])
         cluster_labels =cluster(cat_matrix, n_cluster)
     else:
-        n_clusters=[200,250,500,1000,2000,3000]
+        n_clusters=[10,25,50,150,200,250,500,1000]
         cluster_labels =cluster(cat_matrix, n_clusters)
 
     out_file=sys.argv[1][0:len(sys.argv[1])-4]+"_cat_cluster.csv"
