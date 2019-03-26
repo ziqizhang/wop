@@ -2,6 +2,8 @@
 # http://data.dws.informatik.uni-mannheim.de/gpawdc/DL/product2vec/models/doc2vec/classification/
 
 # specifically: classifcation-name+description-PV-DBOW-doc2vec-model-500-5-2-e500
+#
+# author reported full results: http://data.dws.informatik.uni-mannheim.de/gpawdc/SWJ/
 
 from gensim.models.doc2vec import Doc2Vec
 

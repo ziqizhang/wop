@@ -10,7 +10,7 @@ from distutils.util import strtobool
 import pandas as pd
 import numpy
 
-from exp import feature_creator as fc
+from categories import cluster_categories as cc
 from classifier import classifier_main as cm
 from feature import text_feature_extractor as tfe
 
@@ -42,28 +42,6 @@ def remove_empty_desc_instances(df, col:int):
             remove_indexes.append(i)
     df=numpy.delete(df, remove_indexes, axis=0)
     return df
-
-def create_text_input_data(col_str:str, df):
-    cols=col_str.split("-")
-    if (len(cols)==1):
-        return df[:, int(col_str)]
-    text_cols=[]
-    for c in cols:
-        text_data = df[:, int(c)]
-        text_data = ["" if (x is numpy.nan or x == 'nan') else x for x in text_data]
-        text_cols.append(list(text_data))
-        list_of_separators = [' ' for i in range(len(text_data))]
-        text_cols.append(list_of_separators)
-    texts= numpy.stack(text_cols, axis=-1)
-
-    df= pd.DataFrame(texts)
-    texts_final=None
-    for column in df:
-        if texts_final is None:
-            texts_final=df[column]
-        else:
-            texts_final=texts_final.astype(str)+df[column].astype(str)
-    return texts_final
 
 #ls = [x if (condition) else None for x in ls]
 
@@ -129,7 +107,7 @@ if __name__ == "__main__":
             print("\textracting features from: " + string)
             config = string.split(",")
             col_name = config[1]
-            text_data = create_text_input_data(config[0], df)
+            text_data = cc.create_text_input_data(config[0], df)
             text_data = numpy.delete(text_data, remove_instance_indexes)
             data = ["" if type(x) is float else x for x in text_data]
             X_ngram, vocab = tfe.get_ngram_tfidf(data)

@@ -4,10 +4,10 @@ dnn: try change vocab size, embedding sentence length
 ORIGINAL DATA
 
 	n	n+d	n+d+c0
-nb		ir		(needs to git pull the settings for 'name' only)
-knn		ir	
-svm		ir	
-rf		ir	
+nb		x		(needs to git pull the settings for 'name' only)
+knn		x	
+svm		x	
+rf		x	
 bilstm	x	x	x
 cnn	x	x	x
 han	x	x	x

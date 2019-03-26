@@ -14,6 +14,7 @@ seed(1)
 from classifier import classifier_dnn_multi_input as dnn_classifier
 from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
+from categories import cluster_categories as cc
 import pandas as pd
 
 
@@ -82,10 +83,15 @@ if __name__ == "__main__":
         # see 'classifier_learn.py - learn_dnn method for details
         # todo: when HAN used, metafeature must NOT be set
 
+        # model_descriptors = [
+        #     "input=2d bilstm=100-False|dense=?-softmax|glv",
+        #     "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
+        #     "input=2d han_2dinput"]
         model_descriptors = [
-            "input=2d bilstm=100-False|dense=?-softmax|glv",
-            "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
-            "input=2d han_2dinput"]
+            "input=2d hybrid_cnn",
+            "input=2d hybrid_lstm",
+            "input=2d hybrid_cnn+lstm",
+            "input=2d hybrid_cnn+lstm+han"]
 
         #input=3d han_full|glv,
         #input=2d lstm=100-False|dense=?-softmax|glv
@@ -151,7 +157,7 @@ if __name__ == "__main__":
             for string in input_column_sources:
                 print("\tcreating model branch="+string)
                 config = string.split(",")
-                text_data = exp_util.create_text_input_data(config[0],df)
+                text_data = cc.create_text_input_data(config[0],df)
                 col_name=config[1]
                 col_text_length=int(config[2])
 
