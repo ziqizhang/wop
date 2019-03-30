@@ -1,21 +1,21 @@
-dnn: try change vocab size, embedding sentence length
 
 
-ORIGINAL DATA
+unsupervised cat+desc+name
+	lvl1	lvl2	lvl3
+lstm	x
+cnn	x
+han	x
 
-	n	n+d	n+d+c0
-nb		x		(needs to git pull the settings for 'name' only)
-knn		x	
-svm		x	
-rf		x	
-bilstm	x	x	x
-cnn	x	x	x
-han	x	x	x
 
-(lvl1=, lvl2=, lvl3=)
+unsupervised cat+desc+name, extra dense layer
+	lvl1	lvl2	lvl3
+lstm	=
+cnn	=
+han	=
 
-	para2vec
-nb
-knn
-svm
-rf
+
+unsupervised cat+name (if this works better than just name, then it is worth going further on unsupervised cat other experiments)
+	lvl1	lvl2	lvl3
+lstm	=
+cnn	=
+han	=

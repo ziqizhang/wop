@@ -1,6 +1,7 @@
 import csv
 import urllib.request
 
+import numpy
 import numpy as np
 import pandas as pd
 import glob
@@ -60,3 +61,28 @@ def replace_nan_in_list(data):
             data[i]=" "
     return data
 
+
+def merge_prodcat_dataset(data1, data2,out_file_name):
+    df=pd.read_csv(data1, header=0, delimiter=";", quoting=0, encoding="utf-8",
+                     )
+    df1 = df.as_matrix()
+    df2 = pd.read_csv(data2, header=0, delimiter=";", quoting=0, encoding="utf-8",
+                     ).as_matrix()
+
+    header = list(df.columns.values)
+    header.append("cleaned_cat")
+
+    with open(out_file_name, mode='w') as employee_file:
+        csv_writer = csv.writer(employee_file, delimiter=';', quotechar='"', quoting=0)
+        csv_writer.writerow(header)
+
+        for i in range(len(df1)):
+            df1_row=list(df1[i])
+            df2_row=df2[i]
+            df1_row.append(df2_row[13])
+            csv_writer.writerow(df1_row)
+
+if __name__ == "__main__":
+    merge_prodcat_dataset("/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv",
+                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
+                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned.csv")
