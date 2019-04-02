@@ -32,7 +32,9 @@ word_vectorizer = TfidfVectorizer(
 def create_text_input_data(col_str:str, df):
     cols=col_str.split("-")
     if (len(cols)==1):
-        return df[:, int(col_str)]
+        text_data= df[:, int(col_str)]
+        text_data = ["" if (x is numpy.nan or x == 'nan') else x for x in text_data]
+        return text_data
     text_cols=[]
     for c in cols:
         text_data = df[:, int(c)]
@@ -57,7 +59,13 @@ def create_text_input_data(col_str:str, df):
 def read_categories(in_file:str, cat_col:str):
     df = pd.read_csv(in_file, header=0, delimiter=";", quoting=0, encoding="utf-8",
                      ).as_matrix()
-    cat_texts=create_text_input_data(cat_col,df)
+    cat_texts = create_text_input_data(cat_col, df)
+
+    # cat_texts_raw=create_text_input_data(cat_col,df)
+    # cat_texts=[]
+    # for c in cat_texts_raw:
+    #     if len(c.split(" "))<5:
+    #         cat_texts.append(c)
 
     idx=0
     cat_to_idx=dict()
@@ -106,6 +114,7 @@ def represent_categories(tfidf_scores:numpy.ndarray, cat_vocab:dict, embedding_m
             if word in model.wv.vocab.keys():
                 vec = model.wv[word]
                 tfidf=prod_cat[word_idx]
+                #tfidf=1.0
                 vec = numpy.array(vec, dtype=float) * tfidf
                 word_embeddings.append(vec)
 

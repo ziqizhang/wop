@@ -41,7 +41,7 @@ def calc_sim(cat_to_rep:dict, name_to_rep:dict):
 
 
 if __name__=="__main__":
-    cat_to_idx, idx_to_cat, cat_texts = cc.read_categories(sys.argv[1], "8-9")
+    cat_to_idx, idx_to_cat, cat_texts = cc.read_categories(sys.argv[1], sys.argv[4])
     print("total unique categories=" + str(len(set(cat_texts))))
     cat_tfidf, cat_vocab = cc.calc_tfidf(cat_texts)
     cat_matrix = cc.represent_categories(cat_tfidf, cat_vocab, sys.argv[2], 300)
@@ -50,6 +50,7 @@ if __name__=="__main__":
         text=cat_texts[i]
         rep=cat_matrix[i]
         cat_to_rep[text]=rep
+
 
     name_to_idx, idx_to_name, name_texts = cc.read_categories(sys.argv[1], "4")
     print("total unique names=" + str(len(set(name_texts))))
@@ -81,5 +82,6 @@ if __name__=="__main__":
                 cat="none"
             newrow=list(row)
             newrow.append(cat)
+            #newrow[13]=cat
             csv_writer.writerow(newrow)
 

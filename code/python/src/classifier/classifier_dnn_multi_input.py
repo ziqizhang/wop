@@ -191,6 +191,7 @@ def fit_dnn(inputs:list, nfold:int, y_train, final_model:Model,outfolder:str, ta
                 nfold_predictions[i] = l
 
 
+            del nfold_model
 
         indexes = sorted(list(nfold_predictions.keys()))
         predicted_labels = []

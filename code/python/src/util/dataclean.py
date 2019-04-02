@@ -80,9 +80,33 @@ def merge_prodcat_dataset(data1, data2,out_file_name):
             df1_row=list(df1[i])
             df2_row=df2[i]
             df1_row.append(df2_row[13])
+            if df2_row[13] =="nan" or (type(df2_row[13]) is not str and numpy.isnan(df2_row[13])):
+                print("no cat row="+str(i))
+            csv_writer.writerow(df1_row)
+
+def remove_long_cat(in_file_name,out_file_name):
+    df=pd.read_csv(in_file_name, header=0, delimiter=";", quoting=0, encoding="utf-8",
+                     )
+    df1 = df.as_matrix()
+
+    header = list(df.columns.values)
+
+    with open(out_file_name, mode='w') as employee_file:
+        csv_writer = csv.writer(employee_file, delimiter=';', quotechar='"', quoting=0)
+        csv_writer.writerow(header)
+
+        for i in range(len(df1)):
+            df1_row=list(df1[i])
+            cat = df1_row[13]
+            if type(cat) is float or len(cat.split(" "))>5:
+                df1_row[13]=""
+
             csv_writer.writerow(df1_row)
 
 if __name__ == "__main__":
-    merge_prodcat_dataset("/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv",
-                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
-                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned.csv")
+    # merge_prodcat_dataset("/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv",
+    #                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
+    #                 "/home/zz/Work/data/wop_data/tmp.csv")
+
+    remove_long_cat("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
+                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_short.csv")
