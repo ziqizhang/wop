@@ -22,14 +22,55 @@ print(len(df))
 hosts = df[:, 3]
 categories = df[:, 8]
 breadcrumbs = df[:, 9]
-#newCategories = categories
 
-#id = 1
-start = 0#3343#6400
+start = 0
 id = start+1
-#end = 3345
 end = len(categories)
 tfidfList = {}
+
+def normaliseBreadcrumbs(originalBreadcrumb):
+    normalisedBreadcrumb = originalBreadcrumb
+    if "http" in originalBreadcrumb or "node" in originalBreadcrumb or "<!--" in originalBreadcrumb\
+            or "-->" in originalBreadcrumb:
+        normalisedBreadcrumb = ""
+    else:
+        normalisedBreadcrumb = unquote(originalBreadcrumb)
+        normalisedBreadcrumb = normalisedBreadcrumb.strip()
+
+        #Identify the possible separators
+        if "//" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*//[\s]*", " > ", normalisedBreadcrumb)
+        elif " ?" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*\?[\s]*", " > ", normalisedBreadcrumb)
+        elif "::" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*::[\s]*", " > ", normalisedBreadcrumb)
+        elif ":" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*:[\s]*", " > ", normalisedBreadcrumb)
+        elif "›" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*›[\s]*", " > ", normalisedBreadcrumb)
+        elif "»" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*»[\s]*", " > ", normalisedBreadcrumb)
+        elif "\|" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*[\\\|]+[\s]*", " > ", normalisedBreadcrumb)
+        elif "|" in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*\|[\s]*", " > ", normalisedBreadcrumb)
+        elif "/ " in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r"[\s]*/[\s]+", " > ", normalisedBreadcrumb)
+        elif "  " in normalisedBreadcrumb:
+            normalisedBreadcrumb = re.sub(r" [\s]+", " > ", normalisedBreadcrumb)
+
+        normalisedBreadcrumb = re.sub(r"[\s]+>[\s]+>[\s]+", " > ", normalisedBreadcrumb)
+        normalisedBreadcrumb = re.sub(r"[\s]+", " ", normalisedBreadcrumb)
+        normalisedBreadcrumb = re.sub(r" [>/|]+[ >]*", " > ", normalisedBreadcrumb)
+        normalisedBreadcrumb = normalisedBreadcrumb.strip()
+        print (originalBreadcrumb, "\n--> ", normalisedBreadcrumb, "\n")
+        return normalisedBreadcrumb
+
+def mergeCategoriesAndBreadcrumbs():
+    for i in range(start, len(df)):
+        if (categories[i] == "" or "http" in categories[i] or "node" in categories[i] or "<!--" in categories[i]
+                or "-->" in categories[i]):
+            categories[i] = normaliseBreadcrumbs(breadcrumbs[i])
 
 def createTFIDF(host):
     corpus = []
@@ -50,6 +91,8 @@ def createTFIDF(host):
     return dictionary
 
 def normaliseCategories(originalCategory):
+    #Home / Eco - Hipster(Black)
+
     originalCategory = unquote(originalCategory)
     originalCategory = originalCategory.replace("<br>", "")
     originalCategory = originalCategory.replace("\t", " > ")
@@ -100,10 +143,6 @@ def cleanCategory(categoryValues, tfidf):
     total=len(categoryValues)-1
 
     #replace College, league names
-    #originalCategory = originalCategory.replace("College > ", "")
-    #regexp = re.compile(r'^[A-Z]+ > ')
-    #originalCategory = re.sub(r'^[A-Z]+ > ', "", originalCategory)
-
     # H1: Replace the text if it's written in all upper cases
     # This is only checked in the first category
 
@@ -131,7 +170,8 @@ def cleanCategory(categoryValues, tfidf):
                 found=1
             elif parentCategory in categoryValues[i]:
                 #print("Before replacement: %s" % categoryValues[i])
-                categoryValues[i] = categoryValues[i].replace(parentCategory, "").strip()
+                categoryValues[i] = re.sub(r"[\s]*"+parentCategory+"[\s]+", "", categoryValues[i])
+                categoryValues[i] = categoryValues[i].strip()
                 #print("After replacement: %s" % categoryValues[i])
                 found=1
             i+=1
@@ -144,21 +184,20 @@ def cleanCategory(categoryValues, tfidf):
         maxScore = 0
         maxScoreCategory = ""
 
-        # If categories are related to price rather than topics (e.g., "Deals", "Sale", or "$") remove them
+        # If categories are related to price rather than topics (e.g., "Deals", "Sale", or contain price) remove them
         for category in list(categoryValues):
-            if "Sale" in category or "Deals" in category or "$" in category:
-                print("62: ", categoryValues, "before removing", category)
+            regexp1 = re.compile(r'(Sale|Deals)')
+            regexp2 = re.compile(r'[$£€]+[\s]*[0-9]+')
+
+            if re.search(regexp1, category) or re.search(regexp2, category):
                 categoryValues.remove(category)
 
         #If more than one category are left, compute the TF-IDF score and chose the highest scoring category
         if len(categoryValues) > 1:
             for category in list(categoryValues):
-                #check if the category represent "Sale" or contain price.
-                #If that was the case, delete the values.
                 score = getTfIdfScore(category, tfidf)
                 print("----category: ", category, ":", score)
                 if(score >= maxScore):
-                    #remove the prev max score
                     if (maxScoreCategory != ""):
                         categoryValues.remove(maxScoreCategory)
                     maxScore = score
@@ -166,20 +205,19 @@ def cleanCategory(categoryValues, tfidf):
                 else:
                     categoryValues.remove(category)
             print("Category with the max score: ", maxScoreCategory, "; score=", maxScore)
-
-        #categoryValues = [maxScoreCategory]
         return categoryValues
-        #return categoryValues
     else:
         return []
 
+mergeCategoriesAndBreadcrumbs()
+
 for i in range(start, end):
     category = categories[i]
+    breadcrumb = breadcrumbs[i]
     host = hosts[i]
 
     if type(category) == str:
         category = normaliseCategories(category)
-        #check if category is empty or not
         regex = re.compile(r'[\w]+')
         if re.search(regex, category):
             if host not in tfidfList:
