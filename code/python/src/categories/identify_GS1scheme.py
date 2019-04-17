@@ -24,6 +24,8 @@ startLevel = "1"         # 1
 endLevel = "5"           # options: 4, 5 or 6
 weight = "TF-IDF"        # options: "TF" or "TF-IDF"
 
+#The output file lists the mapping between each unique input category and the most similar
+#GS1 categories. This file is required as an input for the extend_dataset.py.
 output = "H:/SeedProject/GS1/" + inputField + "_L" + startLevel + "L" + endLevel + "_" + weight + ".txt"
 
 f = open(output, "w+", encoding="utf-8")
