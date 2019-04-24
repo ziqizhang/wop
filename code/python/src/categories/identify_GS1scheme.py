@@ -17,11 +17,11 @@ schema = "H:/SeedProject/GS1/EN 2018-12/EN/GPC Schema 2018-12 EN.txt"
 #1. the input category (original category (cat) or cleaned category (catClean)
 #2. the ontology levels that the look-up should be performed:
 #   e.g., startLevel = 1 and endLevel = 5 means the look up will be performed against
-#   a concatenated category values between GS1 level 1 to level 5.
+#   a concatenated category values between GPC Schema level 1 to level 5.
 #3. the weight of the cosine similarity ("TF" or "TF-IDF")
-inputField = "catClean"  # options: cat, catClean
-startLevel = "1"         # 1
-endLevel = "5"           # options: 4, 5 or 6
+inputField = "name"  # options: name, cat, catClean
+startLevel = "1"     # 1
+endLevel = "4"       # options: 4, 5 or 6
 weight = "TF-IDF"        # options: "TF" or "TF-IDF"
 
 #The output file lists the mapping between each unique input category and the most similar
@@ -29,7 +29,7 @@ weight = "TF-IDF"        # options: "TF" or "TF-IDF"
 output = "H:/SeedProject/GS1/" + inputField + "_L" + startLevel + "L" + endLevel + "_" + weight + ".txt"
 
 f = open(output, "w+", encoding="utf-8")
-f.write("originalCategory\tcleanedCategory\trelatedGSCategory\n")
+f.write("input\trelatedGSCategory\n")
 
 df = pd.read_csv(schema, header=0, delimiter="\t", quoting=0, encoding="utf-8")
 df = df.replace(np.nan, '', regex=True)
@@ -66,6 +66,7 @@ print(len(lists))
 df = pd.read_csv(input, header=0, delimiter=";", quoting=0, encoding="utf-8")
 df = df.replace(np.nan, '', regex=True)
 df = df.as_matrix()
+name = df[:, 4]
 cleanedCategories = df[:, 13]
 originalCategories = df[:, 8]
 
@@ -73,6 +74,8 @@ if (inputField == "cat"):
     inputCategories = originalCategories
 elif (inputField == "catClean"):
     inputCategories = cleanedCategories
+elif (inputField == "name"):
+    inputCategories = name
 
 stopWords = stopwords.words('english')
 
@@ -110,6 +113,7 @@ for inputCat in np.unique(inputCategories):
         maxIndex = [i for i, j in enumerate(results) if j == max(results)]
 
         for index in maxIndex:
+            inputCat = inputCat.replace("\t", " ")
             print("--- %d. %s" % (matchesFound, lists[index]))
             f.write("%s\t%s\n" % (inputCat, lists[index]))
             matchesFound += 1
