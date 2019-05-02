@@ -5,7 +5,7 @@ export PYTHONPATH=/home/zz/Work/wop/code/python/src
 
 #for file in "$dir/"*
 
-for file in "/home/zz/Work/wop/input/dnn_name+catcluster/"*.txt
+for file in "/home/zz/Work/wop/input/dnn_cat_unsup_gs_sim/"*.txt
 do
      echo "File is '$file'"
      python3 -m exp.wop.exp_wop_dnn_singlesetting $file /home/zz/Work False False

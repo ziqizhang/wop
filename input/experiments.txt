@@ -1,21 +1,5 @@
-
-
-unsupervised cat+desc+name
-	lvl1	lvl2	lvl3
-lstm	x
-cnn	x
-han	x
-
-
-unsupervised cat+desc+name, extra dense layer
-	lvl1	lvl2	lvl3
-lstm	=
-cnn	=
-han	=
-
-
-unsupervised cat+name (if this works better than just name, then it is worth going further on unsupervised cat other experiments)
-	lvl1	lvl2	lvl3
-lstm	=
-cnn	=
-han	=
+gs1 unsupervised category labels
+14 =
+15
+16
+17

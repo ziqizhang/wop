@@ -103,10 +103,29 @@ def remove_long_cat(in_file_name,out_file_name):
 
             csv_writer.writerow(df1_row)
 
+def output_as_is(in_file_name,out_file_name):
+    df=pd.read_csv(in_file_name, header=0, delimiter=";", quoting=0, encoding="utf-8",
+                     )
+    df1 = df.as_matrix()
+
+    header = list(df.columns.values)
+
+    with open(out_file_name, mode='w') as employee_file:
+        csv_writer = csv.writer(employee_file, delimiter=';', quotechar='"', quoting=0)
+        csv_writer.writerow(header)
+
+        for i in range(len(df1)):
+            df1_row=list(df1[i])
+            df1_row[13] = df1_row[17] #14:cat_L1L4_TF; 15:cat_L1L4_TF-IDF; 16:catClean_L1L4_TF; 17:catClean_L1L4_TF-IDF
+            csv_writer.writerow(df1_row)
+
 if __name__ == "__main__":
     # merge_prodcat_dataset("/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv",
     #                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
     #                 "/home/zz/Work/data/wop_data/tmp.csv")
 
-    remove_long_cat("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
-                    "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_short.csv")
+    # remove_long_cat("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
+    #                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_short.csv")
+
+    output_as_is("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories_GS1.csv",
+                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_unsup_gs1_17.csv")

@@ -41,6 +41,11 @@
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp-tools.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.optimaize.languagedetector</groupId>
+            <artifactId>language-detector</artifactId>
+            <version>0.6</version>
+        </dependency>
         <!--dependency>
             <groupId>edu.drexel</groupId>
             <artifactId>dragontool</artifactId>

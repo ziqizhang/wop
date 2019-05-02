@@ -14,8 +14,8 @@
       <file leaf-file-name="exp_wop_dnn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="159" column="36" lean-forward="false" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
+            <state relative-caret-position="2466">
+              <caret line="137" column="25" lean-forward="false" selection-start-line="137" selection-start-column="25" selection-end-line="137" selection-end-column="25" />
               <folding>
                 <element signature="e#16#26#0" expanded="true" />
               </folding>
@@ -23,36 +23,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cluster_categories.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/categories/cluster_categories.py">
+      <file leaf-file-name="nlp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/nlp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="115" column="16" lean-forward="false" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+            <state relative-caret-position="728">
+              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_wop_dnn_singlesetting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_singlesetting.py">
+      <file leaf-file-name="dataclean.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/util/dataclean.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state relative-caret-position="310">
+              <caret line="106" column="3" lean-forward="true" selection-start-line="106" selection-start-column="3" selection-end-line="119" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cleanCategories.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/categories/cleanCategories.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classifier_dnn_multi_input.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
+      <file leaf-file-name="identify_GS1scheme.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/categories/identify_GS1scheme.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="50" column="29" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
-              <folding>
-                <element signature="e#302#314#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extend_dataset.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/categories/extend_dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,7 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gslv</find>
       <find>500000</find>
       <find>happy</find>
       <find>final_model</find>
@@ -98,6 +115,7 @@
       <find>dropout</find>
       <find>sys.</find>
       <find>softmax</find>
+      <find>df</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -131,17 +149,18 @@
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_singlesetting.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
-        <option value="$PROJECT_DIR$/src/util/dataclean.py" />
         <option value="$PROJECT_DIR$/src/categories/cluster_categories.py" />
         <option value="$PROJECT_DIR$/src/categories/similarity_based_categories.py" />
+        <option value="$PROJECT_DIR$/src/categories/cluster_quality_analysis.py" />
+        <option value="$PROJECT_DIR$/src/util/dataclean.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="1299" />
-    <option name="height" value="743" />
+    <option name="x" value="1460" />
+    <option name="y" value="211" />
+    <option name="width" value="1289" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -158,6 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -238,7 +258,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,7 +282,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.similarity_based_categories">
+  <component name="RunManager" selected="Python.exp_wop_dnn">
     <configuration name="cluster_categories" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -278,6 +297,24 @@
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/categories/cluster_categories.py" />
       <option name="PARAMETERS" value="$PROJECT_DIR$/../../../data/wop_data/goldstandard_eng_v1_utf8.csv 8-9 $PROJECT_DIR$/../../../data/glove.840B.300d.bin.gensim 500" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="cluster_quality_analysis" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/categories" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/categories/cluster_quality_analysis.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../../data/wop_data/goldstandard_eng_v1_utf8_cat_cluster50.csv $PROJECT_DIR$/../../../data/wop_data/cat_cluster50_quality.csv 50" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -552,7 +589,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="16">
+    <list size="17">
       <item index="0" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
       <item index="1" class="java.lang.String" itemvalue="Python.doc_cnn" />
       <item index="2" class="java.lang.String" itemvalue="Python.textClassifierHATT" />
@@ -568,7 +605,8 @@
       <item index="12" class="java.lang.String" itemvalue="Python.similarity_based_categories" />
       <item index="13" class="java.lang.String" itemvalue="Python.dataclean" />
       <item index="14" class="java.lang.String" itemvalue="Python.exp_wop_dnn_singlesetting" />
-      <item index="15" class="java.lang.String" itemvalue="Python.product2vec_loader" />
+      <item index="15" class="java.lang.String" itemvalue="Python.cluster_quality_analysis" />
+      <item index="16" class="java.lang.String" itemvalue="Python.product2vec_loader" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -602,19 +640,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28840125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22148462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33802816" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34019503" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40228012" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2751896" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -740,6 +778,11 @@
           <line>46</line>
           <option name="timeStamp" value="606" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/categories/cluster_categories.py</url>
+          <line>186</line>
+          <option name="timeStamp" value="611" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -751,7 +794,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="610" />
+      <option name="time" value="615" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -856,16 +899,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/util/produce_feature_files.py" />
-    <entry file="file://$PROJECT_DIR$/src/classifier/dataset_loader.py" />
-    <entry file="file://$PROJECT_DIR$/src/data/twitter_collector.py" />
-    <entry file="file://$PROJECT_DIR$/src/deprecated/tweet_stats_feature_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/3rdparty/README">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1067,13 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="58" column="10" lean-forward="false" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_learn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
@@ -1149,17 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/dataclean.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="100" column="37" lean-forward="false" selection-start-line="100" selection-start-column="37" selection-end-line="100" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,7 +1188,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="900">
           <caret line="50" column="29" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
           <folding>
             <element signature="e#302#314#0" expanded="true" />
@@ -1181,17 +1196,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/nlp.py">
+    <entry file="file://$PROJECT_DIR$/src/categories/cluster_categories.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state relative-caret-position="2988">
+          <caret line="180" column="36" lean-forward="false" selection-start-line="174" selection-start-column="4" selection-end-line="180" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/categories/cluster_quality_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="69" column="46" lean-forward="true" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/categories/cleanCategories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/categories/extend_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/categories/identify_GS1scheme.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
+        <state relative-caret-position="-6691">
           <caret line="324" column="28" lean-forward="false" selection-start-line="324" selection-start-column="28" selection-end-line="324" selection-end-column="28" />
           <folding />
         </state>
@@ -1199,18 +1254,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="159" column="36" lean-forward="false" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
+        <state relative-caret-position="2466">
+          <caret line="137" column="25" lean-forward="false" selection-start-line="137" selection-start-column="25" selection-end-line="137" selection-end-column="25" />
           <folding>
             <element signature="e#16#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/categories/cluster_categories.py">
+    <entry file="file://$PROJECT_DIR$/src/util/nlp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="115" column="16" lean-forward="false" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+        <state relative-caret-position="728">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/dataclean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="106" column="3" lean-forward="true" selection-start-line="106" selection-start-column="3" selection-end-line="119" selection-end-column="40" />
           <folding />
         </state>
       </provider>
