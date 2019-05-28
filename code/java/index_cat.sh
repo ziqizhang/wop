@@ -1,0 +1,1 @@
+java -cp '/home/zz/Work/wop/code/java/target/wop-1.0-SNAPSHOT-jar-with-dependencies.jar' uk.ac.shef.inf.wop.exporting.ProdNameCategoryExporter /home/zz/Work/data/wdc/entities_1 /home/zz/Work/data/wdc/prodcat_index 5000

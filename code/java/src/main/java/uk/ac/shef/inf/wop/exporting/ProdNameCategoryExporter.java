@@ -110,7 +110,7 @@ public class ProdNameCategoryExporter {
         }
 
         try{
-            prodNameCatIndex.close();
+            prodTripleIndex.close();
             prodNameCatIndex.commit();
             prodNameCatIndex.close();
         }catch (Exception e){
@@ -125,6 +125,8 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
      */
     private int createRecord(SolrDocument d, SolrClient prodcatIndex) throws IOException, SolrServerException {
         String id = d.getFieldValue("id").toString();
+        Object h = d.getFieldValue("source_host").toString();
+        String url =d.getFieldValue("source_page").toString();
         SolrInputDocument doc = new SolrInputDocument();
         int added=0;
         if (d.getFieldValue("sg-product_name")!=null) {
@@ -137,7 +139,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
             name=cleanData(name);
             cat=cleanData(cat);
             if (name==null ||cat==null) {
-                System.out.println("discarded pair="+d.getFieldValue("sg-product_name").toString()+"|"+d.getFieldValue("sg-product_category").toString());
+                //System.out.println("discarded pair="+d.getFieldValue("sg-product_name").toString()+"|"+d.getFieldValue("sg-product_category").toString());
                 return 0;
             }
 
@@ -145,9 +147,12 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
                 cat=cat.substring(name.length()).trim();
             if (cat.length()<3)
                 return 0;
-            doc.setField("id",id+"_sgprod");
+            doc.setField("id",id);
             doc.setField("name",name);
             doc.setField("category",cat);
+            doc.setField("category_str",cat);
+            doc.setField("host",h);
+            doc.setField("url",url);
             prodcatIndex.add(doc);
             added++;
         }
@@ -161,7 +166,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
             name=cleanData(name);
             cat=cleanData(cat);
             if (name==null ||cat==null) {
-                System.out.println("discarded pair="+d.getFieldValue("sg-offer_name").toString()+"|"+d.getFieldValue("sg-offer_category").toString());
+                //System.out.println("discarded pair="+d.getFieldValue("sg-offer_name").toString()+"|"+d.getFieldValue("sg-offer_category").toString());
                 return 0;
             }
             if (cat.startsWith(name))
@@ -172,6 +177,8 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
             doc.setField("id",id+"_sgoffer");
             doc.setField("name",name);
             doc.setField("category",cat);
+            doc.setField("category_str",cat);
+            doc.setField("host",h);
             prodcatIndex.add(doc);
             added++;
         }
@@ -217,8 +224,9 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
 
         ProdNameCategoryExporter exporter = new ProdNameCategoryExporter();
         exporter.export(prodTripleIndex, Integer.valueOf(args[2]), prodNameCatIndex);
-        System.exit(0);
         LOG.info("COMPLETE!");
+
+        System.exit(0);
 
     }
 }

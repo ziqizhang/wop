@@ -110,7 +110,7 @@ public class ProdDescExporter {
         }
 
         try{
-            prodNameDescIndex.close();
+            prodTripleIndex.close();
             prodNameDescIndex.commit();
             prodNameDescIndex.close();
         }catch (Exception e){
@@ -132,9 +132,9 @@ public class ProdDescExporter {
         }
         if (stopwords.contains(name.toLowerCase()))
             return 0;
-        if (name.length()<10||name.length()>20)
+        if (name.split("\\s+").length==1 && name.length()>15)
             return 0;
-        if (name.split("\\s+").length<5)
+        if (name.split("\\s+").length<2)
             return 0;
         if (name.startsWith(".")||name.startsWith("\\u"))
             return 0;

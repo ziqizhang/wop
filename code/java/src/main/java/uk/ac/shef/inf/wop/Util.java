@@ -234,7 +234,7 @@ public class Util {
         CoreContainer solrContainer = new CoreContainer(args[0]);
         solrContainer.load();
 
-        SolrClient solr = new EmbeddedSolrServer(solrContainer.getCore("entities"));
+        SolrClient solr = new EmbeddedSolrServer(solrContainer.getCore(args[1]));
         System.out.println("counting...");
         SolrQuery query = new SolrQuery();
         query.setQuery("*:*");

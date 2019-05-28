@@ -7,12 +7,20 @@ from urllib.parse import unquote
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 stopwords = nltk.corpus.stopwords.words("english")
+#
+# csv_training_text_data = "H:/SeedProject/Dataset/ProductCategorisation/goldstandard_eng_v1.csv"
+# output = "H:/SeedProject/Dataset/ProductCategorisation/goldstandard_eng_v1_cleanedCategories.csv"
+# f = open(output, "w+", encoding="utf-8")
+# f.write("GeneratedID;EntityNodeID;URL;HOST;s:name;s:description;s:brand;Properties;s:category;s:breadcrumb;")
+# f.write("GS1_Level1_Category;GS1_Level2_Category;GS1_Level3_Category;s:cleanedCategory\n")
 
-csv_training_text_data = "H:/SeedProject/Dataset/ProductCategorisation/goldstandard_eng_v1.csv"
-output = "H:/SeedProject/Dataset/ProductCategorisation/goldstandard_eng_v1_cleanedCategories.csv"
+csv_training_text_data = "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv"
+output = "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories_ZZ.csv"
 f = open(output, "w+", encoding="utf-8")
 f.write("GeneratedID;EntityNodeID;URL;HOST;s:name;s:description;s:brand;Properties;s:category;s:breadcrumb;")
 f.write("GS1_Level1_Category;GS1_Level2_Category;GS1_Level3_Category;s:cleanedCategory\n")
+
+
 
 df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8")
 df = df.replace(np.nan, '', regex=True)
@@ -209,43 +217,46 @@ def cleanCategory(categoryValues, tfidf):
     else:
         return []
 
-mergeCategoriesAndBreadcrumbs()
 
-for i in range(start, end):
-    category = categories[i]
-    breadcrumb = breadcrumbs[i]
-    host = hosts[i]
+if __name__ == "__main__":
 
-    if type(category) == str:
-        category = normaliseCategories(category)
-        regex = re.compile(r'[\w]+')
-        if re.search(regex, category):
-            if host not in tfidfList:
-                tfidf = createTFIDF(host)
-                tfidfList[host] = tfidf
+    mergeCategoriesAndBreadcrumbs()
+
+    for i in range(start, end):
+        category = categories[i]
+        breadcrumb = breadcrumbs[i]
+        host = hosts[i]
+
+        if type(category) == str:
+            category = normaliseCategories(category)
+            regex = re.compile(r'[\w]+')
+            if re.search(regex, category):
+                if host not in tfidfList:
+                    tfidf = createTFIDF(host)
+                    tfidfList[host] = tfidf
+                else:
+                    tfidf = tfidfList[host]
+
+                category = unquote(category)
+                print(id, ". Original category: ", category)
+
+                listOfCategories = getCategories(category)
+                finalCategories = cleanCategory(listOfCategories, tfidf)
+
+                finalCategories = ' > '.join(map(str, finalCategories))
             else:
-                tfidf = tfidfList[host]
-
-            category = unquote(category)
-            print(id, ". Original category: ", category)
-
-            listOfCategories = getCategories(category)
-            finalCategories = cleanCategory(listOfCategories, tfidf)
-
-            finalCategories = ' > '.join(map(str, finalCategories))
+                finalCategories = category
         else:
-            finalCategories = category
-    else:
-        finalCategories = ""
+            finalCategories = ""
 
-    for j in range(0, 13):
-        f.write("%s;" % df[i,j])
+        for j in range(0, 13):
+            f.write("%s;" % df[i,j])
 
-    print("--- Processed category: ", finalCategories)
-    f.write("%s\n" %finalCategories)
+        print("--- Processed category: ", finalCategories)
+        f.write("%s\n" %finalCategories)
 
-    id+=1
+        id+=1
 
-print(len(categories))
+    print(len(categories))
 
-f.close()
+    f.close()

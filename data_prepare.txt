@@ -1,0 +1,28 @@
+(rdfs_type:"http://schema.org/Product" OR rdfs_type:"http://schema.org/Offer") AND (sg-product_name:* OR sg-offer_name:*) AND (sg-offer_category:* OR sg-product_category:* OR sg-breadcrumb_title:*)
+
+(rdfs_type:"http://schema.org/Product") AND (sg-product_name:*) AND (sg-product_category:*)
+
+( rdfs_type:"http://schema.org/Offer") AND (sg-offer_name:*) AND (sg-offer_category:*)
+
+
+fastdata indexing:
+- currently:last one, i.e., *.at.gz
+- todo: NONE
+
+fastdata optimising:
+- todo: data indexing one
+
+fastdata desc indexing
+-completed: entity_1,2,3,4,5,6,7,8,9,11,12,13
+-todo: data indexing one
+
+fastdata category indexing
+wrong-completed: entity_1,2,3,4,5,6,7,8,9
+wrong-currently: 
+-completed: 1 2 3
+-currently: 4
+
+
+
+fastdata copying: entity_10 corrupted
+- entity_9,11 ready (optimised)

@@ -1,4 +1,5 @@
 # test changes
+#WARNING: if using HAN, must use tensorflow, not theano!!
 
 import sys
 import os
@@ -74,9 +75,11 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     # todo: when HAN used, metafeature must NOT be set
 
     model_descriptors = [
-        "input=2d bilstm=100-False|dense=?-softmax|glv",
-        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
-        "input=2d han_2dinput"]
+         "input=2d bilstm=100-False|dense=?-softmax|glv",
+         "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
+         "input=2d han_2dinput"]
+    # model_descriptors = [
+    #     "input=2d han_2dinput"]
 
     # input=3d han_full|glv,
     # input=2d lstm=100-False|dense=?-softmax|glv
