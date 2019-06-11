@@ -126,6 +126,15 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         source = trimBrackets(parts[3]);
                     }
 
+                    /*if (predicate!=null && object==null&&
+                            (predicate.equalsIgnoreCase("http://schema.org/Product/category")||
+                                    predicate.equalsIgnoreCase("http://schema.org/Offer/category")))
+                        System.out.println("category empty");
+                    if (predicate!=null && (predicate.equalsIgnoreCase("http://schema.org/Product/category")||
+                                    predicate.equalsIgnoreCase("http://schema.org/Offer/category"))
+                            && object!=null && object.equalsIgnoreCase("null"))
+                        System.out.println("category empty");*/
+
                     subject = subject + "|" + source;
 
             /*

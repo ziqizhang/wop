@@ -6,23 +6,16 @@
 
 
 fastdata indexing:
-- currently:last one, i.e., *.at.gz
-- todo: NONE
+- ALL DONE
 
 fastdata optimising:
-- todo: data indexing one
+- ALL DONE
 
 fastdata desc indexing
--completed: entity_1,2,3,4,5,6,7,8,9,11,12,13
--todo: data indexing one
+- All DONE
 
 fastdata category indexing
-wrong-completed: entity_1,2,3,4,5,6,7,8,9
-wrong-currently: 
--completed: 1 2 3
--currently: 4
-
-
+- All DONE
 
 fastdata copying: entity_10 corrupted
-- entity_9,11 ready (optimised)
+
