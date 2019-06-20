@@ -8,7 +8,7 @@ import multiprocessing
 import gc
 
 import sys
-from gensim.models import Doc2Vec, Word2Vec
+from gensim.models import Word2Vec
 
 
 class Corpus(object):

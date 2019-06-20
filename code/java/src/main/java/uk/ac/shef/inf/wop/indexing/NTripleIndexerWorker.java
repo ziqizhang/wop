@@ -116,6 +116,9 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         source = content.substring(lastQuote + 1);
                         int trim = source.indexOf(" ");
                         source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
+                        if (source.contains(">")) {
+                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                        }
                     } else { //if no, all four parts of the quad are URIs
                         String[] parts = content.split("\\s+");
                         if (parts.length < 4)
@@ -124,6 +127,9 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         predicate = trimBrackets(parts[1]);
                         object = trimBrackets(parts[2]);
                         source = trimBrackets(parts[3]);
+                        if (source.contains(">")) {
+                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                        }
                     }
 
                     /*if (predicate!=null && object==null&&

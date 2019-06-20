@@ -6,10 +6,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.params.CursorMarkParams;
 import org.apache.solr.core.CoreContainer;
 
 import java.io.FileWriter;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 /**
  * This class reads the index created by ProdDescExporter, to export product descriptions into batches of txt files
  */
-public class ProdDescTextFileExporter implements Runnable {
+public class ProdDescTextFileExporter_Cursor implements Runnable {
 
     private static final Logger LOG = Logger.getLogger(ProdDescTextFileExporter.class.getName());
     private long maxWordsPerFile = 5000000000L;
@@ -38,7 +38,7 @@ public class ProdDescTextFileExporter implements Runnable {
     private String nameOutFolder;
     private String descOutFolder;
 
-    public ProdDescTextFileExporter(int id, int start, int end,
+    public ProdDescTextFileExporter_Cursor(int id, int start, int end,
                                     SolrClient prodNameDescIndex,
                                     int resultBatchSize, String nameOutFolder,
                                     String descOutFolder) {
@@ -53,7 +53,8 @@ public class ProdDescTextFileExporter implements Runnable {
 
     public void run()  {
         SolrQuery q = createQuery(resultBatchSize, start);
-        QueryResponse res;
+        String cursorMark = CursorMarkParams.CURSOR_MARK_START;
+        QueryResponse res=null;
         boolean stop = false;
         long total = 0;
 
@@ -64,16 +65,18 @@ public class ProdDescTextFileExporter implements Runnable {
             nameFile = new PrintWriter(new FileWriter(nameOutFolder + "/n_" + id + "_" + nameFileCounter, true));
             descFile = new PrintWriter(new FileWriter(descOutFolder + "/d_" + id + "_" + descFileCounter, true));
 
-            long countNameFileWords = 0, countDescFileWords = 0;
+            long countNameFileWords = 0, countDescFileWords = 0, curr = 0;
 
             while (!stop) {
                 try {
+                    q.set(CursorMarkParams.CURSOR_MARK_PARAM, cursorMark);
                     res = prodNameDescIndex.query(q);
+
                     if (res != null)
                         total = res.getResults().getNumFound();
                     //update results
-                    LOG.info(String.format("\t\tthread %d: total results of %d, currently processing from %d to %d...",
-                            id, total, q.getStart(), q.getStart() + q.getRows()));
+                    LOG.info(String.format("\t\tthread %d: total results of %d, currently processing from %d to %d /started at %d...",
+                            id, total, q.getStart(), q.getStart() + q.getRows(), start));
 
                     for (SolrDocument d : res.getResults()) {
                         //process and export to the other solr index
@@ -102,9 +105,14 @@ public class ProdDescTextFileExporter implements Runnable {
 
                 }
 
-                int curr = q.getStart() + q.getRows();
-                if (curr < end)
-                    q.setStart(curr);
+                curr += q.getRows();
+                if (curr < end) {
+                    String nextCursorMark = res.getNextCursorMark();
+                    if (cursorMark.equals(nextCursorMark)) {
+                        break;
+                    }
+                    cursorMark = nextCursorMark;
+                }
                 else {
                     stop = true;
                     LOG.info("\t\t thread "+id+" reached the end. Stopping...");
@@ -161,8 +169,8 @@ public class ProdDescTextFileExporter implements Runnable {
     private static SolrQuery createQuery(int resultBatchSize, int start) {
         SolrQuery query = new SolrQuery();
         query.setQuery("text:* OR name:*");
-        //query.setSort("random_1234", SolrQuery.ORDER.asc);
-        query.setStart(start);
+        //query.setSort("id", SolrQuery.ORDER.asc);
+        //query.setStart(start);
         query.setRows(resultBatchSize);
 
         return query;
@@ -182,10 +190,10 @@ public class ProdDescTextFileExporter implements Runnable {
         for (int i = 0; i < threads; i++) {
             int start=jobStart+i*jobs;
             int end=start+jobs;
-            Runnable exporter = new ProdDescTextFileExporter(i,
+            Runnable exporter = new ProdDescTextFileExporter_Cursor(i,
                     start,end,
                     prodNameDescIndex,
-                    10000,
+                    5000,
                     args[1],args[2]);
             executor.execute(exporter);
         }
