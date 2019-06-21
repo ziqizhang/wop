@@ -6,12 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
-import org.apache.solr.client.solrj.SolrClient;
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
-import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.params.CursorMarkParams;
 import org.apache.solr.core.CoreContainer;
 import org.apache.solr.search.SolrIndexSearcher;
 
@@ -77,25 +71,33 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
                     LOG.info(String.format("\t\tthread %d: total results of %d, currently processing %d /started at %d to %d...",
                         id, total, i, start,end));
                 // do something with docId here...
-            }
 
-            if (countNameFileWords >= maxWordsPerFile) {
-                nameFile.close();
-                nameFileCounter++;
-                nameFile = new PrintWriter(new FileWriter(nameOutFolder + "/n_" + nameFileCounter, true));
-                countNameFileWords = 0;
-            }
-            if (countDescFileWords >= maxWordsPerFile) {
-                descFile.close();
-                descFileCounter++;
-                descFile = new PrintWriter(new FileWriter(descOutFolder + "/d_" + descFileCounter, true));
-                countDescFileWords = 0;
+                if (countNameFileWords >= maxWordsPerFile) {
+                    LOG.info(String.format("\t\tthread %d: finishing name file, total words= %d",
+                            id, countNameFileWords));
+                    nameFile.close();
+                    nameFileCounter++;
+                    nameFile = new PrintWriter(new FileWriter(nameOutFolder + "/n_" + id + "_"+ nameFileCounter, true));
+                    countNameFileWords = 0;
+                }
+                if (countDescFileWords >= maxWordsPerFile) {
+                    LOG.info(String.format("\t\tthread %d: finishing desc file, total words= %d",
+                            id, countDescFileWords));
+                    descFile.close();
+                    descFileCounter++;
+                    descFile = new PrintWriter(new FileWriter(descOutFolder + "/d_" + id + "_"+ descFileCounter, true));
+                    countDescFileWords = 0;
+                }
             }
 
 
             try {
                 nameFile.close();
                 descFile.close();
+                LOG.info(String.format("\t\tthread %d: finishing name file, total words= %d",
+                        id, countNameFileWords));
+                LOG.info(String.format("\t\tthread %d: finishing desc file, total words= %d",
+                        id, countDescFileWords));
             } catch (Exception e) {
                 LOG.warn(String.format("\t\t thread %d unable to shut down servers due to error: %s",
                         id, ExceptionUtils.getFullStackTrace(e)));
