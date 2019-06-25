@@ -39,7 +39,7 @@ def merge(input_columns:list, df: pd.DataFrame):
 def run_single_setting(setting_file, home_dir, remove_rare_classes,
                        remove_no_desc_instances):
     properties = exp_util.load_properties(setting_file)
-    # this is the file pointing to the CSV file containing the profiles to classify, and the profile texts from which we need to extract features
+
     csv_training_text_data = home_dir + properties['training_text_data']
 
     # this is the folder containing other gazetteer based features that are already pre-extracted
@@ -189,12 +189,17 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
 
 
 if __name__ == "__main__":
+    #argv-1: folder containing all settings to run, see 'input' folder
+    #argv-2: working directory
+    #argv3,4:set to False
 
     for file in os.listdir(sys.argv[1]):
         gc.collect()
 
         print("now processing config file="+file)
         setting_file=sys.argv[1]+'/'+file
+
+
         run_single_setting(setting_file,sys.argv[2],strtobool(sys.argv[3]),
                            strtobool(sys.argv[4]))
 

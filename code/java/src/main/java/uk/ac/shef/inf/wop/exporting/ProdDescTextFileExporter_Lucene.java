@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 public class ProdDescTextFileExporter_Lucene implements Runnable {
 
     private static final Logger LOG = Logger.getLogger(ProdDescTextFileExporter.class.getName());
-    private long maxWordsPerFile = 5000000000L;
+    private long maxWordsPerFile = 1000000000L;
     //private long maxWordsPerFile=500;
     private int nameFileCounter = 0, descFileCounter = 0;
     private PrintWriter nameFile;
