@@ -1,0 +1,32 @@
+(rdfs_type:"http://schema.org/Product" OR rdfs_type:"http://schema.org/Offer") AND (sg-product_name:* OR sg-offer_name:*) AND (sg-offer_category:* OR sg-product_category:* OR sg-breadcrumb_title:*)
+
+(rdfs_type:"http://schema.org/Product") AND (sg-product_name:*) AND (sg-product_category:*)
+
+( rdfs_type:"http://schema.org/Offer") AND (sg-offer_name:*) AND (sg-offer_category:*)
+
+
+
+Deep Learning: HAN, bi-LSTM, CNN
+
+		GloVe	name_cont.	name_skip.	desc_cont.	desc_skip.
+n		
+c		
+d
+n+c
+n+d
+n+d+c
+
+set overwrite param: training_text_data=/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_ZZ.csv
+c_notfidf
+n+c_notfidf
+n+d+c_notfidf
+
+
+c_lvl
+n+c_lvl
+n+d+c_lvl
+
+name cont. set overwrite param:
+name skip.
+desc cont.
+desc skip. 
