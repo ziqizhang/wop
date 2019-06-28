@@ -1,5 +1,5 @@
 # test changes
-#WARNING: if using HAN, must use tensorflow, not theano!!
+# WARNING: if using HAN, must use tensorflow, not theano!!
 
 import sys
 import os
@@ -19,48 +19,59 @@ from categories import cluster_categories as cc
 import pandas as pd
 
 
-
-def merge(input_columns:list, df: pd.DataFrame):
+def merge(input_columns: list, df: pd.DataFrame):
     to_merge = []
     for idx in input_columns:
         data = df[:, idx]
         data = ["" if type(x) is float else x for x in data]
         to_merge.append(data)
 
-    texts=[]
+    texts = []
     for i in range(len(to_merge[0])):
-        entry=""
+        entry = ""
         for l in to_merge:
-            entry+=l[i]+". "
+            entry += l[i] + ". "
         texts.append(entry.strip())
     return texts
 
 
+def describe_task(properties, overwrite_params, setting_file):
+    desc = 'setting_file='+os.path.splitext(os.path.basename(setting_file))[0]
+    desc += '|embedding='
+    desc += os.path.splitext(os.path.basename(
+        load_setting('embedding_file', properties, overwrite_params)))[0]
+    desc += '|training_text_data='
+    desc += os.path.splitext(os.path.basename(
+        load_setting('training_text_data', properties, overwrite_params)))[0]
+    return desc
+
 def run_single_setting(setting_file, home_dir, remove_rare_classes,
                        remove_no_desc_instances,
-                       overwrite_params=None):
+                       overwrite_params=None,
+                       gensimFormat=None):
     properties = exp_util.load_properties(setting_file)
 
-
-    csv_training_text_data = home_dir + load_setting('training_text_data',properties, overwrite_params)
+    csv_training_text_data = home_dir + load_setting('training_text_data', properties, overwrite_params)
     # this is the folder containing other numeric features that are already pre-extracted
-    csv_training_other_feaures=home_dir+load_setting('training_other_features', properties, overwrite_params)
+    csv_training_other_feaures = home_dir + load_setting('training_other_features', properties, overwrite_params)
 
     # this is the folder to save output to
-    outfolder = home_dir + load_setting("output_folder",properties, overwrite_params)
+    outfolder = home_dir + load_setting("output_folder", properties, overwrite_params)
 
     print("\n" + str(datetime.datetime.now()))
     print("loading embedding models...")
     # this the Gensim compatible embedding file
-    dnn_embedding_file = home_dir + load_setting("embedding_file",properties, overwrite_params) # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
-    gensimFormat = ".gensim" in dnn_embedding_file
+    dnn_embedding_file = home_dir + load_setting("embedding_file", properties,
+                                                overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+    if gensimFormat is None:
+        gensimFormat = ".gensim" in dnn_embedding_file
     if gensimFormat:
         pretrained_embedding_models = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
     else:
         pretrained_embedding_models = gensim.models.KeyedVectors. \
             load_word2vec_format(dnn_embedding_file, binary=True)
 
-    n_fold = int(load_setting("n_fold",properties, overwrite_params))
+    n_fold = int(load_setting("n_fold", properties, overwrite_params))
 
     # in order to test different DNN architectures, I implemented a parser that analyses a string following
     # specific syntax, creates different architectures. This one here takes word embedding, pass it to 3
@@ -74,9 +85,9 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     # todo: when HAN used, metafeature must NOT be set
 
     model_descriptors = [
-         "input=2d bilstm=100-False|dense=?-softmax|glv",
-         "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|glv",
-         "input=2d han_2dinput"]
+        "input=2d bilstm=100-False|dense=?-softmax|emb",
+        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb",
+        "input=2d han_2dinput"]
     # model_descriptors = [
     #     "input=2d han_2dinput"]
 
@@ -95,7 +106,7 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
         print("you have chosen to remove instances whose description are empty")
         df = exp_util.remove_empty_desc_instances(df, 5)
 
-    y = df[:, int(load_setting("class_column",properties, overwrite_params))]
+    y = df[:, int(load_setting("class_column", properties, overwrite_params))]
 
     target_classes = len(set(y))
     print("\ttotal classes=" + str(target_classes))
@@ -116,7 +127,7 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
         y = numpy.delete(y, remove_instance_indexes)
         target_classes = len(set(y))
 
-    print('[STARTED] running settings with label=' + load_setting("label",properties, overwrite_params))
+    print('[STARTED] running settings with label=' + load_setting("label", properties, overwrite_params))
 
     for model_descriptor in model_descriptors:
         print("\tML model=" + model_descriptor)
@@ -135,7 +146,7 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
             dnn_embedding_mask_zero = False
 
         input_column_sources = \
-            [x for x in load_setting("training_text_data_columns",properties, overwrite_params).split("|")]
+            [x for x in load_setting("training_text_data_columns", properties, overwrite_params).split("|")]
         # now create DNN branches based on the required input text column sources
 
         dnn_branches = []
@@ -182,34 +193,36 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
                                y_train=y,
                                final_model=final_model,
                                outfolder=outfolder,
-                               task=load_setting('label',properties,overwrite_params),
+                               task=describe_task(properties, overwrite_params,setting_file),
                                model_descriptor=model_descriptor)
         print("Completed running all models on this setting file")
         print(datetime.datetime.now())
 
 
-#the program can overwrite parameters defined in setting files. for example, if you want to overwrite
-#the embedding file, you can include this as an overwrite param in the command line, but specifying
-#[embedding_file= ...] where 'embedding_file' must match the parameter name. Note that this will apply
-#to ALL settings
+# the program can overwrite parameters defined in setting files. for example, if you want to overwrite
+# the embedding file, you can include this as an overwrite param in the command line, but specifying
+# [embedding_file= ...] where 'embedding_file' must match the parameter name. Note that this will apply
+# to ALL settings
 def parse_overwrite_params(argv):
-    params={}
+    params = {}
     for a in argv:
         if "=" in a:
-            values=a.split("=")
-            params[values[0]]=values[1]
+            values = a.split("=")
+            params[values[0]] = values[1]
     return params
 
-def load_setting(param_name, properties:{}, overwrite_params:{}=None):
-    if overwrite_params is not None and param_name in overwrite_params.keys:
+
+def load_setting(param_name, properties: {}, overwrite_params: {} = None):
+    if overwrite_params is not None and param_name in overwrite_params.keys():
         return overwrite_params[param_name]
     else:
         return properties[param_name]
 
+
 if __name__ == "__main__":
-    #argv-1: folder containing all settings to run, see 'input' folder
-    #argv-2: working directory
-    #argv3,4:set to False
+    # argv-1: folder containing all settings to run, see 'input' folder
+    # argv-2: working directory
+    # argv3,4:set to False
 
     # the program can take additional parameters to overwrite existing ones defined in setting files.
     # for example, if you want to overwrite the embedding file, you can include this as an overwrite
@@ -220,11 +233,9 @@ if __name__ == "__main__":
     for file in os.listdir(sys.argv[1]):
         gc.collect()
 
-        print("now processing config file="+file)
-        setting_file=sys.argv[1]+'/'+file
+        print("now processing config file=" + file)
+        setting_file = sys.argv[1] + '/' + file
 
-
-        run_single_setting(setting_file,sys.argv[2],strtobool(sys.argv[3]),
+        run_single_setting(setting_file, sys.argv[2], strtobool(sys.argv[3]),
                            strtobool(sys.argv[4]),
                            overwrite_params=overwrite_params)
-

@@ -288,7 +288,7 @@ def build_pretrained_embedding_matrix(word_vocab: dict, model, expected_emb_dim,
 
                     while (True):
                         index = random_candidates.pop()
-                        word = model.index2word[index]
+                        word = model.wv.index2word[index]
                         if not word in words_matched:
                             words_matched.add(word)
                             break
