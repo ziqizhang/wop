@@ -9,17 +9,17 @@
 Deep Learning: HAN, bi-LSTM, CNN
 
 		GloVe	name_skip.	desc_skip.						name_cbow	desc_cbow
-n							2hr per 3alg,emb,data=	+6hrs for 3 emb.
-c										+6hrs
-d										?
-n+c										+6hrs
-n+d										?
-n+d+c										?
+n	x						2hr per 3alg,emb,data=	+6hrs for 3 emb.
+c	x									+6hrs
+d		x								?
+n+c	x									+6hrs
+n+d		x								?
+n+d+c		x								?
 
 set overwrite param: training_text_data=/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_ZZ.csv
-c_notfidf									+6hrs
-n+c_notfidf									+6hrs
-n+d+c_notfidf									?
+c.new									+6hrs
+n+c.new									+6hrs
+n+d+c.new	x								?
 
 
 c_lvl
