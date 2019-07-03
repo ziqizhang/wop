@@ -504,8 +504,8 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
     if model_option.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
         # conv1d_1 = Conv1D(filters=100,
         #                  kernel_size=1, padding='same', activation='relu')(embedding)
-        conv1d_2 = Conv1D(filters=100,
-                          kernel_size=2, padding='same', activation='relu')(embedding)
+        # conv1d_2 = Conv1D(filters=100,
+        #                   kernel_size=2, padding='same', activation='relu')(embedding)
         conv1d_3 = Conv1D(filters=100,
                           kernel_size=3, padding='same', activation='relu')(embedding)
         conv1d_4 = Conv1D(filters=100,
@@ -514,7 +514,7 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
         #                   kernel_size=5, padding='same', activation='relu')(embedding)
         # conv1d_6 = Conv1D(filters=100,
         #                   kernel_size=6, padding='same', activation='relu')(embedding)
-        merge = concatenate([conv1d_2, conv1d_3, conv1d_4])
+        merge = concatenate([conv1d_3, conv1d_4])
         pool = MaxPooling1D(pool_size=4)(merge)
         flat = Flatten()(pool)
         # final = Dense(targets, activation="softmax")(pool)

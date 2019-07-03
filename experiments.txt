@@ -6,7 +6,8 @@
 
 
 
-Deep Learning: HAN, bi-LSTM, CNN
+VER1: Deep Learning: HAN, bi-LSTM, CNN
+FINDING: CNN 2,3,4 window does not work. need to get rid of window 2
 
 		GloVe	name_skip.	desc_skip.						name_cbow	desc_cbow
 n	x						2hr per 3alg,emb,data=	+6hrs for 3 emb.

@@ -222,4 +222,4 @@ if __name__ == "__main__":
 
         run_single_setting(setting_file, sys.argv[2], strtobool(sys.argv[3]),
                            strtobool(sys.argv[4]),
-                           overwrite_params=overwrite_params)
+                           overwrite_params=overwrite_params,gensimFormat=True)
