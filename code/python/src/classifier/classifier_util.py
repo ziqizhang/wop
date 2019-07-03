@@ -56,28 +56,28 @@ def prepare_score_string(p, r, f1, s, labels, target_names, digits):
     string += '{0}'.format(np.sum(s))
     return string
 
-def save_scores(nfold_predictions, y_train, model_name, task_name,
+def save_scores(predictions, gs, model_name, task_name,
                 identifier, digits, outfolder):
-    outputPredictions(nfold_predictions, y_train, model_name, task_name, outfolder)
+    outputPredictions(predictions, gs, model_name, task_name, outfolder)
     filename = os.path.join(outfolder, "%s-%s.csv" % (model_name, task_name))
     file = open(filename, "a+")
     file.write(identifier)
 
     file.write("N-fold results:\n")
-    labels = unique_labels(y_train, nfold_predictions)
+    labels = unique_labels(gs, predictions)
     target_names = ['%s' % l for l in labels]
-    p, r, f1, s = precision_recall_fscore_support(y_train, nfold_predictions,
-                                                      labels=labels)
-    acc=accuracy_score(y_train, nfold_predictions)
+    p, r, f1, s = precision_recall_fscore_support(gs, predictions,
+                                                  labels=labels)
+    acc=accuracy_score(gs, predictions)
     mac_prf_line=prepare_score_string(p,r,f1,s,labels,target_names,digits)
 
-    prf_mac_weighted=precision_recall_fscore_support(y_train, nfold_predictions,
-                                                      average='weighted')
+    prf_mac_weighted=precision_recall_fscore_support(gs, predictions,
+                                                     average='weighted')
     line = mac_prf_line + "\nmacro avg weighted," + \
            str(prf_mac_weighted[0]) + "," + str(prf_mac_weighted[1]) + "," + \
            str(prf_mac_weighted[2]) + "," + str(prf_mac_weighted[3])
 
-    prf = precision_recall_fscore_support(y_train, nfold_predictions,
+    prf = precision_recall_fscore_support(gs, predictions,
                                           average='micro')
     line=line+"\nmicro avg,"+str(prf[0])+","+str(prf[1])+","+\
          str(prf[2])+","+str(prf[3])

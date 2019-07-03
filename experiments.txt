@@ -17,13 +17,11 @@ n+d		x								?
 n+d+c		x								?
 
 set overwrite param: training_text_data=/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_ZZ.csv
-c.new									+6hrs
-n+c.new									+6hrs
+c.new		x							+6hrs
+n+c.new		x							+6hrs
 n+d+c.new	x								?
 
 
-c_lvl
-n+c_lvl
-n+d+c_lvl
+
 
 

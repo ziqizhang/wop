@@ -20,24 +20,34 @@ import pandas as pd
 
 
 def describe_task(properties, overwrite_params, setting_file):
-    desc = 'setting_file='+os.path.splitext(os.path.basename(setting_file))[0]
+    desc = 'setting_file=' + os.path.splitext(os.path.basename(setting_file))[0]
     desc += '|embedding='
     desc += os.path.splitext(os.path.basename(
         load_setting('embedding_file', properties, overwrite_params)))[0]
-    desc += '|training_text_data='
-    desc += os.path.splitext(os.path.basename(
-        load_setting('training_text_data', properties, overwrite_params)))[0]
+    if 'training_text_data' in properties.keys():
+        desc += '|training_text_data='
+        desc += os.path.splitext(os.path.basename(
+            load_setting('training_text_data', properties, overwrite_params)))[0]
     return desc
 
-def run_single_setting(setting_file, home_dir, remove_rare_classes,
-                       remove_no_desc_instances,
+
+def load_and_merge_train_test_data(train_data_file, test_data_file):
+    train = pd.read_csv(train_data_file, header=0, delimiter="\t", quoting=0, encoding="utf-8",
+                        ).as_matrix()
+    train.astype(str)
+
+    test = pd.read_csv(test_data_file, header=0, delimiter="\t", quoting=0, encoding="utf-8",
+                       ).as_matrix()
+    test.astype(str)
+
+    return numpy.concatenate((train, test), axis=0), len(train), len(test)
+
+
+def run_single_setting(setting_file, home_dir,
+                       train_data_file, test_data_file,
                        overwrite_params=None,
                        gensimFormat=None):
     properties = exp_util.load_properties(setting_file)
-
-    csv_training_text_data = home_dir + load_setting('training_text_data', properties, overwrite_params)
-    # this is the folder containing other numeric features that are already pre-extracted
-    csv_training_other_feaures = home_dir + load_setting('training_other_features', properties, overwrite_params)
 
     # this is the folder to save output to
     outfolder = home_dir + load_setting("output_folder", properties, overwrite_params)
@@ -46,7 +56,7 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     print("loading embedding models...")
     # this the Gensim compatible embedding file
     dnn_embedding_file = home_dir + load_setting("embedding_file", properties,
-                                                overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+                                                 overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
     if gensimFormat is None:
         gensimFormat = ".gensim" in dnn_embedding_file
     if gensimFormat:
@@ -54,8 +64,6 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     else:
         pretrained_embedding_models = gensim.models.KeyedVectors. \
             load_word2vec_format(dnn_embedding_file, binary=True)
-
-    n_fold = int(load_setting("n_fold", properties, overwrite_params))
 
     # in order to test different DNN architectures, I implemented a parser that analyses a string following
     # specific syntax, creates different architectures. This one here takes word embedding, pass it to 3
@@ -69,9 +77,9 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     # todo: when HAN used, metafeature must NOT be set
 
     model_descriptors = [
-        #"input=2d bilstm=100-False|dense=?-softmax|emb",
-        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb"]
-       # "input=2d han_2dinput"]
+        "input=2d bilstm=100-False|dense=?-softmax|emb",
+        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb",
+        "input=2d han_2dinput"]
     # model_descriptors = [
     #     "input=2d han_2dinput"]
 
@@ -83,33 +91,13 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
 
     ######## dnn #######
     print("loading dataset...")
-    df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
-                     ).as_matrix()
-    df.astype(str)
-    if remove_no_desc_instances:
-        print("you have chosen to remove instances whose description are empty")
-        df = exp_util.remove_empty_desc_instances(df, 5)
+    df, train_size, test_size = load_and_merge_train_test_data(train_data_file, test_data_file)
 
     y = df[:, int(load_setting("class_column", properties, overwrite_params))]
 
     target_classes = len(set(y))
     print("\ttotal classes=" + str(target_classes))
     remove_instance_indexes = []
-    if remove_rare_classes:
-        print("you have chosen to remove classes whose instances are less than n_fold")
-        instance_labels = list(y)
-        class_dist = {x: instance_labels.count(x) for x in instance_labels}
-        remove_labels = []
-        for k, v in class_dist.items():
-            if v < n_fold:
-                remove_labels.append(k)
-        remove_instance_indexes = []
-        for i in range(len(y)):
-            label = y[i]
-            if label in remove_labels:
-                remove_instance_indexes.append(i)
-        y = numpy.delete(y, remove_instance_indexes)
-        target_classes = len(set(y))
 
     print('[STARTED] running settings with label=' + load_setting("label", properties, overwrite_params))
 
@@ -151,15 +139,12 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
 
                 col_text_length = int(config[2])
 
-                text_data = numpy.delete(text_data, remove_instance_indexes)
-                data = ["" if type(x) is float else str(x) for x in text_data]
-
                 dnn_branch = dnn_classifier.create_dnn_branch_textinput(
-                    pretrained_embedding_models, input_text_data=data,
+                    pretrained_embedding_models, input_text_data=text_data,
                     input_text_sentence_length=col_text_length,
                     input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
                     model_descriptor=model_descriptor,
-                    embedding_trainable=True,
+                    embedding_trainable=False,
                     embedding_mask_zero=dnn_embedding_mask_zero
                 )
 
@@ -172,13 +157,13 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
             dnn_classifier.merge_dnn_branch(dnn_branches, dnn_branch_input_shapes,
                                             target_classes)
         print("fitting model...")
-        dnn_classifier.fit_dnn(inputs=dnn_branch_input_features,
-                               nfold=n_fold,
-                               y_train=y,
-                               final_model=final_model,
-                               outfolder=outfolder,
-                               task=describe_task(properties, overwrite_params,setting_file),
-                               model_descriptor=model_descriptor)
+        dnn_classifier.fit_dnn_holdout(inputs=dnn_branch_input_features,
+                                       y_labels=y,
+                                       final_model=final_model,
+                                       outfolder=outfolder,
+                                       task=describe_task(properties, overwrite_params, setting_file),
+                                       model_descriptor=model_descriptor,
+                                       split_row=train_size)
         print("Completed running all models on this setting file")
         print(datetime.datetime.now())
 
@@ -214,12 +199,8 @@ if __name__ == "__main__":
     # must match the parameter name. Note that this will apply to ALL settings
     overwrite_params = parse_overwrite_params(sys.argv)
 
-    for file in os.listdir(sys.argv[1]):
-        gc.collect()
-
-        print("now processing config file=" + file)
-        setting_file = sys.argv[1] + '/' + file
-
-        run_single_setting(setting_file, sys.argv[2], strtobool(sys.argv[3]),
-                           strtobool(sys.argv[4]),
-                           overwrite_params=overwrite_params)
+    run_single_setting(sys.argv[1], sys.argv[2],
+                       sys.argv[3],
+                       sys.argv[4],
+                       overwrite_params=overwrite_params,
+                       gensimFormat=True)

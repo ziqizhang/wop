@@ -144,7 +144,7 @@ def transform_score_format_lodataset(infolder, outfile):
         writer.writerow(['PRF_MAC_W', 'bilstm', '', '', 'cnn', '', '', 'han', '', '',
                          'bilstm', '', '', 'cnn', '', '', 'han', '', '',
                          'bilstm', '', '', 'cnn', '', '', 'han', '', ''])
-        for k, v in prf_mac_outlines.items():
+        for k, v in prf_macw_outlines.items():
             values = [k]
             for k_lvl, v_lvl in v.items():
                 if 'lvl1' in k_lvl:
@@ -164,7 +164,7 @@ def transform_score_format_lodataset(infolder, outfile):
         writer.writerow(['PRF_MIC', 'bilstm', '', '', 'cnn', '', '', 'han', '', '',
                          'bilstm', '', '', 'cnn', '', '', 'han', '', '',
                          'bilstm', '', '', 'cnn', '', '', 'han', '', ''])
-        for k, v in prf_mac_outlines.items():
+        for k, v in prf_mic_outlines.items():
             values = [k]
             for k_lvl, v_lvl in v.items():
                 if 'lvl1' in k_lvl:
@@ -179,10 +179,10 @@ def transform_score_format_lodataset(infolder, outfile):
 
 
 if __name__ == "__main__":
-    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/dnn_n+c",
-                                      "/home/zz/Work/wop/output/classifier/dnn_n+c_result.csv")
-    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/dnn_c",
-                                     "/home/zz/Work/wop/output/classifier/dnn_c_result.csv")
+    # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
+    #                                   "/home/zz/Work/wop/tmp/desc.csv")
+    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/dnn_c.new",
+                                     "/home/zz/Work/wop/output/classifier/dnn_c.new_result.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")
