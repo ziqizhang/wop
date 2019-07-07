@@ -43,7 +43,7 @@ lstm examples:
 '''
 
 # the expected dimension in the pre-trained embedding model
-DNN_EMBEDDING_DIM = 300
+DNN_EMBEDDING_DIM = 10
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5  #
@@ -477,6 +477,21 @@ def create_submodel_metafeature(inputs, dim):
     return inputs
 
 
+'''
+sentence_inputs_2D: this must be the sentence level inputs, as a 2-D matrix: row=sent; col=token
+doc_inputs_3D: this must be doc level inputs (if this is required) as a 3D matrix: doc, sent, token
+'''
+def create_embedding_input(sentence_inputs_2D, max_sentence_length,
+                                word_vocab_size, word_embedding_dim, word_embedding_weights,
+                                word_embedding_trainable=False,
+                                word_embedding_mask_zero=False):
+    print("\t(embedding layer mask_zero=True. If your model uses RNN, usually this should be True.")
+    embedding = Embedding(word_vocab_size, word_embedding_dim, input_length=max_sentence_length,
+                          weights=[word_embedding_weights],
+                          trainable=word_embedding_trainable,
+                          mask_zero=word_embedding_mask_zero)(sentence_inputs_2D)
+    return embedding
+
 # model_option:
 # 0= "cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"
 # 1="lstm=100-False|dense=6-softmax|glv"
@@ -490,53 +505,45 @@ doc_inputs_3D: this must be doc level inputs (if this is required) as a 3D matri
 '''
 
 
-def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
-                                word_vocab_size, word_embedding_dim, word_embedding_weights,
-                                model_option, doc_inputs_3D=None,
-                                word_embedding_trainable=False,
-                                word_embedding_mask_zero=False):
-    print("\t(embedding layer mask_zero=True. If your model uses RNN, usually this should be True.")
-    embedding = Embedding(word_vocab_size, word_embedding_dim, input_length=max_sentence_length,
-                          weights=[word_embedding_weights],
-                          trainable=word_embedding_trainable,
-                          mask_zero=word_embedding_mask_zero)(sentence_inputs_2D)
+def create_submodel_text(input_layer,
+                         model_descriptor):
 
-    if model_option.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
+    if model_descriptor.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
         # conv1d_1 = Conv1D(filters=100,
         #                  kernel_size=1, padding='same', activation='relu')(embedding)
-        # conv1d_2 = Conv1D(filters=100,
-        #                   kernel_size=2, padding='same', activation='relu')(embedding)
+        conv1d_2 = Conv1D(filters=100,
+                       kernel_size=2, padding='same', activation='relu')(input_layer)
         conv1d_3 = Conv1D(filters=100,
-                          kernel_size=3, padding='same', activation='relu')(embedding)
+                          kernel_size=3, padding='same', activation='relu')(input_layer)
         conv1d_4 = Conv1D(filters=100,
-                          kernel_size=4, padding='same', activation='relu')(embedding)
+                          kernel_size=4, padding='same', activation='relu')(input_layer)
         # conv1d_5 = Conv1D(filters=100,
         #                   kernel_size=5, padding='same', activation='relu')(embedding)
         # conv1d_6 = Conv1D(filters=100,
         #                   kernel_size=6, padding='same', activation='relu')(embedding)
-        merge = concatenate([conv1d_3, conv1d_4])
+        merge = concatenate([conv1d_2,conv1d_3, conv1d_4])
         pool = MaxPooling1D(pool_size=4)(merge)
         flat = Flatten()(pool)
         # final = Dense(targets, activation="softmax")(pool)
         # model = Model(inputs=deep_inputs, outputs=final)
         return flat
-    elif model_option.startswith("lstm=100-False"):
-        lstm = LSTM(units=100, return_sequences=False)(embedding)
+    elif model_descriptor.startswith("lstm=100-False"):
+        lstm = LSTM(units=100, return_sequences=False)(input_layer)
         # final = Dense(targets, activation="softmax")(lstm)
         # model = Model(inputs=deep_inputs, outputs=final)
         # flat = Flatten()(lstm)
         return lstm
-    elif model_option.startswith("bilstm=100-False"):
-        lstm = Bidirectional(LSTM(units=100, return_sequences=False))(embedding)
+    elif model_descriptor.startswith("bilstm=100-False"):
+        lstm = Bidirectional(LSTM(units=100, return_sequences=False))(input_layer)
         # final = Dense(targets, activation="softmax")(lstm)
         # model = Model(inputs=deep_inputs, outputs=final)
         # flat = Flatten()(lstm)
         return lstm
-    elif model_option.startswith("scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten"):
-        start = model_option.index("[") + 1
-        end = model_option.index("]")
-        window_str = model_option[start:end]
-        dropout = Dropout(0.2)(embedding)
+    elif model_descriptor.startswith("scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten"):
+        start = model_descriptor.index("[") + 1
+        end = model_descriptor.index("]")
+        window_str = model_descriptor[start:end]
+        dropout = Dropout(0.2)(input_layer)
         conv_layers_with_pooling = []
         for i in window_str.split(","):
             ws = int(i)
@@ -550,39 +557,37 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
         # model = Model(inputs=deep_inputs, outputs=final)
         flat = Flatten()(pool)
         return flat
-    elif model_option.startswith("scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
-        start = model_option.index("[") + 1
-        end = model_option.index("]")
-        window_str = model_option[start:end]
-        dropout = Dropout(0.2)(embedding)
+    elif model_descriptor.startswith("scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
+        start = model_descriptor.index("[") + 1
+        end = model_descriptor.index("]")
+        window_str = model_descriptor[start:end]
+        dropout = Dropout(0.2)(input_layer)
         conv_layers = []
         for i in window_str.split(","):
             ws = int(i)
             create_skipped_cnn_layers(ws, 100, conv_layers, dropout)
         merge = concatenate(conv_layers)
         pool = MaxPooling1D(pool_size=4)(merge)
-        # final = Dense(targets, activation="softmax")(pool)
-        # model = Model(inputs=deep_inputs, outputs=final)
         flat = Flatten()(pool)
         return flat
-    elif model_option.startswith(
-            "han_3dinput"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
-
-        l_lstm = Bidirectional(GRU(100, return_sequences=True))(embedding)
-        l_dense = TimeDistributed(Dense(200))(l_lstm)
-        l_att = AttLayer(100)(l_dense)
-        sentEncoder = Model(sentence_inputs_2D, l_att)
-
-        # review_input = Input(shape=(max_sentences, max_sentence_length), dtype='int32')
-        review_encoder = TimeDistributed(sentEncoder)(doc_inputs_3D)
-        l_lstm_sent = Bidirectional(GRU(100, return_sequences=True))(review_encoder)
-        l_dense_sent = TimeDistributed(Dense(200))(l_lstm_sent)
-        l_att_sent = AttLayer(100)(l_dense_sent)
-        return l_att_sent
-    elif model_option.startswith(
+    # elif model_option.startswith(
+    #         "han_3dinput"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
+    #
+    #     l_lstm = Bidirectional(GRU(100, return_sequences=True))(embedding)
+    #     l_dense = TimeDistributed(Dense(200))(l_lstm)
+    #     l_att = AttLayer(100)(l_dense)
+    #     sentEncoder = Model(sentence_inputs_2D, l_att)
+    #
+    #     # review_input = Input(shape=(max_sentences, max_sentence_length), dtype='int32')
+    #     review_encoder = TimeDistributed(sentEncoder)(doc_inputs_3D)
+    #     l_lstm_sent = Bidirectional(GRU(100, return_sequences=True))(review_encoder)
+    #     l_dense_sent = TimeDistributed(Dense(200))(l_lstm_sent)
+    #     l_att_sent = AttLayer(100)(l_dense_sent)
+    #     return l_att_sent
+    elif model_descriptor.startswith(
             "han_2dinput"):  # the original, full hierarchical attention network (see 3rdparty/han/textClassifierHATT)
 
-        l_lstm = Bidirectional(GRU(100, return_sequences=True))(embedding)
+        l_lstm = Bidirectional(GRU(100, return_sequences=True))(input_layer)
         l_dense = TimeDistributed(Dense(200))(l_lstm)
         l_att = AttLayer(100)(l_dense)
         # sentEncoder = Model(sentence_inputs_2D, l_att)
@@ -595,7 +600,7 @@ def create_submodel_textfeature(sentence_inputs_2D, max_sentence_length,
         return l_att
 
     else:
-        raise ValueError("model option not supported: %s" % model_option)
+        raise ValueError("model option not supported: %s" % model_descriptor)
 
 
 # a 1D convolution that skips some entries

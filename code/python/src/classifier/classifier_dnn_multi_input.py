@@ -4,6 +4,8 @@ when you need the same CNN structure for different text inputs, then concatenate
 
 currently only 2D input is supported (i.e., [text,words])
 '''
+import csv
+
 import numpy
 import os
 from keras import Input, Model
@@ -16,7 +18,7 @@ from sklearn.preprocessing import LabelBinarizer
 from classifier import dnn_util as dmc
 from classifier import classifier_learn as cl
 from classifier import classifier_util as util
-
+import fasttext
 
 def create_dnn_branch_rawfeatures(
         input_data_cols: list,
@@ -64,17 +66,20 @@ def create_dnn_branch_textinput(
     # now let's assemble the model based ont the descriptor
     model_text_input_shape = Input(shape=(input_text_sentence_length,))  # model input
 
-    model_text = dmc.create_submodel_textfeature(
-        # this parses 'model_descriptor' and takes the text-based features as input to the model
+
+    embedding_input = dmc.create_embedding_input(# this parses 'model_descriptor' and takes the text-based features as input to the model
         sentence_inputs_2D=model_text_input_shape,
         # it is useful to see the details of this method and try a few different options to see difference
         max_sentence_length=input_text_sentence_length,
         word_vocab_size=len(M[1]),
         word_embedding_dim=input_text_word_embedding_dim,
         word_embedding_weights=pretrained_word_matrix,
-        model_option=model_descriptor,
         word_embedding_trainable=embedding_trainable,
         word_embedding_mask_zero=embedding_mask_zero)
+
+    model_text = dmc.create_submodel_text(
+        # this parses 'model_descriptor' and takes the text-based features as input to the model
+        input_layer=embedding_input, model_descriptor=model_descriptor)
 
     # returns the dnn model, the dnn input shape, and the actual input that should match the shape
     return model_text, model_text_input_shape, X_train_text_feature_input
@@ -219,6 +224,70 @@ def fit_dnn(inputs: list, nfold: int, y_train,
             final_model.save_weights(model_file + ".h5")
         # util.save_classifier_model(model, model_file)
 
+
+def fit_fasttext(X, y, embedding_file, nfold, outfolder: str, task: str):
+
+    encoder = LabelBinarizer()
+    y_int = encoder.fit_transform(y)
+    y_label_lookup = dict()
+    for index, l in zip(y_int.argmax(1), y):
+        y_label_lookup[index] = l
+
+    # perform n-fold validation (we cant use scikit-learn's wrapper as we used Keras functional api above
+    kfold = StratifiedKFold(n_splits=nfold, shuffle=True, random_state=cl.RANDOM_STATE)
+    splits = list(enumerate(kfold.split(X, y_int.argmax(1))))
+
+    nfold_predictions = dict()
+    for k in range(0, len(splits)):
+        print("\tnfold=" + str(k))
+
+        # Fit the model
+        X_train_index = splits[k][1][0]
+        X_test_index = splits[k][1][1]
+
+        X_train_= X[X_train_index]
+        y_train_=y[X_train_index]
+        X_test_ = X[X_test_index]
+        y_test_=y[X_test_index]
+
+        # prepare fasttext data
+        fasttext_train = outfolder + "/fasttext_train.tsv"
+        with open(fasttext_train, mode='w') as outfile:
+            csvwriter = csv.writer(outfile, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for i in range(len(X_train_)):
+                label = y_train_[i]
+                text = X_train_[i]
+                csvwriter.writerow(["__label__" + label, text])
+
+        fasttext_test = outfolder + "/fasttext_test.tsv"
+        with open(fasttext_test, mode='w') as outfile:
+            csvwriter = csv.writer(outfile, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for i in range(len(X_test_)):
+                label = y_test_[i]
+                text = X_test_[i]
+                csvwriter.writerow(["__label__" + label, text])
+
+        #-dim 300 -minn 4 -maxn 10 -wordNgrams 3 -neg 10 -loss ns -epoch 3000 -thread 30
+        model=fasttext.train_supervised(input=fasttext_train,
+                                        dim=300, minn=4,maxn=10,wordNgrams=3,
+                                        ng=10,loss='ns',epoch=100,
+                                        thread=16,
+                                        pretrainedVectors=embedding_file)
+        #todo: run fasttext, read predictions
+
+        # evaluate the model
+        #
+        predictions = model.predict(fasttext_test)
+
+        for i, l in zip(X_test_index, predictions):
+            nfold_predictions[i] = l
+
+    indexes = sorted(list(nfold_predictions.keys()))
+    predicted_labels = []
+    for i in indexes:
+        predicted_labels.append(nfold_predictions[i])
+    # util.save_scores(predicted_labels, y_train_int.argmax(1), "dnn", task, model_descriptor, 3,
+    #                  outfolder)
 
 def fit_dnn_holdout(inputs: list, y_labels,
                     final_model: Model, outfolder: str,

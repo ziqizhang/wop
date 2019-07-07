@@ -2,12 +2,8 @@
 # WARNING: if using HAN, must use tensorflow, not theano!!
 
 import sys
-import os
 import datetime
-from distutils.util import strtobool
-import gc
 import gensim
-import numpy
 from numpy.random import seed
 
 seed(1)
@@ -16,31 +12,7 @@ from classifier import classifier_dnn_multi_input as dnn_classifier
 from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
 from categories import cluster_categories as cc
-import pandas as pd
-
-
-def describe_task(properties, overwrite_params, setting_file):
-    desc = 'setting_file=' + os.path.splitext(os.path.basename(setting_file))[0]
-    desc += '|embedding='
-    desc += os.path.splitext(os.path.basename(
-        load_setting('embedding_file', properties, overwrite_params)))[0]
-    if 'training_text_data' in properties.keys():
-        desc += '|training_text_data='
-        desc += os.path.splitext(os.path.basename(
-            load_setting('training_text_data', properties, overwrite_params)))[0]
-    return desc
-
-
-def load_and_merge_train_test_data(train_data_file, test_data_file):
-    train = pd.read_csv(train_data_file, header=0, delimiter="\t", quoting=0, encoding="utf-8",
-                        ).as_matrix()
-    train.astype(str)
-
-    test = pd.read_csv(test_data_file, header=0, delimiter="\t", quoting=0, encoding="utf-8",
-                       ).as_matrix()
-    test.astype(str)
-
-    return numpy.concatenate((train, test), axis=0), len(train), len(test)
+from exp import exp_util
 
 
 def run_single_setting(setting_file, home_dir,
@@ -50,12 +22,12 @@ def run_single_setting(setting_file, home_dir,
     properties = exp_util.load_properties(setting_file)
 
     # this is the folder to save output to
-    outfolder = home_dir + load_setting("output_folder", properties, overwrite_params)
+    outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
 
     print("\n" + str(datetime.datetime.now()))
     print("loading embedding models...")
     # this the Gensim compatible embedding file
-    dnn_embedding_file = home_dir + load_setting("embedding_file", properties,
+    dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
                                                  overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
     if gensimFormat is None:
         gensimFormat = ".gensim" in dnn_embedding_file
@@ -91,15 +63,15 @@ def run_single_setting(setting_file, home_dir,
 
     ######## dnn #######
     print("loading dataset...")
-    df, train_size, test_size = load_and_merge_train_test_data(train_data_file, test_data_file)
+    df, train_size, test_size = exp_util.load_and_merge_train_test_data(train_data_file, test_data_file)
 
-    y = df[:, int(load_setting("class_column", properties, overwrite_params))]
+    y = df[:, int(exp_util.load_setting("class_column", properties, overwrite_params))]
 
     target_classes = len(set(y))
     print("\ttotal classes=" + str(target_classes))
     remove_instance_indexes = []
 
-    print('[STARTED] running settings with label=' + load_setting("label", properties, overwrite_params))
+    print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
     for model_descriptor in model_descriptors:
         print("\tML model=" + model_descriptor)
@@ -118,7 +90,7 @@ def run_single_setting(setting_file, home_dir,
             dnn_embedding_mask_zero = False
 
         input_column_sources = \
-            [x for x in load_setting("training_text_data_columns", properties, overwrite_params).split("|")]
+            [x for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|")]
         # now create DNN branches based on the required input text column sources
 
         dnn_branches = []
@@ -161,31 +133,12 @@ def run_single_setting(setting_file, home_dir,
                                        y_labels=y,
                                        final_model=final_model,
                                        outfolder=outfolder,
-                                       task=describe_task(properties, overwrite_params, setting_file),
+                                       task=exp_util.describe_task(properties, overwrite_params, setting_file),
                                        model_descriptor=model_descriptor,
                                        split_row=train_size)
         print("Completed running all models on this setting file")
         print(datetime.datetime.now())
 
-
-# the program can overwrite parameters defined in setting files. for example, if you want to overwrite
-# the embedding file, you can include this as an overwrite param in the command line, but specifying
-# [embedding_file= ...] where 'embedding_file' must match the parameter name. Note that this will apply
-# to ALL settings
-def parse_overwrite_params(argv):
-    params = {}
-    for a in argv:
-        if "=" in a:
-            values = a.split("=")
-            params[values[0]] = values[1]
-    return params
-
-
-def load_setting(param_name, properties: {}, overwrite_params: {} = None):
-    if overwrite_params is not None and param_name in overwrite_params.keys():
-        return overwrite_params[param_name]
-    else:
-        return properties[param_name]
 
 
 if __name__ == "__main__":
@@ -197,7 +150,7 @@ if __name__ == "__main__":
     # for example, if you want to overwrite the embedding file, you can include this as an overwrite
     # param in the command line, but specifying [embedding_file= ...] where 'embedding_file'
     # must match the parameter name. Note that this will apply to ALL settings
-    overwrite_params = parse_overwrite_params(sys.argv)
+    overwrite_params = exp_util.parse_overwrite_params(sys.argv)
 
     run_single_setting(sys.argv[1], sys.argv[2],
                        sys.argv[3],

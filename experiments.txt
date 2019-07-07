@@ -6,23 +6,39 @@
 
 
 
-VER1: Deep Learning: HAN, bi-LSTM, CNN
+- VER1: Deep Learning: HAN, bi-LSTM, CNN
 FINDING: CNN 2,3,4 window does not work. need to get rid of window 2
 
-		GloVe	name_skip.	desc_skip.						name_cbow	desc_cbow
-n	x						2hr per 3alg,emb,data=	+6hrs for 3 emb.
-c	x									+6hrs
-d		x								?
-n+c	x									+6hrs
-n+d		x								?
-n+d+c		x								?
+Currently reruning cnn with 3,4 windows, desc skip, cbow only
+
+		GloVe	desc_cbow.	desc_skip.						name_cbow	desc_cbow
+n							2hr per 3alg,emb,data=	+6hrs for 3 emb.
+c										+6hrs
+d										?
+n+c										+6hrs
+n+d										?
+n+d+c										?
 
 set overwrite param: training_text_data=/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_ZZ.csv
-c.new		x							+6hrs
-n+c.new		x							+6hrs
-n+d+c.new	x								?
+c.new									+6hrs
+n+c.new									+6hrs
+n+d+c.new	
+
+								?
+- on Rakuten: train out of memory
+- try: 50% train, 50% gs, in decrease to find the proper threshold
+- try: fasttext on whole
+	- if works, run fast text on Rakuten features=(n, c, n+c, n+d, n+d+c, on glove, desc skip, desc cbow)
+	- if not, also try different size to find proper threshold
 
 
+- on wop:
+- run cnn, bilstm, han, and fasttext on features=(n,c, n+c,n+d,n+d+c, c.new, n+c.new, n+d+c.new, on glove, desc skip, desc cbow)
+
+//TODO:
+- find threshold for Rakuten
+- fasttext config
+- fasttext code (embedding, feature merging)
 
 
 

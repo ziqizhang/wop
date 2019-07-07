@@ -7,22 +7,21 @@ import datetime
 from distutils.util import strtobool
 import gc
 import gensim
-import numpy
+from fasttext import load_model
 from numpy.random import seed
+import numpy as np
 
 seed(1)
 
-from classifier import classifier_dnn_multi_input as dnn_classifier
+from classifier import classifier_dnn_scalable as dnn_classifier
 from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
-from categories import cluster_categories as cc
 import pandas as pd
 from exp import exp_util
 
-def run_single_setting(setting_file, home_dir, remove_rare_classes,
-                       remove_no_desc_instances,
+def run_single_setting(setting_file, home_dir,
                        overwrite_params=None,
-                       gensimFormat=None):
+                       embedding_format=None):
     properties = exp_util.load_properties(setting_file)
 
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
@@ -37,13 +36,14 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     # this the Gensim compatible embedding file
     dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
                                                 overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
-    if gensimFormat is None:
-        gensimFormat = ".gensim" in dnn_embedding_file
-    if gensimFormat:
-        pretrained_embedding_models = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
+    if embedding_format =='gensim':
+        emb_model = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
+    elif embedding_format=='fasttext':
+        emb_model=load_model(dnn_embedding_file)
     else:
-        pretrained_embedding_models = gensim.models.KeyedVectors. \
-            load_word2vec_format(dnn_embedding_file, binary=True)
+        emb_model = gensim.models.KeyedVectors. \
+            load_word2vec_format(dnn_embedding_file, binary=strtobool(embedding_format))
+
 
     n_fold = int(exp_util.load_setting("n_fold", properties, overwrite_params))
 
@@ -74,101 +74,64 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     ######## dnn #######
     print("loading dataset...")
     df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
-                     ).as_matrix()
-    df.astype(str)
-    if remove_no_desc_instances:
-        print("you have chosen to remove instances whose description are empty")
-        df = exp_util.remove_empty_desc_instances(df, 5)
-
-    y = df[:, int(exp_util.load_setting("class_column", properties, overwrite_params))]
+                     )
+    df=df.fillna('')
+    df=df.as_matrix()
+    class_col=int(exp_util.load_setting("class_column", properties, overwrite_params))
+    y = df[:, class_col]
 
     target_classes = len(set(y))
     print("\ttotal classes=" + str(target_classes))
-    remove_instance_indexes = []
-    if remove_rare_classes:
-        print("you have chosen to remove classes whose instances are less than n_fold")
-        instance_labels = list(y)
-        class_dist = {x: instance_labels.count(x) for x in instance_labels}
-        remove_labels = []
-        for k, v in class_dist.items():
-            if v < n_fold:
-                remove_labels.append(k)
-        remove_instance_indexes = []
-        for i in range(len(y)):
-            label = y[i]
-            if label in remove_labels:
-                remove_instance_indexes.append(i)
-        y = numpy.delete(y, remove_instance_indexes)
-        target_classes = len(set(y))
+
 
     print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
     for model_descriptor in model_descriptors:
         print("\tML model=" + model_descriptor)
 
-        input_shape = model_descriptor.split(" ")[0]
         model_descriptor = model_descriptor.split(" ")[1]
-
-        if input_shape.endswith("2d"):
-            input_as_2D = True
-        else:
-            input_as_2D = False
 
         if "han" in model_descriptor or "lstm" in model_descriptor:
             dnn_embedding_mask_zero = True
         else:
             dnn_embedding_mask_zero = False
 
-        input_column_sources = \
-            [x for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|")]
-        # now create DNN branches based on the required input text column sources
-
         dnn_branches = []
         dnn_branch_input_shapes = []
-        dnn_branch_input_features = []
-        for string in input_column_sources:
-            print("\tcreating model branch=" + string)
-            config = string.split(",")
-            col_name = config[1]
-
-            if col_name == "cat_cluster":  # input are numeric number not text so needs to be processed differently from text
-                dnn_branch = dnn_classifier.create_dnn_branch_rawfeatures(
-                    input_data_cols=config[0].split("-"),
-                    dataframe_as_matrix=df
-                )
-            else:
-                text_data = cc.create_text_input_data(config[0], df)
-
-                col_text_length = int(config[2])
-
-                text_data = numpy.delete(text_data, remove_instance_indexes)
-                data = ["" if type(x) is float else str(x) for x in text_data]
-
-                dnn_branch = dnn_classifier.create_dnn_branch_textinput(
-                    pretrained_embedding_models, input_text_data=data,
-                    input_text_sentence_length=col_text_length,
-                    input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
-                    model_descriptor=model_descriptor,
-                    embedding_trainable=False,
-                    embedding_mask_zero=dnn_embedding_mask_zero
-                )
-
+        input_text_info={}
+        count=0
+        for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|"):
+            config = x.split(",")
+            map = {}
+            map["text_col"]=config[0]
+            map["text_length"]=int(config[2])
+            map["text_dim"]=util.DNN_EMBEDDING_DIM
+            input_text_info[count]=map
+            dnn_branch = dnn_classifier.create_dnn_branch(map["text_length"],
+                                                          util.DNN_EMBEDDING_DIM,
+                                                          model_descriptor=model_descriptor
+                                                          )
             dnn_branches.append(dnn_branch[0])
             dnn_branch_input_shapes.append(dnn_branch[1])
-            dnn_branch_input_features.append(dnn_branch[2])
+            count+=1
+        # now create DNN branches based on the required input text column sources
 
         print("creating merged model (if multiple input branches)")
         final_model = \
             dnn_classifier.merge_dnn_branch(dnn_branches, dnn_branch_input_shapes,
                                             target_classes)
         print("fitting model...")
-        dnn_classifier.fit_dnn(inputs=dnn_branch_input_features,
+
+        dnn_classifier.fit_dnn(df=df,
                                nfold=n_fold,
-                               y_train=y,
+                               class_col=class_col,
                                final_model=final_model,
                                outfolder=outfolder,
                                task=exp_util.describe_task(properties, overwrite_params,setting_file),
-                               model_descriptor=model_descriptor)
+                               model_descriptor=model_descriptor, text_norm_option=1,
+                               text_input_info=input_text_info,
+                               embedding_model=emb_model,
+                               embedding_model_format=embedding_format)
         print("Completed running all models on this setting file")
         print(datetime.datetime.now())
 
@@ -190,6 +153,5 @@ if __name__ == "__main__":
         print("now processing config file=" + file)
         setting_file = sys.argv[1] + '/' + file
 
-        run_single_setting(setting_file, sys.argv[2], strtobool(sys.argv[3]),
-                           strtobool(sys.argv[4]),
-                           overwrite_params=overwrite_params,gensimFormat=True)
+        run_single_setting(setting_file, sys.argv[2],
+                           overwrite_params=overwrite_params, embedding_format=sys.argv[3])

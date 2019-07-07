@@ -1,3 +1,5 @@
+#class used to run fasttext over wop data
+
 # test changes
 # WARNING: if using HAN, must use tensorflow, not theano!!
 
@@ -9,15 +11,15 @@ import gc
 import gensim
 import numpy
 from numpy.random import seed
+from exp import exp_util
 
 seed(1)
 
 from classifier import classifier_dnn_multi_input as dnn_classifier
-from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
 from categories import cluster_categories as cc
 import pandas as pd
-from exp import exp_util
+
 
 def run_single_setting(setting_file, home_dir, remove_rare_classes,
                        remove_no_desc_instances,
@@ -58,19 +60,6 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     # see 'classifier_learn.py - learn_dnn method for details
     # todo: when HAN used, metafeature must NOT be set
 
-    model_descriptors = [
-        #"input=2d bilstm=100-False|dense=?-softmax|emb",
-        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb"]
-       # "input=2d han_2dinput"]
-    # model_descriptors = [
-    #     "input=2d han_2dinput"]
-
-    # input=3d han_full|glv,
-    # input=2d lstm=100-False|dense=?-softmax|glv
-
-    # "scnn[2,3,4](conv1d=100,maxpooling1d=4)|maxpooling1d=4|flatten|dense=6-softmax|glv",
-    # "scnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=6-softmax|glv"]
-
     ######## dnn #######
     print("loading dataset...")
     df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
@@ -80,97 +69,43 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
         print("you have chosen to remove instances whose description are empty")
         df = exp_util.remove_empty_desc_instances(df, 5)
 
-    y = df[:, int(exp_util.load_setting("class_column", properties, overwrite_params))]
+    y_train = df[:, int(exp_util.load_setting("class_column", properties, overwrite_params))]
 
-    target_classes = len(set(y))
+    target_classes = len(set(y_train))
     print("\ttotal classes=" + str(target_classes))
     remove_instance_indexes = []
     if remove_rare_classes:
         print("you have chosen to remove classes whose instances are less than n_fold")
-        instance_labels = list(y)
+        instance_labels = list(y_train)
         class_dist = {x: instance_labels.count(x) for x in instance_labels}
         remove_labels = []
         for k, v in class_dist.items():
             if v < n_fold:
                 remove_labels.append(k)
         remove_instance_indexes = []
-        for i in range(len(y)):
-            label = y[i]
+        for i in range(len(y_train)):
+            label = y_train[i]
             if label in remove_labels:
                 remove_instance_indexes.append(i)
-        y = numpy.delete(y, remove_instance_indexes)
-        target_classes = len(set(y))
+        y_train = numpy.delete(y_train, remove_instance_indexes)
+        target_classes = len(set(y_train))
 
     print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
-    for model_descriptor in model_descriptors:
-        print("\tML model=" + model_descriptor)
+    input_column_sources = exp_util.load_setting("training_text_data_columns", properties, overwrite_params)
+    text_data = cc.create_text_input_data(input_column_sources.split(","), df)
+    # now create DNN branches based on the required input text column sources
 
-        input_shape = model_descriptor.split(" ")[0]
-        model_descriptor = model_descriptor.split(" ")[1]
+    text_data = numpy.delete(text_data, remove_instance_indexes)
+    X_train = ["" if type(x) is float else str(x) for x in text_data]
 
-        if input_shape.endswith("2d"):
-            input_as_2D = True
-        else:
-            input_as_2D = False
-
-        if "han" in model_descriptor or "lstm" in model_descriptor:
-            dnn_embedding_mask_zero = True
-        else:
-            dnn_embedding_mask_zero = False
-
-        input_column_sources = \
-            [x for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|")]
-        # now create DNN branches based on the required input text column sources
-
-        dnn_branches = []
-        dnn_branch_input_shapes = []
-        dnn_branch_input_features = []
-        for string in input_column_sources:
-            print("\tcreating model branch=" + string)
-            config = string.split(",")
-            col_name = config[1]
-
-            if col_name == "cat_cluster":  # input are numeric number not text so needs to be processed differently from text
-                dnn_branch = dnn_classifier.create_dnn_branch_rawfeatures(
-                    input_data_cols=config[0].split("-"),
-                    dataframe_as_matrix=df
-                )
-            else:
-                text_data = cc.create_text_input_data(config[0], df)
-
-                col_text_length = int(config[2])
-
-                text_data = numpy.delete(text_data, remove_instance_indexes)
-                data = ["" if type(x) is float else str(x) for x in text_data]
-
-                dnn_branch = dnn_classifier.create_dnn_branch_textinput(
-                    pretrained_embedding_models, input_text_data=data,
-                    input_text_sentence_length=col_text_length,
-                    input_text_word_embedding_dim=util.DNN_EMBEDDING_DIM,
-                    model_descriptor=model_descriptor,
-                    embedding_trainable=False,
-                    embedding_mask_zero=dnn_embedding_mask_zero
-                )
-
-            dnn_branches.append(dnn_branch[0])
-            dnn_branch_input_shapes.append(dnn_branch[1])
-            dnn_branch_input_features.append(dnn_branch[2])
-
-        print("creating merged model (if multiple input branches)")
-        final_model = \
-            dnn_classifier.merge_dnn_branch(dnn_branches, dnn_branch_input_shapes,
-                                            target_classes)
-        print("fitting model...")
-        dnn_classifier.fit_dnn(inputs=dnn_branch_input_features,
+    print("fitting model...")
+    dnn_classifier.fit_fasttext(X_train=X_train,y_train=y_train,
                                nfold=n_fold,
-                               y_train=y,
-                               final_model=final_model,
                                outfolder=outfolder,
-                               task=exp_util.describe_task(properties, overwrite_params,setting_file),
-                               model_descriptor=model_descriptor)
-        print("Completed running all models on this setting file")
-        print(datetime.datetime.now())
+                               task=exp_util.describe_task(properties, overwrite_params,setting_file))
+    print("Completed running all models on this setting file")
+    print(datetime.datetime.now())
 
 
 if __name__ == "__main__":

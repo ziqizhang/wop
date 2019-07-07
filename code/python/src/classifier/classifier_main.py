@@ -59,7 +59,7 @@ class Classifer(object):
                  nfold=None, text_data=None,
                  dnn_embedding_file=None,
                  dnn_text_data_extra_for_embedding_vcab=None,
-                 dnn_descriptor=None, dnn_input_as_2D=True,
+                 dnn_descriptor=None,
                  dnn_embedding_trainable=False,
                  dnn_embedding_mask_zero=False):
         self.dataX = data_X
@@ -74,7 +74,6 @@ class Classifer(object):
         self.dnn_descriptor = dnn_descriptor
         self.algorithms = algorithms
         self.dnn_text_data_extra=dnn_text_data_extra_for_embedding_vcab
-        self.dnn_input_as_2D=dnn_input_as_2D
         self.dnn_embedding_trainable=dnn_embedding_trainable
         self.dnn_embedding_mask_zero=dnn_embedding_mask_zero
 
@@ -171,7 +170,6 @@ class Classifer(object):
                          y_train, self.dnn_descriptor, self.outfolder,
                          prediction_targets=self.categorical_targets,
                          text_data_extra_for_embedding_vocab=self.dnn_text_data_extra,
-                         input_as_2D=self.dnn_input_as_2D,
                          embedding_trainable=self.dnn_embedding_trainable,
                          embedding_mask_zero=self.dnn_embedding_mask_zero)
 
