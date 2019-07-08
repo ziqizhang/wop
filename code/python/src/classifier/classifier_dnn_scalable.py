@@ -1,5 +1,7 @@
+import csv
 import random
 
+import fasttext
 import numpy
 import numpy as np
 import os
@@ -159,12 +161,13 @@ def create_dnn_branch(
     return model_text, model_text_input_shape
 
 
+'''
+This method fits a dnn model (cnn, bilstm or han) using data generator to feed batches
+'''
 def fit_dnn(df: DataFrame, nfold: int,class_col:int,
             final_model: Model, outfolder: str,
             task: str, model_descriptor: str,
             text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format):
-    # todo: but you need to pass input_shape=(window_length, n_features) to the first layer in your NN.
-
     encoder = LabelBinarizer()
     y = df[:, class_col]
 
@@ -231,6 +234,105 @@ def fit_dnn(df: DataFrame, nfold: int,class_col:int,
         predicted_labels.append(nfold_predictions[i])
     util.save_scores(predicted_labels, y_int.argmax(1), "dnn", task, model_descriptor, 3,
                      outfolder)
+
+'''
+this model fits a fasttext model in nfold. the embedding model must meets the fasttext format
+
+df: DataFrame, nfold: int,class_col:int,
+            final_model: Model, outfolder: str,
+            task: str, model_descriptor: str,
+            text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format
+'''
+def fit_fasttext(df: DataFrame, nfold: int,class_col:int,
+            outfolder: str,
+            task: str,
+            text_norm_option: int, text_input_info: dict, embedding_file:str):
+
+        #X, y, embedding_file, nfold, outfolder: str, task: str):
+
+    encoder = LabelBinarizer()
+    y = df[:, class_col]
+
+    y_int = encoder.fit_transform(y)
+    y_label_lookup = dict()
+    y_label_lookup_inverse = dict()
+    for index, l in zip(y_int.argmax(1), y):
+        y_label_lookup[index] = l
+        y_label_lookup_inverse[l] = index
+
+    X=[]
+    text_length=0
+    index=0
+    for row in df:
+        text=""
+        for b in range(len(text_input_info)):
+            info = text_input_info[b]
+            text+=concate_text(row, info["text_col"])+" "
+            text_length+=int(info["text_length"])
+        text = nlp.normalize(text)
+        words = nlp.tokenize(text, text_norm_option)
+        text=" ".join(words).strip()
+        X.append([text])
+        index+=1
+    X=numpy.asarray(X, dtype=str)
+
+    # perform n-fold validation (we cant use scikit-learn's wrapper as we used Keras functional api above
+    kfold = StratifiedKFold(n_splits=nfold, shuffle=True, random_state=cl.RANDOM_STATE)
+    splits = list(enumerate(kfold.split(X, y_int.argmax(1))))
+
+    nfold_predictions = dict()
+    for k in range(0, len(splits)):
+        print("\tnfold=" + str(k))
+
+        # Fit the model
+        X_train_index = splits[k][1][0]
+        X_test_index = splits[k][1][1]
+
+        X_train_= X[X_train_index]
+        y_train_=y[X_train_index]
+        X_test_ = X[X_test_index]
+        y_test_=y[X_test_index]
+
+        # prepare fasttext data
+        fasttext_train = outfolder + "/fasttext_train.tsv"
+        with open(fasttext_train, mode='w') as outfile:
+            csvwriter = csv.writer(outfile, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for i in range(len(X_train_)):
+                label = y_train_[i]
+                text = X_train_[i][0]
+                csvwriter.writerow(["__label__" + label, text])
+
+        # fasttext_test = outfolder + "/fasttext_test.tsv"
+        # with open(fasttext_test, mode='w') as outfile:
+        #     csvwriter = csv.writer(outfile, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        #     for i in range(len(X_test_)):
+        #         label = y_test_[i]
+        #         text = X_test_[i][0]
+        #         csvwriter.writerow(["__label__" + label, text])
+
+        #-dim 300 -minn 4 -maxn 10 -wordNgrams 3 -neg 10 -loss ns -epoch 3000 -thread 30
+        model=fasttext.train_supervised(input=fasttext_train,
+                                        minn=4,maxn=10,wordNgrams=3,
+                                        neg=10,loss='ns',epoch=100,
+                                        thread=16)
+        #todo: run fasttext, read predictions
+
+        # evaluate the model
+
+        X_test_as_list=[]
+        for row in X_test_:
+            X_test_as_list.append(row[0])
+        predictions = model.predict(X_test_as_list)[0]
+
+        for i in range(len(X_test_index)):
+            index=X_test_index[i]
+            label=predictions[i][0]
+            nfold_predictions[index] = label[9:]
+
+    indexes = sorted(list(nfold_predictions.keys()))
+    predicted_labels = []
+    for i in indexes:
+        predicted_labels.append(nfold_predictions[i])
 
 
 def merge_dnn_branch(branches: list, input_shapes: list, prediction_targets: int):

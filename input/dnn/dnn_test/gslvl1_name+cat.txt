@@ -22,7 +22,7 @@ n_fold=10
 class_column=10
 
 #If pre-trained embeddings are used (for DNN only)
-#embedding_file=/data/embeddings/dbpedia.bin
-embedding_file=/data/embeddings/glove.840B.300d.bin.gensim
+embedding_file=/data/embeddings/dbpedia.bin
+#embedding_file=/data/embeddings/glove.840B.300d.bin.gensim
 
 

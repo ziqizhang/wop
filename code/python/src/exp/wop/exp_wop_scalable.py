@@ -9,7 +9,6 @@ import gc
 import gensim
 from fasttext import load_model
 from numpy.random import seed
-import numpy as np
 
 seed(1)
 
@@ -19,14 +18,12 @@ from exp.wop import exp_wop_cml as exp_util
 import pandas as pd
 from exp import exp_util
 
-def run_single_setting(setting_file, home_dir,
-                       overwrite_params=None,
-                       embedding_format=None):
+def run_dnn_setting(setting_file, home_dir,
+                    overwrite_params=None,
+                    embedding_format=None):
     properties = exp_util.load_properties(setting_file)
 
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
-    # this is the folder containing other numeric features that are already pre-extracted
-    csv_training_other_feaures = home_dir + exp_util.load_setting('training_other_features', properties, overwrite_params)
 
     # this is the folder to save output to
     outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
@@ -59,8 +56,8 @@ def run_single_setting(setting_file, home_dir,
     # todo: when HAN used, metafeature must NOT be set
 
     model_descriptors = [
-        "input=2d bilstm=100-False|dense=?-softmax|emb"]
-        #"input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb"]
+        #"input=2d bilstm=100-False|dense=?-softmax|emb"]
+        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb"]
        #"input=2d han_2dinput"]
     # model_descriptors = [
     #     "input=2d han_2dinput"]
@@ -90,11 +87,6 @@ def run_single_setting(setting_file, home_dir,
         print("\tML model=" + model_descriptor)
 
         model_descriptor = model_descriptor.split(" ")[1]
-
-        if "han" in model_descriptor or "lstm" in model_descriptor:
-            dnn_embedding_mask_zero = True
-        else:
-            dnn_embedding_mask_zero = False
 
         dnn_branches = []
         dnn_branch_input_shapes = []
@@ -136,6 +128,63 @@ def run_single_setting(setting_file, home_dir,
         print(datetime.datetime.now())
 
 
+def run_fasttext_setting(setting_file, home_dir,
+                    overwrite_params=None):
+    properties = exp_util.load_properties(setting_file)
+
+    csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
+
+    # this is the folder to save output to
+    outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
+
+    print("\n" + str(datetime.datetime.now()))
+    print("loading embedding models...")
+    # this the Gensim compatible embedding file
+    dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
+                                                overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+
+    n_fold = int(exp_util.load_setting("n_fold", properties, overwrite_params))
+
+
+    ######## dnn #######
+    print("loading dataset...")
+    df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
+                     )
+    df=df.fillna('')
+    df=df.as_matrix()
+    class_col=int(exp_util.load_setting("class_column", properties, overwrite_params))
+    y = df[:, class_col]
+
+    target_classes = len(set(y))
+    print("\ttotal classes=" + str(target_classes))
+
+
+    print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
+
+    print("fitting model...")
+
+    input_text_info = {}
+    count = 0
+    for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|"):
+        config = x.split(",")
+        map = {}
+        map["text_col"] = config[0]
+        map["text_length"] = int(config[2])
+        map["text_dim"] = util.DNN_EMBEDDING_DIM
+        input_text_info[count] = map
+
+    dnn_classifier.fit_fasttext(df=df,
+                               nfold=n_fold,
+                               class_col=class_col,
+                               outfolder=outfolder,
+                               task=exp_util.describe_task(properties, overwrite_params,setting_file),
+                               text_norm_option=1,
+                               text_input_info=input_text_info,
+                               embedding_file=dnn_embedding_file)
+    print("Completed running on this setting file")
+    print(datetime.datetime.now())
+
+
 if __name__ == "__main__":
     # argv-1: folder containing all settings to run, see 'input' folder
     # argv-2: working directory
@@ -153,5 +202,8 @@ if __name__ == "__main__":
         print("now processing config file=" + file)
         setting_file = sys.argv[1] + '/' + file
 
-        run_single_setting(setting_file, sys.argv[2],
-                           overwrite_params=overwrite_params, embedding_format=sys.argv[3])
+        if sys.argv[4] == 'fasttext':
+            run_fasttext_setting(setting_file, sys.argv[2],overwrite_params=overwrite_params)
+        else:
+            run_dnn_setting(setting_file, sys.argv[2],
+                        overwrite_params=overwrite_params, embedding_format=sys.argv[3])
