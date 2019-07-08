@@ -43,7 +43,7 @@ lstm examples:
 '''
 
 # the expected dimension in the pre-trained embedding model
-DNN_EMBEDDING_DIM = 10
+DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5  #

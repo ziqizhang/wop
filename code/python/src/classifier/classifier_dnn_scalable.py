@@ -20,7 +20,7 @@ from classifier import classifier_learn as cl
 GLOBAL_embedding_randomized_vectors = {}
 GLOBAL_embedding_random_candidates = []  # list of word indexes in the embedding model to be randomly chosen
 GLOBAL_embedding_words_matched = set()
-
+GLOBAL_embedding_vocab_indexes=[]
 
 def text_to_vector_fasttext(text, ft_model, text_length, dim, text_norm_option):
     """
@@ -65,13 +65,13 @@ def text_to_vector_gensim(text, model, text_length, dim, text_norm_option):
             if word in GLOBAL_embedding_randomized_vectors.keys():
                 vec = GLOBAL_embedding_randomized_vectors[word]
             else:
-                if len(random_candidates) == 0:
-                    for x in range(0, len(model.wv.vocab.keys())):
-                        random_candidates.append(x)
-                    random.Random(4).shuffle(random_candidates)
+                if len(GLOBAL_embedding_vocab_indexes) == 0:
+                    for n in range(0, len(model.wv.vocab.keys())):
+                        GLOBAL_embedding_vocab_indexes.append(n)
+                    random.Random(4).shuffle(GLOBAL_embedding_vocab_indexes)
 
                 while (True):
-                    index = random_candidates.pop()
+                    index = GLOBAL_embedding_vocab_indexes.pop()
                     word = model.wv.index2word[index]
                     if not word in words_matched:
                         words_matched.add(word)
@@ -133,6 +133,7 @@ def data_generator(df, class_col:int, batch_size, text_norm_option, classes:dict
 
             if batch_i == batch_size:
                 # Ready to yield the batch
+                #'print("batch")
                 yield batch_x_multinput, batch_y
                 batch_x_multinput = []
                 for k in text_input_info.keys():
@@ -228,7 +229,7 @@ def fit_dnn(df: DataFrame, nfold: int,class_col:int,
     predicted_labels = []
     for i in indexes:
         predicted_labels.append(nfold_predictions[i])
-    util.save_scores(predicted_labels, y_train_int.argmax(1), "dnn", task, model_descriptor, 3,
+    util.save_scores(predicted_labels, y_int.argmax(1), "dnn", task, model_descriptor, 3,
                      outfolder)
 
 
