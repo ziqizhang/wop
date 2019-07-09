@@ -1,4 +1,4 @@
-# use this class to run experiments over wop datasets
+# use this class to run experiments over rakuten (holdout) datasets
 
 import sys
 import os
@@ -19,11 +19,10 @@ from exp import exp_util
 
 
 def run_dnn_setting(setting_file, home_dir,
+                    train_data_file, test_data_file,
                     overwrite_params=None,
                     embedding_format=None):
     properties = exp_util.load_properties(setting_file)
-
-    csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
 
     # this is the folder to save output to
     outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
@@ -40,8 +39,6 @@ def run_dnn_setting(setting_file, home_dir,
     else:
         emb_model = gensim.models.KeyedVectors. \
             load_word2vec_format(dnn_embedding_file, binary=strtobool(embedding_format))
-
-    n_fold = int(exp_util.load_setting("n_fold", properties, overwrite_params))
 
     # in order to test different DNN architectures, I implemented a parser that analyses a string following
     # specific syntax, creates different architectures. This one here takes word embedding, pass it to 3
@@ -69,15 +66,13 @@ def run_dnn_setting(setting_file, home_dir,
 
     ######## dnn #######
     print("loading dataset...")
-    df = pd.read_csv(csv_training_text_data, header=0, delimiter=";", quoting=0, encoding="utf-8",
-                     )
-    df = df.fillna('')
-    df = df.as_matrix()
+    df, train_size, test_size = exp_util.load_and_merge_train_test_data(train_data_file, test_data_file)
     class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
     y = df[:, class_col]
 
     target_classes = len(set(y))
     print("\ttotal classes=" + str(target_classes))
+
 
     print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
@@ -112,8 +107,8 @@ def run_dnn_setting(setting_file, home_dir,
                                             target_classes)
         print("fitting model...")
 
-        dnn_classifier.fit_dnn(df=df,
-                               nfold=n_fold,
+        dnn_classifier.fit_dnn_holdout(df=df,
+                               split_at_row=train_size,
                                class_col=class_col,
                                final_model=final_model,
                                outfolder=outfolder,
@@ -125,7 +120,7 @@ def run_dnn_setting(setting_file, home_dir,
         print("Completed running all models on this setting file")
         print(datetime.datetime.now())
 
-
+#todo
 def run_fasttext_setting(setting_file, home_dir,
                          overwrite_params=None):
     properties = exp_util.load_properties(setting_file)
@@ -192,14 +187,11 @@ if __name__ == "__main__":
     # must match the parameter name. Note that this will apply to ALL settings
     overwrite_params = exp_util.parse_overwrite_params(sys.argv)
 
-    for file in os.listdir(sys.argv[1]):
-        gc.collect()
-
-        print("now processing config file=" + file)
-        setting_file = sys.argv[1] + '/' + file
-
-        if sys.argv[4] == 'fasttext':
-            run_fasttext_setting(setting_file, sys.argv[2], overwrite_params=overwrite_params)
-        else:
-            run_dnn_setting(setting_file, sys.argv[2],
-                            overwrite_params=overwrite_params, embedding_format=sys.argv[3])
+    if sys.argv[4] == 'fasttext':
+        run_fasttext_setting(sys.argv[1], sys.argv[2], overwrite_params=overwrite_params)
+    else:
+        run_dnn_setting(setting_file=sys.argv[1], home_dir=sys.argv[2],
+                            train_data_file=sys.argv[3],
+                            test_data_file=sys.argv[4],
+                            overwrite_params=overwrite_params,
+                            embedding_format=sys.argv[5])

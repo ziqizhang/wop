@@ -15,10 +15,10 @@ from categories import cluster_categories as cc
 from exp import exp_util
 
 
-def run_single_setting(setting_file, home_dir,
-                       train_data_file, test_data_file,
-                       overwrite_params=None,
-                       gensimFormat=None):
+def run_dnn_setting(setting_file, home_dir,
+                    train_data_file, test_data_file,
+                    overwrite_params=None,
+                    gensimFormat=None):
     properties = exp_util.load_properties(setting_file)
 
     # this is the folder to save output to
@@ -152,8 +152,8 @@ if __name__ == "__main__":
     # must match the parameter name. Note that this will apply to ALL settings
     overwrite_params = exp_util.parse_overwrite_params(sys.argv)
 
-    run_single_setting(sys.argv[1], sys.argv[2],
-                       sys.argv[3],
-                       sys.argv[4],
-                       overwrite_params=overwrite_params,
-                       gensimFormat=True)
+    run_dnn_setting(sys.argv[1], sys.argv[2],
+                    sys.argv[3],
+                    sys.argv[4],
+                    overwrite_params=overwrite_params,
+                    gensimFormat=True)

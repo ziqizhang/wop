@@ -7,7 +7,6 @@ from keras import Model, Sequential
 from keras.layers import Concatenate, Dropout, LSTM, GRU, Bidirectional, Conv1D, MaxPooling1D, GlobalMaxPooling1D, \
     Dense, Flatten, K
 from keras.preprocessing import sequence
-from keras.preprocessing.text import Tokenizer, text_to_word_sequence
 from keras.regularizers import L1L2
 from nltk import tokenize
 
@@ -43,7 +42,7 @@ lstm examples:
 '''
 
 # the expected dimension in the pre-trained embedding model
-DNN_EMBEDDING_DIM = 10
+DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5  #
