@@ -4,8 +4,8 @@
 export PYTHONPATH=/home/zz/Work/wop/code/python/src
 workingdir=/home/zz/Work
 embfile=none
-#embfile=/data/embeddings/wop/fasttext_wop_cbow.bin
-#embfile=/data/embeddings/wop/fasttext_wop_skip.bin
+#embfile=/data/embeddings/wop/fasttext_wop_cbow.vec
+#embfile=/data/embeddings/wop/fasttext_wop_skip.vec
 
 #for file in "$dir/"*
 

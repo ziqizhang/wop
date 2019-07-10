@@ -69,7 +69,7 @@ do
 done
 
 echo "++++++ glove n+d+c.new +++++"
-for file in $workingdir"/wop/input/dnn/dnn_n+d+c/"*.txt
+for file in $workingdir"/wop/input/dnn/dnn_n+d+c.new/"*.txt
 do
      echo "File is '$file'"
      python3 -m exp.wop.exp_wop_scalable $file $workingdir $emb_format else embedding_file=$emb_file
