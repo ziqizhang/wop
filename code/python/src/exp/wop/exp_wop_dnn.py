@@ -56,8 +56,6 @@ def run_single_setting(setting_file, home_dir, remove_rare_classes,
     #
     # the descriptor is passed as a param to 'Classifer', which parses the string to create a model
     # see 'classifier_learn.py - learn_dnn method for details
-    # todo: when HAN used, metafeature must NOT be set
-
     model_descriptors = [
         #"input=2d bilstm=100-False|dense=?-softmax|emb",
         "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb"]

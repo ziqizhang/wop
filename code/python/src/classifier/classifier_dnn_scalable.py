@@ -97,7 +97,7 @@ def concate_text(row: list, col_indexes):
 
 # text_col_info: an ordered list of "[index, text length, dim]"
 def data_generator(df, class_col: int, batch_size, text_norm_option, classes: dict, embedding_model,
-                   text_input_info: dict, embedding_format):
+                   text_input_info: dict, embedding_format, shuffle=True):
     """
     Given a raw dataframe, generates infinite batches of FastText vectors.
     """
@@ -109,7 +109,8 @@ def data_generator(df, class_col: int, batch_size, text_norm_option, classes: di
     batch_y = None
 
     while True:  # Loop forever
-        numpy.random.shuffle(df)  # Shuffle df each epoch
+        if shuffle:
+            numpy.random.shuffle(df)  # Shuffle df each epoch
 
         for i in range(len(df)):
             row = df[i]
@@ -227,16 +228,15 @@ def fit_dnn(df: DataFrame, nfold: int, class_col: int,
         nfold_model.fit_generator(training_generator, steps_per_epoch=training_steps_per_epoch,
                                   epochs=dmc.DNN_EPOCHES)
 
-        test_steps = round(len(X_test_merge_) / dmc.DNN_BATCH_SIZE) + 1
         test_generator = data_generator(df=X_test_merge_,
                                         class_col=class_col,
                                         classes=y_label_lookup_inverse,
-                                        batch_size=dmc.DNN_BATCH_SIZE,
+                                        batch_size=len(X_test_merge_),
                                         text_norm_option=text_norm_option,
                                         embedding_model=embedding_model,
                                         text_input_info=text_input_info,
-                                        embedding_format=embedding_model_format)
-        prediction_prob = nfold_model.predict_generator(test_generator, steps=test_steps)
+                                        embedding_format=embedding_model_format,shuffle=False)
+        prediction_prob = nfold_model.predict_generator(test_generator, steps=1)
 
         # evaluate the model
         #
@@ -304,24 +304,22 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
                               epochs=dmc.DNN_EPOCHES)
 
     print("\ttesting...")
-    test_steps = round(len(df_test) / dmc.DNN_BATCH_SIZE) + 1
     test_generator = data_generator(df=df_test,
                                     class_col=class_col,
                                     classes=y_label_lookup_inverse,
-                                    batch_size=dmc.DNN_BATCH_SIZE,
+                                    batch_size=len(df_test),
                                     text_norm_option=text_norm_option,
                                     embedding_model=embedding_model,
                                     text_input_info=text_input_info,
-                                    embedding_format=embedding_model_format)
-    prediction_prob = final_model.predict_generator(test_generator, steps=test_steps)
+                                    embedding_format=embedding_model_format, shuffle=False)
+    prediction_prob = final_model.predict_generator(test_generator, steps=1)
 
     # evaluate the model
     #
     predictions = prediction_prob.argmax(axis=-1)
 
     # evaluate the model
-    #
-    util.save_scores(predictions, y_int[:, split_at_row:].argmax(1), "dnn", task, model_descriptor, 3,
+    util.save_scores(predictions, y_int[split_at_row:,:].argmax(1), "dnn", task, model_descriptor, 3,
                      outfolder)
 
 
@@ -403,15 +401,21 @@ def fit_fasttext(df: DataFrame, nfold: int, class_col: int,
         #         csvwriter.writerow(["__label__" + label, text])
 
         # -dim 300 -minn 4 -maxn 10 -wordNgrams 3 -neg 10 -loss ns -epoch 3000 -thread 30
-        model = fasttext.train_supervised(input=fasttext_train,
+        if embedding_file is not None:
+            model = fasttext.train_supervised(input=fasttext_train,
                                           minn=4, maxn=10, wordNgrams=3,
                                           neg=10, loss='ns', epoch=20,
-                                          thread=16,
+                                          thread=30,
                                           dim=dmc.DNN_EMBEDDING_DIM,
                                           pretrainedVectors=embedding_file)
+        else:
+            model = fasttext.train_supervised(input=fasttext_train,
+                                              minn=4, maxn=10, wordNgrams=3,
+                                              neg=10, loss='ns', epoch=20,
+                                              thread=30,
+                                              dim=dmc.DNN_EMBEDDING_DIM)
 
         # evaluate the model
-
         X_test_as_list = []
         for row in X_test_:
             X_test_as_list.append(row[0])
@@ -433,7 +437,6 @@ def fit_fasttext(df: DataFrame, nfold: int, class_col: int,
                      outfolder)
 
 
-#todo:test this
 def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
                          outfolder: str,
                          task: str,
@@ -492,13 +495,19 @@ def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
         #         csvwriter.writerow(["__label__" + label, text])
 
         # -dim 300 -minn 4 -maxn 10 -wordNgrams 3 -neg 10 -loss ns -epoch 3000 -thread 30
-    model = fasttext.train_supervised(input=fasttext_train,
+    if embedding_file is not None:
+        model = fasttext.train_supervised(input=fasttext_train,
                                       minn=4, maxn=10, wordNgrams=3,
-                                      neg=10, loss='ns', epoch=20,
-                                      thread=16,
+                                      neg=10, loss='ns', epoch=3000,
+                                      thread=30,
                                       dim=dmc.DNN_EMBEDDING_DIM,
                                       pretrainedVectors=embedding_file)
-
+    else:
+        model = fasttext.train_supervised(input=fasttext_train,
+                                          minn=4, maxn=10, wordNgrams=3,
+                                          neg=10, loss='ns', epoch=3000,
+                                          thread=30,
+                                          dim=dmc.DNN_EMBEDDING_DIM)
     # evaluate the model
 
     X_test_as_list = []
@@ -508,12 +517,12 @@ def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
 
     predicted_labels = []
     for i in predictions:
-        label = predictions[i][0]
+        label = i[0]
         l = label[9:]
         l = l.replace("|", " ")
         predicted_labels.append(y_label_lookup_inverse[l])
 
-    util.save_scores(predicted_labels, y_int.argmax(1), "dnn", task, "_fasttext_", 3,
+    util.save_scores(predicted_labels, y_int[split_at_row:,:].argmax(1), "dnn", task, "_fasttext_", 3,
                      outfolder)
 
 

@@ -1,4 +1,4 @@
-# use this class to run experiments over wop datasets
+# use this class to run experiments over wop datasets with nfold validation
 
 import sys
 import os
@@ -33,11 +33,15 @@ def run_dnn_setting(setting_file, home_dir,
     # this the Gensim compatible embedding file
     dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
                                                           overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+    #print("embedding file is========="+dnn_embedding_file)
     if embedding_format == 'gensim':
+        print("\tgensim format")
         emb_model = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
     elif embedding_format == 'fasttext':
+        print("\tfasttext format")
         emb_model = load_model(dnn_embedding_file)
     else:
+        print("\tword2vec format")
         emb_model = gensim.models.KeyedVectors. \
             load_word2vec_format(dnn_embedding_file, binary=strtobool(embedding_format))
 
@@ -52,8 +56,6 @@ def run_dnn_setting(setting_file, home_dir,
     #
     # the descriptor is passed as a param to 'Classifer', which parses the string to create a model
     # see 'classifier_learn.py - learn_dnn method for details
-    # todo: when HAN used, metafeature must NOT be set
-
     model_descriptors = [
         "input=2d bilstm=100-False|dense=?-softmax|emb",
         "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb",
@@ -122,8 +124,8 @@ def run_dnn_setting(setting_file, home_dir,
                                text_input_info=input_text_info,
                                embedding_model=emb_model,
                                embedding_model_format=embedding_format)
-        print("Completed running all models on this setting file")
-        print(datetime.datetime.now())
+    print("Completed running all models on this setting file")
+    print(datetime.datetime.now())
 
 
 def run_fasttext_setting(setting_file, home_dir,
@@ -140,6 +142,8 @@ def run_fasttext_setting(setting_file, home_dir,
     # this the Gensim compatible embedding file
     dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
                                                           overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+    if dnn_embedding_file.endswith('none'):
+        dnn_embedding_file=None
 
     n_fold = int(exp_util.load_setting("n_fold", properties, overwrite_params))
 
@@ -192,14 +196,12 @@ if __name__ == "__main__":
     # must match the parameter name. Note that this will apply to ALL settings
     overwrite_params = exp_util.parse_overwrite_params(sys.argv)
 
-    for file in os.listdir(sys.argv[1]):
-        gc.collect()
+    setting_file = sys.argv[1]
 
-        print("now processing config file=" + file)
-        setting_file = sys.argv[1] + '/' + file
+    if sys.argv[4] == 'fasttext':
+        run_fasttext_setting(setting_file, sys.argv[2], overwrite_params=overwrite_params)
+    else:
+        run_dnn_setting(setting_file, sys.argv[2],
+                        overwrite_params=overwrite_params, embedding_format=sys.argv[3])
 
-        if sys.argv[4] == 'fasttext':
-            run_fasttext_setting(setting_file, sys.argv[2], overwrite_params=overwrite_params)
-        else:
-            run_dnn_setting(setting_file, sys.argv[2],
-                            overwrite_params=overwrite_params, embedding_format=sys.argv[3])
+
