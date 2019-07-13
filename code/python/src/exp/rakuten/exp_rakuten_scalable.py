@@ -107,7 +107,7 @@ def run_dnn_setting(setting_file, home_dir,
         final_model = \
             dnn_classifier.merge_dnn_branch(dnn_branches, dnn_branch_input_shapes,
                                             target_classes)
-        print("fitting model...")
+        print("fitting model..."+str(datetime.datetime.now()))
 
         dnn_classifier.fit_dnn_holdout(df=df,
                                split_at_row=train_size,

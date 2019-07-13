@@ -14,11 +14,21 @@
       <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="540" column="16" lean-forward="true" selection-start-line="540" selection-start-column="16" selection-end-line="540" selection-end-column="16" />
+            <state relative-caret-position="463">
+              <caret line="308" column="35" lean-forward="true" selection-start-line="308" selection-start-column="35" selection-end-line="308" selection-end-column="35" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_transformer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="593">
+              <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -36,8 +46,8 @@
       <file leaf-file-name="exp_rakuten_scalable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2934">
-              <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -119,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_singlesetting.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_util.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_rakuten_dnn.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
         <option value="$PROJECT_DIR$/src/util/data_split.py" />
         <option value="$PROJECT_DIR$/src/util/data_util.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_rakuten_fasttext.py" />
@@ -135,17 +144,18 @@
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
-        <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py" />
         <option value="$PROJECT_DIR$/src/classifier/dnn_util.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
+        <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1366" />
-    <option name="y" value="82" />
-    <option name="width" value="1660" />
-    <option name="height" value="927" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="27" />
+    <option name="width" value="1161" />
+    <option name="height" value="725" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -162,7 +172,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,6 +245,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,7 +273,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_rakuten_scalable_ft">
+  <component name="RunManager" selected="Python.result_transformer">
     <configuration name="cleanCategories" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -616,12 +626,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="82" width="1660" height="927" extended-state="0" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24740379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28996864" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6058632" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39849624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09771987" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -779,7 +790,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
-          <line>421</line>
+          <line>422</line>
           <option name="timeStamp" value="911" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -794,7 +805,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
-          <line>524</line>
+          <line>525</line>
           <option name="timeStamp" value="921" />
         </line-breakpoint>
       </breakpoints>
@@ -1049,16 +1060,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="188" column="84" lean-forward="false" selection-start-line="188" selection-start-column="84" selection-end-line="188" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/sklearn/model_selection/_split.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -1217,13 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="47" column="61" lean-forward="false" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1256,18 +1250,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="47" column="61" lean-forward="false" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2934">
-          <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="540" column="16" lean-forward="true" selection-start-line="540" selection-start-column="16" selection-end-line="540" selection-end-column="16" />
+        <state relative-caret-position="463">
+          <caret line="308" column="35" lean-forward="true" selection-start-line="308" selection-start-column="35" selection-end-line="308" selection-end-column="35" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

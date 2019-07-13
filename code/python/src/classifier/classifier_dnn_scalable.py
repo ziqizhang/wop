@@ -1,6 +1,7 @@
 import csv
 import random
 
+import datetime
 import fasttext
 import numpy
 import numpy as np
@@ -286,7 +287,7 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
 
     # nfold_predictions = dict()
 
-    print("\ttraining...")
+    print("\ttraining..."+str(datetime.datetime.now()))
     final_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     training_generator = data_generator(df=df_train,
