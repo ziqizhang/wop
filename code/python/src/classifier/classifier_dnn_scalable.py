@@ -273,7 +273,9 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
     encoder = LabelBinarizer()
     y = df[:, class_col]
 
+    print("\tencoding y labels..."+str(datetime.datetime.now()))
     y_int = encoder.fit_transform(y)
+    print("\tcreating y labels dictionary..." + str(datetime.datetime.now()))
     y_label_lookup = dict()
     y_label_lookup_inverse = dict()
     for index, l in zip(y_int.argmax(1), y):
@@ -282,6 +284,7 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
 
     model_file = os.path.join(outfolder, "ann-%s.m" % task)
 
+    print("\tspliting to train/test..." + str(datetime.datetime.now()))
     df_train = df[0:split_at_row]
     df_test = df[split_at_row:]
 
