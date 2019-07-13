@@ -272,7 +272,7 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
                     text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format):
     encoder = LabelBinarizer()
     y = df[:, class_col]
-
+    print("\ttotal y rows="+str(len(y))+" with unique values="+str(len(set(y))))
     print("\tencoding y labels..."+str(datetime.datetime.now()))
     y_int = encoder.fit_transform(y)
     print("\tcreating y labels dictionary..." + str(datetime.datetime.now()))
