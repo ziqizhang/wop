@@ -109,12 +109,19 @@ def run_dnn_setting(setting_file, home_dir,
                                             target_classes)
         print("fitting model..."+str(datetime.datetime.now()))
 
+        setting=os.path.splitext(os.path.basename(setting_file))[0]
+        setting=setting[setting.index("_")+1]
+        desc = 'setting=' + setting
+        desc += '|embedding='
+        desc += os.path.splitext(os.path.basename(
+            exp_util.load_setting('embedding_file', properties, overwrite_params)))[0]
+
         dnn_classifier.fit_dnn_holdout(df=df,
                                split_at_row=train_size,
                                class_col=class_col,
                                final_model=final_model,
                                outfolder=outfolder,
-                               task=exp_util.describe_task(properties, overwrite_params, setting_file),
+                               task=desc,
                                model_descriptor=model_descriptor, text_norm_option=1,
                                text_input_info=input_text_info,
                                embedding_model=emb_model,

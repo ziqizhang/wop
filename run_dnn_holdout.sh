@@ -3,10 +3,10 @@
 
 export PYTHONPATH=/home/zz/Work/wop/code/python/src
 workingdir=/home/zz/Work
-#train=/home/zz/Work/data/Rakuten/rdc-catalog-gold-small1.tsv
-#test=/home/zz/Work/data/Rakuten/rdc-catalog-gold-small2.tsv
-train=/home/zz/Work/data/Rakuten/rdc-catalog-train_fasttext.tsv
-test=/home/zz/Work/data/Rakuten/rdc-catalog-gold_fasttext.tsv
+train=/home/zz/Work/data/Rakuten/rdc-catalog-gold-small1.tsv
+test=/home/zz/Work/data/Rakuten/rdc-catalog-gold-small2.tsv
+#train=/home/zz/Work/data/Rakuten/rdc-catalog-train_fasttext.tsv
+#test=/home/zz/Work/data/Rakuten/rdc-catalog-gold_fasttext.tsv
 emb_format=gensim
 emb_file=/data/embeddings/glove.840B.300d.bin.gensim
 #emb_format=fasttext
@@ -21,7 +21,12 @@ for file in $workingdir"/wop/input/dnn/dnn_n/"*.txt
 do
      echo "File is '$file'"
      python3 -m exp.rakuten.exp_rakuten_scalable $file $workingdir $train $test $emb_format class_column=1 training_text_data_columns=0,name,20 embedding_file=$emb_file
+     break
 done
+
+exit 1
+
+
 
 echo "++++++ glove c +++++"
 for file in $workingdir"/wop/input/dnn/dnn_c/"*.txt

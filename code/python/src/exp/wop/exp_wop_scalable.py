@@ -1,10 +1,8 @@
 # use this class to run experiments over wop datasets with nfold validation
 
 import sys
-import os
 import datetime
 from distutils.util import strtobool
-import gc
 import gensim
 from fasttext import load_model
 from numpy.random import seed
