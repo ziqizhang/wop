@@ -11,10 +11,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="0">
               <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -23,21 +23,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_wop_scalable.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="exp_wop_scalable.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="208">
+              <caret line="41" column="102" lean-forward="false" selection-start-line="41" selection-start-column="102" selection-end-line="41" selection-end-column="102" />
+              <folding>
+                <element signature="e#77#87#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="result_transformer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <file leaf-file-name="exp_wop_cml_doc2vec.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1602">
-              <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+            <state relative-caret-position="-261">
+              <caret line="73" column="65" lean-forward="false" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -56,7 +58,7 @@
       <file leaf-file-name="exp_rakuten_scalable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
+            <state relative-caret-position="2304">
               <caret line="135" column="0" lean-forward="false" selection-start-line="134" selection-start-column="33" selection-end-line="135" selection-end-column="0" />
               <folding />
             </state>
@@ -74,7 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cnn</find>
       <find>traina</find>
       <find>final_model</find>
       <find>embedding_mask_zero</find>
@@ -104,6 +105,7 @@
       <find>train_supervised</find>
       <find>,</find>
       <find>setting_file</find>
+      <find>false</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -154,18 +156,18 @@
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
         <option value="$PROJECT_DIR$/src/classifier/dnn_util.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="1613" />
-    <option name="height" value="1025" />
+    <option name="width" value="1299" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -182,7 +184,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -256,6 +257,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,7 +285,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_rakuten_scalable_dnn">
+  <component name="RunManager" selected="Python.exp_wop_scalable_dnn">
     <configuration name="cleanCategories" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -531,7 +533,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_test/gslvl1_name+cat.txt $PROJECT_DIR$/../../.. fasttext else embedding_file=/data/embeddings/wop/fasttext_wop_cbow.bin" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_test/gslvl1_name+cat.txt $PROJECT_DIR$/../../.. False else embedding_file=/data/embeddings/dbpedia.vec" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -642,19 +644,19 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20376176" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6058632" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257329" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28338763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24267101" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.390625" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3159609" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28338763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -790,7 +792,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/exp/wop/result_transformer.py</url>
-          <line>162</line>
+          <line>174</line>
           <option name="timeStamp" value="704" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -849,7 +851,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="938" />
+      <option name="time" value="942" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -986,13 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="73" column="65" lean-forward="false" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1263,26 +1258,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1602">
-          <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1296,7 +1275,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
+        <state relative-caret-position="2304">
           <caret line="135" column="0" lean-forward="false" selection-start-line="134" selection-start-column="33" selection-end-line="135" selection-end-column="0" />
           <folding />
         </state>
@@ -1304,10 +1283,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="0">
           <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="73" column="65" lean-forward="false" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="41" column="102" lean-forward="false" selection-start-line="41" selection-start-column="102" selection-end-line="41" selection-end-column="102" />
+          <folding>
+            <element signature="e#77#87#0" expanded="true" />
           </folding>
         </state>
       </provider>

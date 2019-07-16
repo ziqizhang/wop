@@ -3,6 +3,8 @@ import csv
 import os
 
 def parse_acc(value):
+    if len(value)==0:
+        return value
     return value.split("=")[1].strip()
 
 def transform_score_format_lodataset(infolder, outfile):
@@ -17,6 +19,7 @@ def transform_score_format_lodataset(infolder, outfile):
         prf_mic_outlines = collections.defaultdict(dict)
 
         for f in files:
+            print(f)
 
             setting=f[f.index("=")+1: f.index("|training")]
             lvl = setting.split("_")[0]
@@ -32,21 +35,26 @@ def transform_score_format_lodataset(infolder, outfile):
 
             df = open(infolder+"/"+f).readlines()
 
+            cnn_acc=[""]
+            han_acc=[""]
+
             if 'lvl1' in f:
                 bilstm_mac_row=df[39].split(",")
                 bilstm_macw_row = df[40].split(",")
                 bilstm_mic_row=df[41].split(",")
                 bilstm_acc=df[42].split(",")
 
-                cnn_mac_row = df[83].split(",")
-                cnn_macw_row = df[84].split(",")
-                cnn_mic_row = df[85].split(",")
-                cnn_acc = df[86].split(",")
+                if len(df)>83:
+                    cnn_mac_row = df[83].split(",")
+                    cnn_macw_row = df[84].split(",")
+                    cnn_mic_row = df[85].split(",")
+                    cnn_acc = df[86].split(",")
 
-                han_mac_row = df[127].split(",")
-                han_macw_row = df[128].split(",")
-                han_mic_row = df[129].split(",")
-                han_acc = df[130].split(",")
+                if len(df)>127:
+                    han_mac_row = df[127].split(",")
+                    han_macw_row = df[128].split(",")
+                    han_mic_row = df[129].split(",")
+                    han_acc = df[130].split(",")
 
             elif 'lvl2' in f:
                 bilstm_mac_row=df[78].split(",")
@@ -54,30 +62,34 @@ def transform_score_format_lodataset(infolder, outfile):
                 bilstm_mic_row=df[80].split(",")
                 bilstm_acc=df[81].split(",")
 
-                cnn_mac_row = df[161].split(",")
-                cnn_macw_row = df[162].split(",")
-                cnn_mic_row = df[163].split(",")
-                cnn_acc = df[164].split(",")
+                if len(df)>161:
+                    cnn_mac_row = df[161].split(",")
+                    cnn_macw_row = df[162].split(",")
+                    cnn_mic_row = df[163].split(",")
+                    cnn_acc = df[164].split(",")
 
-                han_mac_row = df[244].split(",")
-                han_macw_row = df[245].split(",")
-                han_mic_row = df[246].split(",")
-                han_acc = df[247].split(",")
+                if len(df)>244:
+                    han_mac_row = df[244].split(",")
+                    han_macw_row = df[245].split(",")
+                    han_mic_row = df[246].split(",")
+                    han_acc = df[247].split(",")
             else:
                 bilstm_mac_row = df[291].split(",")
                 bilstm_macw_row = df[292].split(",")
                 bilstm_mic_row = df[293].split(",")
                 bilstm_acc = df[294].split(",")
 
-                cnn_mac_row = df[587].split(",")
-                cnn_macw_row = df[588].split(",")
-                cnn_mic_row = df[589].split(",")
-                cnn_acc = df[590].split(",")
+                if len(df)>587:
+                    cnn_mac_row = df[587].split(",")
+                    cnn_macw_row = df[588].split(",")
+                    cnn_mic_row = df[589].split(",")
+                    cnn_acc = df[590].split(",")
 
-                han_mac_row = df[883].split(",")
-                han_macw_row = df[884].split(",")
-                han_mic_row = df[885].split(",")
-                han_acc = df[886].split(",")
+                if len(df)>883:
+                    han_mac_row = df[883].split(",")
+                    han_macw_row = df[884].split(",")
+                    han_mic_row = df[885].split(",")
+                    han_acc = df[886].split(",")
 
             acc_ = [parse_acc(bilstm_acc[0]), parse_acc(cnn_acc[0]),
                    parse_acc(han_acc[0])]
@@ -187,7 +199,7 @@ if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                   "/home/zz/Work/wop/tmp/desc.csv")
     transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp",
-                                     "/home/zz/Work/wop/output/classifier/run_dnn_nfold_glove.csv")
+                                     "/home/zz/Work/wop/output/classifier/run_dnn_nfold_ft_cbow.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")

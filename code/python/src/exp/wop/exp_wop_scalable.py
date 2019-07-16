@@ -39,7 +39,7 @@ def run_dnn_setting(setting_file, home_dir,
         print("\tfasttext format")
         emb_model = load_model(dnn_embedding_file)
     else:
-        print("\tword2vec format")
+        print("\tword2vec format, binary="+str(embedding_format)+","+str(strtobool(embedding_format)))
         emb_model = gensim.models.KeyedVectors. \
             load_word2vec_format(dnn_embedding_file, binary=strtobool(embedding_format))
 
