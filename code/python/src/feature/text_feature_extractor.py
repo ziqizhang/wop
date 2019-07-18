@@ -6,6 +6,7 @@ from nltk.util import skipgrams
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from util import nlp
+import numpy as np
 
 logger = logging.getLogger(__name__)
 NGRAM_FEATURES_VOCAB = "feature_vocab_ngram"
@@ -49,6 +50,14 @@ def get_ngram_tfidf(texts):
     vocab = {v: i for i, v in enumerate(ngram_vectorizer.get_feature_names())}
     return tfidf, vocab
 
+def concate_text(row: list, col_indexes):
+    text = ""
+    if "-" in col_indexes:
+        for c in col_indexes.split("-"):
+            text += row[int(c)] + " "
+    else:
+        text=row[int(col_indexes)]
+    return text.strip()
 
 # tweets should be normalised already, as this method will be called many times to get different
 # shape of skipgrams
@@ -80,3 +89,46 @@ def get_skipgram(tweets, nIn, kIn):
     logger.info("\t\t complete, dim={}, {}".format(tfidf.shape, datetime.datetime.now()))
     vocab = {v: i for i, v in enumerate(vectorizer.get_feature_names())}
     return tfidf, vocab
+
+
+'''
+aggr_option: 0 means average; 1 means sum
+text_norm_option:0 means stemming 1 means lemma
+'''
+def get_aggr_embedding_vectors(df, text_col,
+                               text_norm_option: int,
+                               aggr_option: int, emb_model,
+                               emb_format: str, emb_dim):
+    X = np.zeros((len(df), emb_dim), dtype='float')
+    i=0
+    for row in df:
+        text=concate_text(row, text_col)
+        text = nlp.normalize(text)
+        words = nlp.tokenize(text, text_norm_option)
+
+        matrix=[]
+        for w in words:
+            # if w=='fidlar':
+            #     print()
+            if emb_format=='fasttext':
+                vec=emb_model.get_word_vector(w).astype('float32')
+            else:
+                if w in emb_model.wv.vocab.keys():
+                    vec = emb_model.wv[w]
+                else:
+                    vec=None
+            if vec is not None:
+                matrix.append(vec)
+
+        if len(matrix)>0:
+            if aggr_option==0:
+                X[i, :]=np.sum(matrix, axis=0)
+            else:
+                X[i, :]=np.average(matrix, axis=0)
+
+        #check if vec has nan
+        # vec=X[i, :]
+        # if np.isnan(vec).any():
+        #     print("has NaN")
+        i+=1
+    return X

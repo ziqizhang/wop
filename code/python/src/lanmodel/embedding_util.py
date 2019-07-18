@@ -1,4 +1,6 @@
-from genericpath import isfile
+from distutils.util import strtobool
+
+from fasttext import load_model
 from os import listdir
 
 import datetime
@@ -8,6 +10,8 @@ import multiprocessing
 import gc
 
 import sys
+
+import gensim
 from gensim.models import Word2Vec
 
 
@@ -55,6 +59,20 @@ def train_word2vec(input_folder, start_file_index, out_model_file, cbow_or_skip)
     print(str(datetime.datetime.now()) + ' training completed, saving...')
     model.save(out_model_file)
     print(str(datetime.datetime.now()) + ' saving completed')
+
+
+def load_emb_model(embedding_format:str, embedding_file:str):
+    if embedding_format == 'gensim':
+        print("\tgensim format")
+        emb_model = gensim.models.KeyedVectors.load(embedding_file, mmap='r')
+    elif embedding_format == 'fasttext':
+        print("\tfasttext format")
+        emb_model = load_model(embedding_file)
+    else:
+        print("\tword2vec format, binary="+str(embedding_format)+","+str(strtobool(embedding_format)))
+        emb_model = gensim.models.KeyedVectors. \
+            load_word2vec_format(embedding_file, binary=strtobool(embedding_format))
+    return emb_model
 
 
 if __name__ == "__main__":

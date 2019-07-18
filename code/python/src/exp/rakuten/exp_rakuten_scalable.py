@@ -3,19 +3,18 @@
 import sys
 import os
 import datetime
-from distutils.util import strtobool
-import gc
-import gensim
-from fasttext import load_model
+import numpy
+from feature import text_feature_extractor as tfe
 from numpy.random import seed
+from classifier import classifier_main as cml
 
 seed(1)
 
 from classifier import classifier_dnn_scalable as dnn_classifier
 from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
-import pandas as pd
 from exp import exp_util
+from lanmodel import embedding_util
 
 
 def run_dnn_setting(setting_file, home_dir,
@@ -32,16 +31,7 @@ def run_dnn_setting(setting_file, home_dir,
     # this the Gensim compatible embedding file
     dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
                                                           overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
-    if embedding_format == 'gensim':
-        print("\tgensim format")
-        emb_model = gensim.models.KeyedVectors.load(dnn_embedding_file, mmap='r')
-    elif embedding_format == 'fasttext':
-        print("\tfasttext format")
-        emb_model = load_model(dnn_embedding_file)
-    else:
-        print("\tword2vec format")
-        emb_model = gensim.models.KeyedVectors. \
-            load_word2vec_format(dnn_embedding_file, binary=strtobool(embedding_format))
+    emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
 
     # in order to test different DNN architectures, I implemented a parser that analyses a string following
     # specific syntax, creates different architectures. This one here takes word embedding, pass it to 3
@@ -180,6 +170,78 @@ def run_fasttext_setting(setting_file, home_dir,
     print(datetime.datetime.now())
 
 
+#traditional machine learning
+def run_cml_setting(setting_file, home_dir,
+                    train_data_file, test_data_file,
+                    overwrite_params=None,
+                    embedding_format=None):
+    properties = exp_util.load_properties(setting_file)
+
+    csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
+
+    # this is the folder to save output to
+    outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
+
+    print("\n" + str(datetime.datetime.now()))
+    print("loading embedding models...")
+    # this the Gensim compatible embedding file
+    dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
+                                                          overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+    # print("embedding file is========="+dnn_embedding_file)
+    emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
+
+    print("loading dataset...")
+    df, train_size, test_size = exp_util.load_and_merge_train_test_data(train_data_file, test_data_file)
+    class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
+    y = df[:, class_col]
+
+    target_classes = len(set(y))
+    print("\ttotal classes=" + str(target_classes))
+    print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
+
+    print("fitting model...")
+
+    input_text_info = {}
+    count = 0
+    for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|"):
+        config = x.split(",")
+        map = {}
+        map["text_col"] = config[0]
+        map["text_length"] = int(config[2])
+        map["text_dim"] = util.DNN_EMBEDDING_DIM
+        input_text_info[count] = map
+
+        count += 1
+
+    print("creating feature matrix")
+    X_all = []
+    for k, v in input_text_info.items():
+        X_sub = tfe.get_aggr_embedding_vectors(df=df,
+                                               text_col=v["text_col"],
+                                               text_norm_option=1,
+                                               aggr_option=1,
+                                               emb_format=embedding_format,
+                                               emb_model=emb_model,
+                                               emb_dim=int(v["text_dim"]))
+        X_all.append(X_sub)
+    X_all=numpy.concatenate(X_all, axis=1)
+
+    setting_file = setting_file[setting_file.rfind("/") + 1:]
+    models=["svm_l"]
+    for model_name in models:
+        print("\tML model=" + model_name)
+        print("fitting model...")
+
+        cls = cml.Classifer(setting_file, model_name, X_all[0:train_size,:], y[0:train_size], outfolder,
+                           categorical_targets=target_classes,
+                           nfold=None, algorithms=[model_name])
+        trained_model=cls.run()["svm_l"]
+        cls.eval_holdout(trained_model, model_name, X_all[train_size:,:],y[train_size:] )
+
+    print("Completed running all models on this setting file")
+    print(datetime.datetime.now())
+
+
 if __name__ == "__main__":
     # argv-1: folder containing all settings to run, see 'input' folder
     # argv-2: working directory
@@ -196,9 +258,15 @@ if __name__ == "__main__":
                             train_data_file=sys.argv[3],
                             test_data_file=sys.argv[4],
                             overwrite_params=overwrite_params)
-    else:
+    elif sys.argv[6]=='dnn':
         run_dnn_setting(setting_file=sys.argv[1], home_dir=sys.argv[2],
                             train_data_file=sys.argv[3],
                             test_data_file=sys.argv[4],
                             overwrite_params=overwrite_params,
                             embedding_format=sys.argv[5])
+    else:
+        run_cml_setting(setting_file=sys.argv[1], home_dir=sys.argv[2],
+                        train_data_file=sys.argv[3],
+                        test_data_file=sys.argv[4],
+                        overwrite_params=overwrite_params,
+                        embedding_format=sys.argv[5])

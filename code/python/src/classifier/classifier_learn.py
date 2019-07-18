@@ -48,13 +48,13 @@ will be saved. If nfold is an integer, the model will perform cross fold valiati
 results will be saved'''
 
 
-def learn_discriminative(cpus, task, model,
+def learn_discriminative(cpus, task, model_name,
                          X_train, y_train,
                          identifier, outfolder, nfold=None, feature_reduction=None):
     classifier = None
     model_file = None
 
-    if (model == "knn"):
+    if (model_name == "knn"):
         print("== KNN ...")
         cls = KNeighborsClassifier(n_neighbors=1)
         # rfc_tuning_params = {"max_depth": [3, 5, None],
@@ -71,7 +71,7 @@ def learn_discriminative(cpus, task, model,
         else:
             classifier = cls
         model_file = os.path.join(outfolder, "knn_classifier-%s.m" % task)
-    if (model == "rf"):
+    if (model_name == "rf"):
         print("== Random Forest ...")
         cls = RandomForestClassifier(n_estimators=20, n_jobs=cpus)
         # rfc_tuning_params = {"max_depth": [3, 5, None],
@@ -88,7 +88,7 @@ def learn_discriminative(cpus, task, model,
         else:
             classifier = cls
         model_file = os.path.join(outfolder, "random-forest_classifier-%s.m" % task)
-    if (model == "svm-l"):
+    if (model_name == "svm-l"):
         print("== SVM, kernel=linear ...")
         cls = svm.LinearSVC(class_weight='balanced', C=0.01, penalty='l2', loss='squared_hinge',
                             multi_class='ovr')
@@ -101,7 +101,7 @@ def learn_discriminative(cpus, task, model,
             classifier = cls
         model_file = os.path.join(outfolder, "liblinear-svm-linear-%s.m" % task)
 
-    if (model == "svm-rbf"):
+    if (model_name == "svm-rbf"):
         # tuned_parameters = [{'gamma': np.logspace(-9, 3, 3), 'probability': [True], 'C': np.logspace(-2, 10, 3)},
         #                     {'C': [1e-1, 1e-3, 1e-5, 0.2, 0.5, 1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 2]}]
         print("== SVM, kernel=rbf ...")
@@ -113,16 +113,17 @@ def learn_discriminative(cpus, task, model,
             classifier = pipe
         else:
             classifier = cls
-        model_file = os.path.join(outfolder, "liblinear-svm-rbf-%s.m" % task)
+        #model_file = os.path.join(outfolder, "liblinear-svm-rbf-%s.m" % task)
 
     if nfold is not None:
         nfold_predictions = cross_val_predict(classifier, X_train, y_train, cv=nfold)
-        util.save_classifier_model(classifier, model_file)
-        util.save_scores(nfold_predictions, y_train, model, task,
+        #util.save_classifier_model(classifier, model_file)
+        util.save_scores(nfold_predictions, y_train, model_name, task,
                          identifier, 3, outfolder)
     else:
         classifier.fit(X_train, y_train)
-        util.save_classifier_model(classifier, model_file)
+        #util.save_classifier_model(classifier, model_file)
+    return classifier
 
 
 def learn_generative(cpus, task, model_flag, X_train, y_train,
@@ -176,8 +177,8 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
         util.save_scores(nfold_predictions, y_train, model_flag, task, identifier, 2, outfolder)
     else:
         classifier.fit(X_train, y_train)
-        util.save_classifier_model(classifier, model_file)
-
+        #util.save_classifier_model(classifier, model_file)
+    return classifier
 
 
 '''
@@ -267,7 +268,7 @@ def learn_dnn(nfold, task,
     #         word_embedding_mask_zero=embedding_mask_zero
     #     )
 
-    if X_train_metafeature is not None and input_as_2D: #if we also want to use other features together with text-based, concatenate them as-is
+    if X_train_metafeature is not None: #if we also want to use other features together with text-based, concatenate them as-is
         model_metafeature_inputs = Input(shape=(len(X_train_metafeature[0]),))
         model_metafeature = \
             dmc.create_submodel_metafeature(model_metafeature_inputs, 20)
@@ -313,7 +314,7 @@ def learn_dnn(nfold, task,
             X_test_text_feature = X_test_merge_[:, 0:len(X_train_textfeature[0])]
             X_test_meta_feature = X_test_merge_[:, len(X_train_textfeature[0]):]
 
-            if X_train_metafeature is not None and input_as_2D:
+            if X_train_metafeature is not None:
                 model.fit([X_train_text_feature, X_train_meta_feature],
                           y_train_, epochs=dmc.DNN_EPOCHES, batch_size=dmc.DNN_BATCH_SIZE)
                 prediction_prob = model.predict([X_test_text_feature, X_test_meta_feature])
