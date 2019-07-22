@@ -199,7 +199,7 @@ if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                   "/home/zz/Work/wop/tmp/desc.csv")
     transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp",
-                                     "/home/zz/Work/wop/output/classifier/run_dnn_nfold_ft_cbow.csv")
+                                     "/home/zz/Work/wop/output/classifier/run_dnn_nfold_w2v_cbow.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")

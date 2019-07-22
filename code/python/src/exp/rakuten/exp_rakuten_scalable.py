@@ -45,7 +45,7 @@ def run_dnn_setting(setting_file, home_dir,
 
     model_descriptors = [
         "input=2d bilstm=100-False|dense=?-softmax|emb",
-        "input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb",
+        #"input=2d cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten|dense=?-softmax|emb",
         "input=2d han_2dinput"]
     # model_descriptors = [
     #     "input=2d han_2dinput"]
