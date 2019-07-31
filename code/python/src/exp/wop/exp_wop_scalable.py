@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
     setting_file = sys.argv[1]
 
-    if sys.argv[4] == 'fasttext':
+    if sys.argv[4] == 'fasttext': #setting_file, home_dir, overwrite_params=None
         run_fasttext_setting(setting_file, sys.argv[2], overwrite_params=overwrite_params)
     elif sys.argv[4] == 'dnn':
         run_dnn_setting(setting_file, sys.argv[2],

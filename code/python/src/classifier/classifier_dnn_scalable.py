@@ -343,7 +343,7 @@ def fit_fasttext(df: DataFrame, nfold: int, class_col: int,
                  task: str,
                  text_norm_option: int, text_input_info: dict, embedding_file: str):
     # X, y, embedding_file, nfold, outfolder: str, task: str):
-
+    print("\t running fasttext using embedding file="+embedding_file)
     encoder = LabelBinarizer()
     y = df[:, class_col]
 
@@ -409,14 +409,14 @@ def fit_fasttext(df: DataFrame, nfold: int, class_col: int,
         if embedding_file is not None:
             model = fasttext.train_supervised(input=fasttext_train,
                                           minn=4, maxn=10, wordNgrams=3,
-                                          neg=10, loss='ns', epoch=20,
+                                          neg=10, loss='ns', epoch=3000,
                                           thread=30,
                                           dim=dmc.DNN_EMBEDDING_DIM,
                                           pretrainedVectors=embedding_file)
         else:
             model = fasttext.train_supervised(input=fasttext_train,
                                               minn=4, maxn=10, wordNgrams=3,
-                                              neg=10, loss='ns', epoch=20,
+                                              neg=10, loss='ns', epoch=3000,
                                               thread=30,
                                               dim=dmc.DNN_EMBEDDING_DIM)
 
