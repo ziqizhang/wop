@@ -7,7 +7,7 @@ def extract_column(inCSV:str, separator:str, name_col:int, out_list_file):
                         ).fillna('').as_matrix()
     with open(out_list_file, 'w', newline='') as f:
         for row in data:
-            name = row[name_col]
+            name = row[name_col].lower()
             f.write(name+"\n")
 
 def insert_into_data(inCSV:str, separator:str, add_to_col:int, out_translation, outCSV:str):

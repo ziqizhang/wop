@@ -13,7 +13,7 @@ from sklearn.linear_model import LogisticRegression
 from classifier import classifier_learn as cl
 from classifier import classifier_predict as ct
 from sklearn.feature_selection import RFECV
-from sklearn.cross_validation import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold
 import numpy as np
 from classifier import classifier_util
 
