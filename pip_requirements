@@ -10,4 +10,5 @@ fasttext
 gensim
 vaderSentiment
 nltk
-
+pip install pydot==1.2.3
+graphviz
