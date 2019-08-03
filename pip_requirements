@@ -1,14 +1,23 @@
-tensorflow
-theano
-scikit learn
-keras
-gcc
+conda 4.4.7
+tensorflow 1.10.0
+theano 0.9.0
+scikit learn 0.19.0
+keras 2.0.9
+sudo apt install gcc
 sudo apt update
 sudo apt upgrade
 sudo apt install gcc python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev g++
+
 fasttext
-gensim
+git clone https://github.com/facebookresearch/fastText.git
+cd fastText
+sudo pip install .
+
+conda
 vaderSentiment
-nltk
+nltk 3.2.5
+(stopwords, wordnet)
+sudo apt install python-pydot python-pydot-ng graphviz
 pip install pydot==1.2.3
-graphviz
+conda install -c anaconda graphviz 
+ 

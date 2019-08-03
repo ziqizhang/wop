@@ -1,14 +1,14 @@
 # use this class to run experiments over wop datasets with nfold validation
-
 import sys
 import datetime
 
 import numpy
-from numpy.random import seed
+import tensorflow as tf
+from keras import initializers
+
 from lanmodel import embedding_util
 from classifier import classifier_main as cml
 
-seed(1)
 
 from classifier import classifier_dnn_scalable as dnn_classifier
 from classifier import dnn_util as util
@@ -16,6 +16,17 @@ from exp.wop import exp_wop_cml as exp_util
 import pandas as pd
 from exp import exp_util
 from feature import text_feature_extractor as tfe
+from classifier import classifier_learn
+import random
+random.seed(classifier_learn.RANDOM_STATE)
+numpy.random.seed(classifier_learn.RANDOM_STATE)
+tf.set_random_seed(classifier_learn.RANDOM_STATE)
+
+my_init = initializers.glorot_uniform(seed=classifier_learn.RANDOM_STATE)
+# session_conf = tf.ConfigProto(intra_op_parallelism_threads=1,
+#                               inter_op_parallelism_threads=1)
+# sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
+# K.set_session(sess)
 
 
 def run_dnn_setting(setting_file, home_dir,

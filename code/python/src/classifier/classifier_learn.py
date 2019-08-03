@@ -27,7 +27,6 @@ from classifier import classifier_util as util
 import os
 from classifier import dnn_util as dmc
 
-RANDOM_SEED = 1
 RANDOM_STATE = 42
 
 
