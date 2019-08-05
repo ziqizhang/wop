@@ -29,9 +29,9 @@ def insert_into_data(inCSV:str, separator:str, add_to_col:int, out_translation, 
             translation=lineList[i].strip()
 
             if len(row)>add_to_col:
-                row[add_to_col]=translation
+                row[add_to_col]=translation.replace("_"," ")
             else:
-                row.append(translation)
+                row.append(translation.replace("_"," "))
             writer.writerow(row)
 
 if __name__ == "__main__":
@@ -60,7 +60,7 @@ e
         extract_column(sys.argv[2], sys.argv[3], int(sys.argv[4]), sys.argv[5])
     else:
         '''
-        1
+        i
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv
 ;
 13
@@ -71,7 +71,7 @@ e
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv
 ;
 13
-/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt
+/home/zz/Work/data/mt/product/translation_out/goldstandard_eng_v1_utf8_names.txt
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8_tl.csv
         '''
         insert_into_data(sys.argv[2], sys.argv[3], int(sys.argv[4]),
