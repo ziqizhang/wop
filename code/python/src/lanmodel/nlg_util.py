@@ -77,9 +77,42 @@ def generate_text(model, seed_text, next_words, max_sequence_len):
         seed_text += " " + output_word
     return seed_text
 
+def slice_text_data(in_file, out_folder,parts):
+    f = open(in_file)
+
+    writers={}
+    for i in range(parts):
+        writers[i]=open(out_folder+"/"+str(i)+".txt",'w')
+
+    line = f.readline()
+
+    total_lines=0
+    count=0
+    while line:
+        line = f.readline()
+
+        wr = writers[count]
+        wr.write(line)
+
+        count+=1
+        if count>=len(writers):
+            count=0
+
+        total_lines+=1
+        if total_lines%100000==0:
+            print(total_lines)
+
+    f.close()
+
+    for k, v in writers.items():
+        v.close()
 
 
 if __name__ == "__main__":
+
+    slice_text_data("/home/zz/Work/data/wdc/desc_txt/desc_filtered.txt","/home/zz/Work/data/wdc/desc_txt",10)
+    exit(0)
+
     data = open(sys.argv[1]).read()
 
     predictors, label, max_sequence_len, total_words = dataset_preparation(data)

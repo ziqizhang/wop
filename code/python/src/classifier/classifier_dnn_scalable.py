@@ -409,14 +409,14 @@ def fit_fasttext(df: DataFrame, nfold: int, class_col: int,
         if embedding_file is not None:
             model = fasttext.train_supervised(input=fasttext_train,
                                           minn=4, maxn=10, wordNgrams=3,
-                                          neg=10, loss='ns', epoch=3000,
+                                          neg=10, loss='ns', epoch=1000,
                                           thread=30,
                                           dim=dmc.DNN_EMBEDDING_DIM,
                                           pretrainedVectors=embedding_file)
         else:
             model = fasttext.train_supervised(input=fasttext_train,
                                               minn=4, maxn=10, wordNgrams=3,
-                                              neg=10, loss='ns', epoch=3000,
+                                              neg=10, loss='ns', epoch=1000,
                                               thread=30,
                                               dim=dmc.DNN_EMBEDDING_DIM)
 

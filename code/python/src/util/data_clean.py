@@ -119,7 +119,21 @@ def output_as_is(in_file_name,out_file_name):
             df1_row[13] = df1_row[17] #14:cat_L1L4_TF; 15:cat_L1L4_TF-IDF; 16:catClean_L1L4_TF; 17:catClean_L1L4_TF-IDF
             csv_writer.writerow(df1_row)
 
+def transform_rakuten_for_mt(in_folder, out_file):
+    with open(out_file, mode='w') as employee_file:
+        csv_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=0)
+        for f in os.listdir(in_folder):
+            csvfile = in_folder+"/"+f
+            df = pd.read_csv(csvfile, header=0, delimiter="\t", quoting=0, encoding="utf-8").as_matrix()
+            for r in df:
+                name=r[0]
+                label=r[1].replace(">"," ")
+                csv_writer.writerow([name, label])
+
+
 if __name__ == "__main__":
+    transform_rakuten_for_mt("/home/zz/Work/data/Rakuten/original",
+                             "/home/zz/Work/data/mt/product/mt_corpus/rakuten/0.csv")
     # merge_prodcat_dataset("/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8.csv",
     #                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
     #                 "/home/zz/Work/data/wop_data/tmp.csv")
@@ -127,5 +141,5 @@ if __name__ == "__main__":
     # remove_long_cat("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories.csv",
     #                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_cleaned_short.csv")
 
-    output_as_is("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories_GS1.csv",
-                 "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_unsup_gs1_17.csv")
+    # output_as_is("/home/zz/Work/data/wop_data/goldstandard_eng_v1_cleanedCategories_GS1.csv",
+    #              "/home/zz/Work/data/wop_data/goldstandard_eng_v1_utf8_cat_unsup_gs1_17.csv")

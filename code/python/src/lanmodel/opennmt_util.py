@@ -28,10 +28,17 @@ def insert_into_data(inCSV:str, separator:str, add_to_col:int, out_translation, 
             row=list(data[i])
             translation=lineList[i].strip()
 
+            translation=translation.replace("_"," ")
+
+            #only keep unique words
+            words=list(set(translation.split(" ")))
+            translation=" ".join(words)
+            #
+
             if len(row)>add_to_col:
-                row[add_to_col]=translation.replace("_"," ")
+                row[add_to_col]=translation
             else:
-                row.append(translation.replace("_"," "))
+                row.append(translation)
             writer.writerow(row)
 
 if __name__ == "__main__":

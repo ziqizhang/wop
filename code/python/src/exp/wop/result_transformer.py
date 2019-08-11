@@ -105,19 +105,21 @@ def transform_score_format_lodataset(infolder, outfile):
             #        cnn_mic_row[1], cnn_mic_row[2], cnn_mic_row[3],
             #        han_mic_row[1], han_mic_row[2], han_mic_row[3]]
 
-            # acc_ = [parse_acc(bilstm_acc[0]),
-            #         parse_acc(cnn_acc[0])]
-            # mac = [bilstm_mac_row[1], bilstm_mac_row[2], bilstm_mac_row[3],
-            #        cnn_mac_row[1], cnn_mac_row[2], cnn_mac_row[3]]
-            # macw = [bilstm_macw_row[1], bilstm_macw_row[2], bilstm_macw_row[3],
-            #         cnn_macw_row[1], cnn_macw_row[2], cnn_macw_row[3]]
-            # mic = [bilstm_mic_row[1], bilstm_mic_row[2], bilstm_mic_row[3],
-            #        cnn_mic_row[1], cnn_mic_row[2], cnn_mic_row[3]]
+            #TWO METHODS
+            acc_ = [parse_acc(bilstm_acc[0]),
+                    parse_acc(cnn_acc[0])]
+            mac = [bilstm_mac_row[1], bilstm_mac_row[2], bilstm_mac_row[3],
+                   cnn_mac_row[1], cnn_mac_row[2], cnn_mac_row[3]]
+            macw = [bilstm_macw_row[1], bilstm_macw_row[2], bilstm_macw_row[3],
+                    cnn_macw_row[1], cnn_macw_row[2], cnn_macw_row[3]]
+            mic = [bilstm_mic_row[1], bilstm_mic_row[2], bilstm_mic_row[3],
+                   cnn_mic_row[1], cnn_mic_row[2], cnn_mic_row[3]]
 
-            acc_ = [parse_acc(bilstm_acc[0])]
-            mac = [bilstm_mac_row[1], bilstm_mac_row[2], bilstm_mac_row[3]]
-            macw = [bilstm_macw_row[1], bilstm_macw_row[2], bilstm_macw_row[3]]
-            mic = [bilstm_mic_row[1], bilstm_mic_row[2], bilstm_mic_row[3]]
+            #ONE METHOD
+            # acc_ = [parse_acc(bilstm_acc[0])]
+            # mac = [bilstm_mac_row[1], bilstm_mac_row[2], bilstm_mac_row[3]]
+            # macw = [bilstm_macw_row[1], bilstm_macw_row[2], bilstm_macw_row[3]]
+            # mic = [bilstm_mic_row[1], bilstm_mic_row[2], bilstm_mic_row[3]]
 
             acc[lvl]=acc_
             prf_mac[lvl]=mac
@@ -210,7 +212,7 @@ if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                   "/home/zz/Work/wop/tmp/desc.csv")
     transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp",
-                                     "/home/zz/Work/wop/output/classifier/run_ft_nfold_none.csv")
+                                     "/home/zz/Work/wop/output/classifier/run_dnn_w2v_mt.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")

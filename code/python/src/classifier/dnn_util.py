@@ -12,7 +12,7 @@ from nltk import tokenize
 
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle
-from util import nlp, dataclean as du
+from util import nlp, data_clean as du
 from keras.engine.topology import Layer, Input
 from keras import initializers
 import tensorflow as tf
