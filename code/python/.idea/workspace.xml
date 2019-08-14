@@ -11,11 +11,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="result_transformer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <file leaf-file-name="gpt2_util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lanmodel/gpt2_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2448">
-              <caret line="138" column="9" lean-forward="false" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+            <state relative-caret-position="364">
+              <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nlg_util.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lanmodel/nlg_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="58">
+              <caret line="84" column="43" lean-forward="true" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -24,48 +36,8 @@
       <file leaf-file-name="opennmt_util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lanmodel/opennmt_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="418" column="72" lean-forward="false" selection-start-line="418" selection-start-column="72" selection-end-line="418" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nlg_util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lanmodel/nlg_util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1512">
-              <caret line="94" column="21" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exp_util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exp/exp_util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="31" column="78" lean-forward="false" selection-start-line="31" selection-start-column="78" selection-end-line="31" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_clean.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/data_clean.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2196">
-              <caret line="129" column="36" lean-forward="false" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
+            <state relative-caret-position="1084">
+              <caret line="84" column="38" lean-forward="true" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -82,9 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fastt</find>
-      <find>train_supervised</find>
-      <find>,</find>
       <find>false</find>
       <find>sca</find>
       <find>setting_file</find>
@@ -112,6 +81,9 @@
       <find>train</find>
       <find>merge</find>
       <find>fasttext</find>
+      <find>training_text_</find>
+      <find>desc_f</find>
+      <find>csvwri</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -156,31 +128,31 @@
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_rakuten_scalable.py" />
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/embedding_util.py" />
         <option value="$PROJECT_DIR$/src/feature/text_feature_extractor.py" />
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py" />
         <option value="$PROJECT_DIR$/src/util/opennmt_util.py" />
         <option value="$PROJECT_DIR$/src/exp/exp_util.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/pgt2_util.py" />
-        <option value="$PROJECT_DIR$/src/lanmodel/gpt2_util.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_main.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_learn.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
         <option value="$PROJECT_DIR$/src/classifier/dnn_util.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
         <option value="$PROJECT_DIR$/src/util/data_clean.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/opennmt_util.py" />
-        <option value="$PROJECT_DIR$/src/lanmodel/nlg_util.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
+        <option value="$PROJECT_DIR$/src/lanmodel/gpt2_util.py" />
+        <option value="$PROJECT_DIR$/src/lanmodel/nlg_util.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1366" />
-    <option name="y" value="-2" />
-    <option name="width" value="1680" />
-    <option name="height" value="1052" />
+    <option name="x" value="1618" />
+    <option name="y" value="359" />
+    <option name="width" value="974" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -197,7 +169,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,12 +242,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Programs/anaconda3/envs/gpt_2_simple/bin" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -512,25 +484,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_n+c $PROJECT_DIR$/../../.. False False embedding_file=/data/embeddings/wop/name_skip.bin" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="exp_wop_dnn_hybrid" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/exp/wop" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_hybrid.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn_settings_hybrid $PROJECT_DIR$/../../.. False False" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_n+c.new $PROJECT_DIR$/../../.. False False embedding_file=/data/embeddings/glove.840B.300d.bin.gensim training_text_data=/data/wop/goldstandard_eng_v1_utf8_tlw.csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -566,7 +520,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_n/gslvl1_name.txt $PROJECT_DIR$/../../.. gensim dnn embedding_file=/data/embeddings/glove.840B.300d.bin.gensim" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn/dnn_n+c.new/gslvl1_name+cat.new.txt $PROJECT_DIR$/../../.. gensim dnn embedding_file=/data/embeddings/glove.840B.300d.bin.gensim training_text_data=/data/wop/goldstandard_eng_v1_utf8_tlw.csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -602,7 +556,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/lanmodel/nlg_util.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/word2vec_corpus/name/n_1_0 $PROJECT_DIR$/../../../data/wdc/name/nlg.model" />
+      <option name="PARAMETERS" value="g $PROJECT_DIR$/../../../data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive.txt $PROJECT_DIR$/../../../data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive-generated.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -632,13 +586,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/lanmodel" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/lanmodel/gpt2_util.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/desc_merged.txt" />
+      <option name="PARAMETERS" value="g $PROJECT_DIR$/../../../data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive.txt $PROJECT_DIR$/../../../data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive-generated.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -679,19 +633,19 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="21">
+    <list size="20">
       <item index="0" class="java.lang.String" itemvalue="Python.cleanCategories" />
       <item index="1" class="java.lang.String" itemvalue="Python.cluster_categories" />
       <item index="2" class="java.lang.String" itemvalue="Python.cluster_quality_analysis" />
-      <item index="3" class="java.lang.String" itemvalue="Python.data_split" />
-      <item index="4" class="java.lang.String" itemvalue="Python.embedding_util" />
-      <item index="5" class="java.lang.String" itemvalue="Python.exp_rakuten_scalable_dnn" />
-      <item index="6" class="java.lang.String" itemvalue="Python.exp_rakuten_scalable_ft" />
-      <item index="7" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
-      <item index="8" class="java.lang.String" itemvalue="Python.exp_wop_cml" />
-      <item index="9" class="java.lang.String" itemvalue="Python.exp_wop_cml_doc2vec" />
-      <item index="10" class="java.lang.String" itemvalue="Python.exp_wop_dnn" />
-      <item index="11" class="java.lang.String" itemvalue="Python.exp_wop_dnn_hybrid" />
+      <item index="3" class="java.lang.String" itemvalue="Python.data_clean" />
+      <item index="4" class="java.lang.String" itemvalue="Python.data_split" />
+      <item index="5" class="java.lang.String" itemvalue="Python.embedding_util" />
+      <item index="6" class="java.lang.String" itemvalue="Python.exp_rakuten_scalable_dnn" />
+      <item index="7" class="java.lang.String" itemvalue="Python.exp_rakuten_scalable_ft" />
+      <item index="8" class="java.lang.String" itemvalue="Python.exp_runner_dnn" />
+      <item index="9" class="java.lang.String" itemvalue="Python.exp_wop_cml" />
+      <item index="10" class="java.lang.String" itemvalue="Python.exp_wop_cml_doc2vec" />
+      <item index="11" class="java.lang.String" itemvalue="Python.exp_wop_dnn" />
       <item index="12" class="java.lang.String" itemvalue="Python.exp_wop_dnn_singlesetting" />
       <item index="13" class="java.lang.String" itemvalue="Python.exp_wop_scalable_dnn" />
       <item index="14" class="java.lang.String" itemvalue="Python.exp_wop_scalable_ft" />
@@ -700,7 +654,6 @@
       <item index="17" class="java.lang.String" itemvalue="Python.pgt2_util" />
       <item index="18" class="java.lang.String" itemvalue="Python.product2vec_loader" />
       <item index="19" class="java.lang.String" itemvalue="Python.result_transformer" />
-      <item index="20" class="java.lang.String" itemvalue="Python.data_clean" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -732,15 +685,15 @@
     <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18527459" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6058632" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24052005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33694476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35102925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45070422" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -756,7 +709,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24593717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24593717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -786,14 +739,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/util/data_clean.py</url>
-          <line>122</line>
-          <option name="timeStamp" value="1019" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/util/data_clean.py</url>
-          <line>125</line>
-          <option name="timeStamp" value="1020" />
+          <url>file://$PROJECT_DIR$/src/lanmodel/gpt2_util.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="1043" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -806,7 +754,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1025" />
+      <option name="time" value="1044" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -864,6 +812,11 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>sys.argv</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>r[1].replace(&quot;&gt;&quot;,&quot; &quot;)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -903,28 +856,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>X_all[0:train_size,:].shape</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/categories/extend_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/categories/identify_GS1scheme.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/categories/catutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -992,13 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/data_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_fasttext.py" />
     <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/gensim/utils.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1024,7 +951,6 @@
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_fasttext.py" />
     <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/sklearn/metrics/classification.py" />
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py" />
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_singlesetting.py" />
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1117,27 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lanmodel/gpt2_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="506" column="4" lean-forward="false" selection-start-line="506" selection-start-column="4" selection-end-line="506" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
@@ -1145,26 +1050,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3186">
-          <caret line="177" column="27" lean-forward="false" selection-start-line="177" selection-start-column="27" selection-end-line="177" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="138" column="9" lean-forward="false" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/exp_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="31" column="78" lean-forward="false" selection-start-line="31" selection-start-column="78" selection-end-line="31" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1175,11 +1064,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="196" column="45" lean-forward="true" selection-start-line="196" selection-start-column="45" selection-end-line="196" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/dnn_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="253" column="4" lean-forward="false" selection-start-line="253" selection-start-column="4" selection-end-line="253" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_multi_input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="42" column="23" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/data_clean.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2196">
-          <caret line="129" column="36" lean-forward="false" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/data_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1476">
+          <caret line="86" column="24" lean-forward="false" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1190,26 +1120,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lanmodel/nlg_util.py">
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_scalable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="94" column="21" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="1800">
+          <caret line="118" column="28" lean-forward="false" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/gpt_2_simple/gpt_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="354" column="4" lean-forward="false" selection-start-line="354" selection-start-column="4" selection-end-line="354" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/gpt_2_simple/src/memory_saving_gradients.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lanmodel/opennmt_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="1084">
+          <caret line="84" column="38" lean-forward="true" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
+    <entry file="file://$PROJECT_DIR$/src/lanmodel/gpt2_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="418" column="72" lean-forward="false" selection-start-line="418" selection-start-column="72" selection-end-line="418" selection-end-column="72" />
+        <state relative-caret-position="364">
+          <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lanmodel/nlg_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="84" column="43" lean-forward="true" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
           <folding />
         </state>
       </provider>

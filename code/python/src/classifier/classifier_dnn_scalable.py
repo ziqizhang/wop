@@ -172,6 +172,7 @@ def create_dnn_branch(
 
 '''
 This method fits a dnn model (cnn, bilstm or han) using data generator to feed batches, with n-fold validation
+https://www.kaggle.com/mschumacher/using-fasttext-models-for-robust-embeddings
 '''
 
 

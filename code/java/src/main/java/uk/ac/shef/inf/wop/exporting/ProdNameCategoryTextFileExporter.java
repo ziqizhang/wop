@@ -11,6 +11,7 @@ import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.core.CoreContainer;
+import uk.ac.shef.inf.wop.Util;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -120,19 +121,31 @@ public class ProdNameCategoryTextFileExporter {
         value = StringEscapeUtils.unescapeJava(value);
         String asciiValue = toASCII(value);
 
-        String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
+        String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}\\|\\>/]", " ").
                 replaceAll("\\s+", " ").toLowerCase().trim();
         //value= StringUtils.stripAccents(value);
 
-        List<String> normTokens = Arrays.asList(alphanumeric.split("\\s+"));
-        if (normTokens.size() > 20)
+        int nums = Util.replacePatterns(alphanumeric,Util.numericP);
+        int an= Util.replacePatterns(alphanumeric, Util.alphanumP);
+        int num_or_an = nums+an;
+
+        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum,"LETTERNUMBER");
+        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric,"NUMBER");
+
+
+        //value= StringUtils.stripAccents(value);
+
+        List<String> normTokens = Arrays.asList(alphanumeric_clean.split("\\s+"));
+        if (normTokens.size() > 10 || normTokens.size()<2)
+            return null;
+        if (num_or_an > ((double)normTokens.size()/3.0))
             return null;
         if (normTokens.contains("http") || normTokens.contains("https") || normTokens.contains("www"))
             return null;
         if (alphanumeric.length() < 3)
             return null;
 
-        String[] pathElements=asciiValue.split("[\\|\\>/]+");
+        String[] pathElements=alphanumeric_clean.split("[\\|\\>/]+");
         StringBuilder sb = new StringBuilder();
         for (String path: pathElements){
             path=path.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
@@ -151,14 +164,22 @@ public class ProdNameCategoryTextFileExporter {
                 replaceAll("\\s+", " ").trim().toLowerCase();
         //value= StringUtils.stripAccents(value);
 
-        List<String> tokens = Arrays.asList(alphanumeric.split("\\s+"));
-        if (asciiValue.split("\\s+").length > 30)
+        int nums = Util.replacePatterns(alphanumeric,Util.numericP);
+        int an= Util.replacePatterns(alphanumeric, Util.alphanumP);
+        int num_or_an = nums+an;
+
+        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum,"LETTERNUMBER");
+        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric,"NUMBER");
+
+        List<String> tokens = Arrays.asList(alphanumeric_clean.split("\\s+"));
+        if (tokens.size() > 10||tokens.size()<2)
+            return null;
+        if (num_or_an > ((double)tokens.size()/3.0))
             return null;
         if (tokens.contains("http") || tokens.contains("https") || tokens.contains("www"))
             return null;
-        if (alphanumeric.length() < 3)
-            return null;
-        return alphanumeric;
+
+        return alphanumeric_clean;
     }
 
     private static String toASCII(String in) {
@@ -201,8 +222,8 @@ public class ProdNameCategoryTextFileExporter {
     }
 
     public static void main(String[] args) throws IOException {
-        convert("/home/zz/Work/data/wdc/mt_corpus/cat_labels",
-                "/home/zz/Work/data/wdc/mt_corpus/cat_label_words");
+        convert("/home/zz/Work/data/mt/product/mt_corpus/cat_labels",
+                "/home/zz/Work/data/mt/product/mt_corpus/cat_label_words");
         System.exit(0);
         /*String weirdString="home >> cat and >> monkey";
 

@@ -6,11 +6,17 @@ import org.jsoup.Jsoup;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Util {
 
     private static long tooMany=0;
     private static long tooFew=0;
+    public static String numeric="\\b([0-9]+.[0-9]+)|([0-9]+)\\b";
+    public static Pattern numericP = Pattern.compile(numeric);
+    public static String alphanum="(?=[A-Za-z,.]*\\d+[A-Za-z,.]*)(?=[\\d,.]*[A-Za-z]+[\\d,.]*)[A-Za-z\\d,.]{2,}(?<![,.])";
+    public static Pattern alphanumP=Pattern.compile(alphanum);
 
     private static String toASCII(String in) {
         String fold = in.replaceAll("[^\\p{ASCII}]", "").
@@ -18,21 +24,47 @@ public class Util {
         return fold;
     }
 
-    private static String cleanDesc(String value) {
+    public static int replacePatterns(String in, Pattern pat){
+        Matcher m = pat.matcher(in);
+        int found=0;
+        while(m.find()) {
+            found++;
+            //System.out.println(in.substring(m.start(),m.end()));
+        }
+        return found;
+    }
+
+    private static String cleanDesc(String value, boolean lower) {
         value = Jsoup.parse(value).text();
         try {
             value = StringEscapeUtils.unescapeJava(value);
+            if (lower)
+                value=value.toLowerCase();
         }catch (Exception e){
             System.out.println("\t"+value);
         }
+
+        //String asciiValue = toASCII("M5 x 35mm Full Thread Hexagon Bolts (DIN 933) - PEEK DescriptionThe M5 x 35mm Full Thread Hexagon Bolts (DIN 933) - PEEK has the following features:M5 (5mm) Thread Size (T)DIN 933 Manufacturing Standard35mm Length (L)Yes Fully ThreadedPEEK MaterialPEEK Thermoplastic Material Specification0.8mm Pitch3.6mm Head Length (K)8mm Head Width A/F (H)Self Colour Finish+/- 0.13mm General Tolerance");
         String asciiValue = toASCII(value);
 
-        String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
+        String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}:,.;]", " ").
                 replaceAll("\\s+", " ").trim();
         //value= StringUtils.stripAccents(value);
 
-        List<String> normTokens = Arrays.asList(alphanumeric.split("\\s+"));
-        if (normTokens.size() > 1000) {
+        int nums = replacePatterns(alphanumeric,numericP);
+        int an= replacePatterns(alphanumeric, alphanumP);
+
+        String alphanumeric_clean = alphanumeric.replaceAll(alphanum,"LETTERNUMBER");
+        alphanumeric_clean = alphanumeric_clean.replaceAll(numeric,"NUMBER");
+
+
+        List<String> normTokens = Arrays.asList(alphanumeric_clean.split("\\s+"));
+        if ((nums+an)>=(normTokens.size()/3)){
+            System.out.println("> too many num/numdigit tokens"+(nums+an)+"/"+normTokens.size());
+            return null;
+        }
+
+        if (normTokens.size() > 200) {
             tooMany++;
             System.out.println("> "+normTokens.size());
             return null;
@@ -41,7 +73,7 @@ public class Util {
             tooFew++;
             return null;
         }
-        return asciiValue;
+        return alphanumeric_clean;
     }
     private static void filterDescriptions(String inFile, String outFile){
 
@@ -51,7 +83,7 @@ public class Util {
             long count=0;
             String line;
             while ((line = br.readLine()) != null) {
-                line=cleanDesc(line);
+                line=cleanDesc(line,true);
                 if (line==null)
                     continue;
 

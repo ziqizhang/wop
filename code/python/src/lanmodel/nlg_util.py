@@ -110,7 +110,7 @@ def slice_text_data(in_file, out_folder,parts):
 
 if __name__ == "__main__":
 
-    slice_text_data("/home/zz/Work/data/wdc/desc_txt/desc_filtered.txt","/home/zz/Work/data/wdc/desc_txt",10)
+    slice_text_data("/home/zz/Work/data/wdc/desc_txt/desc_cleaned.txt","/home/zz/Work/data/wdc/desc_txt",100)
     exit(0)
 
     data = open(sys.argv[1]).read()
