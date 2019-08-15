@@ -1,5 +1,6 @@
 package uk.ac.shef.inf.wop;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 
@@ -102,8 +103,25 @@ public class Util {
         }
     }
 
+    private static void filterNames(String inFile, String outFile) throws IOException {
+        List<String> names= FileUtils.readLines(new File(inFile));
+        PrintWriter p = new PrintWriter(outFile);
+        for (String n : names){
+            n=n.toLowerCase();
+            String alphanumeric = n.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}:,.;]", " ").
+                    replaceAll("\\s+", " ").trim();
 
-    public static void main(String[] args){
-        filterDescriptions(args[0],args[1]);
+            String alphanumeric_clean = alphanumeric.replaceAll(alphanum,"LETTERNUMBER");
+            alphanumeric_clean = alphanumeric_clean.replaceAll(numeric,"NUMBER");
+            p.println(alphanumeric_clean);
+        }
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        //filterDescriptions(args[0],args[1]);
+        filterNames(
+                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive.txt",
+                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt");
     }
 }

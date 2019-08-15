@@ -42,7 +42,7 @@ def generate(inFile, outFile, start, end):
                 break
 
             print(str(datetime.datetime.now())+","+str(count))
-            l = re.sub('[^0-9a-zA-Z]+', ' ', l).strip()
+            l = re.sub('[^0-9a-zA-Z]+', ' ', l).strip()+" is "
             texts = gpt2.generate(sess, return_as_list=True,
                                         temperature=1.0,
                                         nsamples=2,
