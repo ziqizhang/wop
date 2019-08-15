@@ -63,34 +63,45 @@ def generate(inFile, outFile, start, end):
 The following code is to be used on collabotory
 
 import csv
-import datetime
-import re
+    import datetime
+    import re
 
-with open('goldstandard_eng_v1_utf8_names_casesensitive.txt') as f:
-    lineList = f.readlines()
+    inFile="goldstandard_eng_v1_utf8_names.txt"
+    outFile="goldstandard_eng_v1_utf8_names_generated.csv"
+    start=0
+    end=10
 
-outFile='goldstandard_eng_v1_utf8_names_casesensitive-generated.csv'
-with open(outFile, 'w', newline='\n') as f:
-    writer = csv.writer(f, delimiter=",", quotechar='"')
+    with open(inFile) as f:
+        lineList = f.readlines()
+
     count=0
-    for l in lineList:
-        print(str(datetime.datetime.now())+","+str(count))
-        l = re.sub('[^0-9a-zA-Z]+', ' ', l).strip()
-        texts = gpt2.generate(sess, return_as_list=True,
+    with open(outFile, 'a+', newline='\n') as f:
+        writer = csv.writer(f, delimiter=",", quotechar='"')
+        for l in lineList:
+            if count<start:
+                count+=1
+                continue
+
+            if count>end:
+                break
+
+            print(str(datetime.datetime.now())+","+str(count))
+            l = re.sub('[^0-9a-zA-Z]+', ' ', l).strip()
+            texts = gpt2.generate(sess, return_as_list=True,
                                         temperature=1.0,
-                                        nsamples=5,
-                                        batch_size=5,
-                                        length=300,
+                                        nsamples=2,
+                                        batch_size=2,
+                                        length=200,
                                         prefix=l,
                                         include_prefix=False)
-        row=[l]
-        for t in texts:
-            if l in t:
-                t=t[len(l):].strip()
-            row.append(t)
+            row=[l]
+            for t in texts:
+                if l in t:
+                    t=t[len(l):].strip()
+                row.append(t)
 
-        writer.writerow(row)
-        count+=1
+            writer.writerow(row)
+            count+=1
 '''
 
 
@@ -143,7 +154,7 @@ if __name__ == "__main__":
     elif sys.argv[1]=="ft":
         fine_tune(sys.argv[2])
     elif sys.argv[1]=="g":
-        generate(sys.argv[2],sys.argv[3])
+        generate(sys.argv[2],sys.argv[3], int(sys.argv[4]), int(sys.argv[5]))
     elif sys.argv[1]=="i":
         insert_into_data(sys.argv[2], sys.argv[3], int(sys.argv[4]),
                          sys.argv[5], sys.argv[6], sys.argv[7])

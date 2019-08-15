@@ -55,7 +55,7 @@ def text_to_vector_gensim(text, model, text_length, dim, text_norm_option):
     x = np.zeros((text_length, dim))
 
     random_candidates = []  # list of word indexes in the embedding model to be randomly chosen
-    words_matched = set()  # track words that already matched and whose vectors are already used
+    words_matched = set()  # track words that already found in the embedding model and whose vectors are already used
 
     for i, word in enumerate(window):
         is_in_model = False
