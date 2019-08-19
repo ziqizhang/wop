@@ -67,9 +67,10 @@ import csv
     import re
 
     inFile="goldstandard_eng_v1_utf8_names.txt"
-    outFile="goldstandard_eng_v1_utf8_names_generated.csv"
-    start=0
-    end=10
+    gpt2.copy_file_from_gdrive(inFile)
+    outFile="goldstandard_eng_v1_utf8_names_4001-6500.csv"
+    start=4001
+    end=6500
 
     with open(inFile) as f:
         lineList = f.readlines()
