@@ -23,7 +23,10 @@ def transform_score_format_lodataset(infolder, outfile):
                 continue
             print(f)
 
-            setting=f[f.index("=")+1: f.index("|training")]
+            if "=" in f:
+                setting=f[f.index("=")+1: f.index("|training")]
+            else:
+                setting=f[f.index("-")+1:f.index(".txt.csv")]
             lvl = setting.split("_")[0]
             field = setting.split("_")[1]
 
@@ -120,7 +123,7 @@ def transform_score_format_lodataset(infolder, outfile):
             mac = [bilstm_mac_row[1], bilstm_mac_row[2], bilstm_mac_row[3]]
             macw = [bilstm_macw_row[1], bilstm_macw_row[2], bilstm_macw_row[3]]
             mic = [bilstm_mic_row[1], bilstm_mic_row[2], bilstm_mic_row[3]]
-
+            #
             acc[lvl]=acc_
             prf_mac[lvl]=mac
             prf_macw[lvl]=macw
@@ -211,8 +214,8 @@ def transform_score_format_lodataset(infolder, outfile):
 if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                   "/home/zz/Work/wop/tmp/desc.csv")
-    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp/ft_cbow",
-                                     "/home/zz/Work/wop/output/classifier/run_ft_cbow.csv")
+    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp/svm_skip",
+                                     "/home/zz/Work/wop/output/classifier/run_svm_skip.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")

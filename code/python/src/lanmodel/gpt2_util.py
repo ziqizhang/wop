@@ -4,6 +4,7 @@ import pandas as pd
 import csv
 import re
 import datetime
+import tensorflow as tf
 
 def encode_and_compress(inFile):
     gpt2.encode_dataset(inFile)
@@ -40,6 +41,13 @@ def generate(inFile, outFile, start, end):
 
             if count>end:
                 break
+
+            if count % 20 == 0:
+                tf.reset_default_graph()
+                sess.close()
+                sess = gpt2.start_tf_sess()
+                gpt2.load_gpt2(sess)
+
 
             print(str(datetime.datetime.now())+","+str(count))
             l = re.sub('[^0-9a-zA-Z]+', ' ', l).strip()
