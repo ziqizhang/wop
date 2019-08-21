@@ -34,12 +34,12 @@ def load_setting(param_name, properties: {}, overwrite_params: {} = None):
     else:
         return properties[param_name]
 
-def load_and_merge_train_test_data(train_data_file, test_data_file):
-    train = pd.read_csv(train_data_file, header=0, delimiter=";", quoting=0, encoding="utf-8",
+def load_and_merge_train_test_data(train_data_file, test_data_file, delimiter=";"):
+    train = pd.read_csv(train_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
                         ).fillna('').as_matrix()
     train.astype(str)
 
-    test = pd.read_csv(test_data_file, header=0, delimiter=";", quoting=0, encoding="utf-8",
+    test = pd.read_csv(test_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
                        ).fillna('').as_matrix()
     test.astype(str)
 

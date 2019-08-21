@@ -191,7 +191,7 @@ def run_cml_setting(setting_file, home_dir,
     emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
 
     print("loading dataset...")
-    df, train_size, test_size = exp_util.load_and_merge_train_test_data(train_data_file, test_data_file)
+    df, train_size, test_size = exp_util.load_and_merge_train_test_data(train_data_file, test_data_file, delimiter="\t")
     class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
     y = df[:, class_col]
 
