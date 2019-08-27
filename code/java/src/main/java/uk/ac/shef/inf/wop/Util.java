@@ -1,12 +1,16 @@
 package uk.ac.shef.inf.wop;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -118,10 +122,89 @@ public class Util {
 
     }
 
+    private static void addNLGDesc(String gsFile, int nameCol, int descCol, String nlgFile, int n_descCol,
+                                   String outFile){
+        try {
+            FileReader filereader = new FileReader(nlgFile);
+
+            // create csvReader object passing
+            // file reader as a parameter
+            CSVReader csvReader = new CSVReader(filereader);
+            String[] nextRecord;
+            Map<String, String> nlgData=new HashMap<>();
+            // we are going to read data line by line
+            while ((nextRecord = csvReader.readNext()) != null) {
+                nlgData.put(nextRecord[0], nextRecord[n_descCol]);
+            }
+            csvReader.close();
+
+            FileWriter outputfile = new FileWriter(outFile);
+            // create CSVWriter object filewriter object as parameter
+            CSVWriter writer = new CSVWriter(outputfile, ';');
+            filereader = new FileReader(gsFile);
+
+            // create csvReader object passing
+            // file reader as a parameter
+            csvReader = new CSVReader(filereader, ';');
+            // we are going to read data line by line
+            int count=0;
+            while ((nextRecord = csvReader.readNext()) != null) {
+                if (count==0) {
+                    writer.writeNext(nextRecord);
+                    count++;
+                    continue;
+                }
+                String n=nextRecord[nameCol];
+                n=n.toLowerCase();
+                String alphanumeric = n.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}:,.;]", " ").
+                        replaceAll("\\s+", " ").trim();
+
+                String alphanumeric_clean = alphanumeric.replaceAll(alphanum,"LETTERNUMBER");
+                alphanumeric_clean = alphanumeric_clean.replaceAll(numeric,"NUMBER");
+
+                if (alphanumeric_clean.length()==0) {
+                    nextRecord[descCol]="";
+                    continue;
+                }
+
+                String desc=nlgData.get(alphanumeric_clean);
+                if (desc==null) {
+                    System.out.println("no name: " + n);
+                    nextRecord[descCol]="";
+                    continue;
+                }
+
+                String[] sents=desc.split("\n");
+                desc="";
+                for (int i=0; i<5 && i<sents.length; i++)
+                    desc+=sents[0]+". ";
+
+                if (nextRecord.length<=5)
+                    continue;                //System.out.println(nextRecord.length);
+                nextRecord[descCol]=desc.trim();
+                writer.writeNext(nextRecord);
+            }
+            csvReader.close();
+            writer.close();
+
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         //filterDescriptions(args[0],args[1]);
-        filterNames(
+        /*filterNames(
                 "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive.txt",
-                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt");
+                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt");*/
+        addNLGDesc("/home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv",
+                4,
+                5,
+                "/home/zz/Work/data/wop_data/nlg/goldstandard_eng_v1_utf8_names_0-9000.csv",
+                2,
+                "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_nlg.csv");
+
     }
 }
