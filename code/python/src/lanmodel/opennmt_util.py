@@ -31,7 +31,7 @@ def insert_into_data(inCSV:str, separator:str, add_to_col:int, out_translation, 
             translation=translation.replace("_"," ")
 
             #only keep unique words
-            words=list(set(translation.split(" ")))
+            words=list(translation.split(" "))
             translation=" ".join(words)
             #
 
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv
 ;
 4
-/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt
+/home/zz/Work/data/wop_data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt
 
 
 e
@@ -71,15 +71,15 @@ e
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv
 ;
 13
-/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt
+/home/zz/Work/data/wop_data/mt/product/translation_out/goldstandard_eng_v1_utf8_names.txt
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8_tl.csv
 
         i
 /home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv
 ;
 13
-/home/zz/Work/data/mt/product/translation_out/goldstandard_eng_v1_utf8_names.txt
-/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_tl.csv
+/home/zz/Work/data/wop_data/mt/product/translation_out/goldstandard_eng_v1_utf8_names_tll.txt
+/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_tll.csv
         '''
         insert_into_data(sys.argv[2], sys.argv[3], int(sys.argv[4]),
                          sys.argv[5], sys.argv[6])

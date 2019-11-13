@@ -18,6 +18,7 @@ from exp import exp_util
 from feature import text_feature_extractor as tfe
 from classifier import classifier_learn
 import random
+
 random.seed(classifier_learn.RANDOM_STATE)
 numpy.random.seed(classifier_learn.RANDOM_STATE)
 tf.set_random_seed(classifier_learn.RANDOM_STATE)

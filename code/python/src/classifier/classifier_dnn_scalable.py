@@ -25,8 +25,9 @@ GLOBAL_embedding_random_candidates = []  # list of word indexes in the embedding
 GLOBAL_embedding_words_matched = set()
 GLOBAL_embedding_vocab_indexes = []
 
-
-def text_to_vector_fasttext(text, ft_model, text_length, dim, text_norm_option):
+#word_weights: if provided, will be used to weigh the embedding vectors. When a word is not found, weight of 0.5
+#is applied. Otherwise, the words are ranked, then the weight is taken as (total_words - rank)^2/total_words^2
+def text_to_vector_fasttext(text, ft_model, text_length, dim, text_norm_option, word_weigts:list=None):
     """
     Given a string, normalizes it, then splits it into words and finally converts
     it to a sequence of word vectors.
@@ -38,12 +39,16 @@ def text_to_vector_fasttext(text, ft_model, text_length, dim, text_norm_option):
     x = np.zeros((text_length, dim))
 
     for i, word in enumerate(window):
-        x[i, :] = ft_model.get_word_vector(word).astype('float32')
+        vec = ft_model.get_word_vector(word).astype('float32')
+        weight=get_word_weight(word_weigts,word)
+        vec=vec*weight
+        x[i, :]=vec
+
 
     return x
 
 
-def text_to_vector_gensim(text, model, text_length, dim, text_norm_option):
+def text_to_vector_gensim(text, model, text_length, dim, text_norm_option,word_weigts:list=None):
     """
     Given a string, normalizes it, then splits it into words and finally converts
     it to a sequence of word vectors.
@@ -84,10 +89,21 @@ def text_to_vector_gensim(text, model, text_length, dim, text_norm_option):
                 vec = model.wv[word]
                 GLOBAL_embedding_randomized_vectors[word] = vec
 
+            weight = get_word_weight(word_weigts, word)
+            vec = vec * weight
             x[i, :] = vec
-
     return x
 
+def get_word_weight(word_weigts:list, word:str):
+    if word_weigts==None:
+        return 1.0
+    if word in word_weigts:
+        idx=word_weigts.index(word)+1
+        rank= len(word_weigts)-idx
+        weight = rank*rank/(len(word_weigts)*len(word_weigts))
+        return weight
+    else:
+        return 0.5
 
 def concate_text(row: list, col_indexes):
     text = ""
@@ -98,7 +114,7 @@ def concate_text(row: list, col_indexes):
 
 # text_col_info: an ordered list of "[index, text length, dim]"
 def data_generator(df, class_col: int, batch_size, text_norm_option, classes: dict, embedding_model,
-                   text_input_info: dict, embedding_format, shuffle=True):
+                   text_input_info: dict, embedding_format, shuffle=True, word_weights:list=None):
     """
     Given a raw dataframe, generates infinite batches of FastText vectors.
     """
@@ -130,12 +146,12 @@ def data_generator(df, class_col: int, batch_size, text_norm_option, classes: di
                     batch_x_multinput[b][batch_i] = text_to_vector_fasttext(concate_text(row, info["text_col"]),
                                                                             embedding_model,
                                                                             info["text_length"], info["text_dim"],
-                                                                            text_norm_option)
+                                                                            text_norm_option,word_weights)
                 else:
                     batch_x_multinput[b][batch_i] = text_to_vector_gensim(concate_text(row, info["text_col"]),
                                                                           embedding_model,
                                                                           info["text_length"], info["text_dim"],
-                                                                          text_norm_option)
+                                                                          text_norm_option,word_weights)
             # create the label vector
             cls = row[class_col]
             cls_index = classes[cls]

@@ -32,6 +32,12 @@ import java.util.List;
 /**
  * this classes runs on top of an index created by NTripleIndexerApp, and exports product name-category paris into a solr index
  * subject to some criteria
+ *  - also split with '-'
+ *  - if name=cat, ignore
+ *  - following hosts ignored:
+ *      + hosts end with .ru, .rs. .gr .pl .md .cz .ee .sk .si .be .de .nl .es
+ *      + www.edilportale.com
+ *
  */
 public class ProdNameCategoryExporter {
 
@@ -82,8 +88,6 @@ public class ProdNameCategoryExporter {
 
         while (!stop) {
             try {
-                if (count>7000)
-                    System.out.println();
                 res = prodTripleIndex.query(q);
                 if (res != null)
                     total = res.getResults().getNumFound();

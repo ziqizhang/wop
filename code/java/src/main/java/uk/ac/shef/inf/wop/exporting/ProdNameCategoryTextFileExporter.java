@@ -7,7 +7,9 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
+import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.core.CoreContainer;
@@ -19,11 +21,17 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /*
- * This class reads the index created by ProdNameCategoryExporter, to export product name and cat label into batches of txt files
+ * This class reads the index created by ProdNameCategoryExporter, to export product name and cat label into batches of
+ * txt files to be used for training MT
+ *
+ * - also split with '-'
+ *  - if name=cat, ignore
+ *  - following hosts ignored:
+ *      + hosts end with .ru, .rs. .gr .pl .md .cz .ee .sk .si .be .de .nl .es
+ *      + www.edilportale.com
  */
 public class ProdNameCategoryTextFileExporter {
     private static final Logger LOG = Logger.getLogger(ProdNameCategoryTextFileExporter.class.getName());
@@ -31,8 +39,16 @@ public class ProdNameCategoryTextFileExporter {
     //private long maxWordsPerFile=500;
     private int catFilecounter = 0;
     private CSVWriter catFile;
+    private List<String> invalidDomains = Arrays.asList(".ru", ".rs", ".gr", ".pl", ".md", ".fr",
+            ".ro", ".dk", ".ua", ".at", ".bg", ".tw", ".by", ".hk", ".it", ".jp", ".in", ".no", ".lt", ".hu",
+            ".ch", ".ir", ".kz", ".mx", ".su", ".br",
+            ".cz", ".ee", ".sk", ".si", ".be", ".de", ".nl", ".es");
+    private List<String> invalidHosts = Arrays.asList("edilportale.com");
 
-    private void export(SolrClient prodcatIndex, int resultBatchSize, String outFolder) throws IOException {
+
+    private void export(SolrClient prodcatIndex, int resultBatchSize, String outFolder) throws IOException, SolrServerException {
+        List<String> largetHosts = getLargeHosts(100, 100,prodcatIndex);
+
         int start = 0;
         SolrQuery q = createQuery(resultBatchSize, start);
         QueryResponse res;
@@ -56,7 +72,7 @@ public class ProdNameCategoryTextFileExporter {
 
                 for (SolrDocument d : res.getResults()) {
                     //process and export to the other solr index
-                    int lines = exportRecord(d, catFile);
+                    int lines = exportRecord(d, catFile, largetHosts);
                     countCatFileLines += lines;
                 }
 
@@ -93,15 +109,42 @@ public class ProdNameCategoryTextFileExporter {
         }
     }
 
+    private boolean isValidHost(String host) {
+        for (String d : invalidDomains) {
+            if (host.endsWith(d))
+                return false;
+        }
+
+        for (String h : invalidHosts) {
+            if (host.contains(h))
+                return false;
+        }
+        return true;
+    }
+
     private int exportRecord(SolrDocument d,
-                             CSVWriter catFile) {
+                             CSVWriter catFile, List<String> validHosts) {
 
         Object nameData = d.getFieldValue("name");
         Object catData = d.getFirstValue("category");
+        String host = d.getFieldValue("host").toString();
+
+        if (!validHosts.contains(host))
+            return 0;
+
+        if (!isValidHost(host)) {
+            //System.out.println("\tinvalid host:"+host);
+            return 0;
+        }
 
         if (nameData != null && catData != null) {
-            String name = cleanNameData(nameData.toString());
-            String cat = cleanCatData(catData.toString());
+            String name = nameData.toString().trim();
+            String cat = catData.toString().trim();
+            if (name.equalsIgnoreCase(cat))
+                return 0;
+
+            name = cleanNameData(name);
+            cat = cleanCatData(cat);
 
             if (name == null || cat == null) {
                 //System.out.println("deleted: " + nameData + " |||| " + catData);
@@ -119,39 +162,42 @@ public class ProdNameCategoryTextFileExporter {
 
     private String cleanCatData(String value) {
         value = StringEscapeUtils.unescapeJava(value);
+        if (value.contains("http://") || value.contains("https://"))
+            return null;
         String asciiValue = toASCII(value);
+        asciiValue = asciiValue.replaceAll("set=", "/");
 
         String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}\\|\\>/]", " ").
                 replaceAll("\\s+", " ").toLowerCase().trim();
         //value= StringUtils.stripAccents(value);
 
-        int nums = Util.replacePatterns(alphanumeric,Util.numericP);
-        int an= Util.replacePatterns(alphanumeric, Util.alphanumP);
-        int num_or_an = nums+an;
+        int nums = Util.replacePatterns(alphanumeric, Util.numericP);
+        int an = Util.replacePatterns(alphanumeric, Util.alphanumP);
+        int num_or_an = nums + an;
 
-        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum,"LETTERNUMBER");
-        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric,"NUMBER");
+        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum, "LETTERNUMBER");
+        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric, "NUMBER");
 
 
         //value= StringUtils.stripAccents(value);
 
         List<String> normTokens = Arrays.asList(alphanumeric_clean.split("\\s+"));
-        if (normTokens.size() > 10 || normTokens.size()<2)
+        if (normTokens.size() > 10 || normTokens.size() < 2)
             return null;
-        if (num_or_an > ((double)normTokens.size()/3.0))
+        if (num_or_an > ((double) normTokens.size() / 3.0))
             return null;
         if (normTokens.contains("http") || normTokens.contains("https") || normTokens.contains("www"))
             return null;
         if (alphanumeric.length() < 3)
             return null;
 
-        String[] pathElements=alphanumeric_clean.split("[\\|\\>/]+");
+        String[] pathElements = alphanumeric_clean.split("[\\|\\>/\\-]+");
         StringBuilder sb = new StringBuilder();
-        for (String path: pathElements){
-            path=path.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
+        for (String path : pathElements) {
+            path = path.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
                     replaceAll("\\s+", " ").toLowerCase().trim();
-            if (path.length()>2)
-                sb.append(path.replaceAll("\\s+","_")).append(" ");
+            if (path.length() > 2)
+                sb.append(path.replaceAll("\\s+", "_")).append(" ");
         }
         return sb.toString().trim();
         //return alphanumeric.trim();
@@ -164,17 +210,17 @@ public class ProdNameCategoryTextFileExporter {
                 replaceAll("\\s+", " ").trim().toLowerCase();
         //value= StringUtils.stripAccents(value);
 
-        int nums = Util.replacePatterns(alphanumeric,Util.numericP);
-        int an= Util.replacePatterns(alphanumeric, Util.alphanumP);
-        int num_or_an = nums+an;
+        int nums = Util.replacePatterns(alphanumeric, Util.numericP);
+        int an = Util.replacePatterns(alphanumeric, Util.alphanumP);
+        int num_or_an = nums + an;
 
-        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum,"LETTERNUMBER");
-        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric,"NUMBER");
+        String alphanumeric_clean = alphanumeric.replaceAll(Util.alphanum, "LETTERNUMBER");
+        alphanumeric_clean = alphanumeric_clean.replaceAll(Util.numeric, "NUMBER");
 
         List<String> tokens = Arrays.asList(alphanumeric_clean.split("\\s+"));
-        if (tokens.size() > 10||tokens.size()<2)
+        if (tokens.size() > 10 || tokens.size() < 2)
             return null;
-        if (num_or_an > ((double)tokens.size()/3.0))
+        if (num_or_an > ((double) tokens.size() / 3.0))
             return null;
         if (tokens.contains("http") || tokens.contains("https") || tokens.contains("www"))
             return null;
@@ -197,22 +243,54 @@ public class ProdNameCategoryTextFileExporter {
         return query;
     }
 
+    private List<String> getLargeHosts(int minResults, int topN, SolrClient prodcatIndex) throws IOException, SolrServerException {
+        SolrQuery query = new SolrQuery();
+        query.setQuery("*:*");
+        query.setFacet(true);
+        query.setFacetLimit(-1);
+        query.setFacetMinCount(minResults);
+        query.addFacetField("host");
+
+        QueryResponse qr = prodcatIndex.query(query);
+        FacetField ff = qr.getFacetField("host");
+        List<String> hosts = new ArrayList<>();
+        Map<String, Long> freq=new HashMap<>();
+
+        for (FacetField.Count c : ff.getValues()) {
+            if (!isValidHost(c.getName()))
+                continue;
+            freq.put(c.getName(), c.getCount());
+            hosts.add(c.getName());
+        }
+
+        hosts.sort((s, t1) -> freq.get(t1).compareTo(freq.get(s)));
+
+        List<String> selected=new ArrayList<>();
+        for (int i=0;i<topN && i<hosts.size();i++)
+            selected.add(hosts.get(i));
+
+        return selected;
+    }
+
     private static void convert(String inFolder, String outFolder) throws IOException {
-        long total=0;
-        for (File f : new File(inFolder).listFiles()){
+        long total = 0;
+        for (File f : new File(inFolder).listFiles()) {
             Reader reader = Files.newBufferedReader(Paths.get(f.toString()));
             CSVReader csvReader = new CSVReader(reader);
             List<String[]> all = csvReader.readAll();
-            total+=all.size();
+            total += all.size();
 
-            String outFile = outFolder+"/"+f.getName();
+            String outFile = outFolder + "/" + f.getName();
             FileWriter outputfile = new FileWriter(outFile, false);
             // create CSVWriter object filewriter object as parameter
             CSVWriter csvWriter = new CSVWriter(outputfile, ',', '"');
-            for (String[] line : all){
+            for (String[] line : all) {
+                if (line.length < 2)
+                    continue;
                 String[] values = new String[2];
-                values[0]=line[0];
-                values[1]=line[1].replaceAll("_"," ").trim();
+                values[0] = line[0];
+
+                values[1] = line[1].replaceAll("_", " ").trim();
                 csvWriter.writeNext(values);
             }
             csvReader.close();
@@ -221,9 +299,9 @@ public class ProdNameCategoryTextFileExporter {
         System.out.println(total);
     }
 
-    public static void main(String[] args) throws IOException {
-        convert("/home/zz/Work/data/mt/product/mt_corpus/cat_labels",
-                "/home/zz/Work/data/mt/product/mt_corpus/cat_label_words");
+    public static void main(String[] args) throws IOException, SolrServerException {
+        convert("/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_labels",
+                "/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_label_words");
         System.exit(0);
         /*String weirdString="home >> cat and >> monkey";
 

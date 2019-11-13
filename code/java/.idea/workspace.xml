@@ -24,21 +24,39 @@
       <file leaf-file-name="ProdNameCategoryTextFileExporter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="220" column="34" lean-forward="false" selection-start-line="220" selection-start-column="34" selection-end-line="220" selection-end-column="34" />
+            <state relative-caret-position="674">
+              <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java">
+      <file leaf-file-name="NTripleIndexerApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="142" column="59" lean-forward="false" selection-start-line="142" selection-start-column="59" selection-end-line="142" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="324">
+              <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NTripleIndexerWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1763">
+              <caret line="47" column="11" lean-forward="false" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProdDescExporter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="142" column="34" lean-forward="true" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,8 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>outli</find>
-      <find>user</find>
       <find>csvrea</find>
       <find>manso</find>
       <find>processing u</find>
@@ -84,6 +100,8 @@
       <find>currently</find>
       <find>csvwrit</find>
       <find>toascii</find>
+      <find>NUMBER</find>
+      <find>goldstandard_eng_v1_utf8_names_casesensitive</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -94,9 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/HashtagUserAwareness.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/ClusterHashtagFeatureGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/StatsCleaner.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/HashtagCommunityPresence.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserCommunityPresence.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/GraphDiseaseCoocurBySelectedTag.java" />
@@ -137,22 +152,25 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/stats/CatStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/stats/ProdEntityStats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerWorker.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter_Cursor.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter_Lucene.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_NewSchema_Lucene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_Filter_Lucene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdDescExpander.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="27" />
-    <option name="width" value="1161" />
-    <option name="height" value="662" />
+    <option name="x" value="1366" />
+    <option name="y" value="-2" />
+    <option name="width" value="1680" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -170,6 +188,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,6 +230,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="wop" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="wop" type="462c0819:PsiDirectoryNode" />
               <item name="exporting" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -234,8 +263,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -267,7 +294,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Util">
+  <component name="RunManager" selected="Application.NTripleIndexerApp">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -294,6 +321,25 @@
       <module name="java" />
       <envs />
     </configuration>
+    <configuration name="ProdDescExpander" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.app.ProdDescExpander" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/proddesc_index_filtered 20 50 $PROJECT_DIR$/../../../data/wop/goldstandard_eng_v1_utf8_names.txt $PROJECT_DIR$/../../../data/wop/goldstandard_eng_v1_utf8_descexp.txt wop" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
     <configuration name="ProdDescExporter" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -304,6 +350,44 @@
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.exporting.ProdDescExporter" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/entities_1 $PROJECT_DIR$/../../../data/wdc/proddesc_index 500" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
+    <configuration name="ProdDescExporter_Filter_Lucene" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.exporting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.exporting.ProdDescExporter_Filter_Lucene" />
+      <option name="VM_PARAMETERS" value="-Xmx8096m" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/proddesc_index $PROJECT_DIR$/../../../data/wdc/proddesc_index_filtered 0 1000000000 10000" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
+    <configuration name="ProdDescExporter_NewSchema_Lucene" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.exporting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.exporting.ProdDescExporter_NewSchema_Lucene" />
+      <option name="VM_PARAMETERS" value="-Xmx8096m" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/proddesc_index_old $PROJECT_DIR$/../../../data/wdc/proddesc_index 0 1000000000 10000" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -379,7 +463,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.exporting.ProdNameCategoryTextFileExporter" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/prodcat_index $PROJECT_DIR$/../../../data/mt/product/mt_corpus" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/prodcat_index $PROJECT_DIR$/../../../data/wop_data/mt/product/mt_corpus" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -482,14 +566,17 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="7">
+    <list size="10">
       <item index="0" class="java.lang.String" itemvalue="Application.NTripleIndexerApp" />
       <item index="1" class="java.lang.String" itemvalue="Application.ProdNameCategoryExporter" />
       <item index="2" class="java.lang.String" itemvalue="Application.ProdDescExporter" />
       <item index="3" class="java.lang.String" itemvalue="Application.ProdEntityStats" />
       <item index="4" class="java.lang.String" itemvalue="Application.ProdDescTextFileExporter_Lucene" />
-      <item index="5" class="java.lang.String" itemvalue="Application.ProdNameCategoryTextFileExporter" />
-      <item index="6" class="java.lang.String" itemvalue="Application.Util" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ProdDescExporter_NewSchema_Lucene" />
+      <item index="6" class="java.lang.String" itemvalue="Application.ProdDescExporter_Filter_Lucene" />
+      <item index="7" class="java.lang.String" itemvalue="Application.ProdNameCategoryTextFileExporter" />
+      <item index="8" class="java.lang.String" itemvalue="Application.Util" />
+      <item index="9" class="java.lang.String" itemvalue="Application.ProdDescExpander" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -509,37 +596,37 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16503268" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28664497" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16576381" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25937748" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27968177" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62540716" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37378114" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16359697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925338" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925338" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21193093" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3672806" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36619717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -676,7 +763,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java</url>
-          <line>266</line>
+          <line>270</line>
           <properties />
           <option name="timeStamp" value="727" />
         </line-breakpoint>
@@ -694,25 +781,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java</url>
-          <line>85</line>
-          <properties />
-          <option name="timeStamp" value="753" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java</url>
-          <line>102</line>
+          <line>106</line>
           <properties />
           <option name="timeStamp" value="762" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java</url>
-          <line>200</line>
+          <line>204</line>
           <properties />
           <option name="timeStamp" value="765" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java</url>
-          <line>205</line>
+          <line>209</line>
           <properties />
           <option name="timeStamp" value="766" />
         </line-breakpoint>
@@ -735,12 +816,6 @@
           <option name="timeStamp" value="789" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>208</line>
-          <properties />
-          <option name="timeStamp" value="814" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java</url>
           <line>65</line>
           <properties />
@@ -748,114 +823,128 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>141</line>
+          <line>187</line>
           <properties />
           <option name="timeStamp" value="836" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>139</line>
+          <line>185</line>
           <properties />
           <option name="timeStamp" value="837" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>127</line>
+          <line>173</line>
           <properties />
           <option name="timeStamp" value="838" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>166</line>
+          <line>212</line>
           <properties />
           <option name="timeStamp" value="840" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>175</line>
+          <line>221</line>
           <properties />
           <option name="timeStamp" value="841" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>177</line>
+          <line>223</line>
           <properties />
           <option name="timeStamp" value="842" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
-          <line>179</line>
+          <line>225</line>
           <properties />
           <option name="timeStamp" value="843" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java</url>
-          <line>165</line>
+          <line>183</line>
           <properties />
           <option name="timeStamp" value="851" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java</url>
+          <line>167</line>
+          <properties />
+          <option name="timeStamp" value="876" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_Filter_Lucene.java</url>
+          <line>203</line>
+          <properties />
+          <option name="timeStamp" value="889" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="858" />
+      <option name="time" value="894" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="nextD" />
+        <watch expression="minProducts" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>freq.get(&quot;jessicaweibleillustrations.com&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>freq.get(&quot;www.net-a-porter.com&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>id.split(&quot;\\|&quot;)[1]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>id.split(&quot;\\|&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>id.split(&quot;|&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;Biology Educational Videos {set=Biology Educational Materials {set=Educational Materials}}&quot;.replaceAll(&quot;set=&quot;,&quot;/&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;ok&gt;this/and-that&quot;.split(&quot;[\\|\\&gt;/\\-]+&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;ok-this&quot;.split(&quot;-&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>countPatterns(alphanumeric, numeric)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>alphanum.matcher(&quot;a M5 &quot;).find()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>alphanum.matcher(&quot;M5&quot;).find()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>alphanum.matcher(&quot;M5&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>countPatterns(alphanumeric,alphanum)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>countPatterns(alphanumeric, )</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>countPatterns(alphanumeric, alphanumeric)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>asciiValue.replaceAll(&quot;[^\\p{IsAlphabetic}\\p{IsDigit}:,.;]&quot;,&quot; &quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>asciiValue.replaceAll(&quot;[^\\p{IsAlphabetic}\\p{IsDigit}:,\\.;]&quot;,&quot; &quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/GraphDiseaseCoocurByTag.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/Common.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/AnalysisMain.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/analysis/FrequentCooccurTagFinder.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/twitter4j/twitter4j-core/4.0.6/twitter4j-core-4.0.6.jar!/twitter4j/api/TimelinesResources.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -910,14 +999,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/stats/CatStats.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="118" column="9" lean-forward="false" selection-start-line="68" selection-start-column="4" selection-end-line="118" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/io/FileWriter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -925,35 +1006,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="205" column="21" lean-forward="false" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/opencsv/opencsv/4.0/opencsv-4.0.jar!/com/opencsv/CSVWriter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="46" column="11" lean-forward="false" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2088">
-          <caret line="131" column="25" lean-forward="false" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,28 +1027,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter_Lucene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/solr/solr-solrj/7.2.1/solr-solrj-7.2.1-sources.jar!/org/apache/solr/client/solrj/SolrQuery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="1111" column="17" lean-forward="false" selection-start-line="1111" selection-start-column="17" selection-end-line="1111" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1004,32 +1042,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/opencsv/opencsv/4.0/opencsv-4.0.jar!/com/opencsv/CSVReader.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="220" column="34" lean-forward="false" selection-start-line="220" selection-start-column="34" selection-end-line="220" selection-end-column="34" />
+        <state relative-caret-position="65">
+          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="173" column="18" lean-forward="false" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/opencsv/opencsv/4.0/opencsv-4.0.jar!/com/opencsv/CSVReader.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+        <state relative-caret-position="269">
+          <caret line="244" column="33" lean-forward="true" selection-start-line="244" selection-start-column="33" selection-end-line="244" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdDescExpander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="24" column="112" lean-forward="false" selection-start-line="24" selection-start-column="112" selection-end-line="24" selection-end-column="112" />
           <folding>
-            <element signature="e#1382#1383#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5543#5544#0" expanded="false" />
+            <element signature="e#5598#5599#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="142" column="59" lean-forward="false" selection-start-line="142" selection-start-column="59" selection-end-line="142" selection-end-column="59" />
+        <state relative-caret-position="604">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter_Lucene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1738">
+          <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_NewSchema_Lucene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="113" column="40" lean-forward="false" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_Filter_Lucene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1763">
+          <caret line="47" column="11" lean-forward="false" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="142" column="34" lean-forward="true" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

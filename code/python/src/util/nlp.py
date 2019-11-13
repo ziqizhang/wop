@@ -7,7 +7,7 @@ sentiment_analyzer = VS()
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
 stopwords = nltk.corpus.stopwords.words("english")
-stopwords=stopwords+ ['http','tweet','retweet','rt','twitter','https','tweets']
+stopwords=stopwords+ ['http','tweet','retweet','rt','twitter','https','tweets','home','sale','number']
 other_exclusions = ["#ff", "ff", "rt"]
 stopwords.extend(other_exclusions)
 

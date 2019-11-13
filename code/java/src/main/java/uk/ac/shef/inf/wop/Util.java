@@ -110,16 +110,34 @@ public class Util {
     private static void filterNames(String inFile, String outFile) throws IOException {
         List<String> names= FileUtils.readLines(new File(inFile));
         PrintWriter p = new PrintWriter(outFile);
+        int count=0;
         for (String n : names){
+            System.out.println(count);
+            if (n.startsWith("http")) {
+                p.println("EMPTY");
+                continue;
+            }
             n=n.toLowerCase();
             String alphanumeric = n.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}:,.;]", " ").
                     replaceAll("\\s+", " ").trim();
 
             String alphanumeric_clean = alphanumeric.replaceAll(alphanum,"LETTERNUMBER");
             alphanumeric_clean = alphanumeric_clean.replaceAll(numeric,"NUMBER");
-            p.println(alphanumeric_clean);
-        }
 
+            StringBuilder sb = new StringBuilder();
+            for (String v : alphanumeric_clean.split("\\s+")){
+                if (v.length()>2)
+                    sb.append(v).append(" ");
+            }
+            alphanumeric_clean=sb.toString().trim();
+
+            if (alphanumeric_clean.length()==0)
+                alphanumeric_clean="EMPTY";
+            p.println(alphanumeric_clean);
+
+            count++;
+        }
+        p.close();
     }
 
     private static void addNLGDesc(String gsFile, int nameCol, int descCol, String nlgFile, int n_descCol,
@@ -196,15 +214,15 @@ public class Util {
 
     public static void main(String[] args) throws IOException {
         //filterDescriptions(args[0],args[1]);
-        /*filterNames(
-                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names_casesensitive.txt",
-                "/home/zz/Work/data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt");*/
-        addNLGDesc("/home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv",
+        filterNames(
+                "/home/zz/Work/data/wop_data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt",
+                "/home/zz/Work/data/wop_data/mt/product/translation_in/goldstandard_eng_v1_utf8_names.txt");
+        /*addNLGDesc("/home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv",
                 4,
                 5,
                 "/home/zz/Work/data/wop_data/nlg/goldstandard_eng_v1_utf8_names_0-9000.csv",
                 2,
-                "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_nlg.csv");
+                "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_nlg.csv");*/
 
     }
 }
