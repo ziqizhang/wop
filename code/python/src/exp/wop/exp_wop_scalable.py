@@ -48,6 +48,7 @@ def run_dnn_setting(setting_file, home_dir,
     if word_weights_file==None:
         word_weights=None
     else:
+        print("using word weights to revise embedding vectors...")
         word_weights=load_word_weights(word_weights_file)
     
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
@@ -214,6 +215,7 @@ def run_cml_setting(setting_file, home_dir,
     if word_weights_file == None:
         word_weights = None
     else:
+        print("using word weights to revise embedding vectors")
         word_weights = load_word_weights(word_weights_file)
 
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
