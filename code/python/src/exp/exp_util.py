@@ -31,8 +31,10 @@ def parse_overwrite_params(argv):
 def load_setting(param_name, properties: {}, overwrite_params: {} = None):
     if overwrite_params is not None and param_name in overwrite_params.keys():
         return overwrite_params[param_name]
-    else:
+    elif param_name in properties.keys():
         return properties[param_name]
+    else:
+        return None
 
 def load_and_merge_train_test_data(train_data_file, test_data_file, delimiter=";"):
     train = pd.read_csv(train_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",

@@ -27,6 +27,7 @@ GLOBAL_embedding_vocab_indexes = []
 
 #word_weights: if provided, will be used to weigh the embedding vectors. When a word is not found, weight of 0.5
 #is applied. Otherwise, the words are ranked, then the weight is taken as (total_words - rank)^2/total_words^2
+# this can not be used with fast text, which requires a file path
 def text_to_vector_fasttext(text, ft_model, text_length, dim, text_norm_option, word_weigts:list=None):
     """
     Given a string, normalizes it, then splits it into words and finally converts
@@ -63,10 +64,12 @@ def text_to_vector_gensim(text, model, text_length, dim, text_norm_option,word_w
     words_matched = set()  # track words that already found in the embedding model and whose vectors are already used
 
     for i, word in enumerate(window):
+        weight = get_word_weight(word_weigts, word)
         is_in_model = False
         if word in model.wv.vocab.keys():
             is_in_model = True
             vec = model.wv[word]
+            vec=vec*weight
             x[i, :] = vec
             words_matched.add(word)
 
@@ -89,7 +92,6 @@ def text_to_vector_gensim(text, model, text_length, dim, text_norm_option,word_w
                 vec = model.wv[word]
                 GLOBAL_embedding_randomized_vectors[word] = vec
 
-            weight = get_word_weight(word_weigts, word)
             vec = vec * weight
             x[i, :] = vec
     return x
@@ -195,7 +197,8 @@ https://www.kaggle.com/mschumacher/using-fasttext-models-for-robust-embeddings
 def fit_dnn(df: DataFrame, nfold: int, class_col: int,
             final_model: Model, outfolder: str,
             task: str, model_descriptor: str,
-            text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format):
+            text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format,
+            word_weights:list=None):
     encoder = LabelBinarizer()
     y = df[:, class_col]
 
@@ -239,7 +242,8 @@ def fit_dnn(df: DataFrame, nfold: int, class_col: int,
                                             text_norm_option=text_norm_option,
                                             embedding_model=embedding_model,
                                             text_input_info=text_input_info,
-                                            embedding_format=embedding_model_format)
+                                            embedding_format=embedding_model_format,
+                                            word_weights=word_weights)
 
         training_steps_per_epoch = round(len(X_train_merge_) / dmc.DNN_BATCH_SIZE)
 
@@ -253,7 +257,8 @@ def fit_dnn(df: DataFrame, nfold: int, class_col: int,
                                         text_norm_option=text_norm_option,
                                         embedding_model=embedding_model,
                                         text_input_info=text_input_info,
-                                        embedding_format=embedding_model_format,shuffle=False)
+                                        embedding_format=embedding_model_format,shuffle=False,
+                                        word_weights=word_weights)
         prediction_prob = nfold_model.predict_generator(test_generator, steps=1)
 
         # evaluate the model
@@ -286,7 +291,8 @@ df: DataFrame, nfold: int,class_col:int,
 def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
                     final_model: Model, outfolder: str,
                     task: str, model_descriptor: str,
-                    text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format):
+                    text_norm_option: int, text_input_info: dict, embedding_model, embedding_model_format,
+                    word_weights: list = None):
     encoder = LabelBinarizer()
     y = df[:, class_col]
     print("\ttotal y rows="+str(len(y))+" with unique values="+str(len(set(y))))
@@ -318,7 +324,8 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
                                         text_norm_option=text_norm_option,
                                         embedding_model=embedding_model,
                                         text_input_info=text_input_info,
-                                        embedding_format=embedding_model_format)
+                                        embedding_format=embedding_model_format,
+                                        word_weights=word_weights)
 
     training_steps_per_epoch = round(len(df_train) / dmc.DNN_BATCH_SIZE)
 
@@ -333,7 +340,8 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
                                     text_norm_option=text_norm_option,
                                     embedding_model=embedding_model,
                                     text_input_info=text_input_info,
-                                    embedding_format=embedding_model_format, shuffle=False)
+                                    embedding_format=embedding_model_format, shuffle=False,
+                                    word_weights=word_weights)
     prediction_prob = final_model.predict_generator(test_generator, steps=1)
 
     # evaluate the model

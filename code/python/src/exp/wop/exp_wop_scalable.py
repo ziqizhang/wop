@@ -30,11 +30,26 @@ my_init = initializers.glorot_uniform(seed=classifier_learn.RANDOM_STATE)
 # K.set_session(sess)
 
 
+def load_word_weights(word_weights_file):
+    weights = pd.read_csv(word_weights_file,delimiter=",", quoting=0, encoding="utf-8",
+                        ).as_matrix()
+    words=[]
+    for r in weights:
+        words.append(r[0])
+    return words
+
+
 def run_dnn_setting(setting_file, home_dir,
                     overwrite_params=None,
                     embedding_format=None):
     properties = exp_util.load_properties(setting_file)
 
+    word_weights_file=exp_util.load_setting('word_weights_file', properties, overwrite_params)
+    if word_weights_file==None:
+        word_weights=None
+    else:
+        word_weights=load_word_weights(word_weights_file)
+    
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
 
     # this is the folder to save output to
@@ -126,7 +141,8 @@ def run_dnn_setting(setting_file, home_dir,
                                model_descriptor=model_descriptor, text_norm_option=1,
                                text_input_info=input_text_info,
                                embedding_model=emb_model,
-                               embedding_model_format=embedding_format)
+                               embedding_model_format=embedding_format,
+                               word_weights=word_weights)
     print("Completed running all models on this setting file")
     print(datetime.datetime.now())
 
@@ -193,6 +209,12 @@ def run_cml_setting(setting_file, home_dir,
                     overwrite_params=None,
                     embedding_format=None):
     properties = exp_util.load_properties(setting_file)
+
+    word_weights_file = exp_util.load_setting('word_weights_file', properties, overwrite_params)
+    if word_weights_file == None:
+        word_weights = None
+    else:
+        word_weights = load_word_weights(word_weights_file)
 
     csv_training_text_data = home_dir + exp_util.load_setting('training_text_data', properties, overwrite_params)
 

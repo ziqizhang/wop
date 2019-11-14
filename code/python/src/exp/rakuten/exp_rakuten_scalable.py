@@ -15,13 +15,27 @@ from classifier import dnn_util as util
 from exp.wop import exp_wop_cml as exp_util
 from exp import exp_util
 from lanmodel import embedding_util
+import pandas as pd
 
+def load_word_weights(word_weights_file):
+    weights = pd.read_csv(word_weights_file,delimiter=",", quoting=0, encoding="utf-8",
+                        ).as_matrix()
+    words=[]
+    for r in weights:
+        words.append(r[0])
+    return words
 
 def run_dnn_setting(setting_file, home_dir,
                     train_data_file, test_data_file,
                     overwrite_params=None,
                     embedding_format=None):
     properties = exp_util.load_properties(setting_file)
+
+    word_weights_file = exp_util.load_setting('word_weights_file', properties, overwrite_params)
+    if word_weights_file == None:
+        word_weights = None
+    else:
+        word_weights = load_word_weights(word_weights_file)
 
     # this is the folder to save output to
     outfolder = home_dir + exp_util.load_setting("output_folder", properties, overwrite_params)
@@ -116,7 +130,8 @@ def run_dnn_setting(setting_file, home_dir,
                                model_descriptor=model_descriptor, text_norm_option=1,
                                text_input_info=input_text_info,
                                embedding_model=emb_model,
-                               embedding_model_format=embedding_format)
+                               embedding_model_format=embedding_format,
+                                       word_weights=word_weights)
     print("Completed running all models on this setting file")
     print(datetime.datetime.now())
 

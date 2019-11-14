@@ -41,7 +41,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
-    private int maxTasksPerThread = 1;
+    private int maxTasksPerThread = 20;
     private List<String> gzFiles;
 
 
@@ -63,7 +63,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
         Scanner inputScanner = new Scanner(decoder);
         inputScanner.useDelimiter(" .");
-        LOG.info("Thread " + id + " Obtained scanner object in put file");
+        LOG.info("Thread " + id + " Obtained scanner object input file");
         return inputScanner;
     }
 
@@ -76,7 +76,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                 countTotalLines(inputGZFile);
                 //System.exit(0);
             }
-
+            LOG.info("Thread "+id+" processing file "+inputGZFile);
             long lines = 0;
             String content;
             String entityID = null;
