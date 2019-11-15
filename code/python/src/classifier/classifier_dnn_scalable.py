@@ -25,6 +25,7 @@ GLOBAL_embedding_random_candidates = []  # list of word indexes in the embedding
 GLOBAL_embedding_words_matched = set()
 GLOBAL_embedding_vocab_indexes = []
 
+
 #word_weights: if provided, will be used to weigh the embedding vectors. When a word is not found, weight of 0.5
 #is applied. Otherwise, the words are ranked, then the weight is taken as (total_words - rank)^2/total_words^2
 # this can not be used with fast text, which requires a file path
@@ -169,7 +170,6 @@ def data_generator(df, class_col: int, batch_size, text_norm_option, classes: di
                     batch_x_multinput.append([])
                 batch_y = None
                 batch_i = 0
-
 
 def create_dnn_branch(
         input_text_sentence_length,
