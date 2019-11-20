@@ -46,7 +46,7 @@ DNN_EMBEDDING_DIM = 300
 # the max sequence length of a text
 DNN_MAX_SENTENCE_LENGTH = 200
 DNN_MAX_DOC_LENGTH = 5  #
-DNN_EPOCHES = 50  #
+DNN_EPOCHES = 40  #
 DNN_BATCH_SIZE = 100
 MAX_VOCAB = 50000  #
 
@@ -506,6 +506,9 @@ doc_inputs_3D: this must be doc level inputs (if this is required) as a 3D matri
 
 def create_submodel_text(input_layer,
                          model_descriptor):
+    if model_descriptor.startswith("simple"):
+        print("\t>> input taken as is")
+        return Flatten()(input_layer)
 
     if model_descriptor.startswith("cnn[2,3,4](conv1d=100)|maxpooling1d=4|flatten"):
         # conv1d_1 = Conv1D(filters=100,

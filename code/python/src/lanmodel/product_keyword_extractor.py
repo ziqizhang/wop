@@ -13,6 +13,8 @@ name_word_doc_freq={}
 cat_word_freq={}
 cat_word_doc_freq={}
 
+joint_word_freq={}
+
 #bnc_unifrqs.normal
 def load_bnc_freq(in_bnc_file):
     min_f=sys.maxsize
@@ -118,26 +120,61 @@ def extract_words(line:str):
         words.append(word)
     return words
 
+#extract words that both appear in product name and category. when multiple found in the name, select just the
+#rightmost
+#the input is the csv containing name/cat pairs used for MT training
+def extract_by_cat_name_overlap(in_csv_file):
+    df = pd.read_csv(in_csv_file, header=0, delimiter=',', quoting=0, encoding="utf-8")
+    line = 0
+    for index, row in df.iterrows():
+        line += 1
+        if line % 10000 == 0:
+            print("\t\t" + str(line))
+        name = row[0]
+        name_words = extract_words(name)
+        cat = row[1]
+        cat_words = extract_words(cat)
+
+        both = [value for value in name_words if value in cat_words]
+
+        update_word_freq(both, joint_word_freq)
+
+    return line
+
+
+
 if __name__ == "__main__":
-    bnc_freq, bnc_word_total, bnc_word_min = load_bnc_freq(sys.argv[3])
-    in_data_folder = sys.argv[1]
-    out_data_folder = sys.argv[2]
-    
-    total_products=0
-    for csvf in os.listdir(in_data_folder):
-        print("processing "+csvf)
-        total_products+=process_file(in_data_folder+"/"+csvf)
+    option = sys.argv[3]
+    if option==0:#frequency, tfidf, weirdness
+        bnc_freq, bnc_word_total, bnc_word_min = load_bnc_freq(sys.argv[3])
+        in_data_folder = sys.argv[1]
+        out_data_folder = sys.argv[2]
 
-    # rank_word_freq(name_word_freq, out_data_folder+"/product_nameword_freq.csv")
-    # rank_word_freq(cat_word_freq, out_data_folder + "/product_catword_freq.csv")
+        total_products=0
+        for csvf in os.listdir(in_data_folder):
+            print("processing "+csvf)
+            total_products+=process_file(in_data_folder+"/"+csvf)
+
+        # rank_word_freq(name_word_freq, out_data_folder+"/product_nameword_freq.csv")
+        # rank_word_freq(cat_word_freq, out_data_folder + "/product_catword_freq.csv")
 
 
-    # weirdness=calculate_weirdness(name_word_freq, bnc_freq, bnc_word_total, bnc_word_min)
-    # rank_word(weirdness, out_data_folder + "/product_nameword_weirdness.csv")
-    # weirdness = calculate_weirdness(cat_word_freq, bnc_freq, bnc_word_total, bnc_word_min)
-    # rank_word(weirdness, out_data_folder + "/product_catword_weirdness.csv")
+        # weirdness=calculate_weirdness(name_word_freq, bnc_freq, bnc_word_total, bnc_word_min)
+        # rank_word(weirdness, out_data_folder + "/product_nameword_weirdness.csv")
+        # weirdness = calculate_weirdness(cat_word_freq, bnc_freq, bnc_word_total, bnc_word_min)
+        # rank_word(weirdness, out_data_folder + "/product_catword_weirdness.csv")
 
-    tfidf = calculate_tfidf(name_word_freq, name_word_doc_freq, total_products)
-    rank_word(tfidf, out_data_folder + "/product_nameword_tfidf.csv")
-    tfidf = calculate_tfidf(cat_word_freq, cat_word_doc_freq, total_products)
-    rank_word(tfidf, out_data_folder + "/product_catword_tfidf.csv")
+        tfidf = calculate_tfidf(name_word_freq, name_word_doc_freq, total_products)
+        rank_word(tfidf, out_data_folder + "/product_nameword_tfidf.csv")
+        tfidf = calculate_tfidf(cat_word_freq, cat_word_doc_freq, total_products)
+        rank_word(tfidf, out_data_folder + "/product_catword_tfidf.csv")
+    else:
+        in_data_folder = sys.argv[1]
+        out_data_folder = sys.argv[2]
+
+        total_products = 0
+        for csvf in os.listdir(in_data_folder):
+            print("processing " + csvf)
+            extract_by_cat_name_overlap(in_data_folder + "/" + csvf)
+
+        rank_word(joint_word_freq, out_data_folder + "/product_namecat_overlap.csv")

@@ -114,11 +114,19 @@ def run_dnn_setting(setting_file, home_dir,
         for x in exp_util.load_setting("training_text_data_columns", properties, overwrite_params).split("|"):
             config = x.split(",")
             map = {}
+
             map["text_col"] = config[0]
             map["text_length"] = int(config[2])
             map["text_dim"] = util.DNN_EMBEDDING_DIM
             input_text_info[count] = map
-            dnn_branch = dnn_classifier.create_dnn_branch(map["text_length"],
+
+            if config[1]=='simple':
+                dnn_branch = dnn_classifier.create_dnn_branch(map["text_length"],
+                                                          util.DNN_EMBEDDING_DIM,
+                                                          model_descriptor='simple'
+                                                          )
+            else:
+                dnn_branch = dnn_classifier.create_dnn_branch(map["text_length"],
                                                           util.DNN_EMBEDDING_DIM,
                                                           model_descriptor=model_descriptor
                                                           )

@@ -29,6 +29,9 @@ def select_topN(input_words:set, target_words:list,
         count+=1
         if count==topN:
             break
+
+    if len(res)==0:
+        res.append("unknown")
     return res
 
 def select_topN_voting(input_words:set, freq_name_words:list, freq_cat_words:list,
@@ -89,15 +92,15 @@ def read_product_keywords(in_file:str):
 if __name__ == "__main__":
     #load dataset
     in_data_csv=sys.argv[1]
-    freq_name_file=sys.argv[2]
-    freq_cat_file=sys.argv[3]
-    keyword_type="vote"
+    freq_name_file=sys.argv[3]
+    freq_cat_file=sys.argv[2]
+    keyword_type="cat"
 
 
     name_col=4
     replace_content_col=5
     topN=3
-    out_data_csv = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_freq"+keyword_type+str(topN)+".csv"
+    out_data_csv = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_shared_"+keyword_type+str(topN)+".csv"
 
     #take name and expand
     df = pd.read_csv(in_data_csv, header=0, delimiter=';', quoting=0, encoding="utf-8")
@@ -120,6 +123,8 @@ if __name__ == "__main__":
                 similar=select_topN(input_words, freq_name_words, topN)
             elif keyword_type=="cat":
                 similar = select_topN(input_words, freq_cat_words, topN)
+            elif keyword_type=="ncshared":
+                similar = select_topN(input_words, freq_name_words, topN)
             else:
                 similar = select_topN_voting(input_words, freq_name_words, freq_cat_words, topN)
 
