@@ -561,8 +561,8 @@ def merge_dnn_branch(branches: list, input_shapes: list, prediction_targets: int
         merge = concatenate(branches)
     else:
         merge = branches[0]
-    #full = Dense(600)(merge)
-    final = Dense(prediction_targets, activation="softmax")(merge)
+    full = Dense(600)(merge)
+    final = Dense(prediction_targets, activation="softmax")(full)
     model = Model(inputs=input_shapes, outputs=final)
     model.summary()
 
