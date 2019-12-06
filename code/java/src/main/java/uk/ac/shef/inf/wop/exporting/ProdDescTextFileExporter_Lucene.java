@@ -145,7 +145,7 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
     public static void main(String[] args) throws IOException {
         CoreContainer prodNDContainer = new CoreContainer(args[0]);
         prodNDContainer.load();
-        SolrIndexSearcher solrIndexSearcher= prodNDContainer.getCore("proddesc").getSearcher().get();
+        SolrIndexSearcher solrIndexSearcher= prodNDContainer.getCore("prodcatdesc").getSearcher().get();
         IndexReader prodNameDescIndex = solrIndexSearcher.getIndexReader();
         //74488335
         int jobStart = Integer.valueOf(args[4]);

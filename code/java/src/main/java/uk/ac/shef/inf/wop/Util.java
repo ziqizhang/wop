@@ -4,13 +4,15 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.util.ClientUtils;
+import org.apache.solr.common.SolrDocument;
 import org.jsoup.Jsoup;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,6 +24,43 @@ public class Util {
     public static Pattern numericP = Pattern.compile(numeric);
     public static String alphanum="(?=[A-Za-z,.]*\\d+[A-Za-z,.]*)(?=[\\d,.]*[A-Za-z]+[\\d,.]*)[A-Za-z\\d,.]{2,}(?<![,.])";
     public static Pattern alphanumP=Pattern.compile(alphanum);
+
+
+    public static long countRecordsIndex(SolrClient solrIndex){
+        SolrQuery query = new SolrQuery();
+        query.setQuery("*:*");
+        //query.setSort("random_1234", SolrQuery.ORDER.asc);
+        query.setStart(0);
+        query.setRows(10);
+        QueryResponse res;
+        try {
+            res = solrIndex.query(query);
+            if (res != null)
+                return res.getResults().getNumFound();
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+        return 0;
+    }
+
+    public static SolrDocument queryById(SolrClient solrIndex, String id){
+        SolrQuery query = new SolrQuery();
+        query.setQuery("id:"+ ClientUtils.escapeQueryChars(id));
+        //query.setSort("random_1234", SolrQuery.ORDER.asc);
+        query.setStart(0);
+        query.setRows(10);
+        QueryResponse res;
+        try {
+            res = solrIndex.query(query);
+            if (res != null && res.getResults().getNumFound()>0)
+                return res.getResults().get(0);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
 
     private static String toASCII(String in) {
         String fold = in.replaceAll("[^\\p{ASCII}]", "").

@@ -14,7 +14,7 @@ public class IndexOptimizer {
         CoreContainer solrContainer = new CoreContainer(args[0]);
         solrContainer.load();
 
-        SolrClient entitiesCoreClient = new EmbeddedSolrServer(solrContainer.getCore("entities"));
+        SolrClient entitiesCoreClient = new EmbeddedSolrServer(solrContainer.getCore(args[1]));
 
         System.out.println(String.format("Optimising the index ... %s", new Date().toString()));
         entitiesCoreClient.optimize();

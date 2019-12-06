@@ -48,7 +48,7 @@ def replace_desc(in_data_csv, separator, replace_col, in_replace_data_file, out_
 
         for i in range(len(df)):
             r = df[i]
-            replace_data_line=replace_data[i]
+            replace_data_line=replace_data[i].strip()
             if keywords_only:
                 r[replace_col]=extract_keywords_from_desc(replace_data_line.strip())
             else:
@@ -103,6 +103,6 @@ if __name__ == "__main__":
     in_data_csv="/home/zz/Work/data/wop/goldstandard_eng_v1_utf8.csv"
     separator=';'
     replace_col=5
-    in_replace_data_file="/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_descexp.txt"
-    out_file="/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_descexp.csv"
-    replace_desc(in_data_csv,separator,replace_col,in_replace_data_file,out_file, keywords_only=True)
+    in_replace_data_file="/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_descexp3.txt"
+    out_file="/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_descexp3.csv"
+    replace_desc(in_data_csv,separator,replace_col,in_replace_data_file,out_file, keywords_only=False)

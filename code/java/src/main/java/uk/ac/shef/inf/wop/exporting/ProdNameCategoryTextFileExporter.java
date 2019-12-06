@@ -39,11 +39,8 @@ public class ProdNameCategoryTextFileExporter {
     //private long maxWordsPerFile=500;
     private int catFilecounter = 0;
     private CSVWriter catFile;
-    private List<String> invalidDomains = Arrays.asList(".ru", ".rs", ".gr", ".pl", ".md", ".fr",
-            ".ro", ".dk", ".ua", ".at", ".bg", ".tw", ".by", ".hk", ".it", ".jp", ".in", ".no", ".lt", ".hu",
-            ".ch", ".ir", ".kz", ".mx", ".su", ".br",
-            ".cz", ".ee", ".sk", ".si", ".be", ".de", ".nl", ".es");
-    private List<String> invalidHosts = Arrays.asList("edilportale.com");
+    private List<String> validDomains = Arrays.asList(".uk", ".com", ".net", ".org", ".au", ".ag",
+            ".bs", ".bb", ".ca", ".do", ".gd", ".gy", ".ie", ".jm", ".nz", ".kn", ".lc", ".vc", ".tt", ".us");
 
 
     private void export(SolrClient prodcatIndex, int resultBatchSize, String outFolder) throws IOException, SolrServerException {
@@ -110,16 +107,12 @@ public class ProdNameCategoryTextFileExporter {
     }
 
     private boolean isValidHost(String host) {
-        for (String d : invalidDomains) {
+        for (String d : validDomains) {
             if (host.endsWith(d))
-                return false;
+                return true;
         }
 
-        for (String h : invalidHosts) {
-            if (host.contains(h))
-                return false;
-        }
-        return true;
+        return false;
     }
 
     private int exportRecord(SolrDocument d,
@@ -132,7 +125,7 @@ public class ProdNameCategoryTextFileExporter {
         if (!validHosts.contains(host))
             return 0;
 
-        if (!isValidHost(host)) {
+        if (isValidHost(host)) {
             //System.out.println("\tinvalid host:"+host);
             return 0;
         }
@@ -257,7 +250,7 @@ public class ProdNameCategoryTextFileExporter {
         Map<String, Long> freq=new HashMap<>();
 
         for (FacetField.Count c : ff.getValues()) {
-            if (!isValidHost(c.getName()))
+            if (isValidHost(c.getName()))
                 continue;
             freq.put(c.getName(), c.getCount());
             hosts.add(c.getName());

@@ -4,9 +4,8 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.common.SolrInputDocument;
-import org.apache.solr.core.CoreContainer;
+import uk.ac.shef.inf.wop.Util;
 
 import java.io.*;
 import java.net.URI;
@@ -28,6 +27,8 @@ import java.util.zip.GZIPInputStream;
  */
 
 public class NTripleIndexerWorker extends RecursiveTask<Integer> {
+    private Set<String> repeatedLines=new HashSet<>();
+
     private SolrClient entitiesCoreClient;
     //private SolrClient predicatesCoreClient;
     private int commitBatch = 5000;
@@ -41,7 +42,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
-    private int maxTasksPerThread = 20;
+    private int maxTasksPerThread = 2000;
     private List<String> gzFiles;
 
 
@@ -96,6 +97,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
             /*
             Parsing the s, p, o, and source
              */
+
                 try {
                     String subject = null, predicate = null, object = null, source = null;
 
@@ -143,7 +145,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
 
                     subject = subject + "|" + source;
 
-            /*
+                        /*
             prepare data to be written to the entity index
              */
                     if (entityID == null) { //initiate a new solr doc
@@ -167,8 +169,18 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                             if (entityDocCount % commitBatch == 0) {
                                 try {
                                     entitiesCoreClient.commit();
-                                    LOG.info(String.format("\t\tThread " + id + " completed indexing up to quad: %d and entity: %d",
-                                            lines, entityDocCount));
+                                    long indexSize=Util.countRecordsIndex(entitiesCoreClient);
+                                    /*
+                                    WARNING: entity id will repeat throughout the input document. So each type
+                                    indexEntity is called, freq is incremented by 1. But to the index, an update call is
+                                    made. So it is not always the case that an increment by 1 in freq will translate to
+                                    a NEW record to be created.
+
+                                    Further, there are also a lot of repeated lines
+                                    * */
+                                    LOG.info(String.format("\t\tThread " + id + " completed indexing up to quad: %d and entity: %d, and non-duplicate in index:%d",
+                                            lines, entityDocCount, indexSize));
+
                                 } catch (SolrServerException e) {
                                     LOG.warn(String.format("\t\tThread " + id + " failed to commit to server at quad: %d",
                                             lines, ExceptionUtils.getFullStackTrace(e)));
@@ -242,6 +254,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
             entitiesCoreClient.add(doc);
             return true;
         } else { //try delete if already added to index
+            //LOG.info(String.format("\t\tdelete record={} due to non-English", doc.getFieldValue("id").toString()));
             entitiesCoreClient.deleteById(doc.getFieldValue("id").toString());
         }
         return false;
@@ -259,30 +272,32 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         fieldModifier.put("set", object);
 
         if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
-            addOrMergeField(doc, "rdfs_type", fieldModifier);
+            addOrMergeField_set(doc, "rdfs_type", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/name"))
-            addOrMergeField(doc, "sg-product_name", fieldModifier);
+            addOrMergeField_set(doc, "sg-product_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/description"))
-            addOrMergeField(doc, "sg-product_description", fieldModifier);
+            addOrMergeField_set(doc, "sg-product_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/brand"))
-            addOrMergeField(doc, "sg-product_brand", fieldModifier);
+            addOrMergeField_set(doc, "sg-product_brand", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Product/category"))
-            addOrMergeField(doc, "sg-product_category", fieldModifier);
+            addOrMergeField_set(doc, "sg-product_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/name"))
-            addOrMergeField(doc, "sg-offer_name", fieldModifier);
+            addOrMergeField_set(doc, "sg-offer_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/description"))
-            addOrMergeField(doc, "sg-offer_description", fieldModifier);
+            addOrMergeField_set(doc, "sg-offer_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/Offer/category"))
-            addOrMergeField(doc, "sg-offer_category", fieldModifier);
+            addOrMergeField_set(doc, "sg-offer_category", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/name"))
-            addOrMergeField(doc, "sg-listitem_name", fieldModifier);
+            addOrMergeField_set(doc, "sg-listitem_name", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://schema.org/ListItem/description"))
-            addOrMergeField(doc, "sg-listitem_description", fieldModifier);
+            addOrMergeField_set(doc, "sg-listitem_description", fieldModifier);
         else if (predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/title") ||
                 predicate.equalsIgnoreCase("http://data-vocabulary.org/Breadcrumb/name"))
-            addOrMergeField(doc, "sg-breadcrumb_title", fieldModifier);
+            addOrMergeField_set(doc, "sg-breadcrumb_title", fieldModifier);
         else {
-            addOrMergeField(doc, predicate + "_t", fieldModifier);
+            fieldModifier.remove("set");
+            fieldModifier.put("set", object);
+            addOrMergeField_set(doc, predicate + "_t", fieldModifier);
 
         /*if (predicate.equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))
             doc.addField("rdfs_type", object);
@@ -312,10 +327,31 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         }
     }
 
-    private void addOrMergeField(SolrInputDocument doc, String field, Map<String, Object> fieldModifier) {
+    /**
+     * assuming this field is a single-value field, we only set its value
+     * @param doc
+     * @param field
+     * @param fieldModifier
+     */
+    private void addOrMergeField_set(SolrInputDocument doc, String field, Map<String, Object> fieldModifier) {
         Object existingValue = doc.getFieldValue(field);
         if (existingValue != null) {
             fieldModifier.put("set", fieldModifier.get("set").toString() + " " + existingValue.toString());
+            doc.removeField(field);
+        }
+        doc.addField(field, fieldModifier);
+    }
+
+    /**
+     * assuming this field is a multi-value field, we add new values
+     * @param doc
+     * @param field
+     * @param fieldModifier
+     */
+    private void addOrMergeField_add(SolrInputDocument doc, String field, Map<String, Object> fieldModifier) {
+        Object existingValue = doc.getFieldValue(field);
+        if (existingValue != null) {
+            fieldModifier.put("add", fieldModifier.get("add").toString() + " " + existingValue.toString());
             doc.removeField(field);
         }
         doc.addField(field, fieldModifier);

@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * this class reads the index built by NTripleIndexerApp and builds an index containing the prod cat and desc only
- *
+ * <p>
  * - id
  * - source index
  * - desc
@@ -44,13 +44,14 @@ public class ProdCatDescIndexCreator {
 
     private static final Logger LOG = Logger.getLogger(ProdCatDescIndexCreator.class.getName());
 
-    private static List<String> stopwords= Arrays.asList("product","home","null");
+    private static List<String> stopwords = Arrays.asList("product", "home", "null");
 
     private List<String> validDomains = Arrays.asList(".uk", ".com", ".net", ".org", ".au", ".ag",
             ".bs", ".bb", ".ca", ".do", ".gd", ".gy", ".ie", ".jm", ".nz", ".kn", ".lc", ".vc", ".tt", ".us");
 
     private LanguageDetector languageDetector;
     private TextObjectFactory textObjectFactory;
+
     public ProdCatDescIndexCreator() throws IOException {
         //load all languages:
         List<LanguageProfile> languageProfiles = new LanguageProfileReader().readAllBuiltIn();
@@ -70,11 +71,13 @@ public class ProdCatDescIndexCreator {
 
 ( rdfs_type:"http://schema.org/Offer") AND (sg-offer_name:*) AND (sg-offer_category:*)
      */
-    private SolrQuery createQuery(int resultBatchSize, int start){
+    private SolrQuery createQuery(int resultBatchSize, int start) {
         SolrQuery query = new SolrQuery();
-        query.setQuery("(rdfs_type:\"http://schema.org/Product\" OR rdfs_type:\"http://schema.org/Offer\") " +
+        /*query.setQuery("(rdfs_type:\"http://schema.org/Product\" OR rdfs_type:\"http://schema.org/Offer\") " +
                 "AND (sg-product_name:* OR sg-offer_name:*) AND " +
-                "((sg-product_category:* OR sg-offer_category:*) OR sg-product_description:*)");
+                "((sg-product_category:* OR sg-offer_category:*) OR sg-product_description:*)");*/
+        query.setQuery("(rdfs_type:\"http://schema.org/Product\" OR rdfs_type:\"http://schema.org/Offer\") " +
+                "AND (sg-product_name:* OR sg-offer_name:*)");
         query.setStart(start);
         query.setRows(resultBatchSize);
 
@@ -82,38 +85,40 @@ public class ProdCatDescIndexCreator {
     }
 
     private void export(SolrClient prodTripleIndex, String prodTripleIndexID, int resultBatchSize,
-                        SolrClient prodCatDescIndex){
-        int start=0;
-        SolrQuery q = createQuery(resultBatchSize,start);
+                        SolrClient prodCatDescIndex) {
+        int start = 0;
+        SolrQuery q = createQuery(resultBatchSize, start);
         QueryResponse res;
         boolean stop = false;
         long total = 0;
 
-        long count=0;
+        long count = 0;
 
+        LOG.info(String.format("Currently processing index=%s",
+                prodTripleIndexID));
         while (!stop) {
             try {
                 res = prodTripleIndex.query(q);
                 if (res != null)
                     total = res.getResults().getNumFound();
                 //update results
-                LOG.info(String.format("\t\ttotal results of %d, currently processing from %d to %d...",
+                LOG.info(String.format("\ttotal results of %d, currently processing from %d to %d...",
                         total, q.getStart(), q.getStart() + q.getRows()));
 
                 for (SolrDocument d : res.getResults()) {
                     //process and export to the other solr index
-                    int added = createRecord(prodTripleIndexID, d, prodCatDescIndex,count);
-                    count+=added;
+                    int added = createRecord(prodTripleIndexID, d, prodCatDescIndex, count);
+                    count += added;
                 }
 
                 start = start + resultBatchSize;
                 prodCatDescIndex.commit();
 
-                LOG.info(String.format("\t\ttotal indexed = %d, index size=%d",
+                LOG.info(String.format("\ttotal in this batch = %d, index size now=%d",
                         count, countIndexSize(prodCatDescIndex)));
             } catch (Exception e) {
-                LOG.warn(String.format("\t\t unable to successfully index product triples starting from index %s. Due to error: %s",
-                        start,
+                LOG.warn(String.format("\t\t unable to successfully index product triples starting from index %d, with batch size %d. Due to error: %s",
+                        start, resultBatchSize,
                         ExceptionUtils.getFullStackTrace(e)));
 
             }
@@ -125,11 +130,11 @@ public class ProdCatDescIndexCreator {
                 stop = true;
         }
 
-        try{
+        try {
             prodCatDescIndex.commit();
             LOG.info(String.format("Recorded=%d, index size=%d",
-                    count,countIndexSize(prodCatDescIndex)));
-        }catch (Exception e){
+                    count, countIndexSize(prodCatDescIndex)));
+        } catch (Exception e) {
             LOG.warn(String.format("\t\t unable to shut down servers due to error: %s",
                     ExceptionUtils.getFullStackTrace(e)));
         }
@@ -157,56 +162,58 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
         if (!checkHost(h))
             return 0;
 
-        String url =d.getFieldValue("source_page").toString();
+        String url = d.getFieldValue("source_page").toString();
         SolrInputDocument doc = new SolrInputDocument();
-        int added=0;
+        int added = 0;
 
-        String name=null;
-        if (d.getFieldValue("sg-product_name")!=null)
-            name = d.getFieldValue("sg-product_name").toString().replaceAll("\\s+"," ").trim();
-        else if(d.getFieldValue("sg-offer_name")!=null)
-            name=d.getFieldValue("sg-offer_name").toString().replaceAll("\\s+"," ").trim();
+        String name = null;
+        if (d.getFieldValue("sg-product_name") != null)
+            name = d.getFieldValue("sg-product_name").toString().replaceAll("\\s+", " ").trim();
+        else if (d.getFieldValue("sg-offer_name") != null)
+            name = d.getFieldValue("sg-offer_name").toString().replaceAll("\\s+", " ").trim();
 
-        if (name!=null) {
-            String cat=null;
-            if (d.getFieldValue("sg-product_category")!=null)
-                cat = d.getFieldValue("sg-product_category").toString().replaceAll("\\s+"," ").trim();
-            else if (d.getFieldValue("sg-offer_category")!=null)
-                cat=d.getFieldValue("sg-offer_category").toString().replaceAll("\\s+"," ").trim();
+        if (name != null) {
+            String cat = null;
+            if (d.getFieldValue("sg-product_category") != null)
+                cat = d.getFieldValue("sg-product_category").toString().replaceAll("\\s+", " ").trim();
+            else if (d.getFieldValue("sg-offer_category") != null)
+                cat = d.getFieldValue("sg-offer_category").toString().replaceAll("\\s+", " ").trim();
 
-            String desc=null;
-            if (d.getFieldValue("sg-product_description")!=null)
-                desc=d.getFieldValue("sg-product_description").toString();
-            else if (d.getFieldValue("sg-offer_description")!=null)
-                desc=d.getFieldValue("sg-offer_description").toString();
+            String desc = null;
+            if (d.getFieldValue("sg-product_description") != null)
+                desc = d.getFieldValue("sg-product_description").toString();
+            else if (d.getFieldValue("sg-offer_description") != null)
+                desc = d.getFieldValue("sg-offer_description").toString();
 
-            name= cleanName(name);
+            name = cleanName(name);
+            if (name==null)
+                return added;
 
-            if (cat!=null)
-                cat= cleanName(cat);
-            if (desc!=null)
-                desc=desc.replaceAll("\\s+"," ").trim();
-                desc=cleanDesc(desc);
+            if (cat != null)
+                cat = cleanName(cat);
+            if (desc != null)
+                desc = desc.replaceAll("\\s+", " ").trim();
+                desc = cleanDesc(desc);
 
 
-            if (cat!=null && cat.startsWith(name)) {
+            if (cat != null && cat.startsWith(name)) {
                 cat = cat.substring(name.length()).trim();
-                if (cat.length()<3)
-                    cat=null;
+                if (cat.length() < 3)
+                    cat = null;
             }
 
-            cat=cat==null?"":cat;
-            desc=desc==null?"":desc;
+            cat = cat == null ? "" : cat;
+            desc = desc == null ? "" : desc;
 
-            doc.setField("id",id);
-            doc.setField("name",name);
+            doc.setField("id", id);
+            doc.setField("name", name);
             doc.setField("source_entity_index", prodTripleIndexID);
-            doc.setField("category",cat);
-            doc.setField("category_str",cat);
-            doc.setField("desc",desc);
-            doc.setField("text",desc);
-            doc.setField("host",h);
-            doc.setField("url",url);
+            doc.setField("category", cat);
+            doc.setField("category_str", cat);
+            doc.setField("desc", desc);
+            doc.setField("text", desc);
+            doc.setField("host", h);
+            doc.setField("url", url);
             prodcatIndex.add(doc);
             added++;
         }
@@ -214,8 +221,8 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
         return added;
     }
 
-    private boolean checkHost(String host){
-        for (String d: validDomains){
+    private boolean checkHost(String host) {
+        for (String d : validDomains) {
             if (host.endsWith(d))
                 return true;
         }
@@ -229,29 +236,29 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
 
     /**
      * implements rules to clean values in the product name and category fields
+     *
      * @param value
      * @return
      */
-    private String cleanName(String value) {
-        value=value.trim();
-        value= StringEscapeUtils.unescapeJava(value).replaceAll("\\s+"," ");
-        value= StringUtils.stripAccents(value);
+    public static String cleanName(String value) {
+        value = value.trim();
+        if (value.startsWith("http"))
+            return null;
+        value = StringEscapeUtils.unescapeJava(value).replaceAll("\\s+", " ");
+        value = StringUtils.stripAccents(value);
 
         String asciiValue = toASCII(value);
         String alphanumeric = asciiValue.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ").
                 replaceAll("\\s+", " ").trim().toLowerCase();
         List<String> normTokens = Arrays.asList(alphanumeric.split("\\s+"));
 
-        if (normTokens.size() < 2)
-            return null;
-
         if (stopwords.contains(asciiValue.toLowerCase()))
             return null;
 
-        if (asciiValue.length()<5)
+        if (asciiValue.length() < 5)
             return null;
 
-        if (asciiValue.startsWith(".")||asciiValue.startsWith("\\u"))
+        if (asciiValue.startsWith(".") || asciiValue.startsWith("\\u"))
             return null;
 
         return asciiValue;
@@ -259,11 +266,15 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
 
     /**
      * implements rules to clean values in the product name and category fields
+     *
      * @param value
      * @return
      */
     private String cleanDesc(String value) {
         value = StringEscapeUtils.unescapeJava(value);
+        if (value==null){
+            return value;
+        }
         value = value.replaceAll("\\s+", " ");
         value = StringUtils.stripAccents(value);
         String asciiValue = toASCII(value);
@@ -271,28 +282,29 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
         if (stopwords.contains(asciiValue.toLowerCase()))
             return null;
 
-        if (asciiValue.length()<10)
+        if (asciiValue.length() < 10)
             return null;
-        if (asciiValue.split("\\s+").length<5)
+        if (asciiValue.split("\\s+").length < 5)
             return null;
 
-        if (asciiValue.startsWith(".")||asciiValue.startsWith("\\u"))
+        if (asciiValue.startsWith(".") || asciiValue.startsWith("\\u"))
             return null;
 
         return asciiValue;
     }
+
     public static void main(String[] args) throws IOException {
-        File[] solrIndeces=new File(args[0]).listFiles();
+        File[] solrIndeces = new File(args[0]).listFiles();
         CoreContainer prodNCContainer = new CoreContainer(args[1]);
         prodNCContainer.load();
         SolrClient prodNameCatDescIndex = new EmbeddedSolrServer(prodNCContainer.getCore("prodcatdesc"));
-        for(File f: solrIndeces){
+        for (File f : solrIndeces) {
             String path = f.toString();
 
-            String[] parts=path.split("/");
-            String indexID=parts[parts.length-1];
-            if (path.contains("prods")&& f.isDirectory()){
-                LOG.info("Started: "+path);
+            String[] parts = path.split("/");
+            String indexID = parts[parts.length - 1];
+            if (path.contains(args[3]) && f.isDirectory()) {
+                LOG.info("Started: " + path);
                 try {
                     CoreContainer prodIndexContainer = new CoreContainer(path);
                     prodIndexContainer.load();
@@ -300,13 +312,13 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
 
 
                     ProdCatDescIndexCreator exporter = new ProdCatDescIndexCreator();
-                    exporter.export(prodTripleIndex, indexID,Integer.valueOf(args[2]), prodNameCatDescIndex);
+                    exporter.export(prodTripleIndex, indexID, Integer.valueOf(args[2]), prodNameCatDescIndex);
                     prodTripleIndex.close();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
-                    LOG.info("Failed to work in index:"+path);
+                    LOG.info("Failed to work in index:" + path);
                 }
-                LOG.info("COMPLETED for "+path);
+                LOG.info("COMPLETED for " + path);
                 LOG.info("Starting next ... \n\n");
             }
         }
