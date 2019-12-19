@@ -24,11 +24,11 @@ import java.nio.file.Paths;
 import java.util.*;
 
 /*
- * This class reads the index created by ProdNameCategoryExporter, to export product name and cat label into batches of
+ * This class reads the index created by ProdNameCategoryExporter, to export product name and category label into batches of
  * txt files to be used for training MT
  *
  * - also split with '-'
- *  - if name=cat, ignore
+ *  - if name=category, ignore
  *  - following hosts ignored:
  *      + hosts end with .ru, .rs. .gr .pl .md .cz .ee .sk .si .be .de .nl .es
  *      + www.edilportale.com
@@ -296,7 +296,7 @@ public class ProdNameCategoryTextFileExporter {
         convert("/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_labels",
                 "/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_label_words");
         System.exit(0);
-        /*String weirdString="home >> cat and >> monkey";
+        /*String weirdString="home >> category and >> monkey";
 
         String[] parts=weirdString.split("[\\|\\>/]+");
         System.out.println(toASCII(weirdString));

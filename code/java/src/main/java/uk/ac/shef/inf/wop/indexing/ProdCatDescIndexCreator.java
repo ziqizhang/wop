@@ -30,12 +30,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * this class reads the index built by NTripleIndexerApp and builds an index containing the prod cat and desc only
+ * this class reads the index built by NTripleIndexerApp and builds an index containing the prod category and desc only
  * <p>
  * - id
  * - source index
  * - desc
- * - cat
+ * - category
  * - name
  * - host
  * - url
@@ -46,7 +46,7 @@ public class ProdCatDescIndexCreator {
 
     private static List<String> stopwords = Arrays.asList("product", "home", "null");
 
-    private List<String> validDomains = Arrays.asList(".uk", ".com", ".net", ".org", ".au", ".ag",
+    public static List<String> validDomains = Arrays.asList(".uk", ".com", ".net", ".org", ".au", ".ag",
             ".bs", ".bb", ".ca", ".do", ".gd", ".gy", ".ie", ".jm", ".nz", ".kn", ".lc", ".vc", ".tt", ".us");
 
     private LanguageDetector languageDetector;
@@ -191,10 +191,12 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
 
             if (cat != null)
                 cat = cleanName(cat);
-            if (desc != null)
+            if (desc != null) {
                 desc = desc.replaceAll("\\s+", " ").trim();
                 desc = cleanDesc(desc);
-
+                if (desc!=null && desc.equalsIgnoreCase("NE"))
+                    return added;
+            }
 
             if (cat != null && cat.startsWith(name)) {
                 cat = cat.substring(name.length()).trim();
@@ -221,7 +223,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
         return added;
     }
 
-    private boolean checkHost(String host) {
+    public static boolean checkHost(String host) {
         for (String d : validDomains) {
             if (host.endsWith(d))
                 return true;
@@ -271,7 +273,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
      * @return
      */
     private String cleanDesc(String value) {
-        value = StringEscapeUtils.unescapeJava(value);
+        value = StringEscapeUtils.unescapeJava(value).trim();
         if (value==null){
             return value;
         }
@@ -282,15 +284,22 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
         if (stopwords.contains(asciiValue.toLowerCase()))
             return null;
 
-        if (asciiValue.length() < 10)
+        if (asciiValue.length() < 20)
             return null;
-        if (asciiValue.split("\\s+").length < 5)
+        if (asciiValue.split("\\s+").length < 10)
             return null;
 
         if (asciiValue.startsWith(".") || asciiValue.startsWith("\\u"))
             return null;
 
+        TextObject textObject = textObjectFactory.forText(value);
+        Optional<LdLocale> lang = languageDetector.detect(textObject);
+        if (!lang.isPresent())
+            return "NE";
+        if (!lang.get().getLanguage().equalsIgnoreCase("en"))
+            return "NE";
         return asciiValue;
+
     }
 
     public static void main(String[] args) throws IOException {

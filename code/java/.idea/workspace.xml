@@ -18,33 +18,23 @@
     <SUITE FILE_PATH="coverage/wop$Util.coverage" NAME="Util Coverage Results" MODIFIED="1565775397883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>uk.ac.shef.inf.wop.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/wop$GS1AnnotationFileCreator.coverage" NAME="GS1AnnotationFileCreator Coverage Results" MODIFIED="1576705271342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>uk.ac.shef.inf.wop.goldstandard.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/wop$ProdNameCategoryTextFileExporter.coverage" NAME="ProdNameCategoryTextFileExporter Coverage Results" MODIFIED="1559563326685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>uk.ac.shef.inf.wop.exporting.*</FILTER>
     </SUITE>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GS1AnnotationUtil.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GS1AnnotationFileCreator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GS1AnnotationFileCreator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-718">
-              <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2102#2103#0" expanded="true" />
-                <element signature="e#2148#2149#0" expanded="true" />
+                <element signature="e#3842#3843#0" expanded="true" />
+                <element signature="e#3888#3889#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,18 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>500</find>
-      <find>completed</find>
-      <find>line</find>
-      <find>disc</find>
-      <find>current</find>
-      <find>system.out.prin</find>
-      <find>dis</find>
-      <find>name</find>
-      <find>isEng</find>
-      <find>rdf</find>
-      <find>total res</find>
-      <find>sort</find>
       <find>currently</find>
       <find>csvwrit</find>
       <find>toascii</find>
@@ -91,6 +69,18 @@
       <find>add</find>
       <find>encountered</find>
       <find>csv</find>
+      <find>source_entit</find>
+      <find>ArrayAsStringJsonDeserializer</find>
+      <find>null</find>
+      <find>print</find>
+      <find>clean</find>
+      <find>stri</find>
+      <find>commons</find>
+      <find>not</find>
+      <find>simil</find>
+      <find>NULL</find>
+      <find>query</find>
+      <find>_cat</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -101,9 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserDiseaseMentionCounter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserTotalTweetsCounter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserFeatureExport.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserFeatureExporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserRecentTweetCollector.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserProfileFiller.java" />
@@ -141,17 +128,20 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Lemmatiser.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdAttributeExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/IndexOptimizer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryTextFileExporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter_Lucene.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1ClassExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/NTripleIndexerWorker.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GSClassification.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationSampler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer_2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescCatIndecesMerger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java" />
       </list>
     </option>
   </component>
@@ -177,8 +167,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,7 +252,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GS1AnnotationUtil">
+  <component name="RunManager" selected="Application.GS1AnnotationFileCreator">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -310,7 +300,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.goldstandard.GS1AnnotationFileCreator" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/proddesc_index proddesc $PROJECT_DIR$/../../../data/wop/goldstandard_eng_v1_utf8.csv $PROJECT_DIR$/../../../data/wop/goldstandard_eng_v1_utf8_for_annotation.csv" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2017/prodcatdesc prodcatdesc $PROJECT_DIR$/../../../data/wop/goldstandard_eng_v1_utf8.csv $PROJECT_DIR$/../../../data/wop/swc/trial_annotation/Nov2017_omitNorms=true" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -405,7 +395,26 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.ProdCatDescIndexCreator" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/entities $PROJECT_DIR$/../../../data/wdc/prodcatdesc 5000" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/entities $PROJECT_DIR$/../../../data/wdc/prodcatdesc 5000 entities" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
+    <configuration name="ProdDescCatIndecesMerger" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.exporting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.exporting.ProdDescCatIndecesMerger" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2018/proddesc_index_filtered $PROJECT_DIR$/../../../data/wdc/WDCNov2018/prodcat_index $PROJECT_DIR$/../../../data/wdc/WDCNov2018/prodcatdesc_old" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -586,6 +595,44 @@
       <module name="java" />
       <envs />
     </configuration>
+    <configuration name="WDCProdMatchDatasetIndexer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.indexing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.WDCProdMatchDatasetIndexer" />
+      <option name="VM_PARAMETERS" value="-Xmx8196m" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/solrindex $PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/idclusters.json $PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/offers_corpus_english_v2.json" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../.." />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
+    <configuration name="WDCProdMatchDatasetIndexer_2" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.indexing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.WDCProdMatchDatasetIndexer_2" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.msm4phi.app.AppNodeXLExporter" />
@@ -660,7 +707,7 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="15">
+    <list size="18">
       <item index="0" class="java.lang.String" itemvalue="Application.NTripleIndexerApp" />
       <item index="1" class="java.lang.String" itemvalue="Application.ProdNameCategoryExporter" />
       <item index="2" class="java.lang.String" itemvalue="Application.ProdDescExporter" />
@@ -676,6 +723,9 @@
       <item index="12" class="java.lang.String" itemvalue="Application.GS1ClassExtractor" />
       <item index="13" class="java.lang.String" itemvalue="Application.GS1AnnotationFileCreator" />
       <item index="14" class="java.lang.String" itemvalue="Application.GS1AnnotationUtil" />
+      <item index="15" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer" />
+      <item index="16" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer_2" />
+      <item index="17" class="java.lang.String" itemvalue="Application.ProdDescCatIndecesMerger" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -694,37 +744,46 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16143012" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30130294" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5047862" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2990249" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4355363" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881084" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20807834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17931457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19869708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5287107" sideWeight="0.49776644" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28277355" sideWeight="0.49776644" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925338" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21193093" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -970,7 +1029,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java</url>
-          <line>275</line>
+          <line>277</line>
           <properties />
           <option name="timeStamp" value="932" />
         </line-breakpoint>
@@ -993,19 +1052,49 @@
           <option name="timeStamp" value="973" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java</url>
-          <line>109</line>
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java</url>
+          <line>157</line>
           <properties />
-          <option name="timeStamp" value="1012" />
+          <option name="timeStamp" value="1051" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java</url>
-          <line>139</line>
+          <line>140</line>
           <properties />
-          <option name="timeStamp" value="1025" />
+          <option name="timeStamp" value="1052" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="1053" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java</url>
+          <line>219</line>
+          <properties />
+          <option name="timeStamp" value="1057" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java</url>
+          <line>309</line>
+          <properties />
+          <option name="timeStamp" value="1063" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java</url>
+          <line>319</line>
+          <properties />
+          <option name="timeStamp" value="1064" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java</url>
+          <line>145</line>
+          <properties />
+          <option name="timeStamp" value="1106" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1049" />
+      <option name="time" value="1107" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1021,63 +1110,57 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>dataDistribution.get(&quot;63010400_Indoor Footwear&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.util.HashMap</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>dataDistribution.get(&quot;75030200_Pictures/Mirrors/Frames&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.util.HashMap</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>startEnd.get(0)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.util.HashMap</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>lines.get(0)</expression-string>
+        <expression-string>desc.split(&quot;\\s+&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lines.get(6795)</expression-string>
+        <expression-string>desc.split(&quot;/s+&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lines.get(679)</expression-string>
+        <expression-string>desc.split(&quot;s+&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lines.get(6796)</expression-string>
+        <expression-string>desc.split(&quot;//s+&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lines.get(6797)</expression-string>
+        <expression-string>score</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lines.get(6798)</expression-string>
+        <expression-string>boundFields.get(&quot;idValues&quot;)</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.LinkedHashMap</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((LinkedHashMap) boundFields).keySet</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.LinkedHashMap</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>boundFields.get(&quot;size&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.LinkedHashMap</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>boundFields.get(&quot;name&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.LinkedHashMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserStatsExtractor.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserTypeStatsExtractor.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/export/WorkerTweetExportNodeXL.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/stats/user/UserDiseaseMentionCounter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserTweetExporter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/IndexAnalyserMaster.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppMainPipeline.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppMergeStatsFiles.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppNodeXLExporter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppStatsExtractor.java" />
@@ -1144,14 +1227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2826">
-          <caret line="173" column="18" lean-forward="false" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4482">
@@ -1186,26 +1261,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="144" column="60" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/solr/solr-solrj/7.2.1/solr-solrj-7.2.1-sources.jar!/org/apache/solr/client/solrj/impl/LBHttpSolrClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="142" column="22" lean-forward="false" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_Filter_Lucene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,22 +1284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_NewSchema_Lucene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="169" column="24" lean-forward="false" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1255,7 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="46" column="11" lean-forward="false" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,15 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="242" column="25" lean-forward="false" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,28 +1344,196 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar!/com/google/gson/Gson.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
+          <folding>
+            <marker date="1533157640937" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1533157640937" expanded="false" signature="139:1792" ph="..." />
+            <marker date="1533157640937" expanded="true" signature="3402:3669" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="4226:8293" ph="{...}" />
+            <marker date="1533157640937" expanded="false" signature="8330:8341" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="8370:8376" ph=" }" />
+            <marker date="1533157640937" expanded="false" signature="8408:8419" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="8440:8446" ph=" }" />
+            <marker date="1533157640937" expanded="false" signature="8500:8511" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="8543:8549" ph=" }" />
+            <marker date="1533157640937" expanded="false" signature="8586:8597" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="8624:8630" ph=" }" />
+            <marker date="1533157640937" expanded="false" signature="8661:8672" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="8693:8699" ph=" }" />
+            <marker date="1533157640937" expanded="true" signature="8792:9576" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="8895:9569" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="8962:9183" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="9264:9559" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="9668:10461" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="9770:10454" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="9836:10064" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="10145:10444" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="10517:10801" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="10903:11592" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11027:11585" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11094:11313" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11394:11575" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11694:12129" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11742:12110" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11827:11895" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="11966:12100" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="12241:13309" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="12294:13290" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="12384:12638" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="12714:13280" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="13371:15220" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="15319:16060" ph="{...}" />
+            <marker date="1533157640937" expanded="false" signature="16117:16128" ph=" { " />
+            <marker date="1533157640937" expanded="false" signature="16172:16178" ph=" }" />
+            <marker date="1533157640937" expanded="true" signature="16226:16335" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="16399:16546" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="16585:16715" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="16770:16918" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="16997:17202" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="17297:17556" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="17651:18484" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="18536:18694" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="18786:19042" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="19114:19442" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="19495:19630" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="19722:20487" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="20574:20705" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="20787:21028" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="21132:21382" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="21481:21675" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="21754:22136" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="22241:23385" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="23477:23613" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="23700:23814" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="23845:24001" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="24064:24893" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="24136:24147" ph="{}" />
+            <marker date="1533157640937" expanded="true" signature="24209:24385" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="24443:24628" ph="{...}" />
+            <marker date="1533157640937" expanded="true" signature="24700:24887" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer_2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5-sources.jar!/com/google/gson/Gson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-718">
-          <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2102#2103#0" expanded="true" />
-            <element signature="e#2148#2149#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="146">
+          <caret line="945" column="0" lean-forward="false" selection-start-line="945" selection-start-column="0" selection-end-line="945" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5-sources.jar!/com/google/gson/internal/bind/TypeAdapters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="894" column="0" lean-forward="false" selection-start-line="894" selection-start-column="0" selection-end-line="894" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5-sources.jar!/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescTextFileExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2134">
+          <caret line="173" column="18" lean-forward="false" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="182" column="21" lean-forward="false" selection-start-line="176" selection-start-column="8" selection-end-line="182" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_NewSchema_Lucene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="225" column="26" lean-forward="false" selection-start-line="225" selection-start-column="26" selection-end-line="225" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescExporter_Filter_Lucene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="201" column="35" lean-forward="false" selection-start-line="201" selection-start-column="35" selection-end-line="201" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescCatIndecesMerger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-148">
+          <caret line="117" column="62" lean-forward="false" selection-start-line="117" selection-start-column="62" selection-end-line="117" selection-end-column="62" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+          <folding>
+            <element signature="e#3842#3843#0" expanded="true" />
+            <element signature="e#3888#3889#0" expanded="true" />
           </folding>
         </state>
       </provider>

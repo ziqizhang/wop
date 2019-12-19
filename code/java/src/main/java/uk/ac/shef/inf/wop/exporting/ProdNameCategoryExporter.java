@@ -33,7 +33,7 @@ import java.util.List;
  * this classes runs on top of an index created by NTripleIndexerApp, and exports product name-category paris into a solr index
  * subject to some criteria
  *  - also split with '-'
- *  - if name=cat, ignore
+ *  - if name=category, ignore
  *  - following hosts ignored:
  *      + hosts end with .ru, .rs. .gr .pl .md .cz .ee .sk .si .be .de .nl .es
  *      + www.edilportale.com
@@ -160,7 +160,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
             cat=cleanData(cat);
             if (name==null ||cat==null) {
                 /*if (curr>6900)
-                    System.out.println("discarded pair="+name+"|"+cat);*/
+                    System.out.println("discarded pair="+name+"|"+category);*/
                 return added;
             }
 
@@ -188,7 +188,7 @@ discarded pair=Dunlop 535Q Cry Baby Multi-Wah Pedal|Guitar Pedals | Effects Peda
             cat=cleanData(cat);
             if (name==null ||cat==null) {
                 /*if (curr>6900)
-                    System.out.println("discarded pair="+name+"|"+cat);*/
+                    System.out.println("discarded pair="+name+"|"+category);*/
                 return added;
             }
             if (cat.startsWith(name))

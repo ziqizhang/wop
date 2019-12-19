@@ -16,16 +16,17 @@ import java.util.*;
  * - take the original annotation file, and the sample file, create a disjoint set, and output them
  * in X splits equally distributed
  * - read back the user-annotated files, and join them together to create a new GS file
- * - read the original GS1 gold standard file, output it into another format containing only name, desc, and cat
+ * - read the original GS1 gold standard file, output it into another format containing only name, desc, and category
  */
 public class GS1AnnotationUtil {
 
     public static void main(String[] args) throws IOException {
         // select a small sample for trial run annotation
-        String annotationFile = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_for_annotation.csv";
-        String outputFile = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_for_annotation_sample.csv";
+        String annotationFile = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_for_annotation_WDC2018.csv";
+        String outputFile = "/home/zz/Work/data/wop/goldstandard_eng_v1_utf8_for_annotation_WDC2018_sample.csv";
         int samplePerClass = 2;
-        //selectAnnotationSample(annotationFile,outputFile,samplePerClass);
+        selectAnnotationSample(annotationFile,outputFile,samplePerClass);
+        System.exit(0);
 
         // once the above sample is annotated, select the disjoint with the full annotation file
         // (i.e., find the parts that are not yet annotated)
@@ -113,7 +114,7 @@ public class GS1AnnotationUtil {
             }
             lines.add(nextRecord);
 
-            String label = nextRecord[1];
+            String label = nextRecord[2];
             if (prod == null) {
                 prod = nextRecord[0];
                 start = countLines - 2;
@@ -148,9 +149,13 @@ public class GS1AnnotationUtil {
 
                 //output to file
                 int[] start_and_end = startEnd.get(randomElement);
-                for (int s = start_and_end[0]; s < start_and_end[1]; s++) {
-                    String[] line = lines.get(s);
-                    csvWriter.writeNext(line);
+                try {
+                    for (int s = start_and_end[0]; s < start_and_end[1] && s<lines.size(); s++) {
+                        String[] line = lines.get(s);
+                        csvWriter.writeNext(line);
+                    }
+                }catch (IndexOutOfBoundsException e){
+                    e.printStackTrace();
                 }
             }
         }
@@ -276,7 +281,7 @@ public class GS1AnnotationUtil {
     /**
      * read in the annotations by a user, and also the GS1 product classification taxonomy (from the original GS file
      * plus with modification by the GS1 taxonomy), output GS in the following format:
-     * - url, name, cat, desc, lvl1, lvl2, lvl3, id in the index, which index segment
+     * - url, name, category, desc, lvl1, lvl2, lvl3, id in the index, which index segment
      * read it back in, and create another annotation file containing only
      * those annotated by the user, and output it
      */
@@ -324,7 +329,7 @@ public class GS1AnnotationUtil {
 
     /**
      * read in original GS by Muesel, output GS in the following format:
-     * - url, name, cat, desc, lvl1, lvl2, lvl3, id in the index, which index segment
+     * - url, name, category, desc, lvl1, lvl2, lvl3, id in the index, which index segment
      * read it back in, and create another annotation file containing only
      * those annotated by the user, and output it
      */
