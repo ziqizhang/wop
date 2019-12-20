@@ -3,6 +3,7 @@ package uk.ac.shef.inf.wop.indexing;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -15,9 +16,7 @@ import org.mapdb.Serializer;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This produces the JSON file from: http://webdatacommons.org/largescaleproductcorpus/v2/index.html#toc1
@@ -120,6 +119,17 @@ public class WDCProdMatchDatasetIndexer {
         System.out.println("Total Records Found : " + numberOfRecords);
     }
 
+    public List<long[]> exportClusterWithMultipleProducts() throws Exception {
+        List<long[]> out = new ArrayList<>();
+        for (Map.Entry<String, long[]> e : clusterSize.entrySet()){
+            if (e.getValue()[0]>1)
+                out.add(new long[]{Long.valueOf(e.getKey()),e.getValue()[0]});
+        }
+
+        Collections.sort(out, (t1, t2) -> Long.compare(t2[1], t1[1]));
+        return out;
+    }
+
     /**
      * Process the product metadata file (offers_corpus_english_v2.json) and index each product
      */
@@ -177,6 +187,8 @@ public class WDCProdMatchDatasetIndexer {
         doc.addField("description", p.description);
         doc.addField("brand", p.brand);
         doc.addField("price", p.price);
+        doc.addField("title",p.title);
+        doc.addField("title_str",p.title);
         doc.addField("specTableContent", p.specTableContent);
         if (cluster_size_info==null){
             LOG.warn(String.format("\t\t\t product id=%s has cluster_id=%s, but this cluster_id is not found in the cluster metadata",

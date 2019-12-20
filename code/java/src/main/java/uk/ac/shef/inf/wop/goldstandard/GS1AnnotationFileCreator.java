@@ -81,7 +81,7 @@ prodcatdesc
         GS1AnnotationFileCreator ic = new GS1AnnotationFileCreator(catdescIndex);
         //ic.process(args[2], args[3], 4, 2,12, 10);
         //ic.process(args[2], args[3], 0, -1, 1, 10);
-        ic.process(args[2], args[3], 4, 2, 1, 10);
+        ic.process(args[2], args[3], 4, 2, 12, 10);
         catdescIndex.close();
         System.exit(0);
     }

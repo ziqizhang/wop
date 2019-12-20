@@ -27,14 +27,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GS1AnnotationFileCreator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GS1AnnotationFileCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            <state relative-caret-position="339">
+              <caret line="85" column="23" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="85" selection-end-column="23" />
               <folding>
-                <element signature="e#3842#3843#0" expanded="true" />
-                <element signature="e#3888#3889#0" expanded="true" />
+                <element signature="e#3843#3844#0" expanded="true" />
+                <element signature="e#3889#3890#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WDCProdMatchDatasetIndexer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="190" column="31" lean-forward="false" selection-start-line="190" selection-start-column="31" selection-end-line="190" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WDCProdMatchClusterFilter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="184" column="17" lean-forward="false" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>currently</find>
-      <find>csvwrit</find>
       <find>toascii</find>
       <find>NUMBER</find>
       <find>goldstandard_eng_v1_utf8_names_casesensitive</find>
@@ -81,6 +101,8 @@
       <find>NULL</find>
       <find>query</find>
       <find>_cat</find>
+      <find>none</find>
+      <find>title</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -91,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/analysis/UserFeatureExporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserRecentTweetCollector.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/app/AppUserProfileFiller.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/msm4phi/stats/user/UserProfileFiller.java" />
@@ -136,12 +157,13 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GSClassification.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationSampler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer_2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdDescCatIndecesMerger.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java" />
       </list>
     </option>
   </component>
@@ -283,7 +305,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GS1AnnotationFileCreator">
+  <component name="RunManager" selected="Application.WDCProdMatchDatasetIndexer">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -595,6 +617,25 @@
       <module name="java" />
       <envs />
     </configuration>
+    <configuration name="WDCProdMatchClusterFilter" type="Application" factoryName="Application" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.shef.inf.wop.indexing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.WDCProdMatchClusterFilter" />
+      <option name="VM_PARAMETERS" value="-Xmx8196m" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/idclusters.json $PROJECT_DIR$/../../../data/wdc/WDCNov2018/prodcatdesc $PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/solrindex $PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/category_clusters" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../.." />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java" />
+      <envs />
+    </configuration>
     <configuration name="WDCProdMatchDatasetIndexer" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -604,7 +645,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.indexing.WDCProdMatchDatasetIndexer" />
       <option name="VM_PARAMETERS" value="-Xmx8196m" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/solrindex $PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/idclusters.json $PROJECT_DIR$/../../../data/wdc/WDC_ProdMatch/offers_corpus_english_v2.json" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/solrindex $PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/idclusters.json $PROJECT_DIR$/../../../data/wdc/WDCNov2017/WDC_ProdMatch/offers_corpus_english_v2.json" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../.." />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -707,7 +748,7 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="18">
+    <list size="19">
       <item index="0" class="java.lang.String" itemvalue="Application.NTripleIndexerApp" />
       <item index="1" class="java.lang.String" itemvalue="Application.ProdNameCategoryExporter" />
       <item index="2" class="java.lang.String" itemvalue="Application.ProdDescExporter" />
@@ -723,9 +764,10 @@
       <item index="12" class="java.lang.String" itemvalue="Application.GS1ClassExtractor" />
       <item index="13" class="java.lang.String" itemvalue="Application.GS1AnnotationFileCreator" />
       <item index="14" class="java.lang.String" itemvalue="Application.GS1AnnotationUtil" />
-      <item index="15" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer" />
-      <item index="16" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer_2" />
-      <item index="17" class="java.lang.String" itemvalue="Application.ProdDescCatIndecesMerger" />
+      <item index="15" class="java.lang.String" itemvalue="Application.WDCProdMatchClusterFilter" />
+      <item index="16" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer" />
+      <item index="17" class="java.lang.String" itemvalue="Application.WDCProdMatchDatasetIndexer_2" />
+      <item index="18" class="java.lang.String" itemvalue="Application.ProdDescCatIndecesMerger" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -766,19 +808,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5047862" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4355363" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2654388" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881084" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17931457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19869708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25581396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19826652" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28277355" sideWeight="0.49776644" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41061756" sideWeight="0.49776644" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1065,13 +1107,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java</url>
-          <line>79</line>
+          <line>78</line>
           <properties />
           <option name="timeStamp" value="1053" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java</url>
-          <line>219</line>
+          <line>231</line>
           <properties />
           <option name="timeStamp" value="1057" />
         </line-breakpoint>
@@ -1093,8 +1135,26 @@
           <properties />
           <option name="timeStamp" value="1106" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java</url>
+          <line>81</line>
+          <properties />
+          <option name="timeStamp" value="1115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java</url>
+          <line>124</line>
+          <properties />
+          <option name="timeStamp" value="1118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="1119" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1107" />
+      <option name="time" value="1121" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1161,7 +1221,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppMergeStatsFiles.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppNodeXLExporter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppStatsExtractor.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/deprecated/app/AppUserFeatureExport.java" />
@@ -1224,14 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4482">
-          <caret line="276" column="5" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="276" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,14 +1528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1497,14 +1540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-378">
           <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="225" column="26" lean-forward="false" selection-start-line="225" selection-start-column="26" selection-end-line="225" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1527,13 +1562,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/exporting/ProdNameCategoryExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="73" column="39" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="73" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/ProdCatDescIndexCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3339">
+          <caret line="225" column="26" lean-forward="false" selection-start-line="225" selection-start-column="26" selection-end-line="225" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/goldstandard/GS1AnnotationFileCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        <state relative-caret-position="339">
+          <caret line="85" column="23" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="85" selection-end-column="23" />
           <folding>
-            <element signature="e#3842#3843#0" expanded="true" />
-            <element signature="e#3888#3889#0" expanded="true" />
+            <element signature="e#3843#3844#0" expanded="true" />
+            <element signature="e#3889#3890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchDatasetIndexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="190" column="31" lean-forward="false" selection-start-line="190" selection-start-column="31" selection-end-line="190" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/indexing/WDCProdMatchClusterFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="184" column="17" lean-forward="false" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
