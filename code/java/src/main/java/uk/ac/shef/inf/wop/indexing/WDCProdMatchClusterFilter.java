@@ -1,6 +1,7 @@
 package uk.ac.shef.inf.wop.indexing;
 
 import com.opencsv.CSVWriter;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.commons.text.similarity.JaccardSimilarity;
 import org.apache.log4j.Logger;
@@ -9,12 +10,12 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.core.CoreContainer;
-import uk.ac.shef.inf.wop.goldstandard.GS1AnnotationFileCreator;
 import uk.ac.shef.inf.wop.goldstandard.GS1AnnotationUtil;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -105,7 +106,7 @@ public class WDCProdMatchClusterFilter {
         for(String p: products){
             LOG.info(String.format("\t\t checking product=%s", p));
             SolrQuery q = new SolrQuery();
-            q.setQuery("name:("+p+") AND category:*");
+            q.setQuery("name:("+ ClientUtils.escapeQueryChars(p)+") AND category:*");
             q.setStart(0);
             q.setRows(50);
             QueryResponse res;
@@ -143,6 +144,9 @@ public class WDCProdMatchClusterFilter {
             csvWriter.writeNext(rec);
         }
         csvWriter.close();
+        if (records.size()==0){
+            FileUtils.deleteQuietly(new File(outFolder + "/cluster_"+clusterID+".csv"));
+        }
 
         return categories;
     }

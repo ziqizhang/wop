@@ -70,7 +70,6 @@
             <artifactId>mtj</artifactId>
             <version>1.0.4</version>
         </dependency>
-
         <dependency>
             <groupId>flanagan</groupId>
             <artifactId>flanagan-math</artifactId>

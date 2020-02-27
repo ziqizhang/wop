@@ -73,6 +73,10 @@ public class GS1AnnotationUtil {
         return getCSVReader(inFile, ';');
     }
 
+    public static CSVReader getCSVReaderC(String inFile, char separator) throws FileNotFoundException {
+        return getCSVReader(inFile, separator);
+    }
+
     public static CSVWriter getCSVWriter(String outFile) throws FileNotFoundException {
         FileOutputStream fos = new FileOutputStream(outFile);
         OutputStreamWriter osw = new OutputStreamWriter(fos,

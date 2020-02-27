@@ -8,6 +8,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.solr.core.CoreContainer;
 import org.apache.solr.search.SolrIndexSearcher;
+import uk.ac.shef.inf.wop.Util;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -112,13 +113,13 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
                                 PrintWriter nameFile, PrintWriter descFile) {
 
         String nameData = d.get("name");
-        String descData = d.get("text");
+        String descData = d.get("desc");
         long[] res = new long[2];
 
         if (nameData != null) {
             String name = cleanData(nameData);
             long tokens = name.split("\\s+").length;
-            if (name.length() > 10 && tokens > 2) {
+            if (name.length() > 15 && tokens > 3) {
                 nameFile.println(name);
                 res[0] = tokens;
             }
@@ -136,9 +137,16 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
     }
 
     private String cleanData(String value) {
-        value = StringEscapeUtils.unescapeJava(value);
-        value = value.replaceAll("\\s+", " ");
+        if (value.startsWith("<")&&value.endsWith(">"))
+            return "";
+
+        try {
+            value = StringEscapeUtils.unescapeJava(value);
+        }catch (Exception e){}
+        value = value.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}|>/]", " ").
+                replaceAll("\\s+", " ").trim();
         value = StringUtils.stripAccents(value);
+
         return value.trim();
     }
 
