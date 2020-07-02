@@ -123,7 +123,7 @@ def learn_discriminative(cpus, task, model_name,
         classifier.fit(X_train, y_train)
         #util.save_classifier_model(classifier, model_file)
     return classifier
-
+ 
 
 def learn_generative(cpus, task, model_flag, X_train, y_train,
                      identifier, outfolder, nfold=None, feature_reduction=None):

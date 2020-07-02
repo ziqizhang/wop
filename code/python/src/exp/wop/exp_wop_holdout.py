@@ -71,7 +71,7 @@ def run_dnn_setting(setting_file, home_dir,
         df, train_size, test_size = exp_util. \
             load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file)
 
-    numpy.nan_to_num(df)
+    #numpy.nan_to_num(df)
 
     class_fieldname = exp_util.load_setting("class_fieldname", properties, overwrite_params)
     class_col = dataset_text_field_mapping[class_fieldname]
@@ -261,22 +261,23 @@ if __name__ == "__main__":
         'lvl2': 6,
         'lvl3': 7,
     }
-
+    ##    ID, Name, Desc, Brand, Manufacturer, URL, lvl1
     wdc_fieldname_to_colindex_map = {
         'ID': 0,
         'Name': 1,
-        'Description': 2,
-        'CategoryText': 3,
-        'URL': 4,
-        'lvl1': 5,
-        'lvl2': 6,
-        'lvl3': 7,
+        'Desc': 2,
+        'Brand': 3,
+        'Manufacturer': 4,
+        'URL': 5,
+        'lvl1': 6
     }
 
     rakuten_fieldname_to_colindex_map = {
         'Name': 0,
         'lvl1': 1
     }
+
+
 
     if sys.argv[5]=='mwpd':
         text_field_mapping=mwpd_fieldname_to_colindex_map
@@ -309,10 +310,10 @@ gensim
 '''
 
 '''
-/home/zz/Work/wop/input/dnn_holdout/dnn_n/gslvl1_name.txt
+/home/zz/Work/wop/input/dnn_holdout/wdcgs/dnn_n/gslvl1_name.txt
 /home/zz/Work
-/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json
-/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_testing.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_train.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_test.json
 wdc
 svm
 gensim

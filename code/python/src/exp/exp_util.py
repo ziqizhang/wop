@@ -58,9 +58,9 @@ load train and eval data in the mwpd swc2020 json format, merge them into a sing
 that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_data_jsonMPWD(train_data_file, test_data_file):
-    train = data_util.read_json_swcformat(train_data_file)
+    train = data_util.read_mwpdformat_to_matrix(train_data_file)
 
-    test = data_util.read_json_swcformat(test_data_file)
+    test = data_util.read_mwpdformat_to_matrix(test_data_file)
 
     return numpy.concatenate((train, test), axis=0), len(train), len(test)
 
@@ -69,11 +69,21 @@ load train and eval data of the 2155 wdc prod-cat json format, merge them into a
 that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file):
-    train = data_util.read_json_wdcformat(train_data_file)
+    train = data_util.read_wdcgsformat_to_matrix(train_data_file)
 
-    test = data_util.read_json_wdcformat(test_data_file)
+    test = data_util.read_wdcgsformat_to_matrix(test_data_file)
 
-    return numpy.concatenate((train, test), axis=0), len(train), len(test)
+    matrix=[]
+
+    index=0
+    for row in train:
+        matrix.append(row)
+        index+=1
+    for row in test:
+        matrix.append(row)
+        index+=1
+    matrix=numpy.asarray(matrix)
+    return matrix,len(train), len(test)
 
 def load_properties(filepath, sep='=', comment_char='#'):
     """

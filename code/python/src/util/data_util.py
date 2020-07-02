@@ -82,7 +82,7 @@ row is an instance with the following columns:
 - 6: lvl2
 - 7: lvl3
 '''
-def read_json_swcformat(in_file):
+def read_mwpdformat_to_matrix(in_file):
     matrix=[]
     with open(in_file) as file:
         line = file.readline()
@@ -96,13 +96,54 @@ def read_json_swcformat(in_file):
     return matrix
 
 
-def read_json_wdcformat(in_file):
-    matrix=[]
-    with open(in_file) as file:
+'''
+given the input WDC prod cat GS product offers, and also the train/test set of 2155 clusters
+containing product offers derived from this GS, split the GS into train/test containing product offers 
+based on their cluster membership and the cluster's presence in train/test
+'''
+def split_wdcGS_by_traintestsplit(train_file, test_file, gs_file,
+                                  outfolder):
+    train_ids=set()
+    test_ids=set()
+    with open(train_file) as file:
         line = file.readline()
 
         js=json.loads(line)
         for ent in js:
+            train_ids.add(ent['cluster_id'])
+
+    with open(test_file) as file:
+        line = file.readline()
+
+        js=json.loads(line)
+        for ent in js:
+            test_ids.add(ent['cluster_id'])
+
+    writer_train=open(outfolder+"/wdc_gs_train.json",'w')
+    writer_test=open(outfolder+"/wds_gs_test.json",'w')
+    with open(gs_file) as file:
+        line = file.readline()
+
+        js=json.loads(line)
+        for ent in js:
+            out_line = json.dumps(ent)
+            if str(ent['cluster_id']) in train_ids:
+                writer_train.write(out_line+"\n")
+            else:
+                writer_test.write(out_line+"\n")
+
+    writer_train.close()
+    writer_test.close()
+
+
+def read_wdcgsformat_to_matrix(in_file):
+    matrix=[]
+    with open(in_file) as file:
+        line = file.readline()
+
+        while line is not None and len(line) > 0:
+            ent = json.loads(line)
+
             #id, name, desc, brand, manufacturer, url, label
             # if ent['cluster_id']==12261043:
             #     print("")
@@ -134,7 +175,9 @@ def read_json_wdcformat(in_file):
 
                 matrix.append(row)
             except:
-                pass
+                print("Error encountered")
+
+            line=file.readline()
             # row=[js['ID'],js['Name'],js['Description'],js['CategoryText'],js['URL'],js['lvl1'],js['lvl2'],js['lvl3']]
             # matrix.append(row)
         #    line=file.readline()
@@ -159,5 +202,9 @@ if __name__ == "__main__":
     # to_fasttext(inCSV, 0, 1, outCSV)
 
     #categories_clusters_testing.json
-    read_json_wdcformat("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json")
-    print("end")
+    # read_wdcformat_to_matrix("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json")
+    # print("end")
+    split_wdcGS_by_traintestsplit('/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json',
+                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_testing.json',
+                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_gold_standard_offers.json',
+                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS')
