@@ -1,6 +1,7 @@
 #read csv data as dataframe, perform stratisfied sampling and output the required sample
 import collections
 import csv
+import json
 
 import pandas as pd
 from sklearn import model_selection
@@ -69,6 +70,75 @@ def subset(inCSV, textCol, classCol, outfolder, percentage):
             csvwriter.writerow([text, label])
 
 
+''''
+This method reads the json data file (train/val/test) in the SWC2020 mwpd format and save them as a matrix where each 
+row is an instance with the following columns:
+- 0: id
+- 1: name
+- 2: description
+- 3: categorytext
+- 4: url
+- 5: lvl1
+- 6: lvl2
+- 7: lvl3
+'''
+def read_json_swcformat(in_file):
+    matrix=[]
+    with open(in_file) as file:
+        line = file.readline()
+
+        while line is not None and len(line)>0:
+            js=json.loads(line)
+
+            row=[js['ID'],js['Name'],js['Description'],js['CategoryText'],js['URL'],js['lvl1'],js['lvl2'],js['lvl3']]
+            matrix.append(row)
+            line=file.readline()
+    return matrix
+
+
+def read_json_wdcformat(in_file):
+    matrix=[]
+    with open(in_file) as file:
+        line = file.readline()
+
+        js=json.loads(line)
+        for ent in js:
+            #id, name, desc, brand, manufacturer, url, label
+            # if ent['cluster_id']==12261043:
+            #     print("")
+            row=[ent['cluster_id'],"","","","",ent['url'],ent['categoryLabel']]
+            schema_prop=ent['schema.org_properties']
+            for d in schema_prop:
+                if '/name' in d.keys():
+                    row[1]=d['/name'][1:-2].strip()
+                elif '/description' in d.keys():
+                    row[2]= d['/description'][1:-2].strip()
+                elif '/brand' in d.keys():
+                    row[3]=d['/brand'][1:-2].strip()
+                elif '/manufacturer' in d.keys():
+                    row[4]=d['/manufacturer'][1:-2].strip()
+
+            schema_prop = ent['parent_schema.org_properties']
+            for d in schema_prop:
+                if row[1]=='' and '/name' in d.keys():
+                    row[1]=d['/name'][1:-2].strip()
+                elif row[1]=='' and '/title' in d.keys():
+                    row[1]=d['/title'][1:-2].strip()
+                elif row[2]=='' and'/description' in d.keys():
+                    row[2]= d['/description'][1:-2].strip()
+                elif row[3]=='' and'/brand' in d.keys():
+                    row[3]=d['/brand'][1:-2].strip()
+                elif row[4]=='' and'/manufacturer' in d.keys():
+                    row[4]=d['/manufacturer'][1:-2].strip()
+
+            matrix.append(row)
+
+            # row=[js['ID'],js['Name'],js['Description'],js['CategoryText'],js['URL'],js['lvl1'],js['lvl2'],js['lvl3']]
+            # matrix.append(row)
+        #    line=file.readline()
+    return matrix
+
+
 if __name__ == "__main__":
     #inCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
     # outfolder="/home/zz/Work/data/Rakuten/"
@@ -78,10 +148,14 @@ if __name__ == "__main__":
     # outfolder = "/home/zz/Work/data/Rakuten/"
     # subset(inCSV, 0, 1, outfolder, 0.2)
 
-    inCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
-    outCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train_fasttext.tsv"
-    to_fasttext(inCSV,0,1,outCSV)
+    # inCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
+    # outCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train_fasttext.tsv"
+    # to_fasttext(inCSV,0,1,outCSV)
+    #
+    # inCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-gold.tsv"
+    # outCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-gold_fasttext.tsv"
+    # to_fasttext(inCSV, 0, 1, outCSV)
 
-    inCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-gold.tsv"
-    outCSV = "/home/zz/Work/data/Rakuten/rdc-catalog-gold_fasttext.tsv"
-    to_fasttext(inCSV, 0, 1, outCSV)
+    #categories_clusters_testing.json
+    read_json_wdcformat("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json")
+    print("end")

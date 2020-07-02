@@ -9,8 +9,6 @@ import multiprocessing
 
 import gc
 
-import sys
-
 import gensim
 from gensim.models import Word2Vec
 
@@ -74,6 +72,11 @@ def load_emb_model(embedding_format:str, embedding_file:str):
             load_word2vec_format(embedding_file, binary=strtobool(embedding_format))
     return emb_model
 
+def embedding_to_text_format(embedding_file:str, out_file:str):
+    model=load_emb_model('gensim', embedding_file)
+    model.wv.save_word2vec_format(out_file, binary=False)
 
 if __name__ == "__main__":
-    train_word2vec(sys.argv[1], int(sys.argv[2]), sys.argv[3], int(sys.argv[4]))
+    #train_word2vec(sys.argv[1], int(sys.argv[2]), sys.argv[3], int(sys.argv[4]))
+    embedding_to_text_format("/home/zz/Work/data/embeddings/wop/w2v_desc_skip.bin",
+                             "/home/zz/Work/data/embeddings/wop/w2v_desc_skip.txt")

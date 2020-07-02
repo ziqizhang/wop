@@ -110,7 +110,7 @@ def get_word_weight(word_weigts:list, word:str):
 
 def concate_text(row: list, col_indexes):
     text = ""
-    for c in col_indexes.split("-"):
+    for c in str(col_indexes).split("-"):
         text += row[int(c)] + " "
     return text.strip()
 

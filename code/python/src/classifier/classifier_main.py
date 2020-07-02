@@ -120,7 +120,7 @@ class Classifer(object):
 
         ###################  liblinear SVM ##############################
         if "svm_l" in self.algorithms:
-            m_svml=cl.learn_discriminative(-1, self.task_name, "svm-l", X_train,
+            m_svml=cl.learn_discriminative(-1, self.task_name, "svm_l", X_train,
                                     y_train, self.identifier, self.outfolder,nfold=self.nfold)
             trained_models["svm_l"]=m_svml
         if "pca-svm_l" in self.algorithms:

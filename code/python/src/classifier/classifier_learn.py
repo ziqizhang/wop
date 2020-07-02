@@ -87,14 +87,14 @@ def learn_discriminative(cpus, task, model_name,
         else:
             classifier = cls
         model_file = os.path.join(outfolder, "random-forest_classifier-%s.m" % task)
-    if (model_name == "svm-l"):
+    if (model_name == "svm_l"):
         print("== SVM, kernel=linear ...")
         cls = svm.LinearSVC(class_weight='balanced', C=0.01, penalty='l2', loss='squared_hinge',
                             multi_class='ovr')
         if feature_reduction is not None:
             fr = create_feature_reduction_alg(feature_reduction, len(X_train[0]))
             print("\t using " + str(fr[1]))
-            pipe = Pipeline([(fr[0], fr[1]), ('svm-l', cls)])
+            pipe = Pipeline([(fr[0], fr[1]), ('svm_l', cls)])
             classifier = pipe
         else:
             classifier = cls

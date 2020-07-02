@@ -102,7 +102,7 @@ def get_aggr_embedding_vectors(df, text_col,
     X = np.zeros((len(df), emb_dim), dtype='float')
     i=0
     for row in df:
-        text=concate_text(row, text_col)
+        text=concate_text(row, str(text_col))
         text = nlp.normalize(text)
         words = nlp.tokenize(text, text_norm_option)
 
