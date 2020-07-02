@@ -73,7 +73,7 @@ def run_dnn_setting(setting_file, home_dir,
     ######## dnn #######
     print("loading dataset...")
     df, train_size, test_size = exp_util.\
-        load_and_merge_train_test_data(train_data_file, test_data_file,delimiter="\t")
+        load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t")
     class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
     y = df[:, class_col]
 
@@ -154,7 +154,7 @@ def run_fasttext_setting(setting_file, home_dir,
     ######## dnn #######
     print("loading dataset...")
     df, train_size, test_size = exp_util.\
-        load_and_merge_train_test_data(train_data_file, test_data_file,delimiter="\t")
+        load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t")
     class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
     y = df[:, class_col]
 
@@ -209,7 +209,7 @@ def run_cml_setting(setting_file, home_dir,
 
     print("loading dataset...")
     df, train_size, test_size = exp_util.\
-        load_and_merge_train_test_data(train_data_file, test_data_file, delimiter="\t")
+        load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t")
     class_col = int(exp_util.load_setting("class_column", properties, overwrite_params))
     y = df[:, class_col]
 

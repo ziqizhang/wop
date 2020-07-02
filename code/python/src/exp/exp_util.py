@@ -41,7 +41,7 @@ def load_setting(param_name, properties: {}, overwrite_params: {} = None):
 load train csv data and test csv data, merge them into a single dataset, and return the size of train and test
 that allows precisely splitting the merged set back into train&test
 '''
-def load_and_merge_train_test_data(train_data_file, test_data_file, delimiter=";"):
+def load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter=";"):
     train = pd.read_csv(train_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
                         ).fillna('').as_matrix()
     train.astype(str)
@@ -57,10 +57,21 @@ def load_and_merge_train_test_data(train_data_file, test_data_file, delimiter=";
 load train and eval data in the mwpd swc2020 json format, merge them into a single dataset, and return the size of train and eval
 that allows precisely splitting the merged set back into train&test
 '''
-def load_and_merge_train_test_data_json(train_data_file, test_data_file):
+def load_and_merge_train_test_data_jsonMPWD(train_data_file, test_data_file):
     train = data_util.read_json_swcformat(train_data_file)
 
     test = data_util.read_json_swcformat(test_data_file)
+
+    return numpy.concatenate((train, test), axis=0), len(train), len(test)
+
+'''
+load train and eval data of the 2155 wdc prod-cat json format, merge them into a single dataset, and return the size of train and eval
+that allows precisely splitting the merged set back into train&test
+'''
+def load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file):
+    train = data_util.read_json_wdcformat(train_data_file)
+
+    test = data_util.read_json_wdcformat(test_data_file)
 
     return numpy.concatenate((train, test), axis=0), len(train), len(test)
 

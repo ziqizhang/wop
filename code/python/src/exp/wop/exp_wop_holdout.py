@@ -32,17 +32,6 @@ my_init = initializers.glorot_uniform(seed=classifier_learn.RANDOM_STATE)
 # sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
 # K.set_session(sess)
 
-fieldname_to_colindex_map = {
-    'ID': 0,
-    'Name': 1,
-    'Description': 2,
-    'CategoryText': 3,
-    'URL': 4,
-    'lvl1': 5,
-    'lvl2': 6,
-    'lvl3': 7,
-}
-
 
 def load_word_weights(word_weights_file):
     weights = pd.read_csv(word_weights_file, delimiter=",", quoting=0, encoding="utf-8",
@@ -56,6 +45,8 @@ def load_word_weights(word_weights_file):
 def run_dnn_setting(setting_file, home_dir,
                     train_data_file, test_data_file,
                     dnn_or_cml,
+                    dataset_type:str, #mwpd, wdc, rakuten, icecat
+                    dataset_text_field_mapping:dict,
                     overwrite_params=None,
                     embedding_format=None):
     properties = exp_util.load_properties(setting_file)
@@ -68,12 +59,22 @@ def run_dnn_setting(setting_file, home_dir,
         word_weights = load_word_weights(word_weights_file)
 
     print("loading dataset...")
-    df, train_size, test_size = exp_util. \
-        load_and_merge_train_test_data_json(train_data_file, test_data_file)
+    if dataset_type=="mwpd":
+        df, train_size, test_size = exp_util. \
+            load_and_merge_train_test_data_jsonMPWD(train_data_file, test_data_file)
+    elif dataset_type=="rakuten":
+        df, train_size, test_size = exp_util. \
+            load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t")
+    elif dataset_type=="icecat":
+        pass
+    else:#wdc
+        df, train_size, test_size = exp_util. \
+            load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file)
+
     numpy.nan_to_num(df)
 
     class_fieldname = exp_util.load_setting("class_fieldname", properties, overwrite_params)
-    class_col = fieldname_to_colindex_map[class_fieldname]
+    class_col = dataset_text_field_mapping[class_fieldname]
     y = df[:, class_col]
 
     # this is the folder to save output to
@@ -88,16 +89,19 @@ def run_dnn_setting(setting_file, home_dir,
     emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
 
     if dnn_or_cml == 'dnn':
-        run_dnn_models(properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format, word_weights)
+        run_dnn_models(properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format,
+                       word_weights,dataset_text_field_mapping)
     else:
         run_cml_models(setting_file,
-                       properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format)
+                       properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format,
+                       dataset_text_field_mapping)
 
 
 def run_dnn_models(properties: dict, df: numpy.ndarray, y,
                    train_size: int, class_col: int,
                    out_folder: str, embeddingmodel, embeddingformat,
-                   word_weights: list):
+                   word_weights: list,
+                   text_field_mapping:dict):
     # in order to test different DNN architectures, I implemented a parser that analyses a string following
     # specific syntax, creates different architectures. This one here takes word embedding, pass it to 3
     # cnn layer then concatenate the output by max pooling finally into a softmax
@@ -140,7 +144,7 @@ def run_dnn_models(properties: dict, df: numpy.ndarray, y,
             config = x.split(",")
             map = {}
 
-            map["text_col"] = fieldname_to_colindex_map[config[0]]
+            map["text_col"] = text_field_mapping[config[0]]
             map["text_length"] = int(config[1])
             map["text_dim"] = util.DNN_EMBEDDING_DIM
             input_text_info[count] = map
@@ -185,7 +189,8 @@ def run_dnn_models(properties: dict, df: numpy.ndarray, y,
 def run_cml_models(setting_file: str,
                    properties: dict, df: numpy.ndarray, y,
                    train_size: int, class_col: int,
-                   out_folder: str, embeddingmodel, embeddingformat):
+                   out_folder: str, embeddingmodel, embeddingformat,
+                   text_field_mapping:dict):
     print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
     input_text_info = {}
@@ -193,7 +198,7 @@ def run_cml_models(setting_file: str,
     for x in exp_util.load_setting("text_fieldnames", properties, overwrite_params).split("|"):
         config = x.split(",")
         map = {}
-        map["text_col"] = fieldname_to_colindex_map[config[0]]
+        map["text_col"] = text_field_mapping[config[0]]
         map["text_length"] = int(config[1])
         map["text_dim"] = util.DNN_EMBEDDING_DIM
         input_text_info[count] = map
@@ -246,11 +251,81 @@ if __name__ == "__main__":
     # must match the parameter name. Note that this will apply to ALL settings
     overwrite_params = exp_util.parse_overwrite_params(sys.argv)
 
+    mwpd_fieldname_to_colindex_map = {
+        'ID': 0,
+        'Name': 1,
+        'Description': 2,
+        'CategoryText': 3,
+        'URL': 4,
+        'lvl1': 5,
+        'lvl2': 6,
+        'lvl3': 7,
+    }
+
+    wdc_fieldname_to_colindex_map = {
+        'ID': 0,
+        'Name': 1,
+        'Description': 2,
+        'CategoryText': 3,
+        'URL': 4,
+        'lvl1': 5,
+        'lvl2': 6,
+        'lvl3': 7,
+    }
+
+    rakuten_fieldname_to_colindex_map = {
+        'Name': 0,
+        'lvl1': 1
+    }
+
+    if sys.argv[5]=='mwpd':
+        text_field_mapping=mwpd_fieldname_to_colindex_map
+    elif sys.argv[5]=='wdc':
+        text_field_mapping=wdc_fieldname_to_colindex_map
+    elif sys.argv[5]=='rakuten':
+        text_field_mapping = rakuten_fieldname_to_colindex_map
+    else:
+        pass
+
     setting_file = sys.argv[1]
 
     run_dnn_setting(setting_file,
                     sys.argv[2],  # tmp folder
                     sys.argv[3],  # train
                     sys.argv[4],  # test
-                    sys.argv[6],
-                    overwrite_params=overwrite_params, embedding_format=sys.argv[5])
+                    dataset_type=sys.argv[5],
+                    dataset_text_field_mapping=text_field_mapping,
+                    dnn_or_cml=sys.argv[6],
+                    overwrite_params=overwrite_params, embedding_format=sys.argv[7])
+
+'''
+/home/zz/Work/wop/input/dnn_holdout/dnn_n/gslvl1_name.txt
+/home/zz/Work
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
+mwpd
+svm
+gensim
+'''
+
+'''
+/home/zz/Work/wop/input/dnn_holdout/dnn_n/gslvl1_name.txt
+/home/zz/Work
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_testing.json
+wdc
+svm
+gensim
+'''
+
+'''
+/home/zz/Work/wop/input/dnn_holdout/rakuten/dnn_n/gslvl1_name.txt
+/home/zz/Work
+/home/zz/Work/data/Rakuten/rdc-catalog-gold-small1.tsv
+/home/zz/Work/data/Rakuten/rdc-catalog-gold-small2.tsv
+rakuten
+svm
+gensim
+'''
+
+

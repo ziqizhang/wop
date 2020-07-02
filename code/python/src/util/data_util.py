@@ -106,33 +106,35 @@ def read_json_wdcformat(in_file):
             #id, name, desc, brand, manufacturer, url, label
             # if ent['cluster_id']==12261043:
             #     print("")
-            row=[ent['cluster_id'],"","","","",ent['url'],ent['categoryLabel']]
-            schema_prop=ent['schema.org_properties']
-            for d in schema_prop:
-                if '/name' in d.keys():
-                    row[1]=d['/name'][1:-2].strip()
-                elif '/description' in d.keys():
-                    row[2]= d['/description'][1:-2].strip()
-                elif '/brand' in d.keys():
-                    row[3]=d['/brand'][1:-2].strip()
-                elif '/manufacturer' in d.keys():
-                    row[4]=d['/manufacturer'][1:-2].strip()
+            try:
+                row=[ent['cluster_id'],"","","","",ent['url'],ent['categoryLabel']]
+                schema_prop=ent['schema.org_properties']
+                for d in schema_prop:
+                    if '/name' in d.keys():
+                        row[1]=d['/name'][1:-2].strip()
+                    elif '/description' in d.keys():
+                        row[2]= d['/description'][1:-2].strip()
+                    elif '/brand' in d.keys():
+                        row[3]=d['/brand'][1:-2].strip()
+                    elif '/manufacturer' in d.keys():
+                        row[4]=d['/manufacturer'][1:-2].strip()
 
-            schema_prop = ent['parent_schema.org_properties']
-            for d in schema_prop:
-                if row[1]=='' and '/name' in d.keys():
-                    row[1]=d['/name'][1:-2].strip()
-                elif row[1]=='' and '/title' in d.keys():
-                    row[1]=d['/title'][1:-2].strip()
-                elif row[2]=='' and'/description' in d.keys():
-                    row[2]= d['/description'][1:-2].strip()
-                elif row[3]=='' and'/brand' in d.keys():
-                    row[3]=d['/brand'][1:-2].strip()
-                elif row[4]=='' and'/manufacturer' in d.keys():
-                    row[4]=d['/manufacturer'][1:-2].strip()
+                schema_prop = ent['parent_schema.org_properties']
+                for d in schema_prop:
+                    if row[1]=='' and '/name' in d.keys():
+                        row[1]=d['/name'][1:-2].strip()
+                    elif row[1]=='' and '/title' in d.keys():
+                        row[1]=d['/title'][1:-2].strip()
+                    elif row[2]=='' and'/description' in d.keys():
+                        row[2]= d['/description'][1:-2].strip()
+                    elif row[3]=='' and'/brand' in d.keys():
+                        row[3]=d['/brand'][1:-2].strip()
+                    elif row[4]=='' and'/manufacturer' in d.keys():
+                        row[4]=d['/manufacturer'][1:-2].strip()
 
-            matrix.append(row)
-
+                matrix.append(row)
+            except:
+                pass
             # row=[js['ID'],js['Name'],js['Description'],js['CategoryText'],js['URL'],js['lvl1'],js['lvl2'],js['lvl3']]
             # matrix.append(row)
         #    line=file.readline()
