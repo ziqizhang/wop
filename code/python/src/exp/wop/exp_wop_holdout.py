@@ -308,6 +308,7 @@ mwpd
 svm
 gensim
 '''
+#word2vec=False
 
 '''
 /home/zz/Work/wop/input/dnn_holdout/wdcgs/dnn_n/gslvl1_name.txt
