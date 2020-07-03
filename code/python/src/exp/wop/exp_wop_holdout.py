@@ -300,7 +300,7 @@ if __name__ == "__main__":
                     overwrite_params=overwrite_params, embedding_format=sys.argv[7])
 
 '''
-/home/zz/Work/wop/input/dnn_holdout/dnn_n/gslvl1_name.txt
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
 /home/zz/Work
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
