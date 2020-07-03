@@ -67,7 +67,7 @@ def load_emb_model(embedding_format:str, embedding_file:str):
         print("\tfasttext format")
         emb_model = load_model(embedding_file)
     else:
-        binary = embedding_format.split("=")[1]
+        binary = embedding_format.split("-")[1]
         print("\tword2vec format, binary="+str(strtobool(binary)))
         emb_model = gensim.models.KeyedVectors. \
             load_word2vec_format(embedding_file, binary=strtobool(binary))
