@@ -42,13 +42,13 @@ def load_word_weights(word_weights_file):
     return words
 
 
-def run_dnn_setting(setting_file, home_dir,
-                    train_data_file, test_data_file,
-                    dnn_or_cml,
-                    dataset_type:str, #mwpd, wdc, rakuten, icecat
-                    dataset_text_field_mapping:dict,
-                    overwrite_params=None,
-                    embedding_format=None):
+def run_setting(setting_file, home_dir,
+                train_data_file, test_data_file,
+                model_choice, #dnn - including cnn,bilstm,han; cml -svm ; fasttext-fasttext
+                dataset_type:str,  #mwpd, wdc, rakuten, icecat
+                dataset_text_field_mapping:dict,
+                overwrite_params=None,
+                embedding_format=None):
     properties = exp_util.load_properties(setting_file)
 
     word_weights_file = exp_util.load_setting('word_weights_file', properties, overwrite_params)
@@ -83,18 +83,26 @@ def run_dnn_setting(setting_file, home_dir,
     print("\n" + str(datetime.datetime.now()))
     print("loading embedding models...")
     # this the Gensim compatible embedding file
-    dnn_embedding_file = home_dir + exp_util.load_setting("embedding_file", properties,
-                                                          overwrite_params)  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+    dnn_embedding_file=exp_util.load_setting("embedding_file", properties,
+                                                          overwrite_params)
+    if dnn_embedding_file is not None:
+        dnn_embedding_file = home_dir + dnn_embedding_file  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
     # print("embedding file is========="+dnn_embedding_file)
-    emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
+    if embedding_format == 'none':
+        emb_model=None
+    else:
+        emb_model = embedding_util.load_emb_model(embedding_format, dnn_embedding_file)
 
-    if dnn_or_cml == 'dnn':
+    if model_choice == 'dnn':
         run_dnn_models(properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format,
                        word_weights,dataset_text_field_mapping)
-    else:
+    elif model_choice=='cml':
         run_cml_models(setting_file,
                        properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format,
                        dataset_text_field_mapping)
+    else:
+        run_fasttext_model(setting_file,properties, df, y, train_size, class_col, outfolder,
+                           emb_model, dataset_text_field_mapping)
 
 
 def run_dnn_models(properties: dict, df: numpy.ndarray, y,
@@ -240,6 +248,47 @@ def run_cml_models(setting_file: str,
     print(datetime.datetime.now())
 
 
+def run_fasttext_model(setting_file: str,
+                   properties: dict, df: numpy.ndarray, y,
+                   train_size: int, class_col: int,
+                   outfolder: str, dnn_embedding_file,
+                   text_field_mapping:dict
+                   ):
+
+    # this is the folder to save output to
+
+    print("\n" + str(datetime.datetime.now()))
+
+    target_classes = len(set(y))
+    print("\ttotal classes=" + str(target_classes))
+    print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
+
+    print("fitting model...")
+
+    input_text_info = {}
+    count = 0
+    for x in exp_util.load_setting("text_fieldnames", properties, overwrite_params).split("|"):
+        config = x.split(",")
+        map = {}
+        map["text_col"] = text_field_mapping[config[0]]
+        map["text_length"] = int(config[1])
+        map["text_dim"] = util.DNN_EMBEDDING_DIM
+        input_text_info[count] = map
+
+        count += 1
+
+
+    dnn_classifier.fit_fasttext_holdout(df=df,
+                                split_at_row=train_size,
+                                class_col=class_col,
+                                outfolder=outfolder,
+                                task=exp_util.describe_task(properties, overwrite_params, setting_file),
+                                text_norm_option=1,
+                                text_input_info=input_text_info,
+                                embedding_file=dnn_embedding_file)
+    print("Completed running on this setting file")
+    print(datetime.datetime.now())
+
 if __name__ == "__main__":
     # argv-1: folder containing all settings to run, see 'input' folder
     # argv-2: working directory
@@ -290,14 +339,14 @@ if __name__ == "__main__":
 
     setting_file = sys.argv[1]
 
-    run_dnn_setting(setting_file,
-                    sys.argv[2],  # tmp folder
-                    sys.argv[3],  # train
-                    sys.argv[4],  # test
-                    dataset_type=sys.argv[5],
-                    dataset_text_field_mapping=text_field_mapping,
-                    dnn_or_cml=sys.argv[6],
-                    overwrite_params=overwrite_params, embedding_format=sys.argv[7])
+    run_setting(setting_file,
+                sys.argv[2],  # tmp folder
+                sys.argv[3],  # train
+                sys.argv[4],  # test
+                dataset_type=sys.argv[5],
+                dataset_text_field_mapping=text_field_mapping,
+                model_choice=sys.argv[6],
+                overwrite_params=overwrite_params, embedding_format=sys.argv[7])
 
 '''
 /home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
@@ -331,3 +380,13 @@ gensim
 '''
 
 
+'''
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
+/home/zz/Work
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
+mwpd
+fasttext
+none
+embedding_file=none
+'''
