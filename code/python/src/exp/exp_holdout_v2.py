@@ -102,7 +102,7 @@ def run_setting(setting_file, home_dir,
                        dataset_text_field_mapping)
     else:
         run_fasttext_model(setting_file,properties, df, y, train_size, class_col, outfolder,
-                           emb_model, dataset_text_field_mapping)
+                           dnn_embedding_file, dataset_text_field_mapping)
 
 
 def run_dnn_models(properties: dict, df: numpy.ndarray, y,

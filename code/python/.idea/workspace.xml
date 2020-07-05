@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="exp_holdout_v2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exp_holdout_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/exp/exp_holdout_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="280" column="24" lean-forward="true" selection-start-line="280" selection-start-column="24" selection-end-line="280" selection-end-column="24" />
+            <state relative-caret-position="163">
+              <caret line="280" column="0" lean-forward="false" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
               <folding>
                 <element signature="e#190#200#0" expanded="true" />
               </folding>
@@ -23,31 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_rakuten_scalable.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="186" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nlp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/nlp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="classifier_dnn_scalable.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="527" column="0" lean-forward="false" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
+            <state relative-caret-position="265">
+              <caret line="531" column="9" lean-forward="true" selection-start-line="531" selection-start-column="9" selection-end-line="531" selection-end-column="9" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -66,7 +46,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>merge</find>
       <find>fasttext</find>
       <find>training_text_</find>
       <find>desc_f</find>
@@ -96,6 +75,7 @@
       <find>format</find>
       <find>fast</find>
       <find>embedding_format</find>
+      <find>plot_mo</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -109,7 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/3rdparty/han/textClassfierHATT2D.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_cml_doc2vec.py" />
         <option value="$PROJECT_DIR$/src/3rdparty/product2vec_loader.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_hybrid.py" />
@@ -137,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_dnn.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/nlg_util.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/gpt2_util.py" />
-        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/product_extractor.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/semsim_keyword_expander.py" />
         <option value="$PROJECT_DIR$/src/util/nlp.py" />
@@ -154,20 +132,22 @@
         <option value="$PROJECT_DIR$/src/feature/text_feature_extractor.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_main.py" />
         <option value="$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_scalable.py" />
-        <option value="$PROJECT_DIR$/src/util/data_util.py" />
         <option value="$PROJECT_DIR$/src/exp/exp_util.py" />
         <option value="$PROJECT_DIR$/src/classifier/classifier_learn.py" />
         <option value="$PROJECT_DIR$/src/lanmodel/embedding_util.py" />
         <option value="$PROJECT_DIR$/src/exp/wop/exp_wop_holdout.py" />
+        <option value="$PROJECT_DIR$/src/util/data_util.py" />
+        <option value="$PROJECT_DIR$/src/exp/wop/result_transformer.py" />
+        <option value="$PROJECT_DIR$/src/util/result_summariser.py" />
         <option value="$PROJECT_DIR$/src/exp/exp_holdout_v2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="1299" />
-    <option name="height" value="743" />
+    <option name="x" value="1366" />
+    <option name="y" value="-2" />
+    <option name="width" value="1680" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -491,7 +471,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exp/exp_holdout_v2.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt $PROJECT_DIR$/../../.. $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json mwpd fasttext none embedding_file=none" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/../../input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt $PROJECT_DIR$/../../.. $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json mwpd fasttext none embedding_file=/data/embeddings/wop/w2v_desc_cbow.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -676,6 +656,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="result_summariser" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/util" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/util/result_summariser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="result_transformer" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -712,7 +710,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="26">
+    <list size="27">
       <item index="0" class="java.lang.String" itemvalue="Python.cleanCategories" />
       <item index="1" class="java.lang.String" itemvalue="Python.cluster_categories" />
       <item index="2" class="java.lang.String" itemvalue="Python.cluster_quality_analysis" />
@@ -738,7 +736,8 @@
       <item index="22" class="java.lang.String" itemvalue="Python.product_keyword_extractor" />
       <item index="23" class="java.lang.String" itemvalue="Python.product_keyword_expander" />
       <item index="24" class="java.lang.String" itemvalue="Python.exp_wop_holdout" />
-      <item index="25" class="java.lang.String" itemvalue="Python.ir_desc_cat_expander" />
+      <item index="25" class="java.lang.String" itemvalue="Python.result_summariser" />
+      <item index="26" class="java.lang.String" itemvalue="Python.ir_desc_cat_expander" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -772,18 +771,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30094042" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23717561" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6058632" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1603467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32247558" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22101842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.495114" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4084507" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -850,7 +850,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/util/data_util.py</url>
-          <line>129</line>
+          <line>130</line>
           <option name="timeStamp" value="1249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -878,6 +878,26 @@
           <line>208</line>
           <option name="timeStamp" value="1273" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/exp/wop/result_transformer.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="1293" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/exp/wop/result_transformer.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="1294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
+          <line>527</line>
+          <option name="timeStamp" value="1337" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
+          <line>535</line>
+          <option name="timeStamp" value="1340" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -889,9 +909,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1285" />
+      <option name="time" value="1341" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="acc_" />
+        <watch expression="macro_" />
+        <watch expression="micro_" />
+        <watch expression="macro_" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -947,6 +974,41 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>df</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[81+adjindex]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[79]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[81]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[77]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[78]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>df[80]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>y_train.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -956,45 +1018,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>X_train</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>X_train.shape</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>matrix.shape</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>matrix[0,0]='ok'</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>matrix</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>matrix[index]=numpy.asarray(row)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>row</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Programs/anaconda3/lib/python3.6/site-packages/sklearn/metrics/classification.py" />
     <entry file="file://$PROJECT_DIR$/src/exp/rakuten/exp_rakuten_dnn.py" />
     <entry file="file://$PROJECT_DIR$/src/exp/wop/exp_wop_dnn_singlesetting.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-2084613922/fasttext_pybind.py">
@@ -1032,13 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/data_clean.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lanmodel/gpt2_encode.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1064,13 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1332">
           <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3870">
-          <caret line="217" column="91" lean-forward="false" selection-start-line="217" selection-start-column="91" selection-end-line="217" selection-end-column="91" />
         </state>
       </provider>
     </entry>
@@ -1295,16 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/data_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="138" column="4" lean-forward="false" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="4" />
-          <folding>
-            <element signature="e#89#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/feature/text_feature_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1355,22 +1357,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
+    <entry file="file://$PROJECT_DIR$/src/util/data_clean.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="527" column="0" lean-forward="false" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
+        <state relative-caret-position="-2145">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/data_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#89#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exp/wop/result_transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/result_summariser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="159" column="26" lean-forward="false" selection-start-line="159" selection-start-column="26" selection-end-line="159" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/exp/exp_holdout_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="280" column="24" lean-forward="true" selection-start-line="280" selection-start-column="24" selection-end-line="280" selection-end-column="24" />
+        <state relative-caret-position="163">
+          <caret line="280" column="0" lean-forward="false" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
           <folding>
             <element signature="e#190#200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="531" column="9" lean-forward="true" selection-start-line="531" selection-start-column="9" selection-end-line="531" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

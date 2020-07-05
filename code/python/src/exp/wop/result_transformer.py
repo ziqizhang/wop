@@ -2,6 +2,8 @@ import collections
 import csv
 import os
 
+adjindex=-2
+
 def parse_acc(value):
     if len(value)==0:
         return value
@@ -24,7 +26,7 @@ def transform_score_format_lodataset(infolder, outfile):
             print(f)
 
             if "=" in f:
-                setting=f[f.index("=")+1: f.index("|training")]
+                setting=f[f.index("=")+1:]
             else:
                 setting=f[f.index("-")+1:f.index(".txt.csv")]
             lvl = setting.split("_")[0]
@@ -62,10 +64,10 @@ def transform_score_format_lodataset(infolder, outfile):
                     han_acc = df[130].split(",")
 
             elif 'lvl2' in f:
-                bilstm_mac_row=df[78].split(",")
-                bilstm_macw_row = df[79].split(",")
-                bilstm_mic_row=df[80].split(",")
-                bilstm_acc=df[81].split(",")
+                bilstm_mac_row=df[78+adjindex].split(",")
+                bilstm_macw_row = df[79+adjindex].split(",")
+                bilstm_mic_row=df[80+adjindex].split(",")
+                bilstm_acc=df[81+adjindex].split(",")
 
                 if len(df)>161:
                     cnn_mac_row = df[161].split(",")
@@ -214,8 +216,8 @@ def transform_score_format_lodataset(infolder, outfile):
 if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                   "/home/zz/Work/wop/tmp/desc.csv")
-    transform_score_format_lodataset("/home/zz/Work/wop/output/classifier/tmp",
-                                     "/home/zz/Work/wop/output/classifier/run_ft_nfold_cbow.csv")
+    transform_score_format_lodataset("/home/zz/Work/wop/output/fasttext_mwpd/classifier/scores",
+                                     "/home/zz/Work/wop/output/fasttext_mwpd/ft_mwpd_testset.csv")
 
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")

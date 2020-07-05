@@ -2,6 +2,7 @@
 import collections
 import csv
 import json
+import pickle
 
 import pandas as pd
 from sklearn import model_selection
@@ -183,6 +184,11 @@ def read_wdcgsformat_to_matrix(in_file):
         #    line=file.readline()
     return matrix
 
+def read_icecatformat_to_matrx(in_file):
+    with open(in_file, 'rb') as f:
+        data = pickle.load(f)
+        print("done")
+
 
 if __name__ == "__main__":
     #inCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
@@ -204,7 +210,9 @@ if __name__ == "__main__":
     #categories_clusters_testing.json
     # read_wdcformat_to_matrix("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json")
     # print("end")
-    split_wdcGS_by_traintestsplit('/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json',
-                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_testing.json',
-                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_gold_standard_offers.json',
-                                  '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS')
+    # split_wdcGS_by_traintestsplit('/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_training.json',
+    #                               '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_clusters_testing.json',
+    #                               '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_gold_standard_offers.json',
+    #                               '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS')
+
+    read_icecatformat_to_matrx("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/icecat/icecat_data_test.pkl")
