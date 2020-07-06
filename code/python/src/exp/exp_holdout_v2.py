@@ -98,7 +98,8 @@ def run_setting(setting_file, home_dir,
                        word_weights,dataset_text_field_mapping)
     elif model_choice=='cml':
         run_cml_models(setting_file,
-                       properties, df, y, train_size, class_col, outfolder, emb_model, embedding_format,
+                       properties, df, y, train_size, class_col, outfolder, dnn_embedding_file,
+                       emb_model, embedding_format,
                        dataset_text_field_mapping)
     else:
         run_fasttext_model(setting_file,properties, df, y, train_size, class_col, outfolder,
@@ -197,7 +198,7 @@ def run_dnn_models(properties: dict, df: numpy.ndarray, y,
 def run_cml_models(setting_file: str,
                    properties: dict, df: numpy.ndarray, y,
                    train_size: int, class_col: int,
-                   out_folder: str, embeddingmodel, embeddingformat,
+                   out_folder: str, embeddingmodel_file:str, embeddingmodel, embeddingformat,
                    text_field_mapping:dict):
     print('[STARTED] running settings with label=' + exp_util.load_setting("label", properties, overwrite_params))
 
@@ -235,10 +236,11 @@ def run_cml_models(setting_file: str,
 
     models = ["svm_l"]
     for model_name in models:
-        print("\tML model=" + model_name)
+        identifier=model_name+"|"+embeddingmodel_file[embeddingmodel_file.rfind("/")+1:]
+        print("\tML model and embedding=" + model_name)
         print("fitting model...")
 
-        cls = cml.Classifer(setting_file, model_name, X_train, y_train, out_folder,
+        cls = cml.Classifer(setting_file, identifier, X_train, y_train, out_folder,
                             categorical_targets=y,
                             nfold=None, algorithms=[model_name])
         trained_model=cls.run()[model_name]
@@ -327,7 +329,6 @@ if __name__ == "__main__":
     }
 
 
-
     if sys.argv[5]=='mwpd':
         text_field_mapping=mwpd_fieldname_to_colindex_map
     elif sys.argv[5]=='wdc':
@@ -354,8 +355,17 @@ if __name__ == "__main__":
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
 mwpd
-svm
+cml
 gensim
+
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl2_n+d+c.txt
+/home/zz/Work
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
+mwpd
+cml
+word2vec-False
+embedding_file=/data/embeddings/wop/w2v_cbow_skip.txt
 '''
 #word2vec-False
 
@@ -365,7 +375,7 @@ gensim
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_train.json
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_test.json
 wdc
-svm
+cml
 gensim
 '''
 
@@ -375,7 +385,7 @@ gensim
 /home/zz/Work/data/Rakuten/rdc-catalog-gold-small1.tsv
 /home/zz/Work/data/Rakuten/rdc-catalog-gold-small2.tsv
 rakuten
-svm
+cml
 gensim
 '''
 
@@ -388,5 +398,5 @@ gensim
 mwpd
 fasttext
 none
-embedding_file=none
+embedding_file=/data/embeddings/wop/w2v_desc_cbow.txt
 '''

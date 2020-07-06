@@ -125,11 +125,11 @@ def learn_discriminative(cpus, task, model_name,
     return classifier
 
 
-def learn_generative(cpus, task, model_flag, X_train, y_train,
+def learn_generative(cpus, task, model_name, X_train, y_train,
                      identifier, outfolder, nfold=None, feature_reduction=None):
     classifier = None
     model_file = None
-    if (model_flag == "nb"):
+    if (model_name == "nb"):
         print("== Naive Bayes ...")
         cls = MultinomialNB()
         if feature_reduction is not None:
@@ -141,7 +141,7 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
             classifier = cls
         model_file = os.path.join(outfolder, "nb-classifier-%s.m" % task)
 
-    if (model_flag == "sgd"):
+    if (model_name == "sgd"):
         print("== SGD ...")
         # "loss": ["log", "modified_huber", "squared_hinge", 'squared_loss'],
         #               "penalty": ['l2', 'l1'],
@@ -157,7 +157,7 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
         else:
             classifier = cls
         model_file = os.path.join(outfolder, "sgd-classifier-%s.m" % task)
-    if (model_flag == "lr"):
+    if (model_name == "lr"):
         print("== Stochastic Logistic Regression ...")
 
         cls = LogisticRegression(random_state=111)
@@ -173,7 +173,7 @@ def learn_generative(cpus, task, model_flag, X_train, y_train,
     if nfold is not None:
         print(y_train.shape)
         nfold_predictions = cross_val_predict(classifier, X_train, y_train, cv=nfold)
-        util.save_scores(nfold_predictions, y_train, model_flag, task, identifier, 2, outfolder)
+        util.save_scores(nfold_predictions, y_train, model_name, task, identifier, 2, outfolder)
     else:
         classifier.fit(X_train, y_train)
         #util.save_classifier_model(classifier, model_file)
