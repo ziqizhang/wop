@@ -85,6 +85,28 @@ def load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file):
     matrix=numpy.asarray(matrix)
     return matrix,len(train), len(test)
 
+'''
+load train and eval data of the icecat dataset json format, merge them into a single dataset, and return the size of train and eval
+that allows precisely splitting the merged set back into train&test
+'''
+def load_and_merge_train_test_data_jsonIceCAT(train_data_file, test_data_file):
+    train = data_util.read_icecatformat_to_matrix(train_data_file)
+
+    test = data_util.read_icecatformat_to_matrix(test_data_file)
+
+    matrix=[]
+
+    index=0
+    for row in train:
+        matrix.append(row)
+        index+=1
+    for row in test:
+        matrix.append(row)
+        index+=1
+    matrix=numpy.asarray(matrix)
+    return matrix,len(train), len(test)
+
+
 def load_properties(filepath, sep='=', comment_char='#'):
     """
     Read the file passed as parameter as a properties file.

@@ -4,6 +4,8 @@ Use this file to run experiments of cnn/lstm/han and svm/nb/knn etc on datasets 
 # use this class to run experiments over wop datasets with nfold validation
 import sys
 import datetime
+from wordsegment import load
+load()
 
 import numpy
 import tensorflow as tf
@@ -66,7 +68,8 @@ def run_setting(setting_file, home_dir,
         df, train_size, test_size = exp_util. \
             load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t")
     elif dataset_type=="icecat":
-        pass
+        df, train_size, test_size = exp_util. \
+            load_and_merge_train_test_data_jsonIceCAT(train_data_file, test_data_file)
     else:#wdc
         df, train_size, test_size = exp_util. \
             load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file)
@@ -217,6 +220,9 @@ def run_cml_models(setting_file: str,
     print("creating feature matrix")
     X_all = []
     for k, v in input_text_info.items():
+        # print(v)
+        # if v["text_col"]==5:
+        #     print("here")
         X_sub = tfe.get_aggr_embedding_vectors(df=df,
                                                text_col=v["text_col"],
                                                text_norm_option=1,
@@ -323,6 +329,16 @@ if __name__ == "__main__":
         'lvl1': 6
     }
 
+    icecat_fieldname_to_colindex_map={
+        'ID':0,
+        'Description.URL':1,
+        'Brand':2,
+        'SummaryDescription.LongSummaryDescription':3,
+        'Title':4,
+        'Category.CategoryID':5,
+        'Category.Name.Value':6
+    }
+
     rakuten_fieldname_to_colindex_map = {
         'Name': 0,
         'lvl1': 1
@@ -336,7 +352,7 @@ if __name__ == "__main__":
     elif sys.argv[5]=='rakuten':
         text_field_mapping = rakuten_fieldname_to_colindex_map
     else:
-        pass
+        text_field_mapping=icecat_fieldname_to_colindex_map
 
     setting_file = sys.argv[1]
 
@@ -370,13 +386,15 @@ embedding_file=/data/embeddings/wop/w2v_cbow_skip.txt
 #word2vec-False
 
 '''
-/home/zz/Work/wop/input/dnn_holdout/wdcgs/dnn_n/gslvl1_name.txt
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n/gslvl1_name.txt
 /home/zz/Work
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_train.json
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_test.json
 wdc
 cml
 gensim
+text_fieldnames=Name,20|URL,20
+class_fieldname=lvl1
 '''
 
 '''
@@ -387,6 +405,18 @@ gensim
 rakuten
 cml
 gensim
+'''
+
+'''
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n/gslvl1_name.txt
+/home/zz/Work
+/home/zz/Work/data/IceCAT/icecat_data_train.json
+/home/zz/Work/data/IceCAT/icecat_data_test.json
+icecat
+cml
+gensim
+text_fieldnames=Title,20
+class_fieldname=Category.CategoryID
 '''
 
 

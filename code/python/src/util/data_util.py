@@ -3,6 +3,7 @@ import collections
 import csv
 import json
 import pickle
+import numpy
 
 import pandas as pd
 from sklearn import model_selection
@@ -184,11 +185,74 @@ def read_wdcgsformat_to_matrix(in_file):
         #    line=file.readline()
     return matrix
 
-def read_icecatformat_to_matrx(in_file):
+''''
+This method reads the json data file (train/val/test) in the SWC2020 mwpd format and save them as a matrix where each 
+row is an instance with the following columns:
+- 0: ID
+- 1: Description.URL
+- 2: Brand
+- 3: SummaryDescription.LongSummaryDescription
+- 4: Title
+- 5: Category.CategoryID
+- 6: Category.Name.Value
+'''
+def read_icecatformat_to_matrix(in_file):
+    matrix=[]
+    with open(in_file) as file:
+        line = file.readline()
+
+        while line is not None and len(line)>0:
+            js=json.loads(line)
+
+            row=[js['ID'],js['Description.URL'],
+                 js['Brand'],js['SummaryDescription.LongSummaryDescription'],
+                 js['Title'],js['Category.CategoryID'],js['Category.Name.Value']]
+            matrix.append(row)
+            line=file.readline()
+    return matrix
+
+
+def convert_icecatformat_to_json(in_file, out_file):
+    outwriter = open(out_file,"w")
+
     with open(in_file, 'rb') as f:
         data = pickle.load(f)
-        print("done")
+        # for h in list(data.columns.values):
+        #     print(h)
 
+        count=0
+        for id, row_data in data.iterrows():
+            entry={}
+
+            count+=1
+            entry['ID'] = str(id)
+            entry['Description.URL']=replace_nan(row_data['Description.URL'])
+            entry['Brand']=replace_nan(row_data['Brand'])
+            entry['SummaryDescription.LongSummaryDescription']= replace_nan(row_data['SummaryDescription.LongSummaryDescription'])
+            entry['Title']=replace_nan(row_data['Title'])
+            entry['Category.CategoryID'] = replace_nan(row_data['Category.CategoryID'])
+            entry['Category.Name.Value'] = replace_nan(row_data['Category.Name.Value'])
+
+            line=json.dumps(entry)
+            outwriter.write(line+"\n")
+
+            if count%5000 ==0:
+                print(count)
+
+        print(count)
+
+    outwriter.close()
+
+def replace_nan(v):
+    if type(v) is float and numpy.isnan(v):
+        return ""
+    else:
+        return v
+#Brand
+#Category.Name.Value
+#SummaryDescription.ShortSummaryDescription
+#Title
+#Description.URL
 
 if __name__ == "__main__":
     #inCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
@@ -215,4 +279,6 @@ if __name__ == "__main__":
     #                               '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/categories_gold_standard_offers.json',
     #                               '/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS')
 
-    read_icecatformat_to_matrx("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/icecat/icecat_data_test.pkl")
+    convert_icecatformat_to_json("/home/zz/Work/data/IceCAT/icecat_data_validate.pkl",
+                                 "/home/zz/Work/data/IceCAT/icecat_data_validate.json")
+    #read_icecatformat_to_matrx("/home/zz/Work/data/IceCAT/icecat_data_test_target.pkl")
