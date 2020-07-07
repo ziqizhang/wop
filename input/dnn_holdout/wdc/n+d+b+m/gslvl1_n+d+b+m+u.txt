@@ -1,0 +1,32 @@
+#Fieldnames in the mwpd SWC2020 dataset:
+#
+#    'ID':'0',
+#    'Name':'1',
+#    'Description':'2',
+#    'CategoryText':'3',
+#    'URL':'4',
+#    'lvl1': '5',
+#    'lvl2': '6',
+#    'lvl3': '7',
+
+#Each of this setting file should differentiate in terms of input text field to be used for feature extraction (e.g., name, desc, see property 'training_text_data' and 'training_text_data_columns'); and additional pre-processed features to be combined with text features, if any, see 'training_other_features'); and embedding model files if DNN is used (See property 'embedding_file')
+
+#give a label to this setting and it is used to append to every algorithm that is run in the target python file to identify the results in the output CSV file
+label=gslvl1_n+d+b+m_glove_
+
+#output folder where the results will be written to
+output_folder=/wop/output/classifier
+
+#CSV input text data columns, seperated by ','. If multiple columns are specified, content will be merged
+text_fieldnames=Name,20|Desc,100|Brand,5|Manufacturer,5
+
+#CSV file of preprocessed features (if any, so this can be left empty). Features pre-extracted for the same instances in the training_text_data. Rows must match the instances in training_text_data. 
+training_other_features=
+
+#column index of target classes
+class_fieldname=lvl1
+
+#If pre-trained embeddings are used (for DNN only)
+embedding_file=/data/embeddings/glove.840B.300d.bin.gensim"
+
+
