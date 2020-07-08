@@ -41,7 +41,7 @@ def load_setting(param_name, properties: {}, overwrite_params: {} = None):
 load train csv data and test csv data, merge them into a single dataset, and return the size of train and test
 that allows precisely splitting the merged set back into train&test
 '''
-def load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter=";"):
+def load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t"):
     train = pd.read_csv(train_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
                         ).fillna('').as_matrix()
     train.astype(str)
