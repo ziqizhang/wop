@@ -88,7 +88,7 @@ def run_setting(setting_file, home_dir,
     # this the Gensim compatible embedding file
     dnn_embedding_file=exp_util.load_setting("embedding_file", properties,
                                                           overwrite_params)
-    if dnn_embedding_file is not None:
+    if dnn_embedding_file is not None and dnn_embedding_file!='None':
         dnn_embedding_file = home_dir + dnn_embedding_file  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
     # print("embedding file is========="+dnn_embedding_file)
     if embedding_format == 'none':

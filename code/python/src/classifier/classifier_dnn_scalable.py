@@ -525,7 +525,7 @@ def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
         #         csvwriter.writerow(["__label__" + label, text])
 
         # -dim 300 -minn 4 -maxn 10 -wordNgrams 3 -neg 10 -loss ns -epoch 3000 -thread 30
-    if embedding_file is not None:
+    if embedding_file is not None and embedding_file!='None':
         model = fasttext.train_supervised(input=fasttext_train,
                                       minn=4, maxn=10, wordNgrams=3,
                                       neg=10, loss='ns', epoch=3000,
