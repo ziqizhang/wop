@@ -494,7 +494,7 @@ def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
             t= concate_text(row, info["text_col"])
             t=nlp.normalize(t)
             text_length += int(info["text_length"])
-            text+=t
+            text+=t+" "
         words = nlp.tokenize(text, text_norm_option)
         text = " ".join(words).strip()
         X.append([text])

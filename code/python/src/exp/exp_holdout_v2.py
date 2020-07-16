@@ -90,6 +90,8 @@ def run_setting(setting_file, home_dir,
                                                           overwrite_params)
     if dnn_embedding_file is not None and dnn_embedding_file.lower()!='none':
         dnn_embedding_file = home_dir + dnn_embedding_file  # "H:/Python/glove.6B/glove.840B.300d.bin.gensim"
+        print("\t will use this embedding data model: "+dnn_embedding_file)
+
     # print("embedding file is========="+dnn_embedding_file)
     if embedding_format == 'none':
         emb_model=None
