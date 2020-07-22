@@ -282,7 +282,7 @@ def learn_dnn(nfold, task,
         X_merge = X_train_textfeature
 
     #this prints the model architecture diagram to a file, so you can check that it looks right
-    plot_model(model, to_file="model.png")
+    #plot_model(model, to_file="model.png")
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 #model.compile(loss='categorical_crossentropy',

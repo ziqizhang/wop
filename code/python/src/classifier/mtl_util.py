@@ -45,7 +45,7 @@ model = Model(inputs=x, outputs=[out1, out2, out3])
     model.summary()
 
     # this prints the model architecture diagram to a file, so you can check that it looks right
-    plot_model(model, to_file="model.png")
+    #plot_model(model, to_file="model.png")
     return model
 
 def encode_labels(df: DataFrame, class_col:int):

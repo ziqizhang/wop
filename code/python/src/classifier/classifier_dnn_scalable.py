@@ -568,5 +568,5 @@ def merge_dnn_branch(branches: list, input_shapes: list, prediction_targets: int
     model.summary()
 
     # this prints the model architecture diagram to a file, so you can check that it looks right
-    plot_model(model, to_file="model.png")
+    #plot_model(model, to_file="model.png")
     return model
