@@ -36,6 +36,8 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
     private String nameOutFolder;
     private String descOutFolder;
 
+    private static final int MIN_DESC_WORDS=30;
+
     public ProdDescTextFileExporter_Lucene(int id, int start, int end,
                                            IndexReader prodNameDescIndex,
                                            int resultBatchSize, String nameOutFolder,
@@ -127,7 +129,7 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
         if (descData != null) {
             String desc = cleanData(descData);
             long tokens = desc.split("\\s+").length;
-            if (desc.length() > 20 && tokens > 5) {
+            if (desc.length() > 20 && tokens >= MIN_DESC_WORDS) {
                 descFile.println(desc);
                 res[1] = tokens;
             }
@@ -136,6 +138,10 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
         return res;
     }
 
+    /**
+     * @param value
+     * @return
+     */
     private String cleanData(String value) {
         if (value.startsWith("<")&&value.endsWith(">"))
             return "";
@@ -143,7 +149,8 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
         try {
             value = StringEscapeUtils.unescapeJava(value);
         }catch (Exception e){}
-        value = value.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}|>/]", " ").
+        //removes all non-alphanumeric-or-punctuation characters
+        value = value.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}\\p{Punct}]", " ").
                 replaceAll("\\s+", " ").trim();
         value = StringUtils.stripAccents(value);
 
