@@ -32,7 +32,7 @@ public class ProdDescExpander {
 
         CoreContainer prodNDContainer = new CoreContainer(args[0]);
         prodNDContainer.load();
-        SolrClient prodNameDescIndex = new EmbeddedSolrServer(prodNDContainer.getCore("proddesc"));
+        SolrClient prodNameDescIndex = new EmbeddedSolrServer(prodNDContainer.getCore("prodcatdesc"));
 
         int descSents = Integer.valueOf(args[1]); //max number of sentences in composed desc
         int maxResults = Integer.valueOf(args[2]);//max number of products to select for composing desc
@@ -53,6 +53,7 @@ public class ProdDescExpander {
                                    int descSents, int maxResults,
                                    SolrClient prodNameDescIndex) {
         try {
+
             List<String> lines = FileUtils.readLines(new File(inFile), "utf-8");
             // Reading Records One by One in a String array
             String[] nextRecord;

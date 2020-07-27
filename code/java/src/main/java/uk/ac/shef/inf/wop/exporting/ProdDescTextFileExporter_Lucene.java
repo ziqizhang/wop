@@ -10,9 +10,14 @@ import org.apache.solr.core.CoreContainer;
 import org.apache.solr.search.SolrIndexSearcher;
 import uk.ac.shef.inf.wop.Util;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -36,7 +41,8 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
     private String nameOutFolder;
     private String descOutFolder;
 
-    private static final int MIN_DESC_WORDS=30;
+    public static final int MIN_DESC_WORDS=50;
+    public static final int MAX_DESC_WORDS=250;
 
     public ProdDescTextFileExporter_Lucene(int id, int start, int end,
                                            IndexReader prodNameDescIndex,
@@ -58,6 +64,8 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
                 id, start, end));
 
         try {
+            PrintWriter p = new PrintWriter(new FileWriter(descOutFolder+"/output_records.csv",true));
+
             nameFile = new PrintWriter(new FileWriter(nameOutFolder + "/n_" + id + "_" + nameFileCounter, true));
             descFile = new PrintWriter(new FileWriter(descOutFolder + "/d_" + id + "_" + descFileCounter, true));
 
@@ -67,7 +75,11 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
             for (int i = start; i < luceneIndexReader.maxDoc() && i < end; i++) {
 
                 Document doc = luceneIndexReader.document(i);
-                long[] words = exportRecord(doc, nameFile, descFile);
+                int[] words = exportRecord(doc, nameFile, descFile);
+                String docid = doc.get("id");
+                if (words[1]>0)
+                    p.println(i+","+words[0]+","+words[1]);
+
                 countNameFileWords += words[0];
                 countDescFileWords += words[1];
                 if (i%resultBatchSize==0)
@@ -97,6 +109,7 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
             try {
                 nameFile.close();
                 descFile.close();
+                p.close();
                 LOG.info(String.format("\t\tthread %d: finishing name file, total words= %d",
                         id, countNameFileWords));
                 LOG.info(String.format("\t\tthread %d: finishing desc file, total words= %d",
@@ -111,16 +124,16 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
         }
     }
 
-    private long[] exportRecord(Document d,
+    private int[] exportRecord(Document d,
                                 PrintWriter nameFile, PrintWriter descFile) {
 
         String nameData = d.get("name");
         String descData = d.get("desc");
-        long[] res = new long[2];
+        int[] res = new int[2];
 
         if (nameData != null) {
             String name = cleanData(nameData);
-            long tokens = name.split("\\s+").length;
+            int tokens = name.split("\\s+").length;
             if (name.length() > 15 && tokens > 3) {
                 nameFile.println(name);
                 res[0] = tokens;
@@ -128,10 +141,14 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
         }
         if (descData != null) {
             String desc = cleanData(descData);
-            long tokens = desc.split("\\s+").length;
-            if (desc.length() > 20 && tokens >= MIN_DESC_WORDS) {
+            String[] tokens = desc.split("\\s+");
+            if (desc.length() > 20 && tokens.length >= MIN_DESC_WORDS) {
+                if (tokens.length>MAX_DESC_WORDS){
+                    desc=StringUtils.join(tokens, " ",0,MAX_DESC_WORDS);
+                }
+
                 descFile.println(desc);
-                res[1] = tokens;
+                res[1] = desc.split("\\s+").length;
             }
         }
 
@@ -142,7 +159,7 @@ public class ProdDescTextFileExporter_Lucene implements Runnable {
      * @param value
      * @return
      */
-    private String cleanData(String value) {
+    public static String cleanData(String value) {
         if (value.startsWith("<")&&value.endsWith(">"))
             return "";
 
