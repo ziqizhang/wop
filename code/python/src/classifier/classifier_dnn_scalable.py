@@ -9,7 +9,7 @@ import os
 
 from keras.layers import Dense, concatenate
 from keras.models import clone_model
-from keras.utils import plot_model
+#from keras.utils import plot_model
 from pandas import DataFrame
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelBinarizer
