@@ -30,14 +30,14 @@
       <file leaf-file-name="ProdDescCorpusForBert.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdDescCorpusForBert.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8135#8136#0" expanded="true" />
-                <element signature="e#8190#8191#0" expanded="true" />
-                <element signature="e#8252#8253#0" expanded="true" />
-                <element signature="e#8305#8306#0" expanded="true" />
+                <element signature="e#9792#9793#0" expanded="true" />
+                <element signature="e#9847#9848#0" expanded="true" />
+                <element signature="e#9909#9910#0" expanded="true" />
+                <element signature="e#9962#9963#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,7 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>encountered</find>
       <find>csv</find>
       <find>source_entit</find>
       <find>ArrayAsStringJsonDeserializer</find>
@@ -84,6 +83,7 @@
       <find>countDescFileWords</find>
       <find>done</find>
       <find>allsel</find>
+      <find>err.</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -447,7 +447,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="uk.ac.shef.inf.wop.app.ProdDescCorpusForBert" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2017/prodcatdesc 1,5,10 $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_train.json Name $USER_HOME$/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS wdc" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../../../data/wdc/WDCNov2017/prodcatdesc 1,5,10 $PROJECT_DIR$/../../../data/Rakuten/original/rdc-catalog-train.tsv Name $PROJECT_DIR$/../../../data/Rakuten/original rakuten" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -829,7 +829,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-2" width="1680" height="1052" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -839,7 +838,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19196428" sideWeight="0.5047862" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18743229" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3564464" sideWeight="0.49521378" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1191,8 +1190,14 @@
           <properties />
           <option name="timeStamp" value="1165" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdDescCorpusForBert.java</url>
+          <line>136</line>
+          <properties />
+          <option name="timeStamp" value="1224" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1224" />
+      <option name="time" value="1226" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1585,14 +1590,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/shef/inf/wop/app/ProdDescCorpusForBert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8135#8136#0" expanded="true" />
-            <element signature="e#8190#8191#0" expanded="true" />
-            <element signature="e#8252#8253#0" expanded="true" />
-            <element signature="e#8305#8306#0" expanded="true" />
+            <element signature="e#9792#9793#0" expanded="true" />
+            <element signature="e#9847#9848#0" expanded="true" />
+            <element signature="e#9909#9910#0" expanded="true" />
+            <element signature="e#9962#9963#0" expanded="true" />
           </folding>
         </state>
       </provider>

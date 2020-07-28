@@ -24,6 +24,17 @@ import java.util.*;
  *
  * These are written to a file on a line-by-line basis.
  *
+ *
+ *
+ /home/zz/Work/data/wdc/WDCNov2017/prodcatdesc
+ 1,5,10
+ /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
+ Name
+ /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020
+ mwpd
+
+
+ *
  */
 public class ProdDescCorpusForBert {
 
@@ -44,7 +55,11 @@ public class ProdDescCorpusForBert {
         String nameCol=args[3];
         String outFolder = args[4];
 
-        exportDesc(inFile, outFolder, nameCol, maxResults, prodNameDescIndex, args[5]);
+        double sample=1.0;
+        if (args.length>6)
+            sample=Double.valueOf(args[6]);
+
+        exportDesc(inFile, outFolder, nameCol, maxResults, prodNameDescIndex, args[5], sample);
 
         prodNameDescIndex.close();
         System.exit(0);
@@ -53,8 +68,24 @@ public class ProdDescCorpusForBert {
     private static void exportDesc(String inFile, String outFolder,
                                    String nameCol, String[] maxResults,
                                    SolrClient prodNameDescIndex,
-                                   String dataset) {
+                                   String dataset,
+                                   double sample) {
         try {
+            Set<Integer> sample_lines = new HashSet<>();
+            if (sample<1.0){
+                System.out.println("Processing only sample size="+sample+", or "+sample_lines.size()+" records");
+                List<Integer> all_lines= new ArrayList<>();
+                BufferedReader tmpr = new BufferedReader(new InputStreamReader(new FileInputStream(inFile), StandardCharsets.UTF_8));
+                String l;
+                int countAll=0;
+                while ((l = tmpr.readLine()) != null) {
+                    all_lines.add(countAll);
+                    countAll++;
+                }
+                int toSelect = (int)(sample*countAll);
+                Collections.shuffle(all_lines);
+                sample_lines = new HashSet<>(all_lines.subList(0, toSelect));
+            }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile), StandardCharsets.UTF_8));
             Gson googleJson = new Gson();
@@ -69,8 +100,13 @@ public class ProdDescCorpusForBert {
             }
 
 
+            int total_selected=0;
             String line;
             while ((line = br.readLine()) != null) {
+                if (sample_lines.size()>0 && !sample_lines.contains(countRecords)){
+                    countRecords++;
+                    continue;
+                }
                /* if (countRecords>=114)
                     System.out.println();*/
                 Map rowValues;
@@ -96,7 +132,9 @@ public class ProdDescCorpusForBert {
                     continue;
                 }
 
-                expand(name, prodNameDescIndex, writers);
+                total_selected+=expand(name, prodNameDescIndex, writers);
+                if (total_selected!=allSelected.size())
+                    System.err.println("Inconsistent, this should not happen");
 
                 //nextRecord[WOP_DESC_COL] = newDesc;
                 countRecords++;
@@ -124,12 +162,12 @@ public class ProdDescCorpusForBert {
      * @param productName
      * @param solrIndex
      */
-    public static void expand(String productName, SolrClient solrIndex, Map<Integer, OutputStreamWriter> maxR_and_writers) {
+    public static int expand(String productName, SolrClient solrIndex, Map<Integer, OutputStreamWriter> maxR_and_writers) {
         Set<Integer> maxRs = new HashSet<>(maxR_and_writers.keySet());
         SolrQuery q = createQuery(200, productName);
         QueryResponse res;
         long total = 0;
-        Set<String> selected=new HashSet<>();
+        List<String> selected=new ArrayList<>();
 
         try {
             res = solrIndex.query(q);
@@ -155,7 +193,8 @@ public class ProdDescCorpusForBert {
                 String vdesc = getStringValue(d, "desc");
                 vdesc = ProdDescTextFileExporter_Lucene.cleanData(vdesc);
                 String[] tokens = vdesc.split("\\s+");
-                if (vdesc.length() > 20 && tokens.length >= ProdDescTextFileExporter_Lucene.MIN_DESC_WORDS) {
+                if (vdesc.length() > 20 && tokens.length >= ProdDescTextFileExporter_Lucene.MIN_DESC_WORDS
+                        &&vdesc.length() <ProdDescTextFileExporter_Lucene.MAX_DESC_WORDS*10) {
                     if (tokens.length>ProdDescTextFileExporter_Lucene.MAX_DESC_WORDS)
                         vdesc= StringUtils.join(tokens, " ",0,ProdDescTextFileExporter_Lucene.MAX_DESC_WORDS);
 
@@ -185,7 +224,7 @@ public class ProdDescCorpusForBert {
             LOG.warn(String.format("\t\t\t error encountered, skipped due to error: %s",
                     ExceptionUtils.getFullStackTrace(e)));
         }
-
+        return selected.size();
 
     }
 
