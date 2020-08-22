@@ -132,10 +132,11 @@ public class ProdDescCorpusForBert {
                     continue;
                 }
 
+                //System.out.println(new Date()+"\tRead "+ name);
                 total_selected+=expand(name, prodNameDescIndex, writers);
                 if (total_selected!=allSelected.size())
                     System.err.println("Inconsistent, this should not happen");
-
+                //System.out.println(new Date()+"\t\tProcessed "+ name);
                 //nextRecord[WOP_DESC_COL] = newDesc;
                 countRecords++;
 

@@ -171,7 +171,7 @@ public class ProdDescTextFileExporter implements Runnable {
     public static void main(String[] args) throws IOException {
         CoreContainer prodNDContainer = new CoreContainer(args[0]);
         prodNDContainer.load();
-        SolrClient prodNameDescIndex = new EmbeddedSolrServer(prodNDContainer.getCore("proddesc"));
+        SolrClient prodNameDescIndex = new EmbeddedSolrServer(prodNDContainer.getCore("prodcatdesc"));
 
         //74488335
         int jobStart=Integer.valueOf(args[4]);

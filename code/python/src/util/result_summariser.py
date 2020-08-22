@@ -364,7 +364,7 @@ if __name__ == "__main__":
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")
 
     summarise("/home/zz/Work/wop/output/classifier/scores",
-                   "/home/zz/Work/wop/output/classifier/ft-rakuten.csv")
+                  "/home/zz/Work/wop/output/classifier/dnn_rakuten.csv")
 
-    #summarise_cml("/home/zz/Work/wop/output/classifier/scores",
-    #            "/home/zz/Work/wop/output/classifier/ft_wdc.csv")
+    # summarise_cml("/home/zz/Work/wop/output/classifier/scores",
+    #               "/home/zz/Work/wop/output/classifier/cml_wdc-missed.csv")
