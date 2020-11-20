@@ -55,7 +55,7 @@ public class SWC2020GSCreator {
      * this deals task 1 above
      */
     public void checkAndConvertOriginal(String inputOriginalCSV,
-                                               String inputCorrectionCSV,
+                                                String inputCorrectionCSV,
                                                String outFile) throws IOException {
         int idCol=0, nameCol=4, descCol=5, urlCol=2, catCol1=8,catCol2=9, lvl1Col=10, lvl2Col=11, lvl3Col=12;
 

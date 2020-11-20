@@ -1,5 +1,9 @@
 '''
 Use this file to run experiments of cnn/lstm/han and svm/nb/knn etc on datasets split into train/val/test
+
+all data are found in:
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data
+
 '''
 # use this class to run experiments over wop datasets with nfold validation
 import sys
@@ -343,7 +347,8 @@ if __name__ == "__main__":
 
     rakuten_fieldname_to_colindex_map = {
         'Name': 0,
-        'lvl1': 1
+        'lvl1': 1,
+        'URL':2
     }
 
 

@@ -42,11 +42,14 @@ load train csv data and test csv data, merge them into a single dataset, and ret
 that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_csvRakuten(train_data_file, test_data_file, delimiter="\t"):
-    train = pd.read_csv(train_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
+    train = pd.read_csv(train_data_file, header=-1, delimiter=delimiter, quoting=0, encoding="utf-8",
                         ).fillna('').as_matrix()
     train.astype(str)
 
-    test = pd.read_csv(test_data_file, header=0, delimiter=delimiter, quoting=0, encoding="utf-8",
+    if (test_data_file is None):
+        return train, len(train),0
+
+    test = pd.read_csv(test_data_file, header=-1, delimiter=delimiter, quoting=0, encoding="utf-8",
                        ).fillna('').as_matrix()
     test.astype(str)
 
@@ -59,6 +62,8 @@ that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_data_jsonMPWD(train_data_file, test_data_file):
     train = data_util.read_mwpdformat_to_matrix(train_data_file)
+    if (test_data_file is None):
+        return train, len(train),0
 
     test = data_util.read_mwpdformat_to_matrix(test_data_file)
 
@@ -70,6 +75,8 @@ that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file):
     train = data_util.read_wdcgsformat_to_matrix(train_data_file)
+    if (test_data_file is None):
+        return train, len(train),0
 
     test = data_util.read_wdcgsformat_to_matrix(test_data_file)
 
@@ -91,6 +98,8 @@ that allows precisely splitting the merged set back into train&test
 '''
 def load_and_merge_train_test_data_jsonIceCAT(train_data_file, test_data_file):
     train = data_util.read_icecatformat_to_matrix(train_data_file)
+    if (test_data_file is None):
+        return train, len(train),0
 
     test = data_util.read_icecatformat_to_matrix(test_data_file)
 

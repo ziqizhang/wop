@@ -43,6 +43,17 @@ public class ProdNameCategoryTextFileExporter {
             ".bs", ".bb", ".ca", ".do", ".gd", ".gy", ".ie", ".jm", ".nz", ".kn", ".lc", ".vc", ".tt", ".us");
 
 
+    /**
+     * currently we are selecting:
+     * - hosts ranked by #of records
+     * - top 100 and must have a min of 100 results
+     *
+     * @param prodcatIndex
+     * @param resultBatchSize
+     * @param outFolder
+     * @throws IOException
+     * @throws SolrServerException
+     */
     private void export(SolrClient prodcatIndex, int resultBatchSize, String outFolder) throws IOException, SolrServerException {
         List<String> largetHosts = getLargeHosts(100, 100,prodcatIndex);
 
@@ -265,6 +276,12 @@ public class ProdNameCategoryTextFileExporter {
         return selected;
     }
 
+    /**
+     * take category label (where space is connected by _) and split them into words
+     * @param inFolder
+     * @param outFolder
+     * @throws IOException
+     */
     private static void convert(String inFolder, String outFolder) throws IOException {
         long total = 0;
         for (File f : new File(inFolder).listFiles()) {

@@ -207,6 +207,9 @@ def read_icecatformat_to_matrix(in_file):
             row=[js['ID'],js['Description.URL'],
                  js['Brand'],js['SummaryDescription.LongSummaryDescription'],
                  js['Title'],js['Category.CategoryID'],js['Category.Name.Value']]
+            # row = [js['ID'], "",
+            #        "", "",
+            #        js['Title'], "",""]
             matrix.append(row)
             line=file.readline()
     return matrix

@@ -1,4 +1,6 @@
 /**
+ * This is the correct class to use to create 'simco' corpus for bert lmft
+ *
  /home/zz/Work/data/wdc/WDCNov2017/prodcatdesc
  1,5,10
  /home/zz/Work/data/IceCAT/icecat_data_train.json
@@ -343,10 +345,15 @@ public class ProdDescCorpusForBert_Thread implements Runnable {
 
                     countResults++;
 
-                    if (!allSelected.contains(docid)) {
+                    //for each doc only select ones
+                    /*if (!allSelected.contains(docid)) {
                         selected.add(vdesc);
                         allSelected.add(docid);
-                    }
+                    }*/
+
+                    //allowing selecting multiple times of the same doc
+                    selected.add(vdesc);
+                    allSelected.add(docid);
                 }
 
                 //check if we should dump for any 'max Results' writer

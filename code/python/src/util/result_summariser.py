@@ -1,4 +1,4 @@
-import collections
+import glob
 import csv
 import os
 
@@ -33,6 +33,8 @@ def summarise(infolder, outfile):
     features_=set()
     for f in files:
         if not f.endswith(".csv"):
+            continue
+        if f.startswith("prediction"):
             continue
         if "=" in f:
             setting = f[f.index("=") + 1:]
@@ -363,8 +365,22 @@ if __name__ == "__main__":
     # transform_score_format_lodataset("/home/zz/Work/wop/tmp/classifier_with_desc",
     #                                  "/home/zz/Work/wop/output/classifier/dnn_d_X_result.csv")
 
-    summarise("/home/zz/Work/wop/output/classifier/dnn_mwpd-val-missing/output/scores",
-                  "/home/zz/Work/wop/output/classifier/dnn_mwpd-val-missing.csv")
+    # summarise("/home/zz/Work/wop/output/classifier/dnn_icecat-test-missing/output/classifier",
+    #               "/home/zz/Work/wop/output/classifier/scores.csv")
 
     # summarise_cml("/home/zz/Work/wop/output/classifier/scores",
     #               "/home/zz/Work/wop/output/classifier/cml_wdc-missed.csv")
+
+    input="/home/zz/Work/wop/output/classifier"
+    settings_folder=os.listdir(input)
+
+    for s in settings_folder:
+        if os.path.isfile(input+"/"+s):
+            continue
+        files = glob.glob(input+"/"+s + '/**/*.csv', recursive=True)
+        f =files[0]
+        result_folder=os.path.dirname(f)
+        out_file=input+"/"+s+".csv"
+        summarise(result_folder, out_file)
+
+

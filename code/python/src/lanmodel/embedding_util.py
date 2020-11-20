@@ -11,6 +11,7 @@ import gc
 
 import gensim
 from gensim.models import Word2Vec
+from gensim.scripts.glove2word2vec import glove2word2vec
 
 
 class Corpus(object):
@@ -66,11 +67,14 @@ def load_emb_model(embedding_format:str, embedding_file:str):
     elif embedding_format == 'fasttext':
         print("\tfasttext format")
         emb_model = load_model(embedding_file)
-    else:
+    elif embedding_format.lower().startswith("word2vec"):
         binary = embedding_format.split("-")[1]
         print("\tword2vec format, binary="+str(strtobool(binary)))
         emb_model = gensim.models.KeyedVectors. \
             load_word2vec_format(embedding_file, binary=strtobool(binary))
+    else:
+        glove2word2vec(glove_input_file="vectors.txt", word2vec_output_file="gensim_glove_vectors.txt")
+
     return emb_model
 
 def embedding_to_text_format(embedding_file:str, out_file:str):
