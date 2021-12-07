@@ -261,7 +261,7 @@ public class ProdNameCategoryTextFileExporter {
         Map<String, Long> freq=new HashMap<>();
 
         for (FacetField.Count c : ff.getValues()) {
-            if (isValidHost(c.getName()))
+            if (!isValidHost(c.getName()))
                 continue;
             freq.put(c.getName(), c.getCount());
             hosts.add(c.getName());
@@ -310,9 +310,9 @@ public class ProdNameCategoryTextFileExporter {
     }
 
     public static void main(String[] args) throws IOException, SolrServerException {
-        convert("/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_labels",
-                "/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_label_words");
-        System.exit(0);
+//        convert("/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_labels",
+//                "/home/zz/Work/data/wop_data/mt/product/mt_corpus/cat_label_words");
+//        System.exit(0);
         /*String weirdString="home >> category and >> monkey";
 
         String[] parts=weirdString.split("[\\|\\>/]+");
@@ -321,7 +321,7 @@ public class ProdNameCategoryTextFileExporter {
 
         CoreContainer prodNDContainer = new CoreContainer(args[0]);
         prodNDContainer.load();
-        SolrClient prodCatIndex = new EmbeddedSolrServer(prodNDContainer.getCore("prodcat"));
+        SolrClient prodCatIndex = new EmbeddedSolrServer(prodNDContainer.getCore("prodcatdesc"));
 
         ProdNameCategoryTextFileExporter exporter = new ProdNameCategoryTextFileExporter();
         //exporter.export(prodTripleIndex, Integer.valueOf(args[2]), prodNameDescIndex);

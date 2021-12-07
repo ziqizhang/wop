@@ -115,6 +115,24 @@ def load_and_merge_train_test_data_jsonIceCAT(train_data_file, test_data_file):
     matrix=numpy.asarray(matrix)
     return matrix,len(train), len(test)
 
+'''
+load train and eval data from the fake product review dataset originally from https://osf.io/3vds7/,
+split to train/test in: /home/zz/Work/data/wop_productfakerev
+'''
+def load_and_merge_train_test_data_productfakerev(train_data_file, test_data_file):
+    train = pd.read_csv(train_data_file, header=0, delimiter=",", quoting=0, encoding="utf-8",
+                     )
+    train.astype(str)
+
+    if (test_data_file is None):
+        return train, len(train), 0
+
+    test = pd.read_csv(test_data_file, header=0, delimiter=",", quoting=0, encoding="utf-8",
+                       ).fillna('').as_matrix()
+    test.astype(str)
+
+    return numpy.concatenate((train, test), axis=0), len(train), len(test)
+
 
 def load_properties(filepath, sep='=', comment_char='#'):
     """

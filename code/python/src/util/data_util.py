@@ -7,6 +7,7 @@ import numpy
 
 import pandas as pd
 from sklearn import model_selection
+from sklearn.model_selection import train_test_split
 
 #prepare data to fasttext format
 def to_fasttext(inCSV, textCol, classCol, outfile):
@@ -214,6 +215,41 @@ def read_icecatformat_to_matrix(in_file):
             line=file.readline()
     return matrix
 
+''''
+This method reads the original training data file for the fakeproductreview dataset
+fake_reviews_dataset.csv (download from https://osf.io/3vds7/)
+and randomly split it into 80:20 train/test split
+'''
+def split_fakeproductrev_to_holdout(in_file, out_folder):
+    df = pd.read_csv(in_file, header=0, delimiter=",", quoting=0, encoding="utf-8",
+                     )
+    headers=["category","rating","text","label"]
+    X=[]
+    for index, row in df.iterrows():
+        r = [row[0], row[1], row[3]]
+        X.append(r)
+
+    y = df.iloc[:,2]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 42)
+    y_train = list(y_train)
+    y_test=list(y_test)
+    outfile=out_folder+"/fakeproductrev_train.csv"
+    with open(outfile, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(headers)
+        for i in range(0, len(X_train)):
+            r = X_train[i]
+            r.append(y_train[i])
+            writer.writerow(r)
+
+    outfile=out_folder+"/fakeproductrev_test.csv"
+    with open(outfile, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(headers)
+        for i in range(0, len(X_test)):
+            r = X_test[i]
+            r.append(y_test[i])
+            writer.writerow(r)
 
 def convert_icecatformat_to_json(in_file, out_file):
     outwriter = open(out_file,"w")
@@ -258,6 +294,48 @@ def replace_nan(v):
 #Description.URL
 
 if __name__ == "__main__":
+    split_fakeproductrev_to_holdout("/home/zz/Work/data/wop_productfakerev/fake_reviews_dataset.csv",
+                                    "/home/zz/Work/data/wop_productfakerev")
+    exit(0)
+    # train=read_wdcgsformat_to_matrix("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_train.json")
+    # test=read_wdcgsformat_to_matrix("/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS/wdc_gs_test.json")
+    # cls = set()
+    # for l in train:
+    #     cls.add(l[6])
+    # print(len(cls))
+    # exit(0)
+
+    # train = read_icecatformat_to_matrix(
+    #     "/home/zz/Work/data/IceCAT/icecat_data_train.json")
+    # val = read_icecatformat_to_matrix(
+    #     "/home/zz/Work/data/IceCAT/icecat_data_validate.json")
+    # test = read_icecatformat_to_matrix(
+    #     "/home/zz/Work/data/IceCAT/icecat_data_test.json")
+    #
+    # cls = set()
+    # for l in train:
+    #     cls.add(l[6])
+    # print(len(cls))
+    # exit(0)
+
+    train = read_mwpdformat_to_matrix(
+        "/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json")
+    val = read_mwpdformat_to_matrix(
+        "/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/validation.json")
+    test = read_mwpdformat_to_matrix(
+        "/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json")
+
+    cls1 = set()
+    cls2 = set()
+    cls3 = set()
+    for l in train:
+        cls1.add(l[5])
+        cls2.add(l[6])
+        cls3.add(l[7])
+
+    print(len(cls1))
+    exit(0)
+
     #inCSV="/home/zz/Work/data/Rakuten/rdc-catalog-train.tsv"
     # outfolder="/home/zz/Work/data/Rakuten/"
     # subset(inCSV, 0, 1, outfolder, 0.2)

@@ -74,6 +74,9 @@ def run_setting(setting_file, home_dir,
     elif dataset_type=="icecat":
         df, train_size, test_size = exp_util. \
             load_and_merge_train_test_data_jsonIceCAT(train_data_file, test_data_file)
+    elif dataset_type=="fakerev":
+        df, train_size, test_size = exp_util. \
+            load_and_merge_train_test_data_productfakerev(train_data_file, test_data_file)
     else:#wdc
         df, train_size, test_size = exp_util. \
             load_and_merge_train_test_data_jsonWDC(train_data_file, test_data_file)
@@ -351,6 +354,10 @@ if __name__ == "__main__":
         'URL':2
     }
 
+    fakerev_fieldname_to_colindex_map = {
+        'Name': 2,
+        'label': 3
+    }
 
     if sys.argv[5]=='mwpd':
         text_field_mapping=mwpd_fieldname_to_colindex_map
@@ -358,6 +365,8 @@ if __name__ == "__main__":
         text_field_mapping=wdc_fieldname_to_colindex_map
     elif sys.argv[5]=='rakuten':
         text_field_mapping = rakuten_fieldname_to_colindex_map
+    elif sys.argv[5] =='fakerev':
+        text_field_mapping=fakerev_fieldname_to_colindex_map
     else:
         text_field_mapping=icecat_fieldname_to_colindex_map
 
@@ -436,4 +445,19 @@ mwpd
 fasttext
 none
 embedding_file=/data/embeddings/wop/w2v_desc_cbow.txt
+'''
+
+'''
+/home/zz/Work/wop/input/dnn_holdout/fakerev/n/gslvl1_name.txt
+/home/zz/Work
+/home/zz/Work/data/wop_productfakerev/fakeproductrev_train.csv
+/home/zz/Work/data/wop_productfakerev/fakeproductrev_test.csv
+fakerev
+cml
+Word2vec-False
+embedding_file=/data/embeddings/wop/w2v_desc_skip.txt
+
+[or]
+
+embedding_file=/data/embeddings/wop/glove.840B.300d.bin.gensim
 '''

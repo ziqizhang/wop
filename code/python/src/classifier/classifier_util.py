@@ -36,7 +36,6 @@ def saveOutput(prediction, model_name, task,outfolder):
         file.write(str(entry)+"\n")
     file.close()
 
-
 def prepare_score_string(p, r, f1, s, labels, target_names, digits):
     string = ",precision, recall, f1, support\n"
     for i, label in enumerate(labels):
