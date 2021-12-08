@@ -297,7 +297,11 @@ def fit_dnn_holdout(df: DataFrame, split_at_row: int, class_col: int,
     y = df[:, class_col]
     print("\ttotal y rows="+str(len(y))+" with unique values="+str(len(set(y))))
     print("\tencoding y labels..."+str(datetime.datetime.now()))
-    y_int = encoder.fit_transform(y)
+
+    if len(set(y))>2:
+        y_int = encoder.fit_transform(y)
+    else:
+        y_int=np.array([[1, 0] if l.strip() == 'CG' else [0, 1] for l in y])
 
     print("\tcreating y labels dictionary..." + str(datetime.datetime.now()))
     y_label_lookup = dict()

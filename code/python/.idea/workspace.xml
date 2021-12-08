@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="097b85e1-8f7b-46dd-a596-492b36ba0363" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exp/exp_holdout_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exp/exp_holdout_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1208,14 +1208,19 @@
           <option name="timeStamp" value="1665" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exp/exp_util.py</url>
-          <line>122</line>
-          <option name="timeStamp" value="1672" />
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
+          <line>311</line>
+          <option name="timeStamp" value="1677" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exp/exp_holdout_v2.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="1673" />
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
+          <line>319</line>
+          <option name="timeStamp" value="1678" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/classifier/classifier_dnn_scalable.py</url>
+          <line>304</line>
+          <option name="timeStamp" value="1680" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

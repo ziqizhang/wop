@@ -403,12 +403,12 @@ Params explained
 
 Example params
 
-/home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
+/home/zz/Work/wop/input/dnn_holdout/mwpd/n/gslvl1_name.txt
 /home/zz/Work
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
 mwpd
-cml
+dnn
 gensim
 
 /home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl2_n+d+c.txt
@@ -474,9 +474,9 @@ embedding_file=/data/embeddings/wop/w2v_desc_cbow.txt
 /home/zz/Work/data/wop_productfakerev/fakeproductrev_train.csv
 /home/zz/Work/data/wop_productfakerev/fakeproductrev_test.csv
 fakerev
-cml
-Word2vec-False
-embedding_file=/data/embeddings/wop/w2v_desc_skip.txt
+dnn
+gensim
+embedding_file=/data/embeddings/glove.840B.300d.bin.gensim
 
 [or]
 
