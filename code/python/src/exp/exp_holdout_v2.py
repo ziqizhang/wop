@@ -2,8 +2,16 @@
 Use this file to run experiments of cnn/lstm/han and svm/nb/knn etc on datasets split into train/val/test
 
 all data are found in:
-/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data
+- product classificaiton:
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020
+/home/zz/Work/data/Rakuten/
+/home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/WDC_CatGS
 
+- fake product review
+/home/zz/Work/data/wop_productfakere
+
+
+See at the end of this file to see some example configurations
 '''
 # use this class to run experiments over wop datasets with nfold validation
 import sys
@@ -381,7 +389,20 @@ if __name__ == "__main__":
                 model_choice=sys.argv[6],
                 overwrite_params=overwrite_params, embedding_format=sys.argv[7])
 
+
 '''
+Params explained
+- setting: /home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
+- output folder (where results will be written): /home/zz/Work
+- training set: /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
+- test set: /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/test.json
+- which dataset: mwpd
+- which algorithm: cml/dnn (lstm and han)/fasttext
+- format of the word embedding: word2vec-False/word2vec-True/gensim/none (to be used with fasttext)
+- any params in the 'setting' file can be overriden, e.g., embedding_file=/data/embeddings/wop/w2v_cbow_skip.txt
+
+Example params
+
 /home/zz/Work/wop/input/dnn_holdout/mwpd/n+d+c/gslvl1_n+d+c.txt
 /home/zz/Work
 /home/zz/Cloud/GDrive/ziqizhang/project/mwpd/prodcls/data/swc2020/train.json
