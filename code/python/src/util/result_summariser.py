@@ -371,7 +371,7 @@ if __name__ == "__main__":
     # summarise_cml("/home/zz/Work/wop/output/classifier/scores",
     #               "/home/zz/Work/wop/output/classifier/cml_wdc-missed.csv")
 
-    input="/home/zz/Work/wop/output/classifier"
+    input="/home/zz/Work/wop/output"
     settings_folder=os.listdir(input)
 
     for s in settings_folder:

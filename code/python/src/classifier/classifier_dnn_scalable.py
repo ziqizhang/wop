@@ -479,8 +479,14 @@ def fit_fasttext_holdout(df: DataFrame, split_at_row: int, class_col: int,
 
     encoder = LabelBinarizer()
     y = df[:, class_col]
+    print("\ttotal y rows=" + str(len(y)) + " with unique values=" + str(len(set(y))))
+    print("\tencoding y labels..." + str(datetime.datetime.now()))
 
-    y_int = encoder.fit_transform(y)
+    if len(set(y)) > 2:
+        y_int = encoder.fit_transform(y)
+    else:
+        y_int = np.array([[1, 0] if l.strip() == 'CG' else [0, 1] for l in y])
+
     y_label_lookup = dict()
     y_label_lookup_inverse = dict()
     for index, l in zip(y_int.argmax(1), y):
